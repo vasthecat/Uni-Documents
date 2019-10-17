@@ -484,5 +484,111 @@ $\frac{1}{10^m} < \varepsilon \implies [y_m;\overline{y_m}] \subset
 множества $A$, а так как правее $\overline{y_m}$ находится только конечное число
 элементов $A$, то $y$ -- самая правая предельная точка $A$.
 
+\section{Множество комплексных чисел}
+
+\subsection{Определение комплексного числа}
+
+\textbf{Комплексным числом} $z$ будем называть упорядоченную пару действительных
+чисел $(x;y)$ такую, что для этих пар определены понятия равенства и арифметических
+операций следующим образом:
+
+\begin{enumerate}
+    \item Если $\\ z_1 = (x_1;y_1) \\ z_2 = (x_2;y_2)$, то
+    
+    $z_1 = z_2 \Leftrightarrow \begin{cases}
+        x_1 = x_2 \\
+        y_1 = y_2
+    \end{cases}$
+
+    \item $z_3 = z_1 + z_2 \Leftrightarrow z_3 = (x_1 + x_2; y_1 + y_2)$
+    \item $z_3 = z_1 - z_2 \Leftrightarrow z_3 = (x_1 - x_2; y_1 - y_2)$
+    \item $z_3 = z_1 * z_2 \Leftrightarrow z_3 = (x_1 x_2 - y_1 y_2; x_1 y_2 + x_2 y_1)$
+    \item $z_3 = \frac{z_1}{z_2} (z_2 \neq (0; 0)) \Leftrightarrow 
+    z_3 = (\frac{x_1 x_2 + y_1 y_2}{x_2^2 + y_2^2}; \frac{x_2 y_1 - x_1 y_2}{x_2^2 + y_2^2})$
+\end{enumerate}
+
+Множество комплексных чисел обозначается $\mathbb{C}$.
+
+\underline{\textbf{Замечание}}
+
+\begin{enumerate}
+    \item Во множестве комплексных чисел операции $>, <$ не имеют смысла.
+    \item $z = (x; 0)$ будем называть действительными числами и обозначать $x$.
+    \item Заметим:
+
+    $(0; 1) * (0; 1) = (0 - 1; 0 + 0) = (-1; 0) = -1 \\
+    (0; 1)^2 = 1 \\ (0; 1)$ -- обозначается $i$ -- мнимая единица.
+
+    $i^2 = -1$
+
+    \item $z = (x; y) = (x; 0) + (0; y) = x + (y; 0) * (0; 1) = x + y * i$
+
+    $z = x + iy$ -- \textbf{алгебраическая форма записи комплексного числа}.
+
+    \item В паре $z = (x; y)$, $x$ называют действительной (вещественной)
+    частью и обозначается $x = Re(z)$
+
+    $y$ называют мнимой частью и обозначается $y = Im(z)$
+
+    $z = Re(z) + i*Im(z)$
+
+    \item Комплексное число $Re(z) - i*Im(z) = \overline{z}$ и называется
+    сопряжённым к числу $z$, т.е. $z = (x;y), \overline{z} = (x; -y)$.
+    \begin{enumerate}[label*=\arabic*.]
+        \item $\overline{z_1 \pm z_2} = \overline{z_1} \pm \overline{z_2}$
+        \item $\overline{z_1 z_2} = \overline{z_1} * \overline{z_2}$
+        \item $\overline{\frac{z_1}{z_2}} = \frac{\overline{z_1}}{\overline{z_2}}$
+        \item $\overline{\overline{z}} = z$
+        \item $Re(z) = \frac{z + \overline{z}}{2}; Im(z) = \frac{z - \overline{z}}{2i}$
+    \end{enumerate}
+        
+\end{enumerate}
+
+\subsection{Геометрическое толкование комплексного числа как точки плоскости}
+
+\textbf{ВСТАВИТЬ ГРАФИК???}
+
+\[z = |z|(\cos \phi + i \sin \phi)\]
+\[|z| = \sqrt{Re^2(z) + Im^2(z)} = \sqrt{x^2 + y^2}\]
+
+Угол, который радиус-вектор образует с положительной осью $Re(z)$
+называют аргументом $z$.
+
+\[\phi = \textnormal{Arg}(z)\]
+\[
+    \begin{cases}
+        \cos \phi = \frac{Re(z)}{|z|} \\
+        \sin \phi = \frac{Im(z)}{|z|}
+    \end{cases}
+\]
+
+При этом $\phi \in (-\pi; \pi]$ называют главным значением аргумента и обозначают $\arg z$
+\[Arg(z) = \arg z + 2 \pi k, k \in \mathbb{Z}\]
+
+\underline{\textbf{Замечание}}
+
+\begin{enumerate}
+    \item Очевидно, $|Re(z)| \le |z|; |Im(z)| \le |z|$
+    \item $|z|^2 = x^2 + y^2 = (x + iy)(x - iy) = z * \overline{z}$
+    \item Из связи прямоугольной и полярной системы координат 
+    
+    $\implies Re(z) = |z| \cos (Arg(z)), Im(z) = |z| \sin (Arg(z)) \\
+    z = Re(z) + i*Im(z) = |z|(\cos \phi + i \sin \phi)$ -- \textbf{тригонометрическая
+    форма записи комплексного числа}.
+\end{enumerate}
+
+\subsection{Показательная форма записи комплексного числа}
+
+Рассмотрим функцию Эйлера:
+
+$e^{i \phi} = \cos \phi + i \sin \phi$
+
+\textbf{Свойства функции Эйлера}
+
+\begin{enumerate}
+    \item $e^{i \phi_1} * e^{i \phi_2} = e^{i(\phi_1 + \phi_2)}$
+    \item $\frac{e^{i \phi_1}}{e^{i \phi_2}} = e^{i(\phi_1 - \phi_2)}$
+    \item $(e^{i \phi})^n = e^{i n \phi} \quad (n \in \mathbb{N})$
+\end{enumerate}
 
 \end{document}
