@@ -591,4 +591,95 @@ $e^{i \phi} = \cos \phi + i \sin \phi$
     \item $(e^{i \phi})^n = e^{i n \phi} \quad (n \in \mathbb{N})$
 \end{enumerate}
 
+\section{Векторы пространства $\mathbb{R}^m$}
+
+\textbf{Определение}
+
+Упорядоченную систему ($x_1, x_2, \dots, x_m$)($x_i \in \mathbb{R}$)
+(или ($z_1, z_2, \dots, z_m$); $z_i \in \mathbb{C}$) будем называть вектором
+(или точкой) пространства $\mathbb{R}^m (\mathbb{C}^m)$ если для этих
+систем определены понятия равенства и арифметические операторы сложения
+и умножения на число следующим образом:
+
+Имеем $u(u_1, u_2, \dots, u_m), v(v_1, v_2, \dots, v_m)$:
+
+\begin{enumerate}
+    \item $u = v \Leftrightarrow u_i = v_i \quad \forall i = \overline{1, m}$
+    \item $u + v = w$, где $w = (u_1 + v_1; u_2 + v_2; \dots; u_m + v_m)$
+    \item $k \in \mathbb{R} (k \in \mathbb{C}) \\
+    ku = w$, где $w = (k u_1, k u_2, \dots, k u_m)$
+\end{enumerate}
+
+Число $u_k$ называется $k$-й компонентой вектора $u$.
+
+\textbf{Свойства векторов}
+
+\begin{enumerate}
+    \item $u + v = v + u$
+    \item $u + (v + w) = (u + v) + w$
+    \item $u + v = u + w \Leftrightarrow v = w$
+    \item $c * (u + v) = c * u + c * v \quad$ ($c$ -- const)
+    \item $u * (c_1 + c_2) = u c_1 + u c_2 \quad$ ($c_1, c_2$ -- const)
+    \item $c_1 * (c_2 * u) = (c_1 * c_2) * u \quad$ ($c_1, c_2$ -- const)
+\end{enumerate}
+
+\textbf{Определение}
+
+Скалярным произведением векторов $u(u_1, u_2, \dots, u_m), v(v_1, v_2, \dots, v_m)$
+называют число $u * v = \displaystyle\sum_{k = 1}^{m} u_k * \overline{v_k}$
+
+\textbf{Свойства скалярного произведения}
+
+\begin{enumerate}
+    \item $u * v = \overline{u * v}$
+    \item $(\alpha u + \beta v) * w = \alpha (u * w) + \beta (v * w)$
+
+    ($\alpha, \beta$ -- const)
+
+    $u * (\alpha v + \beta w) = \overline{\alpha} (u * v) + \overline{\beta} (u * w)$
+
+    \item $u * u \ge 0 \quad \forall u$, и $u * u = 0 \Leftrightarrow u = (0,0,\dots,0)$
+\end{enumerate}
+
+\textbf{Теорема}. \textit{Неравенство Коши-Буняковского}.
+
+$|u v| \le \sqrt{(u * u) * (v * v)}$
+
+\textbf{Доказательство}.
+
+Возьмём $\forall \lambda $ -- const
+
+\begin{enumerate}
+    \item $(u + \lambda v) (u + \lambda v) \ge 0$
+    \item $(u + \lambda v) u + \overline{\lambda} (u + \lambda v) v \ge 0$
+    \item $(u * u) + \lambda (v * u) + \overline{\lambda} (u * v) + \overline{\lambda} * \lambda (v * v) \ge 0$
+    \item $(u * u) + \lambda (v * u) + \overline{\lambda} (u * v) + |\lambda|^2 (v * v) \ge 0$
+    \item Возьмём $\lambda = \frac{(u * v)}{(v * v)} \quad (v \neq (0, \dots, 0))$
+    \item $(u * u) - \frac{(u * v) (v * u)}{(v * v)} - \frac{\overline{(u * v)} (u * v)}{\overline{(v * v)}}
+    + \frac{(u * v)^2}{(v * v)^2} (v * v) \ge 0$
+    \item $(u * u) - 2 \frac{|(u * v)^2|}{(v * v)} + \frac{(u * v)^2}{(v * v)} \ge 0$
+    \item $(u * u) - \frac{|u * v|^2}{(v * v)} \ge 0$
+    \item $|u * v| \le \sqrt{(u * u) (v * v)}$
+\end{enumerate}
+
+\textbf{Теорема доказана}.
+
+\textbf{Определение}.
+
+Модулем вектора $u$ называют число $|u| = \sqrt{(u * u)}$
+
+\textbf{Свойства модуля вектора}
+
+\begin{enumerate}
+    \item $|u_k| \le |u|$
+    \item $|u * v| \le |u| * |v|$
+    \item $\big||u| - |v|\big| \le |u \pm v| \le |u| + |v|$
+\end{enumerate}
+$\mathbb{C}$
+\underline{\textbf{Замечание}}
+
+Тогда в комплексном и векторном пространстве используемое понятие модуля
+можно ввести аналогично понятиям окрестности, внутренней, изолированной,
+предельной точке, замкнутого и открытого множества.
+
 \end{document}
