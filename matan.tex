@@ -850,5 +850,170 @@ $\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел 
 
 \textbf{Доказательство}.
 
+\begin{enumerate}
+    %--------------------------------------------------------------------------------------
+    \item По условию $\exists \displaystyle\lim_{n \to \infty} x_n = a$
+    $\stackrel{\text{по опр.}}{\implies} \underline{\forall \varepsilon > 0}
+    \quad \underline{\exists n_\varepsilon \in \mathbb{N}}: 
+    \forall n \ge \underline{n_\varepsilon}$ выполняется 
+    $\left| x_n - a \right| < \varepsilon$. Но $\underline{k_n \ge n}$
+    ($\{k_n\}$ -- возрастающая последовательность натуральных чисел)
+    $\implies$ \underline{выполняется $\left| x_{k_n} - a \right| < \varepsilon$}
+    $\implies$ $\displaystyle\lim_{n \to \infty} x_{k_n} = a$.
+
+    %--------------------------------------------------------------------------------------
+    \item \textit{От противного.} Пусть $\displaystyle\lim_{n \to \infty} x_n = a$ и
+    $\displaystyle\lim_{n \to \infty} x_n = b$ $\stackrel{\text{по опр.}}{\implies}$
+    $\forall \varepsilon > 0 \begin{cases}
+        \exists n_1 \in \mathbb{N}: \forall n \ge n_1 \quad \left| x_n - a \right| < \varepsilon \\
+        \exists n_2 \in \mathbb{N}: \forall n \ge n_2 \quad \left| x_n - b \right| < \varepsilon
+    \end{cases}$
+
+    Выберем $n_3 = \max \left( n_1, n_2 \right)$, тогда начиная с номера $n_3$ будут выполняться оба
+    неравенства одновременно.
+
+    Рассмотрим $\left| a - b \right| = \left| a - x_n + x_n - b \right| = 
+    \left| (a - x_n) + (x_n - b) \right| \le \left| x_n - a \right| + 
+    \left| x_n - b \right| \underset{\forall n \ge n_3}{<}
+    \varepsilon + \varepsilon = 2 \varepsilon$, т.е. $\left| a - b \right| < 2 \varepsilon$,
+    при том, что $a - b$ -- неотрицательное число.
+
+    Получаем, что неотрицательное число $<$ любого положительного 
+    $\implies a - b = 0 \implies a = b$. \textbf{Противоречие.}
+
+    %--------------------------------------------------------------------------------------
+    \item Имеем: $\exists \displaystyle\lim_{n \to \infty} x_n = a \ne 0$
+    $\stackrel{\text{по опр.}}{\implies}$ 
+    $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N} 
+    \forall n \ge n_\varepsilon$ выполняется $\left| x_n - a \right| < \varepsilon$
+    или $a - \varepsilon < x_n < a + \varepsilon$.
+    
+    Возьмём $\varepsilon = \frac{\left| a \right|}{2} > 0 \implies 
+    \exists n_0 \in \mathbb{N} \quad \forall n \ge n_0 \quad
+    a - \frac{\left| a \right|}{2} < x_n < a + \frac{\left| a \right|}{2}$
+
+    Отсюда получаем, что $x_n$ начиная с номера $n_0$ имеют тот же знак, что и число $a$.
+
+    %--------------------------------------------------------------------------------------
+    \item Дано: $\displaystyle\lim_{n \to \infty} x_n = a$
+    $\stackrel{\text{по опр.}}{\implies} \forall \varepsilon > 0 \quad
+    \exists n_\varepsilon \in \mathbb{N}: \forall n \ge n_\varepsilon \quad
+    \left| x_n - a \right| < \varepsilon$.
+
+    Возьмём $\varepsilon = 1 \implies \exists n_1 \in \mathbb{N}: \forall n \ge n_1 \quad
+    \left| x_n - a \right| < 1$ или $a - 1 < x_n < a + 1$.
+
+    Возьмём $m = \min \left( x_1, x_2, \dots, x_{n_1 - 1}, a - 1 \right)$.
+
+    Возьмём $M = \min \left( x_1, x_2, \dots, x_{n_1 - 1}, a + 1 \right)$.
+
+    $\implies \forall n \in \mathbb{N} \quad m \le x_n \le M$ $\implies \{x_n\}$ -- ограничена.
+
+    %--------------------------------------------------------------------------------------
+    \item Дано:
+    
+    $\displaystyle\lim_{n \to \infty} x_n = x$
+    $\stackrel{\text{по опр.}}{\implies} \forall \varepsilon > 0 \quad
+    \exists n_1 \in \mathbb{N}: \forall n \ge n_1 \quad
+    \left| x_n - x \right| < \varepsilon$.
+
+    $\displaystyle\lim_{n \to \infty} y_n = y$
+    $\stackrel{\text{по опр.}}{\implies} \forall \varepsilon > 0 \quad
+    \exists n_2 \in \mathbb{N}: \forall n \ge n_2 \quad
+    \left| y_n - y \right| < \varepsilon$.
+
+    $\implies \forall n \ge n_3 = \max \left( n_1, n_2 \right)$ 
+    выполняются оба неравенства одновременно.
+
+    \begin{enumerate}[label*=\arabic*.]
+        \item $|(\alpha x_n + \beta y_n) - (\alpha x + \beta y)| = 
+        |\alpha (x_n - x) + \beta (y_n - y)| \le 
+        |\alpha| |x_n - x| + |\beta| |y_n - y| 
+        \underset{\forall n \ge n_3}{<}
+        \underbrace{(|\alpha| + |\beta|) \varepsilon}_{\text{обозначим } \varepsilon^*} \\
+        \implies \forall \varepsilon^* > 0 \exists n_{\varepsilon^*} = n_3 \in \mathbb{N}:
+        \forall n \ge n_{\varepsilon^*}$ выполняется 
+        $|(\alpha x_n + \beta y_n) - (\alpha x + \beta y)| < \varepsilon^* \\
+        \stackrel{\text{по опр.}}{\implies} 
+        \displaystyle\lim_{n \to \infty} (\alpha x_n + \beta y_n) = \alpha x + \beta y$
+
+        \item Рассмотрим $|x_n y_n - x y| = |x_n y_n - x y_n + x y_n - x y| = 
+        |(x_n y_n - x y_n) + (x y_n - x y)| = 
+        |(x_n - x) y_n + x (y_n - y)| \le |x_n - x| |y_n| + |x| |y_n - y| \quad (1)$
+
+        Но $\{y_n\}$ сходится $\stackrel{\text{по св 4}}{\implies} \{y_n\}$ -- ограничена
+        $\implies \exists C > 0 \quad \forall n \in \mathbb{N} \quad |y_n| \le C$.
+
+        $\implies (1) \underset{\forall n \ge n_3}{<} 
+        \underbrace{\varepsilon (C + |x|)}_{\varepsilon^*} \implies
+        \forall \varepsilon^* > 0 \quad \exists n_{\varepsilon^*} = n \in \mathbb{N}:
+        \forall n \ge n_{\varepsilon^*} \quad |x_n y_n - x y| < \varepsilon^*$.
+
+        \item $\left| \frac{x_n}{y_n} - \frac{x}{y} \right| = 
+        \left| \frac{x_n y - x y_n}{y_n y} \right| =
+        \left| \frac{x_n y - x y + x y - x y_n}{y_n y} \right| =
+        \left| \frac{y (x_n - x) + x (y - y_n)}{y_n y} \right| \stackrel{\triangle}{\le}
+        \frac{|x_n - x}{y_n} + \frac{|x|}{|y_n| |y|} |y_n - y| \quad (2)$
+
+        Так как $\{y_n\}$ сходится, то для 
+        $\varepsilon = \frac{|y|}{2} \quad \exists n_4 \in \mathbb{N} \quad
+        \forall n \ge n_4$ выполняется $|y_n - y| < \frac{|y|}{2} \implies
+        \left| |y_n| - |y| \right| < \frac{|y|}{2} \implies
+        |y_n| > |y| - \frac{|y|}{2} \implies \frac{1}{|y_n|} < \frac{2}{|y|}$.
+
+        $\implies (2) < \underbrace{\varepsilon ( \frac{2}{|y|} + \frac{|x|}{ (|y| - 1) |y| } )}_{\varepsilon^*}
+        \implies \forall \varepsilon^* > 0 \quad 
+        \exists n_{\varepsilon^*} = \max (n_3, n_4) \in \mathbb{N}:
+        \forall n \ge n_4$ выполняется 
+        $\left| \frac{x_n}{y_n} - \frac{x}{y} \right| < \varepsilon^* 
+        \implies \displaystyle\lim_{n \to \infty} \frac{x_n}{y_n} = \frac{x}{y}$.
+    \end{enumerate}
+
+    %--------------------------------------------------------------------------------------
+    \item Имеем $\forall n \ge n_0 \quad x_n \le y_n \quad 
+    \exists \displaystyle\lim_{n \to \infty} x_n = x 
+    \stackrel{\text{по опр.}}{\implies} \forall \varepsilon > 0 \quad
+    \exists n_1 \in \mathbb{N} \quad \forall n \ge n_1 \quad |x_n - x| < \varepsilon$
+    и $\exists \displaystyle\lim_{n \to \infty} y_n = y 
+    \stackrel{\text{по опр.}}{\implies} \forall \varepsilon > 0 \quad
+    \exists n_2 \in \mathbb{N} \quad \forall n \ge n_2 \quad |y_n - y| < \varepsilon$
+
+    Возьмём $n_3 = \max (n_0, n_1, n_2) \implies \forall n \ge n_3$ выполняются
+    все три неравенства одновременно.
+
+    Пусть \textit{от противного} $x > y$. 
+    $x_n - y_n = (x_n - x) - (y_n - y) + (x - y) > 
+    -\varepsilon - \varepsilon + (x - y) = (x - y) - 2 \varepsilon$, где $(x - y) > 0$.
+
+    Тогда неравенство будет верным, если $2 \varepsilon < (x - y) \implies x_n > y_n$,
+    а \textbf{это противоречит условию} $\implies x \le y$.
+
+    %--------------------------------------------------------------------------------------
+    \item Дано: $\forall n \ge n_0 \quad x_n \le y_n \le z_n, 
+    \displaystyle\lim_{n \to \infty} x_n = a
+    \stackrel{\text{по опр.}}{\implies}
+    \forall \varepsilon > 0 \quad \exists n_1 \in \mathbb{N}:
+    \forall n \ge n_1 \quad |x_n - a| < \varepsilon$ или
+    $-\varepsilon < x_n - a < \varepsilon$.
+    
+    $\displaystyle\lim_{n \to \infty} z_n = a 
+    \stackrel{\text{по опр.}}{\implies}
+    \forall \varepsilon > 0 \quad \exists n_2 \in \mathbb{N}:
+    \forall n \ge n_2 \quad |z_n - a| < \varepsilon$ или
+    $-\varepsilon < z_n - a < \varepsilon$.
+
+    Тогда $\forall n \ge n_3 = \max (n_1, n_2, n_0)$ оба неравенства
+    будут выполняться одновременно.
+
+    $\underline{-\varepsilon} < x_n - a \le \underline{y_n - a} \le
+    z_n - a < \underline{\varepsilon} \Leftrightarrow |y_n - a| < \varepsilon
+    \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon = n_3 \in \mathbb{N}:
+    \forall n \ge n_3 \quad |y_n - a| < \varepsilon
+    \stackrel{\text{по опр.}}{\implies} 
+    \displaystyle\lim_{n \to \infty} y_n = a$.
+\end{enumerate}
+
+\textbf{Теорема доказана}.
+
 
 \end{document}
