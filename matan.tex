@@ -682,4 +682,138 @@ $|u v| \le \sqrt{(u * u) * (v * v)}$
 можно ввести аналогично понятиям окрестности, внутренней, изолированной,
 предельной точке, замкнутого и открытого множества.
 
+\section{Числовые последовательности}
+
+\textbf{Определение}.
+
+Пусть $\forall n \in \mathbb{N}$ поставлено в соответствие единственное $x_n \in \mathbb{R}$,
+тогда говорят, что задана \textbf{числовая последовательность}, которую обозначают
+$\{x_n\}$, число $x_n$ называют $n$-ным членом последовательности.
+
+\textbf{Определение}.
+
+Суммой, разностью, произведением, частным, линейной комбинацией последовательностей 
+$\{x_n\}$ и $\{y_n\}$ называется последовательность члены которой образуются 
+по следующим правилам соответственно: 
+$x_n + y_n; x_n - y_n; x_n * y_n; \frac{x_n}{y_n} (y_n \ne 0); \alpha x_n + \beta y_n (\alpha, \beta \in \mathbb{R})$.
+
+\textbf{Определение}.
+
+$\{x_n\}$ называют ограниченной, если множество её элементов ограничено.
+
+\textbf{Определение}.
+
+$\{x_n\}$ называют возрастающей (неубывающей, убывающей, невозрастающей), если
+$\forall n \in \mathbb{N} \quad x_n < x_{n + 1} (x_n \le x_{n + 1}; x_n > x_{n + 1}; x_n \ge x_{n + 1})$.
+
+\textbf{Определение}.
+
+Последовательность $\{x_n\}$ называют сходящейся к числу $a$, а число $a$ называют
+\textbf{пределом} последовательности $\{x_n\}$ и обозначают 
+$\displaystyle\lim_{n \rightarrow \infty} x_n = a$, если 
+$\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}: \forall n \ge n_\varepsilon$
+выполняется неравенство $|x_n - a| < \varepsilon$.
+
+\underline{\textbf{Замечание}}.
+
+$|x_n - a| < \varepsilon \Leftrightarrow -\varepsilon < x_n - a < \varepsilon 
+\Leftrightarrow a - \varepsilon < x_n < a + \varepsilon
+\Leftrightarrow x_n \in (a - \varepsilon; a + \varepsilon)$
+
+\underline{\textbf{Замечание}}.
+
+$\displaystyle\lim_{x \rightarrow \infty} x_n = a$ означает, что
+$\forall \varepsilon$-окрестностей точки $a$ найдется такой номер, 
+начиная с которого все члены последовательности содержатся в этой
+$\varepsilon$-окрестности точки $a$.
+
+\textbf{Определение}.
+
+$\{x_n\}$ называются бесконечно большой, если
+$\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+\forall n \ge n_\varepsilon$ выполняется $|x_n| > \varepsilon$ и
+обозначается $\displaystyle\lim_{n \to \infty} x_n = \infty$.
+
+\pagebreak
+
+\underline{\textbf{Пример}}.
+
+Докажем по определению 
+$\displaystyle\lim_{n \to \infty} \frac{1}{\sqrt[3]{n^2 + 1}} = 0$,
+т.е. докажем, что $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+\forall n \ge n_\varepsilon$ выполняется $\left|\frac{1}{\sqrt[3]{n^2 + 1}} - 0\right| < \varepsilon$
+т.к. $\left|\frac{1}{\sqrt[3]{n^2 + 1}}\right| < \frac{1}{\sqrt[3]{n^2}}$,
+а $\frac{1}{\sqrt[3]{n^2}} < \varepsilon \Leftrightarrow n > \frac{1}{\sqrt{\varepsilon^3}}
+\implies$ если $\forall \varepsilon > 0$ выбрать 
+$n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
+то $\forall n \ge n_\varepsilon$ выполняется $\left|\frac{1}{\sqrt[3]{n^2 + 1}} - 0\right| < \varepsilon$.
+
+\textbf{Определение}.
+
+Пусть дана $\{x_n\}$ и $\{k_n\}$-возрастающая последовательность натуральных чисел.
+Тогда $\{y_n\}: y_n = x_{k_n}$ называют подпоследовательностью последовательности $\{x_n\}$.
+
+\textbf{Определение}.
+
+Если у $\{x_n\}$ существует подпоследовательность $\{y_n\}$ сходящаяся к числу $a^*$,
+то $a^*$ называют частичным пределом последовательности $\{x_n\}$.
+
+Наибольшим (наименьшим) из частичных пределов $\{x_n\}$ называют верхним (нижним) пределом
+и обозначают $\displaystyle\varlimsup_{n \to \infty} x_n$
+($\displaystyle\varliminf_{n \to \infty} x_n$).
+
+\textbf{Теорема}. \textit{Больцано-Вейерштрасса для последовательностей}.
+
+Всякая ограниченная последовательность имеет хотя бы один частный предел.
+
+\textbf{Доказательство}.
+
+$\{x_n\}$ -- ограниченная $\stackrel{\text{по опр.}}{\implies}$ множество $A$ её
+элементов ограничено.
+
+\underline{1 случай.} $A$ -- конечно.
+
+$\implies$ некоторому $a \in A$ соответствует бесконечное число элементов последовательности 
+\[x_{k_1} = 1, x_{k_2} = a, \dots, x_{k_n} = a, \dots\]
+\[(k_1 < k_2 < k_3 < \dots < k_n < \cdots)\]
+
+Получаем подпоследовательность $\{y_n\}: y_n = a (y_n = x_{k_n})$ и
+$\displaystyle\lim_{n \to \infty} y_n = a \implies a$ -- частичный предел $\{x_n\}$.
+
+\underline{2 случай.} $A$ -- бесконечно (и ограничено).
+
+$\implies$ по \textit{Теореме Больцано-Вейерштрасса для множеств} у множества $A$
+существует предельная точка $x$.
+
+Возьмём числа $\varepsilon_n = \frac{1}{10^n}$ тогда по определению предельной точки
+в $\varepsilon_1$-окрестности точки $x$ найдется бесконечное количество элементов последовательности.
+
+Выберем $x_{k_1}$. В $\varepsilon_2$-окрестности точки $x$ найдется бесконечное
+количество элементов последовательности.
+
+Выберем $x_{k_2}: k_2 > k_1$.
+
+Повторим процесс.
+
+$\{x_{k_n}\}: \left| x_{k_n} - x \right| < \varepsilon_N \quad n \ge N$
+
+Тогда $\forall \varepsilon > 0$ выберем $\varepsilon_N < \varepsilon$
+(возьмём $N > ???$) и $\forall n \ge N$ будем иметь 
+$\left| x_{k_n} - x \right| < \varepsilon$ 
+$\stackrel{\text{по опр.}}{\implies} \displaystyle\lim_{n \to \infty} x_{k_n} = x$
+$\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел последовательности $\{x_n\}$.
+
+\underline{\textbf{Замечания}}.
+
+\begin{enumerate}
+    \item Тот факт, что $\{x_n\}$ не ограничено сверху (снизу) обозначается как 
+    $\displaystyle\varlimsup_{n \to \infty} x_n = +\infty$ 
+    ($\displaystyle\varliminf_{n \to \infty} x_n = -\infty$).
+
+    \item Методом, предложенным в Теореме можно доказать, что определение точки
+    эквивалентно другому определению: \textit{``Точка $x$ называется предельной точкой
+    множества $A$, если существует последовательность, состоящая из элементов
+    множества, сходящаяся к этой точке''}.
+\end{enumerate}
+
 \end{document}
