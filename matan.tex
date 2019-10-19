@@ -12,7 +12,7 @@
     top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
 \singlespacing
 
-\newcommand{\bydef}{\stackrel{\text{по опр.}}{\implies}}
+\newcommand{\bydef}{\stackrel{\text{по опр.}}{\implies}} % by definition - по определению
 \newcommand{\parspace}{\vspace{10pt}}
 
 \begin{document}
@@ -193,7 +193,7 @@ $\alpha_{\varepsilon} \le x \le \beta_{\varepsilon}, \alpha_{\varepsilon} \le y 
 \textbf{Доказательство}.
 
 Допустим от противного, условие теоремы выполняется, но 
-$y > x \stackrel{\text{по опр.}}{\implies} \exists m_0: y_{m_0} > \overline{x_{m_0}}$
+$y > x \bydef \exists m_0: y_{m_0} > \overline{x_{m_0}}$
 
 Имеем $\alpha_{\varepsilon} \le x \le \overline{x_{m_0}} < y_{m_0} \le y \le \beta_{\varepsilon}$
 и это справедливо $\forall m \ge 0$, т.е. 
@@ -204,7 +204,7 @@ $\varepsilon < \frac{1}{10^m} (\varepsilon > 0)$, то \textbf{получим п
 $\implies y_m = \overline{x_m}$.
 
 Аналогично рассуждая для $x > y \implies x_m = \overline{y_m}$, значит невозможно
-ни $x > y$, ни $y > x$ $\stackrel{\text{по опр.}}{\implies} x = y$.
+ни $x > y$, ни $y > x$ $\bydef x = y$.
 
 \section{Численные множества}
 
@@ -291,7 +291,7 @@ $\stackrel{\text{по св-ву}}{\implies} C_m$ -- нижние $m$-значн�
     $\overline{C_m} \ge C_m \implies (x_0)_m > C_m$, а это противоречит выбору $C_m$
     $\implies \forall x \in A: x \le C$.
 
-    \item Возьмём $\forall C' < C \stackrel{\text{по опр.}}{\implies} C_m > \overline{C_m'} \ge C'$.
+    \item Возьмём $\forall C' < C \bydef C_m > \overline{C_m'} \ge C'$.
     Но по выбору $C_m = (x_0)_m \quad (x_0 \in A, a \le x_0 \le b)$.
 \end{enumerate}
 
@@ -492,7 +492,7 @@ $A$, а это противоречит условию.
 
 Докажем, что существует самая правая предельная точка.
 
-$A$ -- ограниченное $\stackrel{\text{по опр.}}{\implies} \exists C > 0 \quad
+$A$ -- ограниченное $\bydef \exists C > 0 \quad
 \forall x \in A: |x| \le C$
 $C$ без ограничения общности можно выбрать целым.
 Рассмотрим отрезок вида $[k;k+1]$, удовлетворяющий $-c \le k \le c - 1$.
@@ -523,7 +523,7 @@ $x > \overline{y_m}$ может удовлетворять только коне
 точки $y$ и выберем такое $m$, чтобы: 
 $\frac{1}{10^m} < \varepsilon \implies [y_m;\overline{y_m}] \subset 
 (y - \varepsilon; y + \varepsilon)$, но он содержит бесконечное число элементов
-множества $A$ $\stackrel{\text{по опр.}}{\implies}$ $y$ являлся предельной точкой
+множества $A$ $\bydef$ $y$ являлся предельной точкой
 множества $A$, а так как правее $\overline{y_m}$ находится только конечное число
 элементов $A$, то $y$ -- самая правая предельная точка $A$.
 
@@ -850,7 +850,7 @@ $n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
 
 \textbf{Доказательство}.
 
-$\{x_n\}$ -- ограниченная $\stackrel{\text{по опр.}}{\implies}$ множество $A$ её
+$\{x_n\}$ -- ограниченная $\bydef$ множество $A$ её
 элементов ограничено.
 
 \underline{1 случай.} $A$ -- конечно.
@@ -882,8 +882,8 @@ $\{x_{k_n}\}: \left| x_{k_n} - x \right| < \varepsilon_N \quad n \ge N$
 Тогда $\forall \varepsilon > 0$ выберем $\varepsilon_N < \varepsilon$
 (возьмём $N > ???$) и $\forall n \ge N$ будем иметь 
 $\left| x_{k_n} - x \right| < \varepsilon$ 
-$\stackrel{\text{по опр.}}{\implies} \displaystyle\lim_{n \to \infty} x_{k_n} = x$
-$\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел последовательности $\{x_n\}$.
+$\bydef \displaystyle\lim_{n \to \infty} x_{k_n} = x$
+$\bydef x$ -- частичный предел последовательности $\{x_n\}$.
 
 \parspace
 
@@ -938,7 +938,7 @@ $\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел 
 \begin{enumerate}
     %--------------------------------------------------------------------------------------
     \item По условию $\exists \displaystyle\lim_{n \to \infty} x_n = a$
-    $\stackrel{\text{по опр.}}{\implies} \underline{\forall \varepsilon > 0}
+    $\bydef \underline{\forall \varepsilon > 0}
     \quad \underline{\exists n_\varepsilon \in \mathbb{N}}: 
     \forall n \ge \underline{n_\varepsilon}$ выполняется 
     $\left| x_n - a \right| < \varepsilon$. Но $\underline{k_n \ge n}$
@@ -948,7 +948,7 @@ $\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел 
 
     %--------------------------------------------------------------------------------------
     \item \textit{От противного.} Пусть $\displaystyle\lim_{n \to \infty} x_n = a$ и
-    $\displaystyle\lim_{n \to \infty} x_n = b$ $\stackrel{\text{по опр.}}{\implies}$
+    $\displaystyle\lim_{n \to \infty} x_n = b \bydef$
     $\forall \varepsilon > 0 \begin{cases}
         \exists n_1 \in \mathbb{N}: \forall n \ge n_1 \quad \left| x_n - a \right| < \varepsilon \\
         \exists n_2 \in \mathbb{N}: \forall n \ge n_2 \quad \left| x_n - b \right| < \varepsilon
@@ -968,8 +968,7 @@ $\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел 
 
     %--------------------------------------------------------------------------------------
     \item Имеем: $\exists \displaystyle\lim_{n \to \infty} x_n = a \ne 0$
-    $\stackrel{\text{по опр.}}{\implies}$ 
-    $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N} 
+    $\bydef \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N} 
     \forall n \ge n_\varepsilon$ выполняется $\left| x_n - a \right| < \varepsilon$
     или $a - \varepsilon < x_n < a + \varepsilon$.
     
@@ -981,7 +980,7 @@ $\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел 
 
     %--------------------------------------------------------------------------------------
     \item Дано: $\displaystyle\lim_{n \to \infty} x_n = a$
-    $\stackrel{\text{по опр.}}{\implies} \forall \varepsilon > 0 \quad
+    $\bydef \forall \varepsilon > 0 \quad
     \exists n_\varepsilon \in \mathbb{N}: \forall n \ge n_\varepsilon \quad
     \left| x_n - a \right| < \varepsilon$.
 
@@ -998,12 +997,12 @@ $\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел 
     \item Дано:
     
     $\displaystyle\lim_{n \to \infty} x_n = x$
-    $\stackrel{\text{по опр.}}{\implies} \forall \varepsilon > 0 \quad
+    $\bydef \forall \varepsilon > 0 \quad
     \exists n_1 \in \mathbb{N}: \forall n \ge n_1 \quad
     \left| x_n - x \right| < \varepsilon$.
 
     $\displaystyle\lim_{n \to \infty} y_n = y$
-    $\stackrel{\text{по опр.}}{\implies} \forall \varepsilon > 0 \quad
+    $\bydef \forall \varepsilon > 0 \quad
     \exists n_2 \in \mathbb{N}: \forall n \ge n_2 \quad
     \left| y_n - y \right| < \varepsilon$.
 
@@ -1019,8 +1018,7 @@ $\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел 
         \implies \forall \varepsilon^* > 0 \exists n_{\varepsilon^*} = n_3 \in \mathbb{N}:
         \forall n \ge n_{\varepsilon^*}$ выполняется 
         $|(\alpha x_n + \beta y_n) - (\alpha x + \beta y)| < \varepsilon^* \\
-        \stackrel{\text{по опр.}}{\implies} 
-        \displaystyle\lim_{n \to \infty} (\alpha x_n + \beta y_n) = \alpha x + \beta y$
+        \bydef \displaystyle\lim_{n \to \infty} (\alpha x_n + \beta y_n) = \alpha x + \beta y$
 
         \item Рассмотрим $|x_n y_n - x y| = |x_n y_n - x y_n + x y_n - x y| = 
         |(x_n y_n - x y_n) + (x y_n - x y)| = 
@@ -1057,10 +1055,10 @@ $\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел 
     %--------------------------------------------------------------------------------------
     \item Имеем $\forall n \ge n_0 \quad x_n \le y_n \quad 
     \exists \displaystyle\lim_{n \to \infty} x_n = x 
-    \stackrel{\text{по опр.}}{\implies} \forall \varepsilon > 0 \quad
+    \bydef \forall \varepsilon > 0 \quad
     \exists n_1 \in \mathbb{N} \quad \forall n \ge n_1 \quad |x_n - x| < \varepsilon$
     и $\exists \displaystyle\lim_{n \to \infty} y_n = y 
-    \stackrel{\text{по опр.}}{\implies} \forall \varepsilon > 0 \quad
+    \bydef \forall \varepsilon > 0 \quad
     \exists n_2 \in \mathbb{N} \quad \forall n \ge n_2 \quad |y_n - y| < \varepsilon$
 
     Возьмём $n_3 = \max (n_0, n_1, n_2) \implies \forall n \ge n_3$ выполняются
@@ -1075,14 +1073,12 @@ $\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел 
 
     %--------------------------------------------------------------------------------------
     \item Дано: $\forall n \ge n_0 \quad x_n \le y_n \le z_n, 
-    \displaystyle\lim_{n \to \infty} x_n = a
-    \stackrel{\text{по опр.}}{\implies}
+    \displaystyle\lim_{n \to \infty} x_n = a \bydef
     \forall \varepsilon > 0 \quad \exists n_1 \in \mathbb{N}:
     \forall n \ge n_1 \quad |x_n - a| < \varepsilon$ или
     $-\varepsilon < x_n - a < \varepsilon$.
     
-    $\displaystyle\lim_{n \to \infty} z_n = a 
-    \stackrel{\text{по опр.}}{\implies}
+    $\displaystyle\lim_{n \to \infty} z_n = a \bydef
     \forall \varepsilon > 0 \quad \exists n_2 \in \mathbb{N}:
     \forall n \ge n_2 \quad |z_n - a| < \varepsilon$ или
     $-\varepsilon < z_n - a < \varepsilon$.
@@ -1093,8 +1089,7 @@ $\stackrel{\text{по опр.}}{\implies} x$ -- частичный предел 
     $\underline{-\varepsilon} < x_n - a \le \underline{y_n - a} \le
     z_n - a < \underline{\varepsilon} \Leftrightarrow |y_n - a| < \varepsilon
     \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon = n_3 \in \mathbb{N}:
-    \forall n \ge n_3 \quad |y_n - a| < \varepsilon
-    \stackrel{\text{по опр.}}{\implies} 
+    \forall n \ge n_3 \quad |y_n - a| < \varepsilon \bydef 
     \displaystyle\lim_{n \to \infty} y_n = a$.
 \end{enumerate}
 
@@ -1152,7 +1147,7 @@ $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
 
     Рассмотрим $\underline{|x_n - x_m|} = |(x_n - a) + (a - x_m)| 
     \le |x_n - a| + |x_m - a| \le \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
-    \stackrel{\text{по опр.}}{\implies} \{x_n\}$ -- фундаментальна.
+    \bydef \{x_n\}$ -- фундаментальна.
 
     \item Фундаментальна $\implies$ сходится.
     
