@@ -846,7 +846,7 @@ $n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
 
 \textbf{Теорема}. \textit{Больцано-Вейерштрасса для последовательностей}.
 
-Всякая ограниченная последовательность имеет хотя бы один частный предел.
+Всякая ограниченная последовательность имеет хотя бы один частичный предел.
 
 \textbf{Доказательство}.
 
@@ -1156,7 +1156,123 @@ $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
     \forall n \ge n_\varepsilon \quad \forall m \ge n_\varepsilon$ выполняется
     $|x_n - x_m| < \varepsilon$.
 
-    \textbf{ДОКАЗАТЬ.}
+    Тогда для $\varepsilon = 1 \quad \exists n_1 \in \mathbb{N} \quad 
+    \forall n \ge n_1 \quad \forall m \ge n_1$ выполняется $|x_n - x_m| < 1$
+
+    Зафиксируем $m: m \ge n_1$.
+
+    $|x_n| = |(x_n - x_m) + x_m| \le |x_n - x_m| + |x_m| < 
+    \underbrace{1 + |x_m|}_{C \text{ -- const}} \quad \forall n \ge n_1$
+    $\implies \{x_n\}$ -- ограничена $\implies$ по 
+    \textit{Теореме Больцано-Вейерштрасса для последовательностей} у $\{x_n\}$
+    существует хотя бы один частичный предел, т.е. 
+    $\exists \{x_{k_n}\} \underset{n \to \infty}{\to} x$
+    $\bydef$ для нашего $\varepsilon > 0 \quad \exists k_{n_\varepsilon} \in \mathbb{N}:
+    \forall k_n \ge k_{n_\varepsilon}$ выполняется $|x_{k_n} - x| < \varepsilon$.
+
+    Рассмотрим $\forall n \ge k_{n_\varepsilon} \ge n_\varepsilon:
+    |x_n - x| = |(x_n - x_{k_n}) + (x_{k_n} - x)| \le |x_n - x_{k_n}| + |x_{k_n} - x|
+    < \underbrace{2 \varepsilon}_{\varepsilon^*}$.
+
+    Получим:
+    $\forall \varepsilon^* \quad \exists n_{\varepsilon^*} = n_\varepsilon \in \mathbb{N}:
+    \forall n \ge n_{\varepsilon^*}$ имеем $|x_n - x| < \varepsilon^*$
+    $\bydef \exists \displaystyle\lim_{n \to \infty} x_n = x$
+\end{enumerate}
+\textbf{Теорема доказана.}
+
+\parspace
+
+\textbf{Теорема.} \textit{Признак сходимости монотонной последовательности.}
+
+Ограниченная сверху (снизу) неубывающая (возрастающая) последовательность сходится.
+
+\textbf{ДОКАЗАТЬ ДЛЯ СЛУЧАЯ В СКОБКАХ!!!}
+
+\textbf{Доказательство.}
+
+$\{x_n\}$ -- неубывающая и ограниченная сверху $\implies$ множество элементов
+$\{x_n\}$ ограничено сверху $\implies$ по
+\textit{Теореме О существовании верхней грани} 
+$\exists \sup x_n \stackrel{\text{об.}}{=} a$ $\implies$ по признаку:
+\begin{enumerate}
+    \item $\forall n \in \mathbb{N} \quad x_n \le a$
+    \item $\forall \varepsilon > 0 \quad 
+    \exists x_{n_\varepsilon} : x_{n_\varepsilon} > a - \varepsilon$
+\end{enumerate}
+
+Возьмём $n \ge n_\varepsilon$: 
+$a - \varepsilon < x_{n_\varepsilon} \le x_n \le a < a + \varepsilon
+\implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+\forall n \ge n_\varepsilon$ выполняется $a - \varepsilon < x_n < a + \varepsilon$
+или $|x_n - a| < \varepsilon \bydef \exists \displaystyle\lim_{n \to \infty} x_n = a$.
+
+\textbf{Теорема доказана.}
+
+\subsection{Замечательные пределы}
+
+\begin{enumerate}
+    \item $\displaystyle \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n = e$ (Второй замечательный предел)
+    
+    Рассмотрим $x_n = \left( 1 + \frac{1}{n} \right)^{n + 1}$. 
+    Имеем $x_n > 1 \quad \forall n \in \mathbb{N}$ $\implies \{x_n\}$ -- ограничена снизу.
+
+    Рассмотрим $\frac{x_n}{x_{n-1}} = 
+    \frac{\left( 1 + \frac{1}{n} \right)^{n - 1}}{\left( 1 + \frac{1}{n - 1} \right)^{n}}
+    = \frac{(n + 1)^{n+1} * (n - 1)^n}{n^{n+1} * n^n}
+    = \left( \frac{(n + m1) * (n - 1)}{n^2} \right)^2 * \frac{n + 1}{n}
+    = \left( 1 - \frac{1}{n^2} \right)^{n} * \left( 1 + \frac{1}{n} \right)
+    \le \left( 1 - \frac{1}{n^2} \right)^{n} * \left( 1 + \frac{1}{n^2} \right)^n
+    \le \left( 1 - \frac{1}{n^4} \right)^{n} < 1 \implies x_n < x_{n-1}$
+
+    Т.е. $\{x_n\}$ -- убывающая последовательность $\implies$
+    по \textit{Теореме О сходимости монотонной последовательности}
+    $\exists \displaystyle\lim_{n \to \infty} x_n = 
+    \displaystyle\lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^{n + 1} = e$
+
+    $\displaystyle\lim_{n \to \infty} \left( 1 - \frac{1}{n} \right)^{n}
+    = \displaystyle\lim_{n \to \infty} \frac{x_n}{1 + \frac{1}{n}} = e \approx 2.71828$
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item Докажем, что $\displaystyle\lim_{n \to \infty} \frac{n^k}{a^n} = 0,
+    \quad k \in \mathbb{N}, \quad a > 1$
+
+    $\displaystyle\lim_{n \to \infty} \frac{n^k}{a^n} = 
+    \displaystyle\lim_{n \to \infty} \left( \frac{n}{(\sqrt[k]{a})^n} \right)^k$
+
+    Рассмотрим $(\sqrt[k]{a})^n = (1 + (\sqrt[k]{a} - 1)) ^ n = 
+    1 + n * (\sqrt[k]{a} - 1) + \frac{n (n - 1)}{2} (\sqrt[k]{a} - 1)^2
+    + \dots + (\sqrt[k]{a} - 1)^n > \frac{n (n - 1)}{2} (\sqrt[k]{a} - 1)^2$
+
+    Получаем $(\sqrt[k]{a})^n > \frac{n (n - 1)}{2} (\sqrt[k]{a} - 1)^2$
+
+    $\implies$ по \textit{$7^{\text{о}}$ свойству сходящихся последовательностей}
+    $\displaystyle\lim_{n \to \infty} \frac{n}{(\sqrt[k]{a})^n} = 0
+    \implies \displaystyle\lim_{n \to \infty} \frac{n^k}{a^n} = 0$
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item $\displaystyle\lim_{n \to \infty} \frac{a^n}{n!} = 0, \quad a > 0$
+
+    $0 < \underbrace{\frac{a}{1} * \frac{a}{2} * \frac{a}{3} * \dots * \frac{a}{k_0 - 1}}_A
+    * \underbrace{\frac{a}{k_0}}_{\frac{a}{k_0} = q < 1}
+    * \frac{a}{k_0 + 1} * \dots *
+    \frac{a}{n} < A * q^{n - k_0 + 1}$
+
+    $\implies$ по \textit{$7^{\text{о}}$ свойству сходящихся последовательностей}
+    $\displaystyle\lim_{n \to \infty} \frac{a^n}{n!} = 0$
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \item $\displaystyle\lim_{n \to \infty} \sqrt[n]{n} = 1$
+    
+    При $n > 1: \sqrt[n]{n} > 1 \implies \sqrt[n]{n} = 1 + \beta_n \implies
+    n = (1 + \beta_n)^n = 1 + n \beta_n + \frac{n (n - 1)}{2} (\beta_n)^2 + \dots +
+    (\beta_n)^n > \frac{n (n - 1)}{2} (\beta_n) ^ 2 \implies
+    0 < \beta_n < \sqrt{\frac{2}{n-1}} \implies
+    \displaystyle\lim_{n \to \infty} \beta_n = 0 \implies
+    \displaystyle\lim_{n \to \infty} \sqrt[n]{n} = 1$
 \end{enumerate}
 
 \end{document}
