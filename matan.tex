@@ -8,12 +8,23 @@
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{enumitem}
+\usepackage{amsthm}
 \usepackage[left=2cm,right=2cm,
     top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
 \singlespacing
 
 \newcommand{\bydef}{\stackrel{\text{по опр.}}{\implies}} % by definition - по определению
 \newcommand{\parspace}{\vspace{10pt}}
+
+\newcommand{\imagin}{\mathrm{Im} \,}
+\newcommand{\real}{\mathrm{Re} \,}
+
+\newcommand{\dslim}{\displaystyle\lim}
+\newcommand{\dslimn}{\dslim_{n \to \infty}}
+
+\newcommand{\prop}[1]{#1^{\text{o}}}
+
+\newtheorem{theorem}{Теорема}[section]
 
 \begin{document}
 
@@ -808,14 +819,14 @@ $\varepsilon$-окрестности точки $a$.
 $\{x_n\}$ называются бесконечно большой, если
 $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
 \forall n \ge n_\varepsilon$ выполняется $|x_n| > \varepsilon$ и
-обозначается $\displaystyle\lim_{n \to \infty} x_n = \infty$.
+обозначается $\dslimn x_n = \infty$.
 
 \parspace
 
 \underline{\textbf{Пример}}.
 
 Докажем по определению 
-$\displaystyle\lim_{n \to \infty} \frac{1}{\sqrt[3]{n^2 + 1}} = 0$,
+$\dslimn \frac{1}{\sqrt[3]{n^2 + 1}} = 0$,
 т.е. докажем, что $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
 \forall n \ge n_\varepsilon$ выполняется $\left|\frac{1}{\sqrt[3]{n^2 + 1}} - 0\right| < \varepsilon$
 т.к. $\left|\frac{1}{\sqrt[3]{n^2 + 1}}\right| < \frac{1}{\sqrt[3]{n^2}}$,
@@ -860,7 +871,7 @@ $\implies$ некоторому $a \in A$ соответствует беско�
 \[(k_1 < k_2 < k_3 < \dots < k_n < \cdots)\]
 
 Получаем подпоследовательность $\{y_n\}: y_n = a (y_n = x_{k_n})$ и
-$\displaystyle\lim_{n \to \infty} y_n = a \implies a$ -- частичный предел $\{x_n\}$.
+$\dslimn y_n = a \implies a$ -- частичный предел $\{x_n\}$.
 
 \underline{2 случай.} $A$ -- бесконечно (и ограничено).
 
@@ -882,7 +893,7 @@ $\{x_{k_n}\}: \left| x_{k_n} - x \right| < \varepsilon_N \quad n \ge N$
 Тогда $\forall \varepsilon > 0$ выберем $\varepsilon_N < \varepsilon$
 (возьмём $N > \lg \frac{1}{\varepsilon}$) и $\forall n \ge N$ будем иметь 
 $\left| x_{k_n} - x \right| < \varepsilon$ 
-$\bydef \displaystyle\lim_{n \to \infty} x_{k_n} = x$
+$\bydef \dslimn x_{k_n} = x$
 $\bydef x$ -- частичный предел последовательности $\{x_n\}$.
 
 \parspace
@@ -908,47 +919,47 @@ $\bydef x$ -- частичный предел последовательност
     то любая её подпоследовательность $\underset{n \to \infty}{\to} a$.
 
     \item Сходящаяся последовательность может иметь только один предел.
-    \item Если $\exists \displaystyle\lim_{n \to \infty} x_n = a \ne 0 \implies
+    \item Если $\exists \dslimn x_n = a \ne 0 \implies
     \exists n_0 \in \mathbb{N} \quad \forall n \ge n_0$ $x_n$ имеет знак числа $a$.
 
     \item Сходящаяся последовательность ограничена.
-    \item Если $\exists \displaystyle\lim_{n \to \infty} x_n = x$ и
-    $\exists \displaystyle\lim_{n \to \infty} y_n = y \implies$
+    \item Если $\exists \dslimn x_n = x$ и
+    $\exists \dslimn y_n = y \implies$
 
-    $\exists \displaystyle\lim_{n \to \infty} (\alpha x_n + \beta y_n) = \alpha x + \beta y$
+    $\exists \dslimn (\alpha x_n + \beta y_n) = \alpha x + \beta y$
     ($\alpha, \beta$ -- const)
 
-    $\exists \displaystyle\lim_{n \to \infty} (x_n y_n) = x y$
+    $\exists \dslimn (x_n y_n) = x y$
 
-    $\exists \displaystyle\lim_{n \to \infty} \frac{x_n}{y_n} = \frac{x}{y}$
+    $\exists \dslimn \frac{x_n}{y_n} = \frac{x}{y}$
     ($y_n \ne 0, y \ne 0$)
 
     \item Если $\forall n \ge n_0 \quad x_n \le y_n$ и 
-    $\exists \displaystyle\lim_{n \to \infty} x_n = x$ и
-    $\exists \displaystyle\lim_{n \to \infty} y_n = y$ $\implies x \le y$.
+    $\exists \dslimn x_n = x$ и
+    $\exists \dslimn y_n = y$ $\implies x \le y$.
 
     \item Если $\forall n \ge n_0 \quad x_n \le y_n \le z_n$ и
-    $\exists \displaystyle\lim_{n \to \infty} x_n = 
-    \displaystyle\lim_{n \to \infty} z_n = a$
-    $\implies \exists \displaystyle\lim_{n \to \infty} y_n = a$
+    $\exists \dslimn x_n = 
+    \dslimn z_n = a$
+    $\implies \exists \dslimn y_n = a$
 \end{enumerate}
 
 \textbf{Доказательство}.
 
 \begin{enumerate}
     %--------------------------------------------------------------------------------------
-    \item По условию $\exists \displaystyle\lim_{n \to \infty} x_n = a$
+    \item По условию $\exists \dslimn x_n = a$
     $\bydef \underline{\forall \varepsilon > 0}
     \quad \underline{\exists n_\varepsilon \in \mathbb{N}}: 
     \forall n \ge \underline{n_\varepsilon}$ выполняется 
     $\left| x_n - a \right| < \varepsilon$. Но $\underline{k_n \ge n}$
     ($\{k_n\}$ -- возрастающая последовательность натуральных чисел)
     $\implies$ \underline{выполняется $\left| x_{k_n} - a \right| < \varepsilon$}
-    $\implies$ $\displaystyle\lim_{n \to \infty} x_{k_n} = a$.
+    $\implies$ $\dslimn x_{k_n} = a$.
 
     %--------------------------------------------------------------------------------------
-    \item \textit{От противного.} Пусть $\displaystyle\lim_{n \to \infty} x_n = a$ и
-    $\displaystyle\lim_{n \to \infty} x_n = b \bydef$
+    \item \textit{От противного.} Пусть $\dslimn x_n = a$ и
+    $\dslimn x_n = b \bydef$
     $\forall \varepsilon > 0 \begin{cases}
         \exists n_1 \in \mathbb{N}: \forall n \ge n_1 \quad \left| x_n - a \right| < \varepsilon \\
         \exists n_2 \in \mathbb{N}: \forall n \ge n_2 \quad \left| x_n - b \right| < \varepsilon
@@ -967,7 +978,7 @@ $\bydef x$ -- частичный предел последовательност
     $\implies a - b = 0 \implies a = b$. \textbf{Противоречие.}
 
     %--------------------------------------------------------------------------------------
-    \item Имеем: $\exists \displaystyle\lim_{n \to \infty} x_n = a \ne 0$
+    \item Имеем: $\exists \dslimn x_n = a \ne 0$
     $\bydef \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N} 
     \forall n \ge n_\varepsilon$ выполняется $\left| x_n - a \right| < \varepsilon$
     или $a - \varepsilon < x_n < a + \varepsilon$.
@@ -979,7 +990,7 @@ $\bydef x$ -- частичный предел последовательност
     Отсюда получаем, что $x_n$ начиная с номера $n_0$ имеют тот же знак, что и число $a$.
 
     %--------------------------------------------------------------------------------------
-    \item Дано: $\displaystyle\lim_{n \to \infty} x_n = a$
+    \item Дано: $\dslimn x_n = a$
     $\bydef \forall \varepsilon > 0 \quad
     \exists n_\varepsilon \in \mathbb{N}: \forall n \ge n_\varepsilon \quad
     \left| x_n - a \right| < \varepsilon$.
@@ -996,12 +1007,12 @@ $\bydef x$ -- частичный предел последовательност
     %--------------------------------------------------------------------------------------
     \item Дано:
     
-    $\displaystyle\lim_{n \to \infty} x_n = x$
+    $\dslimn x_n = x$
     $\bydef \forall \varepsilon > 0 \quad
     \exists n_1 \in \mathbb{N}: \forall n \ge n_1 \quad
     \left| x_n - x \right| < \varepsilon$.
 
-    $\displaystyle\lim_{n \to \infty} y_n = y$
+    $\dslimn y_n = y$
     $\bydef \forall \varepsilon > 0 \quad
     \exists n_2 \in \mathbb{N}: \forall n \ge n_2 \quad
     \left| y_n - y \right| < \varepsilon$.
@@ -1018,7 +1029,7 @@ $\bydef x$ -- частичный предел последовательност
         \implies \forall \varepsilon^* > 0 \exists n_{\varepsilon^*} = n_3 \in \mathbb{N}:
         \forall n \ge n_{\varepsilon^*}$ выполняется 
         $|(\alpha x_n + \beta y_n) - (\alpha x + \beta y)| < \varepsilon^* \\
-        \bydef \displaystyle\lim_{n \to \infty} (\alpha x_n + \beta y_n) = \alpha x + \beta y$
+        \bydef \dslimn (\alpha x_n + \beta y_n) = \alpha x + \beta y$
 
         \item Рассмотрим $|x_n y_n - x y| = |x_n y_n - x y_n + x y_n - x y| = 
         |(x_n y_n - x y_n) + (x y_n - x y)| = 
@@ -1049,15 +1060,15 @@ $\bydef x$ -- частичный предел последовательност
         \exists n_{\varepsilon^*} = \max (n_3, n_4) \in \mathbb{N}:
         \forall n \ge n_4$ выполняется 
         $\left| \frac{x_n}{y_n} - \frac{x}{y} \right| < \varepsilon^* 
-        \implies \displaystyle\lim_{n \to \infty} \frac{x_n}{y_n} = \frac{x}{y}$.
+        \implies \dslimn \frac{x_n}{y_n} = \frac{x}{y}$.
     \end{enumerate}
 
     %--------------------------------------------------------------------------------------
     \item Имеем $\forall n \ge n_0 \quad x_n \le y_n \quad 
-    \exists \displaystyle\lim_{n \to \infty} x_n = x 
+    \exists \dslimn x_n = x 
     \bydef \forall \varepsilon > 0 \quad
     \exists n_1 \in \mathbb{N} \quad \forall n \ge n_1 \quad |x_n - x| < \varepsilon$
-    и $\exists \displaystyle\lim_{n \to \infty} y_n = y 
+    и $\exists \dslimn y_n = y 
     \bydef \forall \varepsilon > 0 \quad
     \exists n_2 \in \mathbb{N} \quad \forall n \ge n_2 \quad |y_n - y| < \varepsilon$
 
@@ -1073,12 +1084,12 @@ $\bydef x$ -- частичный предел последовательност
 
     %--------------------------------------------------------------------------------------
     \item Дано: $\forall n \ge n_0 \quad x_n \le y_n \le z_n, 
-    \displaystyle\lim_{n \to \infty} x_n = a \bydef
+    \dslimn x_n = a \bydef
     \forall \varepsilon > 0 \quad \exists n_1 \in \mathbb{N}:
     \forall n \ge n_1 \quad |x_n - a| < \varepsilon$ или
     $-\varepsilon < x_n - a < \varepsilon$.
     
-    $\displaystyle\lim_{n \to \infty} z_n = a \bydef
+    $\dslimn z_n = a \bydef
     \forall \varepsilon > 0 \quad \exists n_2 \in \mathbb{N}:
     \forall n \ge n_2 \quad |z_n - a| < \varepsilon$ или
     $-\varepsilon < z_n - a < \varepsilon$.
@@ -1090,7 +1101,7 @@ $\bydef x$ -- частичный предел последовательност
     z_n - a < \underline{\varepsilon} \Leftrightarrow |y_n - a| < \varepsilon
     \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon = n_3 \in \mathbb{N}:
     \forall n \ge n_3 \quad |y_n - a| < \varepsilon \bydef 
-    \displaystyle\lim_{n \to \infty} y_n = a$.
+    \dslimn y_n = a$.
 \end{enumerate}
 
 \textbf{Теорема доказана}.
@@ -1140,7 +1151,7 @@ $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
 \begin{enumerate}
     \item Сходится $\implies$ фундаментальна.
     
-    По условию $\{x_n\}$ сходится $\implies \exists \displaystyle\lim_{n \to \infty} x_n = a
+    По условию $\{x_n\}$ сходится $\implies \exists \dslimn x_n = a
     \implies \underline{\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N} \quad \forall n \ge n_\varepsilon}$
     выполняется $|x_n - a| < \frac{\varepsilon}{2}$ и для $\underline{\forall m \ge n_\varepsilon}$ 
     выполняется $|x_m - a| < \frac{\varepsilon}{2}$.
@@ -1177,7 +1188,7 @@ $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
     Получим:
     $\forall \varepsilon^* \quad \exists n_{\varepsilon^*} = n_\varepsilon \in \mathbb{N}:
     \forall n \ge n_{\varepsilon^*}$ имеем $|x_n - x| < \varepsilon^*$
-    $\bydef \exists \displaystyle\lim_{n \to \infty} x_n = x$
+    $\bydef \exists \dslimn x_n = x$
 \end{enumerate}
 \textbf{Теорема доказана.}
 
@@ -1205,7 +1216,7 @@ $\exists \sup x_n \stackrel{\text{об.}}{=} a$ $\implies$ по признаку
 $a - \varepsilon < x_{n_\varepsilon} \le x_n \le a < a + \varepsilon
 \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
 \forall n \ge n_\varepsilon$ выполняется $a - \varepsilon < x_n < a + \varepsilon$
-или $|x_n - a| < \varepsilon \bydef \exists \displaystyle\lim_{n \to \infty} x_n = a$.
+или $|x_n - a| < \varepsilon \bydef \exists \dslimn x_n = a$.
 
 \textbf{Теорема доказана.}
 
@@ -1227,19 +1238,19 @@ $a - \varepsilon < x_{n_\varepsilon} \le x_n \le a < a + \varepsilon
 
     Т.е. $\{x_n\}$ -- убывающая последовательность $\implies$
     по \textit{Теореме О сходимости монотонной последовательности}
-    $\exists \displaystyle\lim_{n \to \infty} x_n = 
-    \displaystyle\lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^{n + 1} = e$
+    $\exists \dslimn x_n = 
+    \dslimn \left( 1 + \frac{1}{n} \right)^{n + 1} = e$
 
-    $\displaystyle\lim_{n \to \infty} \left( 1 - \frac{1}{n} \right)^{n}
-    = \displaystyle\lim_{n \to \infty} \frac{x_n}{1 + \frac{1}{n}} = e \approx 2.71828$
+    $\dslimn \left( 1 - \frac{1}{n} \right)^{n}
+    = \dslimn \frac{x_n}{1 + \frac{1}{n}} = e \approx 2.71828$
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \item Докажем, что $\displaystyle\lim_{n \to \infty} \frac{n^k}{a^n} = 0,
+    \item Докажем, что $\dslimn \frac{n^k}{a^n} = 0,
     \quad k \in \mathbb{N}, \quad a > 1$
 
-    $\displaystyle\lim_{n \to \infty} \frac{n^k}{a^n} = 
-    \displaystyle\lim_{n \to \infty} \left( \frac{n}{(\sqrt[k]{a})^n} \right)^k$
+    $\dslimn \frac{n^k}{a^n} = 
+    \dslimn \left( \frac{n}{(\sqrt[k]{a})^n} \right)^k$
 
     Рассмотрим $(\sqrt[k]{a})^n = (1 + (\sqrt[k]{a} - 1)) ^ n = 
     1 + n * (\sqrt[k]{a} - 1) + \frac{n (n - 1)}{2} (\sqrt[k]{a} - 1)^2
@@ -1248,12 +1259,12 @@ $a - \varepsilon < x_{n_\varepsilon} \le x_n \le a < a + \varepsilon
     Получаем $(\sqrt[k]{a})^n > \frac{n (n - 1)}{2} (\sqrt[k]{a} - 1)^2$
 
     $\implies$ по \textit{$7^{\text{о}}$ свойству сходящихся последовательностей}
-    $\displaystyle\lim_{n \to \infty} \frac{n}{(\sqrt[k]{a})^n} = 0
-    \implies \displaystyle\lim_{n \to \infty} \frac{n^k}{a^n} = 0$
+    $\dslimn \frac{n}{(\sqrt[k]{a})^n} = 0
+    \implies \dslimn \frac{n^k}{a^n} = 0$
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-    \item $\displaystyle\lim_{n \to \infty} \frac{a^n}{n!} = 0, \quad a > 0$
+    \item $\dslimn \frac{a^n}{n!} = 0, \quad a > 0$
 
     $0 < \underbrace{\frac{a}{1} * \frac{a}{2} * \frac{a}{3} * \dots * \frac{a}{k_0 - 1}}_A
     * \underbrace{\frac{a}{k_0}}_{\frac{a}{k_0} = q < 1}
@@ -1261,18 +1272,110 @@ $a - \varepsilon < x_{n_\varepsilon} \le x_n \le a < a + \varepsilon
     \frac{a}{n} < A * q^{n - k_0 + 1}$
 
     $\implies$ по \textit{$7^{\text{о}}$ свойству сходящихся последовательностей}
-    $\displaystyle\lim_{n \to \infty} \frac{a^n}{n!} = 0$
+    $\dslimn \frac{a^n}{n!} = 0$
 
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     
-    \item $\displaystyle\lim_{n \to \infty} \sqrt[n]{n} = 1$
+    \item $\dslimn \sqrt[n]{n} = 1$
     
     При $n > 1: \sqrt[n]{n} > 1 \implies \sqrt[n]{n} = 1 + \beta_n \implies
     n = (1 + \beta_n)^n = 1 + n \beta_n + \frac{n (n - 1)}{2} (\beta_n)^2 + \dots +
     (\beta_n)^n > \frac{n (n - 1)}{2} (\beta_n) ^ 2 \implies
     0 < \beta_n < \sqrt{\frac{2}{n-1}} \implies
-    \displaystyle\lim_{n \to \infty} \beta_n = 0 \implies
-    \displaystyle\lim_{n \to \infty} \sqrt[n]{n} = 1$
+    \dslimn \beta_n = 0 \implies
+    \dslimn \sqrt[n]{n} = 1$
+\end{enumerate}
+
+\section{Последовательности комплексных чисел}
+
+\textbf{Последовательности комплексных чисел} аналогично определение последовательности
+действительных чисел.
+
+Определение \textit{сходимости} даётся аналогично.
+
+Определение \textit{частичного предела сохраняется}.
+
+Понятия \textit{верхнего, нижнего предела} и \textit{монотонности} для комплексных
+чисел не имеют смысла.
+
+\parspace
+
+\textbf{Теорема.} \textit{О связи сходимости $\{z_n\}$ со сходимостью $\{\real z_n\}$ и $\{\imagin z_n\}$.}
+
+Если $\exists \dslimn z_n = \alpha + i \beta
+\implies \begin{cases}
+    \exists \dslimn \real z_n = \alpha \\
+    \exists \dslimn \imagin z_n = \beta
+\end{cases}$
+
+\textbf{Доказательство.}
+
+\begin{enumerate}
+    \item %%%%%%%%%%%%%%%%%%%
+    $\exists \dslimn z_n = \alpha + i \beta \; (z_n = x_n + i y_n)
+    \bydef \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+    \forall n \ge n_\varepsilon$ выполняется $|z_n - (\alpha + i \beta)| < \varepsilon$
+    или $|(x_n- \alpha) + i (y_n - \beta)| < \varepsilon$
+
+    Но $|x_n - \alpha| \le |(x_n - \alpha) + i (y_n - \beta)| < \varepsilon
+    \bydef \exists \dslimn x_n = \alpha$
+
+    Но $|y_n - \beta| \le |(x_n - \alpha) + i (y_n - \beta)| < \varepsilon
+    \bydef \exists \dslimn y_n = \beta$
+
+    \item %%%%%%%%%%%%%%%%%%%
+    $\exists \dslimn x_n = \alpha, \; \exists \dslimn y_n = \beta
+    \bydef \forall \varepsilon > 0 \begin{cases}
+        \exists n_1 \in \mathbb{N} \quad \forall n \ge n_1 \quad |x_n - \alpha| < \frac{\varepsilon}{\sqrt{2}} \\
+        \exists n_2 \in \mathbb{N} \quad \forall n \ge n_2 \quad |y_n - \alpha| < \frac{\varepsilon}{\sqrt{2}}
+    \end{cases}$
+    
+    $n_3 = \max (n_1, n_2) \implies \forall n \ge n_3:
+    |z_n - (\alpha + i \beta)| = |(x_n - \alpha) + i (y_n - \beta)| =
+    \sqrt{(x_n - \alpha)^2 + (y_n - \beta)^2} <
+    \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} = \varepsilon$
+
+    Получаем $\forall \varepsilon > 0 \quad \exists n_\varepsilon = n_3 \in \mathbb{N}:
+    \forall n \ge n_3$ выполняется $|z_n - (\alpha + i \beta)| < \varepsilon
+    \implies \dslimn z_n = \alpha + i \beta$
+\end{enumerate}
+
+\textbf{Теорема доказана.}
+
+\parspace
+
+\textbf{Теорема.} \textit{О связи сходимости $\{z_n\}$ со сходимостью $\{|z_n|\}$.}
+
+Если $\exists \dslimn z_n = A \implies \exists \dslimn |z_n| = |A|$
+
+\textbf{Доказательство.}
+
+$\dslimn z_n = A \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+\forall n \ge n_\varepsilon$ выполняется $||z_n| - |A|| \le |z_n - A| < \varepsilon
+\bydef \exists \dslimn |z_n| = |A|$
+
+\textbf{Теорема доказана.}
+
+\parspace
+
+\underline{\textbf{Замечания}}
+
+\begin{enumerate}
+    \item Про последовательность аргументов без дополнительных условий мы такую
+    теорему высказать не можем.
+
+    \item Теорема \textit{О свойствах сходящихся последовательностей} переносится
+    и на комплексные числа за исключением свойств. $\prop{3}, \prop{6}, \prop{7}$.
+
+    \item Для последовательностей векторов пространства $\mathbb{R}^n$ аналогично
+    вводится определение последовательности, сходимости последовательности,
+    также, как и для комплексных чисел справедлива Теорема, что если
+    $\exists \dslimn u_n = A, \; u_n = (u_1^n, \dots, u_m^n), \;
+    A = (a_1, \dots, a_m) \implies \exists \dslimn u_k^n = a_k \quad 
+    \forall k = \overline{1, m}$
+
+    а также свойства ??? справедливы, за исключением тех, что связаны
+    с операциями $>, <$ или деления.
 \end{enumerate}
 
 \end{document}
