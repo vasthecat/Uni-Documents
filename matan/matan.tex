@@ -10,12 +10,15 @@
 \usepackage{enumitem}
 \usepackage{amsthm}
 \usepackage{cancel}
-\usepackage[left=2cm,right=2cm,
-    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\usepackage[left=1.4cm,right=1.4cm,
+    top=2.3cm,bottom=2.3cm,bindingoffset=0cm]{geometry}
 \singlespacing
 
 \usepackage{graphicx}
-\graphicspath{ {./images/matan/} }
+\graphicspath{ {./images/} }
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 
 \newcommand{\bydef}{\stackrel{\text{по опр.}}{\implies}} % by definition - по определению
 \newcommand{\parspace}{\vspace{10pt}}
@@ -31,6 +34,8 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\bb}[1]{\mathbb{#1}}
+
+\newcommand{\eps}{\varepsilon}
 
 \newcommand{\approach}[1]{\underset{#1}{\longrightarrow}}
 
@@ -120,7 +125,7 @@ $a_0$ -- целое неотрицательное число, которое о
             Отложим от точки $O$ вправо точки $M_m$ и $M_m'$, которые соответствуют
             $x_m$ и $\overline{x_m}$. Получим последовательность вложенных друг в друга
             отрезков $M_0M_0', M_1M_1', \dots$, вложенные в том смысле, что каждая
-            $M_{m+1}$ лежит не левее $M_m$, и каждая $\overline{M_{m+1}}$ лежит
+            $M_{m+1}$ лежит не левее $M_m$, и каждая $M'_{m+1}$ лежит
             не правее $M_m'$. Воспользуемся \underline{\textit{аксиомой Кантора для прямой}}:
             
             ``Для любой последовательности вложенных друг в друга отрезков существует
@@ -148,7 +153,7 @@ $a_0$ -- целое неотрицательное число, которое о
 
 Так как $x_0 \le x_1 \le x_2 \le \dots$, 
 а $\overline{y_0} \ge \overline{y_1} \ge \overline{y_2} \ge \dots$,
-то если $x_{m_0} > \overline{y_{m_0}}$, то неравенство $\overline{x_m} > \overline{y_m}$,
+то если $x_{m_0} > \overline{y_{m_0}}$, то неравенство $x_m > \overline{y_m}$,
 выполняется $\forall m \ge m_0$ и поэтому одновременное выполнение
 $x > y$ и $y > x$ невозможно.
 
@@ -383,7 +388,7 @@ $(x + y) = \sup (\alpha_1 + \beta_1) = \inf (\alpha_2 + \beta_2)$
 
 Частным чисел $x$ и $y$ ($x \in \mathbb{R}, y > 0$) назовём число 
 $\frac{x}{y} = x * \frac{1}{y}$, где $\frac{1}{y} = \inf \frac{1}{\beta_1}$.
-Для $y < 0$ -- $\frac{x}{y} = -x * \frac{1}{-y}$.
+Для $y < 0: \:$ $\frac{x}{y} = -x * \frac{1}{-y}$.
 
 \parspace
 
@@ -473,7 +478,7 @@ a - \varepsilon < x < a + \varepsilon \Leftrightarrow x \in (a - \varepsilon, a 
 \textbf{Определение}
 
 Точка $x$ называется \textbf{предельной} точкой множества $A$, если в любой $\varepsilon$-окрестности
-точки $x$ находится точки множества $A$, отличные от $x$.
+точки $x$ находятся точки множества $A$, отличные от $x$.
 
 \parspace
 
@@ -529,7 +534,7 @@ $A$, а это противоречит условию.
 Докажем, что существует самая правая предельная точка.
 
 $A$ -- ограниченное $\bydef \exists C > 0 \quad
-\forall x \in A: |x| \le C$
+\forall x \in A: |x| \le C$.
 $C$ без ограничения общности можно выбрать целым.
 Рассмотрим отрезок вида $[k;k+1]$, удовлетворяющий $-c \le k \le c - 1$.
 Так как $A$ -- бесконечное, то по крайней мере в одном из этих отрезков содержится
@@ -555,7 +560,7 @@ $x > \overline{y_m}$ может удовлетворять только коне
 
 Тогда они являются нижним и верхним $m$-значным приближением некоторого числа $y$.
 
-Покажем, что оно является предельной точкой $A$. Возьмём любую $\varepsilon$-окружность
+Покажем, что оно является предельной точкой $A$. Возьмём любую $\varepsilon$-окрестность
 точки $y$ и выберем такое $m$, чтобы: 
 $\frac{1}{10^m} < \varepsilon \implies [y_m;\overline{y_m}] \subset 
 (y - \varepsilon; y + \varepsilon)$, но он содержит бесконечное число элементов
@@ -627,7 +632,7 @@ $\frac{1}{10^m} < \varepsilon \implies [y_m;\overline{y_m}] \subset
 
 \subsection{Геометрическое толкование комплексного числа как точки плоскости}
 
-\textbf{ВСТАВИТЬ ГРАФИК???}
+\includegraphics[scale=0.4]{complexplane1}
 
 \[z = |z|(\cos \phi + i \sin \phi)\]
 \[|z| = \sqrt{Re^2(z) + Im^2(z)} = \sqrt{x^2 + y^2}\]
@@ -692,8 +697,6 @@ $e^{i \phi} = \cos \phi + i \sin \phi$
 
 $z = |z| (\cos \varphi + i \sin \varphi) \quad z = |z| e^{i \varphi}$
 
-\pagebreak
-
 \underline{\textbf{Замечание:}}
 
 \begin{align*}
@@ -748,8 +751,6 @@ $z = |z| (\cos \varphi + i \sin \varphi) \quad z = |z| e^{i \varphi}$
 Точке $P$ соответствует $z = \infty$ -- бесконечно удаленная точка.
 Комплексную плоскость с бесконечно удаленной точкой $C$ называют
 расширенную плоскостью и обозначают $\overline{\mathbb{C}}$.
-
-\pagebreak
 
 \section{Векторы пространства $\mathbb{R}^m$}
 
@@ -821,7 +822,7 @@ $|u v| \le \sqrt{(u * u) * (v * v)}$
     \item $(u + \lambda v) u + \overline{\lambda} (u + \lambda v) v \ge 0$
     \item $(u * u) + \lambda (v * u) + \overline{\lambda} (u * v) + \overline{\lambda} * \lambda (v * v) \ge 0$
     \item $(u * u) + \lambda (v * u) + \overline{\lambda} (u * v) + |\lambda|^2 (v * v) \ge 0$
-    \item Возьмём $\lambda = \frac{(u * v)}{(v * v)} \quad (v \neq (0, \dots, 0))$
+    \item Возьмём $\lambda = -\frac{(u * v)}{(v * v)} \quad (v \neq (0, \dots, 0))$
     \item $(u * u) - \frac{(u * v) (v * u)}{(v * v)} - \frac{\overline{(u * v)} (u * v)}{\overline{(v * v)}}
     + \frac{(u * v)^2}{(v * v)^2} (v * v) \ge 0$
     \item $(u * u) - 2 \frac{|(u * v)^2|}{(v * v)} + \frac{(u * v)^2}{(v * v)} \ge 0$
@@ -1588,6 +1589,80 @@ $\dslimn z_n = A \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \i
             т.е. определение Гейне не выполняется.
 
             Получили противоречие $\implies$ $b$ является пределом $f(x)$ в точке $a$ в смысле Коши.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Критерий Коши предела функции в точке]
+    Для того, чтобы существовал $\dslim_{x \to a} f(x)$ необходимо и достаточно, чтобы
+    $\forall \eps > 0 \quad \exists \delta_\eps > 0: \forall x' \in A, x'' \in A:
+    \begin{array}{c}
+        0 < | x' - a | < \delta_\eps \\
+        0 < | x'' - a | < \delta_\eps
+    \end{array}$ выполняется $| f(x') - f(x'') | < \eps$.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}[label=\alph*)]
+        \item 
+            Необходимость
+
+            Имеем, что $\exists \dslim_{x \to a} f(x) = b$ $\implies$ по определению Коши
+            $\forall \eps > 0 \quad \exists \delta_\eps > 0: \forall x \in A: 0 < | x - a | < \delta_\eps$
+            выполняется $| f(x) - b | < \frac{\eps}{2}$
+
+            Возьмём $x', x'' \in A:
+            \begin{array}{c}
+                0 < | x' - a | < \delta_\eps \\
+                0 < | x'' - a | < \delta_\eps
+            \end{array}$
+
+            Тогда $| f(x') - b | < \frac{\eps}{2}$ и $| f(x'') - b | < \frac{\eps}{2}$
+
+            Рассмотрим $| f(x') - f(x'') | = | (f(x') - b) + (b - f(x'')) | \stackrel{\triangle}{\le}
+            | f(x') - b | + | f(x'') - b | < \eps$.
+
+            Получили что и требовалось доказать.
+        
+        \item
+            Достаточность
+
+            Пусть $\forall \eps > 0 \quad \exists \delta_\eps > 0: \forall x', x'' \in A:
+            \begin{array}{c}
+                0 < | x' - a | < \delta_\eps \\
+                0 < | x'' - a | < \delta_\eps
+            \end{array}$ выполняется $| f(x') - f(x'') | < \eps$
+
+            Возьмём $\forall \{ x_n \}: \: x_n \in A, x_n \ne a, x_n \approach{n \to \infty} a$
+            $\implies$ по критерию Коши $\forall \delta > 0 \quad \exists n_\delta \in \N:
+            \forall n \ge n_\delta, \forall m \ge n_\delta$ выполняется $| x_n - x_m | < \delta$.
+
+            Возьмём $\delta = \delta_\eps, x' = x_n, x'' = x_m \implies | x' - x'' | < \delta$.
+
+            Если использовать определение предела, то есть для $\delta > 0 \exists n_{\delta^*} \in \N:
+            \begin{array}{c}
+                \forall n \ge n_{\delta^*} \text{ выполняется } | x_n - a | < \delta \\
+                \forall m \ge n_{\delta^*} \text{ выполняется } | x_m - a | < \delta
+            \end{array}$
+
+            $\delta = \delta_\eps, x' = x_n, x'' = x_m$ выполняется
+            $\begin{array}{c}
+                0 < |x' - a| < \delta_\eps \\
+                0 < |x'' - a| < \delta_\eps
+            \end{array}$
+            $\implies |f(x') - f(x'')| < \eps$ или $|f(x_n) - f(x_n)| < \eps$.
+            
+            Получили, что $\forall \eps > 0 \quad \exists n_\eps = n_{\delta^*} \in \N: \:
+            \forall n \ge n_\eps$ выполняется $|f(x_n) - f(x_m)| < \eps \implies
+            \{ f(x_n) \}$ -- фундаментальна $\implies \{ f(x_n) \}$ -- сходится и пусть
+            $b = \dslimn f(x_n)$.
+
+            Осталось доказать, что $b$ не зависит от выбора $\{ x_n \}$.
+
+            Пусть $x'_n \approach{} a, x'' \approach{} a$. Сопоставим последовательность
+            $x'_1, x''_1, x'_2, x''_2, \dots, x'_n, x''_n: \: y_m \implies y_n \approach{} a
+            \implies f(y_n)$ -- сходится.
+
+            Но если $\dslimn f(x'_n) = b \implies \dslimn f(x''_n) = b \implies b = \dslim{x \to a} f(x)$
+            в смысле Гейне.
     \end{enumerate}
 \end{proof}
 
