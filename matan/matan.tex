@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[a4paper,oneside]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{hyperref}
@@ -8,6 +8,7 @@
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{enumitem}
+% \usepackage[standard]{ntheorem}
 \usepackage{amsthm}
 \usepackage{cancel}
 \usepackage[left=1.4cm,right=1.4cm,
@@ -39,15 +40,23 @@
 
 \newcommand{\approach}[1]{\underset{#1}{\longrightarrow}}
 
-\newtheoremstyle{break}
-  {\topsep}{\topsep}%
-  {\itshape}{}%
-  {\bfseries}{}%
-  {\newline}{}%
-\theoremstyle{break}
-\newtheorem{theorem}{Теорема}[subsection]
+% \theoremstyle{break}
 
+% --- Теорема --- %
+% \theorembodyfont{\normalfont}
+\newtheorem{theorem}{Теорема}[subsection]
+% --------------- %
+
+% --- Определение --- %
+% \theorembodyfont{\normalfont}
 \newtheorem{definition}{Определение}[subsection]
+% ------------------- %
+
+% --- Доказательство --- %
+% \theoremheaderfont{\normalfont\itshape}
+% \theorembodyfont{\normalfont}
+% \newtheorem*{proof}{Доказательство.}
+% ---------------------- %
 
 \begin{document}
 
@@ -198,49 +207,51 @@ $y = a_0,a_1 \dots a_{l-1}(a_l-1)9 \dots$
     \end{enumerate}
 \end{theorem}
 
-\textbf{Доказательство}.
-
-а) По условию 
-\[x > y \implies \exists m_1: x_m > \overline{y_m} \quad \forall m \ge m_1\]
-\[y > z \implies \exists m_2: y_m > \overline{z_m} \quad \forall m \ge m_2\]
-$\implies \forall m \ge \max (m_1, m_2)$ выполняется $x_m > \overline{y_m}$
-и $y_m > \overline{z_m}$, т.е. $x_m > \overline{y_m} > y_m > \overline{z_m}$,
-т.е. $x_m > \overline{z_m} \implies x > z$.
-
-б) По условию 
-\[x = y \implies \exists m_1: x_m = y_m \quad \forall m \ge m_1\]
-\[y = z \implies \exists m_2: y_m = z_m \quad \forall m \ge m_2\]
-$\implies \forall m \ge \max (m_1, m_2)$ выполняется $x_m = y_m$
-и $y_m = z_m$, т.е. $x_m = y_m = z_m$,
-т.е. $x_m = z_m \implies x = z$.
-
-\pagebreak
+\begin{proof}
+    \begin{enumerate}[label=\alph*)]
+        \item
+            По условию
+            \[x > y \implies \exists m_1: x_m > \overline{y_m} \quad \forall m \ge m_1\]
+            \[y > z \implies \exists m_2: y_m > \overline{z_m} \quad \forall m \ge m_2\]
+            $\implies \forall m \ge \max (m_1, m_2)$ выполняется $x_m > \overline{y_m}$
+            и $y_m > \overline{z_m}$, т.е. $x_m > \overline{y_m} > y_m > \overline{z_m}$,
+            т.е. $x_m > \overline{z_m} \implies x > z$.
+        
+        \item
+            По условию
+            \[x = y \implies \exists m_1: x_m = y_m \quad \forall m \ge m_1\]
+            \[y = z \implies \exists m_2: y_m = z_m \quad \forall m \ge m_2\]
+            $\implies \forall m \ge \max (m_1, m_2)$ выполняется $x_m = y_m$
+            и $y_m = z_m$, т.е. $x_m = y_m = z_m$,
+            т.е. $x_m = z_m \implies x = z$.
+    \end{enumerate}
+\end{proof}
 
 \subsection{Признак равенства действительных чисел}
 
-\textbf{Теорема}.
+\begin{theorem}
+    Если для данных чисел $x$ и $y$ и 
+    $\forall \varepsilon > 0 \quad \exists \alpha_{\varepsilon}, \beta_{\varepsilon}$
+    с конечным числом десятичных знаков, такие, что
+    $\alpha_{\varepsilon} \le x \le \beta_{\varepsilon}, \alpha_{\varepsilon} \le y \le \beta_{\varepsilon}$
+    и $\beta_{\varepsilon} - \alpha_{\varepsilon} < \varepsilon$, тогда $x = y$.
+\end{theorem}
 
-Если для данных чисел $x$ и $y$ и 
-$\forall \varepsilon > 0 \quad \exists \alpha_{\varepsilon}, \beta_{\varepsilon}$
-с конечным числом десятичных знаков, такие, что
-$\alpha_{\varepsilon} \le x \le \beta_{\varepsilon}, \alpha_{\varepsilon} \le y \le \beta_{\varepsilon}$
-и $\beta_{\varepsilon} - \alpha_{\varepsilon} < \varepsilon$, тогда $x = y$.
+\begin{proof}
+    Допустим от противного, условие теоремы выполняется, но 
+    $y > x \bydef \exists m_0: y_{m_0} > \overline{x_{m_0}}$
 
-\textbf{Доказательство}.
+    Имеем $\alpha_{\varepsilon} \le x \le \overline{x_{m_0}} < y_{m_0} \le y \le \beta_{\varepsilon}$
+    и это справедливо $\forall m \ge 0$, т.е. 
+    $\alpha_{\varepsilon} \le \overline{x_m} < y_m \le \beta_{\varepsilon}$
+    $\implies 0 < y_m - \overline{x_m} \le \beta_\varepsilon - \alpha_\varepsilon < \varepsilon$,
+    но $y_m - \overline{x_m}$ не может быть меньше, чем $\frac{1}{10^m}$. А если взять
+    $\varepsilon < \frac{1}{10^m} (\varepsilon > 0)$, то \textbf{получим противоречие}
+    $\implies y_m = \overline{x_m}$.
 
-Допустим от противного, условие теоремы выполняется, но 
-$y > x \bydef \exists m_0: y_{m_0} > \overline{x_{m_0}}$
-
-Имеем $\alpha_{\varepsilon} \le x \le \overline{x_{m_0}} < y_{m_0} \le y \le \beta_{\varepsilon}$
-и это справедливо $\forall m \ge 0$, т.е. 
-$\alpha_{\varepsilon} \le \overline{x_m} < y_m \le \beta_{\varepsilon}$
-$\implies 0 < y_m - \overline{x_m} \le \beta_\varepsilon - \alpha_\varepsilon < \varepsilon$,
-но $y_m - \overline{x_m}$ не может быть меньше, чем $\frac{1}{10^m}$. А если взять
-$\varepsilon < \frac{1}{10^m} (\varepsilon > 0)$, то \textbf{получим противоречие}
-$\implies y_m = \overline{x_m}$.
-
-Аналогично рассуждая для $x > y \implies x_m = \overline{y_m}$, значит невозможно
-ни $x > y$, ни $y > x$ $\bydef x = y$.
+    Аналогично рассуждая для $x > y \implies x_m = \overline{y_m}$, значит невозможно
+    ни $x > y$, ни $y > x$ $\bydef x = y$.
+\end{proof}
 
 \section{Численные множества}
 
@@ -269,15 +280,13 @@ $\exists m \in \mathbb{R}: \forall x \in A$ выполняется $x \ge m$,
 т.е. $\exists m, M \in \mathbb{R}: \forall x \in A$ выполняется $m \le x \le M$
 (или $\exists C > 0: \forall x \in A$ выполняется $|x| \le C$).
 
-\parspace
+\begin{definition}
+    Наименьшая мажоранта множества $A$ называется верхней гранью $A$ и обозначается
+    $\sup A$ (супремум).
 
-\textbf{Определение}.
-
-Наименьшая мажоранта множества $A$ называется верхней гранью $A$ и обозначается
-$\sup A$ (супремум).
-
-Наибольшая миноранта множества $A$ называется нижней гранью $A$ и обозначается
-$\inf A$ (инфимум).
+    Наибольшая миноранта множества $A$ называется нижней гранью $A$ и обозначается
+    $\inf A$ (инфимум).
+\end{definition}
 
 % \subsection{Метод математической индукции}
 
@@ -288,7 +297,7 @@ $\inf A$ (инфимум).
 %     \item Если $A_k$ -- истина, то $A_{k+1}$ -- истина (шаг индукции)
 % \end{enumerate}
 
-\subsection{Признак верхней и нижней грани множества}.
+\subsection{Признак верхней и нижней грани множества}
 
 $M = \sup A$, если 
 \begin{enumerate}
@@ -304,43 +313,39 @@ $m = \inf A$, если
     (или $\forall \varepsilon > 0 \quad \exists x_\varepsilon \in A: x_\varepsilon < m + \varepsilon$)
 \end{enumerate}
 
-\textbf{Теорема}. \textit{О существовании верхней грани (нижней грани)}.
+\begin{theorem}[О существовании верхней грани (нижней грани)]
+    У всякого непустого ограниченного сверху множества существует верхняя грань (нижняя грань).
+\end{theorem}
 
-У всякого непустого ограниченного сверху множества существует верхняя грань (нижняя грань).
+\begin{proof}
+    Множество $A$ -- ограничено сверху $\implies \exists b \in \mathbb{R}: \forall x \in A:
+    x \le b, A \ne 0 \implies \exists a \in A$ и $a \le b$.
 
-\textbf{Доказательство}.
+    Рассмотрим такие элементы $x \in A: a \le x \le b$. Рассмотрим их $x_m$ приближения.
+    Число таких $x$ может быть бесконечным, но число $x_m$ -- конечно.
+    (их не более, чем $(b_m - a_m) * 10^m$). 
 
-Множество $A$ -- ограничено сверху $\implies \exists b \in \mathbb{R}: \forall x \in A:
-x \le b, A \ne 0 \implies \exists a \in A$ и $a \le b$.
+    Тогда обозначим $C_m = \max (x_m) (x \in A; a \le x \le b)$.
+    Так как $x_{m+1} - x_m < \frac{1}{10^m} \implies C_{m+1} - C_m < \frac{1}{10^m}$
+    $\stackrel{\text{по св-ву}}{\implies} C_m$ -- нижние $m$-значные приближения некоторого 
+    действительного числа $C$.
 
-Рассмотрим такие элементы $x \in A: a \le x \le b$. Рассмотрим их $x_m$ приближения.
-Число таких $x$ может быть бесконечным, но число $x_m$ -- конечно.
-(их не более, чем $(b_m - a_m) * 10^m$). 
+    Докажем, что $C = \sup A$ по признаку.
+    \begin{enumerate}
+        \item Надо доказать $\forall x \in A: x \le C$
+        
+        Допустим от противного: $\exists x_0 \in A: x_0 > C \stackrel{\text{по опр}}{\implies}
+        \exists m_1: \forall m \ge m_1 \quad (x_0)_m > \overline{C_m}$, но
+        $\overline{C_m} \ge C_m \implies (x_0)_m > C_m$, а это противоречит выбору $C_m$
+        $\implies \forall x \in A: x \le C$.
 
-Тогда обозначим $C_m = \max (x_m) (x \in A; a \le x \le b)$.
-Так как $x_{m+1} - x_m < \frac{1}{10^m} \implies C_{m+1} - C_m < \frac{1}{10^m}$
-$\stackrel{\text{по св-ву}}{\implies} C_m$ -- нижние $m$-значные приближения некоторого 
-действительного числа $C$.
-
-Докажем, что $C = \sup A$ по признаку.
-\begin{enumerate}
-    \item Надо доказать $\forall x \in A: x \le C$
-    
-    Допустим от противного: $\exists x_0 \in A: x_0 > C \stackrel{\text{по опр}}{\implies}
-    \exists m_1: \forall m \ge m_1 \quad (x_0)_m > \overline{C_m}$, но
-    $\overline{C_m} \ge C_m \implies (x_0)_m > C_m$, а это противоречит выбору $C_m$
-    $\implies \forall x \in A: x \le C$.
-
-    \item Возьмём $\forall C' < C \bydef C_m > \overline{C_m'} \ge C'$.
-    Но по выбору $C_m = (x_0)_m \quad (x_0 \in A, a \le x_0 \le b)$.
-    Имеем: $x_0 \ge (x_0)_m = C_m > \overline{C_m'} \ge C' \implies x_0 > C'$,
-    т.е. $\forall C' < C \quad \exists x_0 \in A: x_0 > C'$.
-    $\implies$ по признаку верхней грани $C = \sup A$.
-\end{enumerate}
-
-\textbf{Теорема доказана}.
-
-\parspace
+        \item Возьмём $\forall C' < C \bydef C_m > \overline{C_m'} \ge C'$.
+        Но по выбору $C_m = (x_0)_m \quad (x_0 \in A, a \le x_0 \le b)$.
+        Имеем: $x_0 \ge (x_0)_m = C_m > \overline{C_m'} \ge C' \implies x_0 > C'$,
+        т.е. $\forall C' < C \quad \exists x_0 \in A: x_0 > C'$.
+        $\implies$ по признаку верхней грани $C = \sup A$.
+    \end{enumerate}
+\end{proof}
 
 \underline{\textbf{Замечание 1.}}
 
@@ -357,40 +362,40 @@ $\stackrel{\text{по св-ву}}{\implies} C_m$ -- нижние $m$-значн�
 
 \parspace
 
-\textbf{Теорема}. \textit{Свойство граней}.
+\begin{theorem}[Свойство граней]
+    Если $\forall x \in A \quad \forall y \in B: x \le y \implies \sup A \le \inf B$
+\end{theorem}
 
-Если $\forall x \in A \quad \forall y \in B: x \le y \implies \sup A \le \inf B$
-
-\textbf{Доказательство}.
-
-По условию $\forall y \in B \quad y \ge x \implies x$ -- миноранта $B$
-$\implies \inf B \ge x$, т.е. $\forall x \in A \quad x \le \inf B \implies \inf B$ --
-мажоранта $A$ $\implies \sup A \le \inf B$. \textbf{Теорема доказана}.
+\begin{proof}
+    По условию $\forall y \in B \quad y \ge x \implies x$ -- миноранта $B$
+    $\implies \inf B \ge x$, т.е. $\forall x \in A \quad x \le \inf B \implies \inf B$ --
+    мажоранта $A$ $\implies \sup A \le \inf B$.
+\end{proof}
 
 \section{Арифметические операции для действительных чисел}
 
-\textbf{Определение}.
+\subsection{Свойства арифметических операций}
 
-Рассмотрим множество \underline{всех} таких чисел
-$\alpha_1, \alpha_2, \beta_1, \beta_2$ с конечным числом десятичных знаков
-после запятой, что
-\[\alpha_1 \le x \le \alpha_2\]
-\[\beta_1 \le y \le \beta_2\]
+\begin{definition}
+    Рассмотрим множество \underline{всех} таких чисел
+    $\alpha_1, \alpha_2, \beta_1, \beta_2$ с конечным числом десятичных знаков
+    после запятой, что
+    \[\alpha_1 \le x \le \alpha_2\]
+    \[\beta_1 \le y \le \beta_2\]
 
-Тогда суммой чисел $x$ и $y$ ($x, y \in \mathbb{R}$) назовём число 
-$(x + y) = \sup (\alpha_1 + \beta_1) = \inf (\alpha_2 + \beta_2)$
+    Тогда суммой чисел $x$ и $y$ ($x, y \in \mathbb{R}$) назовём число 
+    $(x + y) = \sup (\alpha_1 + \beta_1) = \inf (\alpha_2 + \beta_2)$
 
-Пусть теперь $x \ge 0, y \ge 0$, тогда произведением неотрицательное $x$ и $y$
-назовём число $(x * y) = \sup (\alpha_1 * \beta_1) = \inf (\alpha_2 * \beta_2)$.
-Действия с отрицательными числами определим так же, как и для рациональных чисел.
+    Пусть теперь $x \ge 0, y \ge 0$, тогда произведением неотрицательное $x$ и $y$
+    назовём число $(x * y) = \sup (\alpha_1 * \beta_1) = \inf (\alpha_2 * \beta_2)$.
+    Действия с отрицательными числами определим так же, как и для рациональных чисел.
 
-Разностью $x$ и $y$ ($x, y \in \mathbb{R}$) назовём число $(x - y) = x + (-y)$.
+    Разностью $x$ и $y$ ($x, y \in \mathbb{R}$) назовём число $(x - y) = x + (-y)$.
 
-Частным чисел $x$ и $y$ ($x \in \mathbb{R}, y > 0$) назовём число 
-$\frac{x}{y} = x * \frac{1}{y}$, где $\frac{1}{y} = \inf \frac{1}{\beta_1}$.
-Для $y < 0: \:$ $\frac{x}{y} = -x * \frac{1}{-y}$.
-
-\parspace
+    Частным чисел $x$ и $y$ ($x \in \mathbb{R}, y > 0$) назовём число 
+    $\frac{x}{y} = x * \frac{1}{y}$, где $\frac{1}{y} = \inf \frac{1}{\beta_1}$.
+    Для $y < 0: \:$ $\frac{x}{y} = -x * \frac{1}{-y}$.
+\end{definition}
 
 \underline{\textbf{Свойства арифметических операций}}
 \begin{enumerate}
@@ -463,24 +468,22 @@ $\frac{x}{y} = x * \frac{1}{y}$, где $\frac{1}{y} = \inf \frac{1}{\beta_1}$.
 
 \section{Предельные точки числового множества}
 
-\textbf{Определение}
+\subsection{Определение предельных точек}
 
-Множество $x \in \mathbb{R}$, удовлетворяющих неравенству $|x - a| < \varepsilon$
-называется $\varepsilon$-окрестностью точки $a$.
+\begin{definition}
+    Множество $x \in \mathbb{R}$, удовлетворяющих неравенству $|x - a| < \varepsilon$
+    называется $\varepsilon$-окрестностью точки $a$.
+    
+    $|x| < c \Leftrightarrow -c < x < c$
+    
+    $|x - a| < \varepsilon \Leftrightarrow -\varepsilon < x - a < \varepsilon \Leftrightarrow
+    a - \varepsilon < x < a + \varepsilon \Leftrightarrow x \in (a - \varepsilon, a + \varepsilon)$.    
+\end{definition}
 
-$|x| < c \Leftrightarrow -c < x < c$
-
-$|x - a| < \varepsilon \Leftrightarrow -\varepsilon < x - a < \varepsilon \Leftrightarrow
-a - \varepsilon < x < a + \varepsilon \Leftrightarrow x \in (a - \varepsilon, a + \varepsilon)$.
-
-\parspace
-
-\textbf{Определение}
-
-Точка $x$ называется \textbf{предельной} точкой множества $A$, если в любой $\varepsilon$-окрестности
-точки $x$ находятся точки множества $A$, отличные от $x$.
-
-\parspace
+\begin{definition}
+    Точка $x$ называется \textbf{предельной} точкой множества $A$, если в любой $\varepsilon$-окрестности
+    точки $x$ находятся точки множества $A$, отличные от $x$.        
+\end{definition}
 
 \underline{\textbf{Замечание}}
 
@@ -495,80 +498,69 @@ $\varepsilon$-окрестности находится бесконечное �
 одного элемента множества, отличного от $x$ $\implies$ $x$ не предельная точка множества
 $A$, а это противоречит условию.
 
-\parspace
 
-\textbf{Определение}
+\begin{definition}
+    Точка $x \in A$ называется \textbf{изолированной} точкой множества $A$, если найдется такая
+    окрестность точки $x$, в которой не найдется ни одного элемента множества $A$,
+    кроме неё самой.        
+\end{definition}
 
-Точка $x \in A$ называется \textbf{изолированной} точкой множества $A$, если найдется такая
-окрестность точки $x$, в которой не найдется ни одного элемента множества $A$,
-кроме неё самой.
+\begin{definition}
+    Точка $x$ называется \textbf{внутренней} точкой множества $A$, если найдется такая
+    окрестность точки $x$, которая целиком содержится во множестве $A$.
+\end{definition}
 
-\parspace
+\begin{definition}
+    Множество, все точки которого внутренние называется \textbf{открытым} множеством.    
+\end{definition}
 
-\textbf{Определение}
+\begin{definition}
+    Множество, которое содержит все свои предельные точки называется замкнуным множеством.    
+\end{definition}
 
-Точка $x$ называется \textbf{внутренней} точкой множества $A$, если найдется такая
-окрестность точки $x$, которая целиком содержится во множестве $A$.
+\begin{theorem}[О существовании предельных точек (Теорема Больцано-Вейерштрасса для множеств)]
+    У всякого бесконечного ограниченного числового множества существует по крайней мере
+    одна предельная точка.    
+\end{theorem}
 
-\parspace
+\begin{proof}
+    Докажем, что существует самая правая предельная точка.
 
-\textbf{Определение}
-
-Множество, все точки которого внутренние называется \textbf{открытым} множеством.
-
-\parspace
-
-\textbf{Определение}
-
-Множество, которое содержит все свои предельные точки называется замкнуным множеством.
-
-\parspace
-
-\textbf{Теорема}. \textit{О существовании предельных точек (Теорема Больцано-Вейерштрасса для множеств)}.
-
-У всякого бесконечного ограниченного числового множества существует по крайней мере
-одна предельная точка.
-
-\textbf{Доказательство}.
-
-Докажем, что существует самая правая предельная точка.
-
-$A$ -- ограниченное $\bydef \exists C > 0 \quad
-\forall x \in A: |x| \le C$.
-$C$ без ограничения общности можно выбрать целым.
-Рассмотрим отрезок вида $[k;k+1]$, удовлетворяющий $-c \le k \le c - 1$.
-Так как $A$ -- бесконечное, то по крайней мере в одном из этих отрезков содержится
-бесконечное количество элементов множества $A$.
-
-Выберем самый правый из них и обозначим его $[y_0;\overline{y_0}]$.
-Разобьём его на 10 равных частей $\implies$ по крайней мере в одном из
-полученных отрезков содержится бесконечное число элементов множества $A$.
-
-Выберем самый правый из них и обозначим его $[y_1;\overline{y_1}]$.
-Продолжим процесс деления отрезок на 10 частей и выберем самый правый отрезок
-на котором содержится бесконечное число элементов множества $A$.
-
-Получим отрезок $[y_m;\overline{y_m}]$, где $m = 0,1,\dots$, причём неравенству
-$x > \overline{y_m}$ может удовлетворять только конечное число элементов $A$,
-длина каждого отрезка $= \frac{1}{10^m}$ и концы отрезков удовлетворяют
-следующим неравенствам:
-
-\[y_{m+1} \ge y_m\]
-\[\overline{y_{m+1}} \le \overline{y_m}\]
-\[y_{m+1} - y_m < \frac{1}{10^m}\]
-\[\overline{y_m} - y_m = \frac{1}{10^m}\]
-
-Тогда они являются нижним и верхним $m$-значным приближением некоторого числа $y$.
-
-Покажем, что оно является предельной точкой $A$. Возьмём любую $\varepsilon$-окрестность
-точки $y$ и выберем такое $m$, чтобы: 
-$\frac{1}{10^m} < \varepsilon \implies [y_m;\overline{y_m}] \subset 
-(y - \varepsilon; y + \varepsilon)$, но он содержит бесконечное число элементов
-множества $A$ $\bydef$ $y$ являлся предельной точкой
-множества $A$, а так как правее $\overline{y_m}$ находится только конечное число
-элементов $A$, то $y$ -- самая правая предельная точка $A$.
-
-\textbf{Теорема доказана.}
+    $A$ -- ограниченное $\bydef \exists C > 0 \quad
+    \forall x \in A: |x| \le C$.
+    $C$ без ограничения общности можно выбрать целым.
+    Рассмотрим отрезок вида $[k;k+1]$, удовлетворяющий $-c \le k \le c - 1$.
+    Так как $A$ -- бесконечное, то по крайней мере в одном из этих отрезков содержится
+    бесконечное количество элементов множества $A$.
+    
+    Выберем самый правый из них и обозначим его $[y_0;\overline{y_0}]$.
+    Разобьём его на 10 равных частей $\implies$ по крайней мере в одном из
+    полученных отрезков содержится бесконечное число элементов множества $A$.
+    
+    Выберем самый правый из них и обозначим его $[y_1;\overline{y_1}]$.
+    Продолжим процесс деления отрезок на 10 частей и выберем самый правый отрезок
+    на котором содержится бесконечное число элементов множества $A$.
+    
+    Получим отрезок $[y_m;\overline{y_m}]$, где $m = 0,1,\dots$, причём неравенству
+    $x > \overline{y_m}$ может удовлетворять только конечное число элементов $A$,
+    длина каждого отрезка $= \frac{1}{10^m}$ и концы отрезков удовлетворяют
+    следующим неравенствам:
+    
+    \[y_{m+1} \ge y_m\]
+    \[\overline{y_{m+1}} \le \overline{y_m}\]
+    \[y_{m+1} - y_m < \frac{1}{10^m}\]
+    \[\overline{y_m} - y_m = \frac{1}{10^m}\]
+    
+    Тогда они являются нижним и верхним $m$-значным приближением некоторого числа $y$.
+    
+    Покажем, что оно является предельной точкой $A$. Возьмём любую $\varepsilon$-окрестность
+    точки $y$ и выберем такое $m$, чтобы: 
+    $\frac{1}{10^m} < \varepsilon \implies [y_m;\overline{y_m}] \subset 
+    (y - \varepsilon; y + \varepsilon)$, но он содержит бесконечное число элементов
+    множества $A$ $\bydef$ $y$ являлся предельной точкой
+    множества $A$, а так как правее $\overline{y_m}$ находится только конечное число
+    элементов $A$, то $y$ -- самая правая предельная точка $A$.
+\end{proof}
 
 \section{Множество комплексных чисел}
 
@@ -667,35 +659,25 @@ $\frac{1}{10^m} < \varepsilon \implies [y_m;\overline{y_m}] \subset
 
 \subsection{Показательная форма записи комплексного числа}
 
-Рассмотрим функцию Эйлера:
+Рассмотрим функцию Эйлера: $e^{i \phi} = \cos \phi + i \sin \phi$
 
-$e^{i \phi} = \cos \phi + i \sin \phi$
+\begin{theorem}[Свойства функции Эйлера]
+    \begin{enumerate}
+        \item $e^{i \phi_1} * e^{i \phi_2} = e^{i(\phi_1 + \phi_2)}$
+        \item $\frac{e^{i \phi_1}}{e^{i \phi_2}} = e^{i(\phi_1 - \phi_2)}$
+        \item $(e^{i \phi})^n = e^{i n \phi} \quad (n \in \mathbb{N})$
+    \end{enumerate}    
+\end{theorem}
 
-\parspace
+\begin{proof}
+    \begin{enumerate}
+        \item
+        \item
+        \item
+    \end{enumerate}    
+\end{proof}
 
-\textbf{Теорема.} \textit{Свойства функции Эйлера.}
-
-\begin{enumerate}
-    \item $e^{i \phi_1} * e^{i \phi_2} = e^{i(\phi_1 + \phi_2)}$
-    \item $\frac{e^{i \phi_1}}{e^{i \phi_2}} = e^{i(\phi_1 - \phi_2)}$
-    \item $(e^{i \phi})^n = e^{i n \phi} \quad (n \in \mathbb{N})$
-\end{enumerate}
-
-\textbf{Доказательство.}
-
-\begin{enumerate}
-    \item
-    \item
-    \item
-\end{enumerate}
-
-\textbf{Теорема доказана.}
-
-\parspace
-
-Введя функцию Эйлера:
-
-$z = |z| (\cos \varphi + i \sin \varphi) \quad z = |z| e^{i \varphi}$
+Введя функцию Эйлера: $z = |z| (\cos \varphi + i \sin \varphi), \quad z = |z| e^{i \varphi}$
 
 \underline{\textbf{Замечание:}}
 
@@ -754,29 +736,28 @@ $z = |z| (\cos \varphi + i \sin \varphi) \quad z = |z| e^{i \varphi}$
 
 \section{Векторы пространства $\mathbb{R}^m$}
 
-\textbf{Определение}
+\subsection{}
 
-Упорядоченную систему ($x_1, x_2, \dots, x_m$)($x_i \in \mathbb{R}$)
-(или ($z_1, z_2, \dots, z_m$); $z_i \in \mathbb{C}$) будем называть вектором
-(или точкой) пространства $\mathbb{R}^m (\mathbb{C}^m)$ если для этих
-систем определены понятия равенства и арифметические операторы сложения
-и умножения на число следующим образом:
-
-Имеем $u(u_1, u_2, \dots, u_m), v(v_1, v_2, \dots, v_m)$:
-
-\begin{enumerate}
-    \item $u = v \Leftrightarrow u_i = v_i \quad \forall i = \overline{1, m}$
-    \item $u + v = w$, где $w = (u_1 + v_1; u_2 + v_2; \dots; u_m + v_m)$
-    \item $k \in \mathbb{R} (k \in \mathbb{C}) \\
-    ku = w$, где $w = (k u_1, k u_2, \dots, k u_m)$
-\end{enumerate}
-
-Число $u_k$ называется $k$-й компонентой вектора $u$.
-
-\parspace
+\begin{definition}
+    Упорядоченную систему ($x_1, x_2, \dots, x_m$)($x_i \in \mathbb{R}$)
+    (или ($z_1, z_2, \dots, z_m$); $z_i \in \mathbb{C}$) будем называть вектором
+    (или точкой) пространства $\mathbb{R}^m (\mathbb{C}^m)$ если для этих
+    систем определены понятия равенства и арифметические операторы сложения
+    и умножения на число следующим образом:
+    
+    Имеем $u(u_1, u_2, \dots, u_m), v(v_1, v_2, \dots, v_m)$:
+    
+    \begin{enumerate}
+        \item $u = v \Leftrightarrow u_i = v_i \quad \forall i = \overline{1, m}$
+        \item $u + v = w$, где $w = (u_1 + v_1; u_2 + v_2; \dots; u_m + v_m)$
+        \item $k \in \mathbb{R} (k \in \mathbb{C}) \\
+        ku = w$, где $w = (k u_1, k u_2, \dots, k u_m)$
+    \end{enumerate}
+    
+    Число $u_k$ называется $k$-й компонентой вектора $u$.
+\end{definition}
 
 \textbf{Свойства векторов}
-
 \begin{enumerate}
     \item $u + v = v + u$
     \item $u + (v + w) = (u + v) + w$
@@ -786,14 +767,10 @@ $z = |z| (\cos \varphi + i \sin \varphi) \quad z = |z| e^{i \varphi}$
     \item $c_1 * (c_2 * u) = (c_1 * c_2) * u \quad$ ($c_1, c_2$ -- const)
 \end{enumerate}
 
-\parspace
-
-\textbf{Определение}
-
-Скалярным произведением векторов $u(u_1, u_2, \dots, u_m), v(v_1, v_2, \dots, v_m)$
-называют число $u * v = \displaystyle\sum_{k = 1}^{m} u_k * \overline{v_k}$
-
-\parspace
+\begin{definition}
+    Скалярным произведением векторов $u(u_1, u_2, \dots, u_m), v(v_1, v_2, \dots, v_m)$
+    называют число $u * v = \displaystyle\sum_{k = 1}^{m} u_k * \overline{v_k}$
+\end{definition}
 
 \textbf{Свойства скалярного произведения}
 \begin{enumerate}
@@ -807,41 +784,32 @@ $z = |z| (\cos \varphi + i \sin \varphi) \quad z = |z| e^{i \varphi}$
     \item $u * u \ge 0 \quad \forall u$, и $u * u = 0 \Leftrightarrow u = (0,0,\dots,0)$
 \end{enumerate}
 
-\parspace
+\begin{theorem}[Неравенство Коши-Буняковского]
+    $|u v| \le \sqrt{(u * u) * (v * v)}$    
+\end{theorem}
 
-\textbf{Теорема}. \textit{Неравенство Коши-Буняковского}.
+\begin{proof}
+    Возьмём $\forall \lambda $ -- const
 
-$|u v| \le \sqrt{(u * u) * (v * v)}$
+    \begin{enumerate}
+        \item $(u + \lambda v) (u + \lambda v) \ge 0$
+        \item $(u + \lambda v) u + \overline{\lambda} (u + \lambda v) v \ge 0$
+        \item $(u * u) + \lambda (v * u) + \overline{\lambda} (u * v) + \overline{\lambda} * \lambda (v * v) \ge 0$
+        \item $(u * u) + \lambda (v * u) + \overline{\lambda} (u * v) + |\lambda|^2 (v * v) \ge 0$
+        \item Возьмём $\lambda = -\frac{(u * v)}{(v * v)} \quad (v \neq (0, \dots, 0))$
+        \item $(u * u) - \frac{(u * v) (v * u)}{(v * v)} - \frac{\overline{(u * v)} (u * v)}{\overline{(v * v)}}
+        + \frac{(u * v)^2}{(v * v)^2} (v * v) \ge 0$
+        \item $(u * u) - 2 \frac{|(u * v)^2|}{(v * v)} + \frac{(u * v)^2}{(v * v)} \ge 0$
+        \item $(u * u) - \frac{|u * v|^2}{(v * v)} \ge 0$
+        \item $|u * v| \le \sqrt{(u * u) (v * v)}$
+    \end{enumerate}
+\end{proof}
 
-\textbf{Доказательство}.
-
-Возьмём $\forall \lambda $ -- const
-
-\begin{enumerate}
-    \item $(u + \lambda v) (u + \lambda v) \ge 0$
-    \item $(u + \lambda v) u + \overline{\lambda} (u + \lambda v) v \ge 0$
-    \item $(u * u) + \lambda (v * u) + \overline{\lambda} (u * v) + \overline{\lambda} * \lambda (v * v) \ge 0$
-    \item $(u * u) + \lambda (v * u) + \overline{\lambda} (u * v) + |\lambda|^2 (v * v) \ge 0$
-    \item Возьмём $\lambda = -\frac{(u * v)}{(v * v)} \quad (v \neq (0, \dots, 0))$
-    \item $(u * u) - \frac{(u * v) (v * u)}{(v * v)} - \frac{\overline{(u * v)} (u * v)}{\overline{(v * v)}}
-    + \frac{(u * v)^2}{(v * v)^2} (v * v) \ge 0$
-    \item $(u * u) - 2 \frac{|(u * v)^2|}{(v * v)} + \frac{(u * v)^2}{(v * v)} \ge 0$
-    \item $(u * u) - \frac{|u * v|^2}{(v * v)} \ge 0$
-    \item $|u * v| \le \sqrt{(u * u) (v * v)}$
-\end{enumerate}
-
-\textbf{Теорема доказана}.
-
-\parspace
-
-\textbf{Определение}.
-
-Модулем вектора $u$ называют число $|u| = \sqrt{(u * u)}$
-
-\parspace
+\begin{definition}
+    Модулем вектора $u$ называют число $|u| = \sqrt{(u * u)}$
+\end{definition}
 
 \textbf{Свойства модуля вектора}
-
 \begin{enumerate}
     \item $|u_k| \le |u|$
     \item $|u * v| \le |u| * |v|$
@@ -1389,6 +1357,8 @@ $a - \varepsilon < x_{n_\varepsilon} \le x_n \le a < a + \varepsilon
 
 \section{Последовательности комплексных чисел}
 
+\subsection{Последовательности комплексных чисел}
+
 \textbf{Последовательности комплексных чисел} аналогично определение последовательности
 действительных чисел.
 
@@ -1399,68 +1369,57 @@ $a - \varepsilon < x_{n_\varepsilon} \le x_n \le a < a + \varepsilon
 Понятия \textit{верхнего, нижнего предела} и \textit{монотонности} для комплексных
 чисел не имеют смысла.
 
-\parspace
+\begin{theorem}[О связи сходимости $\{z_n\}$ со сходимостью $\{\real z_n\}$ и $\{\imagin z_n\}$.]
+    Если $\exists \dslimn z_n = \alpha + i \beta
+    \implies \begin{cases}
+        \exists \dslimn \real z_n = \alpha \\
+        \exists \dslimn \imagin z_n = \beta
+    \end{cases}$        
+\end{theorem}
 
-\textbf{Теорема.} \textit{О связи сходимости $\{z_n\}$ со сходимостью $\{\real z_n\}$ и $\{\imagin z_n\}$.}
-
-Если $\exists \dslimn z_n = \alpha + i \beta
-\implies \begin{cases}
-    \exists \dslimn \real z_n = \alpha \\
-    \exists \dslimn \imagin z_n = \beta
-\end{cases}$
-
-\textbf{Доказательство.}
-
-\begin{enumerate}
-    \item %%%%%%%%%%%%%%%%%%%
-    $\exists \dslimn z_n = \alpha + i \beta \; (z_n = x_n + i y_n)
-    \bydef \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
-    \forall n \ge n_\varepsilon$ выполняется $|z_n - (\alpha + i \beta)| < \varepsilon$
-    или $|(x_n- \alpha) + i (y_n - \beta)| < \varepsilon$
-
-    Но $|x_n - \alpha| \le |(x_n - \alpha) + i (y_n - \beta)| < \varepsilon
-    \bydef \exists \dslimn x_n = \alpha$
-
-    Но $|y_n - \beta| \le |(x_n - \alpha) + i (y_n - \beta)| < \varepsilon
-    \bydef \exists \dslimn y_n = \beta$
-
-    \item %%%%%%%%%%%%%%%%%%%
-    $\exists \dslimn x_n = \alpha, \; \exists \dslimn y_n = \beta
-    \bydef \forall \varepsilon > 0 \begin{cases}
-        \exists n_1 \in \mathbb{N} \quad \forall n \ge n_1 \quad |x_n - \alpha| < \frac{\varepsilon}{\sqrt{2}} \\
-        \exists n_2 \in \mathbb{N} \quad \forall n \ge n_2 \quad |y_n - \alpha| < \frac{\varepsilon}{\sqrt{2}}
-    \end{cases}$
+\begin{proof}
+    \begin{enumerate}
+        \item
+            $\exists \dslimn z_n = \alpha + i \beta \; (z_n = x_n + i y_n)
+            \bydef \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+            \forall n \ge n_\varepsilon$ выполняется $|z_n - (\alpha + i \beta)| < \varepsilon$
+            или $|(x_n- \alpha) + i (y_n - \beta)| < \varepsilon$
+        
+            Но $|x_n - \alpha| \le |(x_n - \alpha) + i (y_n - \beta)| < \varepsilon
+            \bydef \exists \dslimn x_n = \alpha$
+        
+            Но $|y_n - \beta| \le |(x_n - \alpha) + i (y_n - \beta)| < \varepsilon
+            \bydef \exists \dslimn y_n = \beta$
     
-    $n_3 = \max (n_1, n_2) \implies \forall n \ge n_3:
-    |z_n - (\alpha + i \beta)| = |(x_n - \alpha) + i (y_n - \beta)| =
-    \sqrt{(x_n - \alpha)^2 + (y_n - \beta)^2} <
-    \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} = \varepsilon$
+        \item 
+            $\exists \dslimn x_n = \alpha, \; \exists \dslimn y_n = \beta
+            \bydef \forall \varepsilon > 0 \begin{cases}
+                \exists n_1 \in \mathbb{N} \quad \forall n \ge n_1 \quad |x_n - \alpha| < \frac{\varepsilon}{\sqrt{2}} \\
+                \exists n_2 \in \mathbb{N} \quad \forall n \ge n_2 \quad |y_n - \alpha| < \frac{\varepsilon}{\sqrt{2}}
+            \end{cases}$
+            
+            $n_3 = \max (n_1, n_2) \implies \forall n \ge n_3:
+            |z_n - (\alpha + i \beta)| = |(x_n - \alpha) + i (y_n - \beta)| =
+            \sqrt{(x_n - \alpha)^2 + (y_n - \beta)^2} <
+            \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} = \varepsilon$
+        
+            Получаем $\forall \varepsilon > 0 \quad \exists n_\varepsilon = n_3 \in \mathbb{N}:
+            \forall n \ge n_3$ выполняется $|z_n - (\alpha + i \beta)| < \varepsilon
+            \implies \dslimn z_n = \alpha + i \beta$
+    \end{enumerate}
+\end{proof}
 
-    Получаем $\forall \varepsilon > 0 \quad \exists n_\varepsilon = n_3 \in \mathbb{N}:
-    \forall n \ge n_3$ выполняется $|z_n - (\alpha + i \beta)| < \varepsilon
-    \implies \dslimn z_n = \alpha + i \beta$
-\end{enumerate}
+\begin{theorem}[О связи сходимости $\{z_n\}$ со сходимостью $\{|z_n|\}$.]
+    Если $\exists \dslimn z_n = A \implies \exists \dslimn |z_n| = |A|$
+\end{theorem}
 
-\textbf{Теорема доказана.}
-
-\parspace
-
-\textbf{Теорема.} \textit{О связи сходимости $\{z_n\}$ со сходимостью $\{|z_n|\}$.}
-
-Если $\exists \dslimn z_n = A \implies \exists \dslimn |z_n| = |A|$
-
-\textbf{Доказательство.}
-
-$\dslimn z_n = A \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
-\forall n \ge n_\varepsilon$ выполняется $||z_n| - |A|| \le |z_n - A| < \varepsilon
-\bydef \exists \dslimn |z_n| = |A|$
-
-\textbf{Теорема доказана.}
-
-\parspace
+\begin{proof}
+    $\dslimn z_n = A \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+    \forall n \ge n_\varepsilon$ выполняется $||z_n| - |A|| \le |z_n - A| < \varepsilon
+    \bydef \exists \dslimn |z_n| = |A|$
+\end{proof}
 
 \underline{\textbf{Замечания}}
-
 \begin{enumerate}
     \item Про последовательность аргументов без дополнительных условий мы такую
     теорему высказать не можем.
@@ -1481,7 +1440,7 @@ $\dslimn z_n = A \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \i
 
 \section{Пределы функций}
 
-\subsection{}
+\subsection{Пределы функций}
 
 \begin{definition}
     Если каждому $x \in A$ поставить в соответствие единственное число $y \in B$,
