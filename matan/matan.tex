@@ -43,12 +43,23 @@
 % \theoremstyle{break}
 
 % --- Теорема --- %
+% \newtheoremstyle{break}% name
+%   {}%         Space above, empty = `usual value'
+%   {}%         Space below
+%   {\itshape}% Body font
+%   {}%         Indent amount (empty = no indent, \parindent = para indent)
+%   {\bfseries}% Thm head font
+%   {.}%        Punctuation after thm head
+%   {\newline}% Space after thm head: \newline = linebreak
+%   {}%         Thm head spec
 % \theorembodyfont{\normalfont}
+% \theoremstyle{break}
 \newtheorem{theorem}{Теорема}[subsection]
 % --------------- %
 
 % --- Определение --- %
 % \theorembodyfont{\normalfont}
+\theoremstyle{definition}
 \newtheorem{definition}{Определение}[subsection]
 % ------------------- %
 
@@ -57,6 +68,22 @@
 % \theorembodyfont{\normalfont}
 % \newtheorem*{proof}{Доказательство.}
 % ---------------------- %
+
+% --- Пример --- %
+\theoremstyle{definition}
+\newtheorem*{example}{Пример}
+% -------------- %
+
+% --- Следствие --- %
+% Corollary
+% ----------------- %
+
+% --- Замечание --- %
+% Remark
+\theoremstyle{definition}
+\newtheorem*{remark}{Замечание}
+% ----------------- %
+
 
 \begin{document}
 
@@ -1915,7 +1942,7 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
     тогда на $[A; B]$ существует непрерывная строго монотонная функция
     $\varphi(x)$, обратная функции $f(x)$.
 \end{theorem}
-\begin{proof}
+\begin{proof}\ \\
     \begin{enumerate}
         \item 
             Существование
@@ -1965,58 +1992,98 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
 \textbf{ДОБАВИТЬ}
 
 %%%%%%%%%%%%%%%%%%
-\section{Дифференциальне исчисление}
+\section{Дифференциальное исчисление}
 
 \subsection{Производная и дифференциал}
 
 \begin{definition}
-    
+    Производной функции $f(x)$ в точке $x_0$ называют следующий предел, если он существует
+    \[ \dslim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} = f'(x_0) \]
 \end{definition}
 
-\textbf{Замечание 1}
+\begin{remark}
+    Обозначают $f(x) - f(x_0) = \Delta f(x_0)$ и называют приращение функции 
+    в точке $x_0$ соответсвует приращению аргумента $x - x_0 = \Delta x \implies$
+    \[ f'(x_0) = \dslim_{\Delta x \to 0} \frac{\Delta f(x_0)}{\Delta x} \]
+\end{remark}
 
-\textbf{Замечание 2}
+\begin{remark}
+    \[ 
+        \dslim_{x \to x_0 - 0} \frac{\Delta f(x_0)}{\Delta x} = f_-'(x_0) 
+        \quad (\textnormal{левая производная в точке } x_0)
+    \]
+    \[ 
+        \dslim_{x \to x_0 + 0} \frac{\Delta f(x_0)}{\Delta x} = f_+'(x_0) 
+        \quad (\textnormal{правая производная в точке } x_0)
+    \]
+
+    Очевидно, $\exists f'(x_0) \iff \exists f_-'(x_0) = f_+'(x_0)$
+\end{remark}
 
 \begin{definition}
-    
+    Говорят, что функция $f(x)$ дифференцируема в точке $x_0$, если её приращение
+    $\Delta f(x_0)$ соответствует приращению аргумента $\Delta x$ можно представить в виде
+    \[ \Delta f(x_0) = A * \Delta x + O(\Delta x) \quad \textnormal{при } \Delta x \approach{} 0, \, A - const \]
 \end{definition}
 
-\textbf{Пример}
+\begin{example}
+    
+\end{example}
+% \textbf{Пример}
 
 \subsection{Геометрический смысл производной и дифференциала}
 
 \begin{theorem}[Критерий дифференцируемости в точке]
-    
+    Для того, чтобы $f(x)$ была дифференцируема в точке $x_0 \iff $ чтобы в точке $x_0$ существовала $f'(x_0)$.
 \end{theorem}
 \begin{proof}
     
 \end{proof}
 
-\begin{theorem}[Связь непрерывность и дифференцируемости]
-    
+\begin{theorem}[Связь непрерывности и дифференцируемости]
+    Если $f(x)$ дифференцируема в точке $x_0 \implies f(x)$ непрерывна в точке $x_0$.
 \end{theorem}
 \begin{proof}
     
 \end{proof}
 
-\textbf{Пример}
+\begin{example}
+    \textbf{Обратное неверно}
+\end{example}
 
 \begin{theorem}[О дифференцируемости линейной комбинации, произведения, частного]
-    
+    Пусть функции $u(x)$ и $v(x)$ дифференцируемы в точке $x_0$.
+    Тогда в точке $x_0$ дифференцируемы
+
+    \[ c_1 u(x) + c_2 v(x)\]
+    \[ u(x) * v(x) \]
+    \[ \frac{u(x)}{v(x)} \quad (v(x) \ne 0) \]
+
+    При этом 
+    \[(c_1 u(x) + c_2 v(x))' |_{x = x_0} = c_1 u'(x_0) + c_2 v'(x_0)\]
+    \[ (u(x) * v(x))' |_{x = x_0} = u'(x_0) * v(x_0) + v'(x_0) * u(x_0)\]
+    \[ \left( \frac{u(x)}{v(x)} \right)' |_{x = x_0} = \frac{u'(x_0) * v(x_0) - u(x_0) * v'(x_0)}{v^2(x_0)} \]
 \end{theorem}
 \begin{proof}
     
 \end{proof}
 
 \begin{theorem}[О дифференцируемости сложной функции]
-    
+    Если функция $\varphi (x)$ дифференцируема в точке $x_0$, а $f(t)$ 
+    дифференцируема в точке $t_0 = \varphi (x_0)$ $\implies$
+    $f(\varphi (x))$ дифференцируема в точке $x_0$ и
+    $(f(\varphi (x)))' |_{x = x_0} = f'(t_0) * \varphi' (x_0)$
 \end{theorem}
 \begin{proof}
     
 \end{proof}
 
 \begin{theorem}[О производной обратной функции]
-    
+    Пусть $y = f(x)$ непрерывна, строго монотонна в $(a; b)$ и
+    $\exists f'(x_0) \ne 0$, где $x_0 \in (a; b)$.
+
+    Тогда обратная функция $x = \varphi (x)$ имеет в точке $y_0 = f(x_0)$ производную
+    \[ \varphi' (y_0) = \frac{1}{f'(x_0)} \]
 \end{theorem}
 \begin{proof}
     
