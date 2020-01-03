@@ -1603,4 +1603,370 @@ $n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
     \end{enumerate}
 \end{proof}
 
+\textbf{ДОПИСАТЬ}
+
+\section{Непрерывность функций}
+
+\subsection{Точки непрерывности}
+
+Пусть функция $f(x)$ задана на множестве $A$.
+
+\begin{definition}[Гейне]
+    $f(x)$ называют \textbf{непрерывной} в точке $a$, если
+    $\forall \{ x_n \}: x_n \in A,\, x_n \approach{n \to \infty} a$
+    выполняется $f(x_n) \approach{n \to \infty} f(a)$
+\end{definition}
+
+\begin{definition}[Коши]
+    $f(x)$ называют \textbf{непрерывной} в точке $a$, если
+    $\forall \eps > 0 \quad \exists \delta_\eps > 0 \quad
+    \forall x \in A: \: |x - a| < \delta_\eps$ выполняется
+    $|f(x) - f(a)| < \eps$
+\end{definition}
+
+\begin{definition}
+    Если $a$ -- предельная точка множества $A$, то $f(x)$ называют \textbf{непрерывной}
+    в точке $a$, если $\exists \dslim_{x \to \infty} f(x) = f(a)$
+\end{definition}
+
+\textbf{Замечание.} Во всех определениях тогда точка $a$ называется \textbf{точкой непрерывности}
+функции $f(x)$.
+
+Если в определении Коши заменить окрестность точки $a$ на левую или правую полуокрестность,
+то получим определение функции, непрерывной в точке $a$ слева или справа соответственно.
+(Для фукнций одной переменной).
+
+\begin{definition}
+    Если функция непрерывна в каждой точке множества $B$, 
+    то говорят, что функция непрерывна на множестве $B$.
+\end{definition}
+
+\begin{definition}
+    Точка $a$ называется \textbf{точкой разрыва} $f(x)$, если или $f(x)$ определена
+    в точке $a$, но точка $a$ не является точкой непрерывности $f(x)$ или точка $a$ --
+    предельная точка $A$ и $\exists \dslim_{x \to a} f(x)$, но $a \notin A = D(f)$
+\end{definition}
+
+\subsection{Классификация точек разрыва (для функции одной переменной)}
+
+\begin{enumerate}
+    \item
+        Если $\exists \dslim_{x \to a} f(x)$, но он либо не равен $f(a)$, либо
+        $a \notin A = D(f) \implies a$ называется точкой устранимого разрыва.
+
+        $f(x) = \frac{\sin x}{x} \implies x = 0$ -- точка устранимого разрыва.
+
+    \item 
+        Если $\exists \dslim_{x \to a - 0} f(x) \ne \dslim_{x \to a + 0} f(x)$, то
+        точку $a$ называют точкой разрыва I рода.
+
+        $sgn x = \begin{cases}
+            1  &\implies x > 0 \\
+            0  &\implies x = 0 \\
+            -1 &\implies x < 0
+        \end{cases}$
+
+        $x = 0$ -- точка разрыва I рода.
+    
+    \item
+        В остальных случаях точка $a$ называется точкой разрыва II-го рода, в частности,
+        если в этой точке не существует хотя бы одного одностороннего предела.
+
+        $y = \frac{1}{x} \implies x = 0$ -- точка разрыва II-го рода.
+\end{enumerate}
+
+\begin{theorem}[Свойства непрерывности функций]
+    \begin{enumerate}
+        \item 
+            Если фукнция $f(x)$ задана в окрестности точки $a$ и непрерывна в точке $a$,
+            то существует окрестность точки $a$ в которой $f(x)$ ограничена и существует
+            окрестность точки $a$ в которой $f(x)$ сохраняеи знак числа $f(a) \ne 0$.
+        
+        \item 
+            Если $f_1(x)$ и $f_2(x)$ непрерывны в точке $a$ $\implies$
+            $c_1 f_1(x) + c_2 f_2(x), \, (c_1, c_2 \textnormal{ -- const})$,
+            $f_1(x) * f_2(x)$, $\frac{f_1(x)}{f_2(x)}, \, (f_x(x) \ne 0)$ -- непрерывны в точке $a$.
+        
+        \item
+            Если $t = \varphi(x), \, y = f(t)$ заданы так, что $E(\varphi) = D(f)$,
+            $\varphi(x)$ непрерывна в точке $a$, $f(t)$ непрерывна в $b = \varphi(a)$
+            $\implies f(\varphi(x))$ непрерывна в точке $a$.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Некоторые свойства функций непрерывных на замкнутом ограниченном множестве}
+
+\begin{definition}
+    Непрерывную на множестве $A$ функцию $f(x)$, ($A \subset \R$ или $A \subset \R^m$)
+    называют \textbf{равномрно непрерывной} на $A$, если
+    \[
+        \forall \eps > 0 \quad \exists \delta_\eps > 0 \quad \forall x', x'' \in A:
+        |x' - x''| < \delta_\eps
+    \]
+    \[
+        \textnormal{выполняется } |f(x') - f(x'')| < \eps
+    \]
+\end{definition}
+
+\textbf{Пример}
+
+$y = \sin \frac{1}{x}, \, A = (0; 1)$
+
+$\sin \frac{1}{x}$ -- непрерывна на $A$, но не является равномерно непрерывной, так как
+
+$x_n = \frac{1}{\frac{\pi}{2} + \pi n} 
+\implies \begin{cases}
+    f(x_{2n}) = \sin (\frac{\pi}{2} + 2 \pi n) = 1 \\
+    f(x_{2n+1} = \sin (-\frac{\pi}{2} + 2 \pi n) = -1
+\end{cases}$
+
+$x_{2n} - x_{2n-1} = \frac{1}{\frac{\pi}{2} + 2 \pi n} - \frac{1}{-\frac{\pi}{2} + 2 \pi n} =
+-\frac{\pi}{(\frac{\pi}{2} + 2 \pi n)(-\frac{\pi}{2} + 2 \pi n)} \approach{n \to \infty} 0$
+
+$\implies \exists \eps_0 > 0$ (К примеру, $\eps_0$ любое из $0 < \eps_0 < 2$. Возьмём $\eps_0 = \frac{1}{10}$)
+$\implies \forall \delta > 0 \quad \exists x'=2n, x''=2n-1: \: |x' - x''| < \delta$, а
+$\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \sin \frac{1}{x}$ 
+не является равномерно непрерывной на $A$.
+
+\begin{theorem}[О непрерывных функциях на замкнутом непрерывном множестве]
+    Пусть $f(x)$ задано и непрерывно на заданном ограниченном множестве $A$. Тогда она:
+
+    \begin{enumerate}
+        \item Ограничена на $A$ (первая теорема Вейерштрасса)
+        \item Достигает на $A$ своего наибольшего и наименьшего значения (вторая теорема Вейерштрасса)
+        \item Равномерно непрерывна на $A$ (теорема Кантора)
+    \end{enumerate}
+    
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item 
+            Допустим \textbf{от противного}, что $f(x)$ не ограничена на $A$, то есть
+            $\forall C > 0 \quad \exists x_C \in A: \: |f(x_C)| > C$
+            Возьмём $C = n, \, n \in \N \implies \exists x_n \in A: \: f(x_n) > n$
+            (Точки $x_n$ всегда можно считать различными, достаточно их выбирать из условия
+            $|f(x_{n+1})| > |f(x_n)|$)
+
+            Получили $\{ x_n \}$ -- ограниченная, так как $x_n \in A$ -- ограниченная
+            $\implies$ по теореме Больцано-Вейерштрасса для последовательностей
+
+            $\exists \{ x_{K_n} \} \subset \{ x_n \}: \: x_{K_n} \approach{n \to \infty} a$
+            $\implies a$ -- предельная точка $A$, $A$ -- замкнуто $\implies a \in A$.
+
+            $f(x)$ непрерывна на $A \implies f(x)$ непрерывна в точке $a$ $\implies$
+            по определению Гейне $f(x_{K_n}) \approach{} f(a)$, но это невозможно, так как
+
+            \[ f(x_{K_n}) > n, \, n \in \N, \, \textnormal{то есть неограничена} \]
+
+            Получили противоречие $\implies$ $f(x)$ -- ограничена на множестве $A$.
+        
+        \item
+            Надо доказать, что $\exists x_1, x_2 \in A: \begin{cases}
+                f(x_1) = \sup f(x) = M \\
+                f(x_2) = \inf f(x) = m
+            \end{cases}; x \in A$
+
+            Допустим \textbf{противное}, что
+            \[ \forall x \in A \quad f(x) \ne M \]
+            
+            Рассмотрим $\varphi(x) = \frac{1}{M - f(x)}$ -- непрерывную на $A$, $\varphi(x) > 0$ на $A$.
+            $\implies$ по первой теореме Вейерштрасса $\varphi$ -- ограничена на $A$ 
+            $\implies \exists \mu > 0: \: \forall x \in A \quad \varphi(x) \le \mu$,
+            то есть $\frac{1}{M - f(x)} \le \mu \quad \forall x \in A$
+            $\implies M - f(x) \ge \frac{1}{\mu} ~ f(x) \le M - \frac{1}{\mu} \quad
+            \forall x \in A$, то есть мы нашли мажоранту $< M$, а это противоречит определению
+            верхней грани, значит
+            \[ \exists x_1 \in A \quad f(x_1) = M \]
+
+            Для $m$ аналогично.
+
+        \item
+            \textbf{От противного}: $f(x)$ не является равномерно непрерывной на $A$, то есть
+            \[ 
+                \exists \eps_0 > 0 \quad \forall \delta > 0 \quad \exists x_0', x_0'' \in A: \: | x_0' - x_0'' | < \delta,
+                \, | f(x_0') - f(x_0'') | \ge \eps_0
+            \]
+            Будем брать $\delta = \delta_n$, где $\{ \delta_n \} \approach{n \to 0} 0$
+
+            Тогда $\forall \delta_n \quad \exists x_n', x_n'': \: |x_n' - x_n''| < \delta_n, \, |f(x_n') - f(x_n'')| \ge \eps_0$
+
+            $\{x_n'\}, \{x_n''\} \in A$, $A$ -- ограничено $\implies$ $\{x_n'\}, \{x_n''\}$ -- ограничены
+            $\implies$ по теореме Больцано-Вейерштрасса $\exists \{x_{K_n}'\}$ -- подпоследовательность
+            $\{x_n'\}: \: x_{K_n}' \approach{n \to \infty} a$, $A$ -- замкнуто $\implies a \in A$.
+
+            \[ 0 < |x_{K_n}' - x_{K_n}''| < \delta_{K_n} \]
+            \[ 0 \approach{} 0, \, \delta_{K_n} \approach{} 0 \implies |x_{K_n}' - x_{K_n}''| \approach{} 0 \]
+            
+            $\implies \{x_{K_n}''\} \approach{n \to \infty} a$, тогда по определению непрерывности по Гейне
+            $f(x_{K_n}') \approach{} f(a)$ и $f(x_{K_n}'') \approach{} f(a)$, а это противоречит тому, что
+            $|f(x_{K_n}') - f(x_{K_n}'')| \ge \eps_0$, значит $f(x)$ равномерно непрерывна на множестве $A$.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Коши о промежуточном значении]
+    Пусть $f(x)$ -- непрерывна на $[a; b]$ (на концах отрезка будем понимать как одностороннюю непрерывность).
+    Если $f(a) \ne f(b)$ $\implies$ $f(x)$ принимает на $(a; b)$ любое значение между $f(a)$ и $f(b)$.
+\end{theorem}
+\begin{proof}
+    Допустим $f(a) < f(b)$ и пусть $\gamma: \: f(a) < \gamma < f(b)$
+
+    Рассмотрим $\varphi(x) = f(x) - \gamma$. Очевидно $\varphi(a) < 0, \varphi(b) > 0$,
+    $\varphi(x)$ непрерывна на $[a; b]$. $\frac{a + b}{2}$ -- середина отрезка $[a; b]$
+
+    Возможны три случая:
+    \begin{enumerate}
+        \item $\varphi(\frac{a + b}{2}) = 0 \implies x_0 = \frac{a + b}{2} \implies f(x_0) = \gamma$
+        \item $\varphi(\frac{a + b}{2}) > 0$, то вместо отрезка $[a; b]$ возьмём $[a_1; b_1] = [a; \frac{a + b}{2}]$
+        \item $\varphi(\frac{a + b}{2}) < 0$, то вместо отрезка $[a; b]$ возьмём $[a_1; b_1] = [\frac{a + b}{2}; b]$
+    \end{enumerate}
+    и $b_1 - a_1 = \frac{b - a}{2}$
+
+    Разделим отрезок $[a_1; b_1]$ пополам и так далее. В результате будем получать отрезки 
+    $[a_n; b_n]: \: \varphi(a_n) < 0, \, \varphi(b_n) > 0, \, b_n - a_n = \frac{b - a}{2^n}$
+
+    Если при $k$: $\varphi(\frac{a_k - b_k}{2}) = 0: \: x_0 = \frac{a_k - b_k}{2} \quad f(x0) = \gamma$
+
+    Если процесс бесконечен, то простроим две последовательности:
+    \[ \{a_n\} \textnormal{ -- монотонно неубывающую, ограниченную } (a_n < b) \]
+    \[ \{a_n\} \textnormal{ -- монотонно невозрастающую, ограниченную } (b_n < a) \]
+
+    $\implies \exists \dslim_{x \to \infty} a_n$ обозначим $x_0$ и 
+    $\implies \exists \dslim_{x \to \infty} b_n = x_0$, так как
+
+    \[ 0 < b_n - a_n < \frac{b - a}{2^n} \]
+    \[ 0 \approach{} 0, \, \frac{b - a}{2^n} \approach{} 0 \implies b_n - a_n \approach{} 0 \]
+
+    Так как $\varphi(a_n) < 0 \implies \varphi(x_0) \le 0; \; \varphi(b_n) > 0 \implies \varphi(x_0) \ge 0$
+    $\implies \varphi(x_0) = 0$, то есть $f(x_0) = \gamma$
+\end{proof}
+
+\textbf{Следствие}
+
+Функция $f(x)$ непрерывная на отрезке $[a; b]$, а также принимает на нём любое значение между $\inf f(x)$ и $\sup f(x)$.
+
+%%%%%%%%%%%%%
+
+\subsection{Монотонные функции}
+
+\begin{definition}
+    Фукнция $f(x)$ называется \textbf{монотонно неубывающей (возрастающей; невозрастающей; убывающей)} на $A$, если
+
+    $\forall x_1, x_2 \in A: \: x_1 < x_2$ выполняется $f(x_1) \le f(x_2)$ 
+    $(
+        f(x_1) < f(x_2); \;
+        f(x_1) \ge f(x_2); \;
+        f(x_1) > f(x_2) 
+    )$
+
+    Неубывающие (возрастающие; невозрастающие; убывающие) функции называбт монотонными. Иногда \textbf{возрастающие и убывающие}
+    называют \textbf{строго монотонными}.
+\end{definition}
+
+\begin{theorem}[T1. О монотонной функции]
+    Пусть $f(x)$ монотонна на $(a; b) \implies \forall \xi \in (a; b)$ 
+    $\quad \exists \dslim_{x \to \xi - 0} f(x)$, обозначенное как $f(\xi - 0)$,
+    $\quad \exists \dslim_{x \to \xi + 0} f(x)$, обозначенное как $f(\xi + 0)$,
+    а $f(\xi)$ заключено между ними.
+\end{theorem}
+\begin{proof}
+    Пусть для определённости $f(x)$ монотонно неубывает на $(a; b)$. Возьмём $x < \xi$
+    $\implies f(x) \le f(\xi) \implies \sup f(x) \le f(\xi) \; (x < \xi)$
+    $\implies$ по 2 признаку sup $\forall \eps > 0 \quad \exists x_0:\: x_0 < \xi$
+    и $f(x_0) > \sup f(x) - \eps \quad (x < \xi)$
+
+    Тогда $\forall x: x_0 < x < \xi$ имеем 
+    $\sup f(x) - \eps < f(x_0) \le f(x) \le \sup f(x) < \sup f(x) + \eps \quad (x < \xi)$
+
+    Получаем $|f(x) - \sup f(x)| < \eps \quad (x < \xi) \implies$
+    \[ \forall \eps > 0 \quad \exists \delta_\eps = \xi - x_0 > 0 \]
+    \[ \forall \xi - \delta_\eps < x < \xi \textnormal{ выполняется } |f(x) - \sup f(x)| < \eps \quad (x < \xi)\]
+
+    $\bydef \sup f(x) = f(\eps - 0) \quad (x < \xi)$
+
+    $\exists f(\eps + 0) = \inf f(x) \quad (x > \xi)$ доказывается аналогично
+
+    $f(\xi) \ge \inf f(x) \quad (x > \xi)$
+\end{proof}
+
+\begin{theorem}[Т2. О монотонной непрерывной функции]
+    Если $f(x)$ монотонна и непрерывна на интревале $(a; b)$, то она принимает на $(a; b)$
+    все значения между $f(a + 0)$ и $f(b - 0)$
+\end{theorem}
+\begin{proof}
+    Пусть $f(x)$ монотонна неубывает на $(a; b)$ $\implies$
+    по Т1 $\exists f(a + 0) = \inf f(x), \, \exists f(b - 0) = \sup f(x) \quad (x \in (a; b))$
+
+    Пусть число $\gamma:\: f(a + 0) < \gamma < f(b - 0) \implies$ по признаку sup и inf ($\prop{2}$)
+    $\implies \forall \eps > 0$
+    \[ \exists x_1 \in (a; b): \: f(a + 0) < f(x_1) < f(a + 0) + \eps \]
+    \[ \exists x_2 \in (a; b): \: f(b - 0) - \eps < f(x_2) < f(b - 0) \]
+
+    Возьмём $\eps > 0$ таким, чтобы $f(a + 0) + \eps < \gamma < f(b - 0) - \eps$
+    $\implies f(x_1) < \gamma < f(x_2)$
+
+    Но $f(x)$ непрерывна на $[x_1; x_2] \implies$ по Теореме Коши о промежуточном значении
+    \[ \exists x_0 \in [x_1; x_2] \subset (a; b) \quad f(x_0) = \gamma \]
+\end{proof}
+
+\begin{theorem}[Т3. О существовании обратной функции]
+    Если $f(x)$ непрерывна и строго монотонна на $[a; b]$, 
+    $A = \inf f(x), B = \sup f(x) \quad (x \in [a; b])$,
+    тогда на $[A; B]$ существует непрерывная строго монотонная функция
+    $\varphi(x)$, обратная функции $f(x)$.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 
+            Существование
+        
+            $f(x)$ непрерывна и строго монотонна на $[a; b]$ $\implies$ по Т2 она может
+            принимать любое значение $\gamma$ между $A$ и $B$ и только один раз, то есть каждому
+            значению можно сопоставить только один аргумент $\implies$ на $[A; B]$ существует
+            обратная $y = f(x)$ функция $\varphi(x)$.
+
+        \item
+            Монотонность
+
+            Пусть $f(x)$ возрастающая $\implies \forall x_1 < x_2 \quad f(x_1) < f(x_2)$ и наоборот.
+
+            Обозначим $y_1 = f(x_1) \implies x_1 = \varphi(y_1); \; y_2 = f(x_2) \implies x_2 = \varphi(y_2)$
+            $\implies \forall y_1 < y_2 \quad \varphi(y_1) < \varphi(y_2) \implies x = \varphi(y)$ -- возрастающая.
+        
+        \item
+            Непрерывность
+
+            $x_0 \in (a; b)$
+
+            Возьмём $\eps > 0$, что $(x_0 - \eps; x_0 + \eps) \subset (a; b)$
+
+            Обозначим $y_0 = f(x_0), \, y_1 = f(x_0 - \eps), \, y_2 = f(x_0 + \eps)$
+            и выберем $\delta = \min (y_2 - y_0; y_0 - y_1)$
+
+            Тогда, если $|y - y_0| < \delta \implies 
+            y_1 = y_0 - (y_0 - y_1) \le y_0 - \delta < y_0 + \delta \le y_0 + (y_2 - y_0) = y_2$
+            $\implies (y_0 - \delta; y_0 + \delta) \subset (y_1; y_2) \implies$ при
+            $|y - y_0| < \delta$ получим $x_0 < \eps = \varphi(y_1) < \varphi(y) < \varphi(y_2) = x_0 + \eps$
+            $\implies |\varphi(y) - \varphi(y_0)| < \eps \implies$ по определению $\varphi(y)$
+            непрерывна в точке $y_0$, $y_0 \in (A; B)$, а в силу того, что $x_0$ была выбрана
+            произвольно $\implies y_0$ произвольна $\implies$ получаем $\varphi(y)$ непрерывна на $(A; B)$.
+
+            В концах $A$, $B$ непрерывность доказывается аналогично.
+        \end{enumerate}
+\end{proof}
+
+\textbf{Замечание}
+
+В Теоремах отрезок $[a; b]$ можно заменить на $(a; b)$ или $[a; b)$ или $(a; b]$. Это же касается $[A; B]$.
+
+%%%%%%%%%%%%%%%%%%
+\section{Некоторые замечательные пределы}
+
+\textbf{ДОБАВИТЬ}
+
+%%%%%%%%%%%%%%%%%%
+\section{Дифференциальне исчисление}
+
+\subsection{Производная и дифференциал}
+
 \end{document}
