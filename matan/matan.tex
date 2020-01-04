@@ -653,21 +653,21 @@ $A$, а это противоречит условию.
 
 \includegraphics[scale=0.4]{complexplane1}
 
-\[z = |z|(\cos \phi + i \sin \phi)\]
+\[z = |z|(\cos  \varphi + i \sin  \varphi)\]
 \[|z| = \sqrt{Re^2(z) + Im^2(z)} = \sqrt{x^2 + y^2}\]
 
 Угол, который радиус-вектор образует с положительной осью $Re(z)$
 называют аргументом $z$.
 
-\[\phi = \textnormal{Arg}(z)\]
+\[ \varphi = \textnormal{Arg}(z)\]
 \[
     \begin{cases}
-        \cos \phi = \frac{Re(z)}{|z|} \\
-        \sin \phi = \frac{Im(z)}{|z|}
+        \cos  \varphi = \frac{Re(z)}{|z|} \\
+        \sin  \varphi = \frac{Im(z)}{|z|}
     \end{cases}
 \]
 
-При этом $\phi \in (-\pi; \pi]$ называют главным значением аргумента и обозначают $\arg z$
+При этом $ \varphi \in (-\pi; \pi]$ называют главным значением аргумента и обозначают $\arg z$
 \[Arg(z) = \arg z + 2 \pi k, k \in \mathbb{Z}\]
 
 \parspace
@@ -680,19 +680,19 @@ $A$, а это противоречит условию.
     \item Из связи прямоугольной и полярной системы координат 
     
     $\implies Re(z) = |z| \cos (Arg(z)), Im(z) = |z| \sin (Arg(z)) \\
-    z = Re(z) + i*Im(z) = |z|(\cos \phi + i \sin \phi)$ -- \textbf{тригонометрическая
+    z = Re(z) + i*Im(z) = |z|(\cos  \varphi + i \sin  \varphi)$ -- \textbf{тригонометрическая
     форма записи комплексного числа}.
 \end{enumerate}
 
 \subsection{Показательная форма записи комплексного числа}
 
-Рассмотрим функцию Эйлера: $e^{i \phi} = \cos \phi + i \sin \phi$
+Рассмотрим функцию Эйлера: $e^{i  \varphi} = \cos  \varphi + i \sin  \varphi$
 
 \begin{theorem}[Свойства функции Эйлера]
     \begin{enumerate}
-        \item $e^{i \phi_1} * e^{i \phi_2} = e^{i(\phi_1 + \phi_2)}$
-        \item $\frac{e^{i \phi_1}}{e^{i \phi_2}} = e^{i(\phi_1 - \phi_2)}$
-        \item $(e^{i \phi})^n = e^{i n \phi} \quad (n \in \mathbb{N})$
+        \item $e^{i  \varphi_1} * e^{i  \varphi_2} = e^{i( \varphi_1 +  \varphi_2)}$
+        \item $\frac{e^{i  \varphi_1}}{e^{i  \varphi_2}} = e^{i( \varphi_1 -  \varphi_2)}$
+        \item $(e^{i  \varphi})^n = e^{i n  \varphi} \quad (n \in \mathbb{N})$
     \end{enumerate}    
 \end{theorem}
 
@@ -1506,6 +1506,8 @@ $n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
     $\forall \varepsilon > 0 \quad \exists \delta_\varepsilon > 0 \quad
     \forall x \in A : \; 0 < | x - a | < \delta_\varepsilon$ выполняется
     $|f(x) - b| < \varepsilon$
+
+    *рисунок*
 \end{definition}
 
 \begin{theorem}[Об эквивалентности определений Коши и Гейне]
@@ -1644,7 +1646,7 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
     Пусть $\omega(\omega_1, \omega_2, \dots, \omega_m) \in R^m$ -- произвольный вектор
     единичной длины $|\omega|=1$ и пусть в любой окрестности точки $a \in R^m$ имеются 
     точки вида $x(t) = a + t \omega$ ($t \in R,\, 0 <= t <= t_0$), входящие в область определения $f(x)$.
-    Для таких $x(t)$ рассмотрим функцию $\phi(t) = f(x(t))$. Если $\exists \dslim_{t \to 0 + 0} \phi(t) = b$,
+    Для таких $x(t)$ рассмотрим функцию $ \varphi(t) = f(x(t))$. Если $\exists \dslim_{t \to 0 + 0}  \varphi(t) = b$,
     то его называют пределом $f(x)$ в точке $x = a$ по направлению вектора $\omega$.
 \end{definition}
 
@@ -1661,12 +1663,12 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
 
     \[ x(t) = (t \omega_1; t \omega_2) \]
     \[ 
-        \phi(t) = u(x(t)) = 
+         \varphi(t) = u(x(t)) = 
         \frac{(t \omega_1)^2 - (t \omega_2)^2}{(t \omega_1)^2 + (t \omega_2)^2} = 
         \frac{t^2 (\omega_1^2 - \omega_2^2)}{t^2 (\omega_1^2 + \omega_2^2)}
     \]
     \[
-        \implies \exists \dslim_{t \to +0} \phi(t) = 
+        \implies \exists \dslim_{t \to +0}  \varphi(t) = 
         \dslim_{t \to +0} \frac{t^2 (\omega_1^2 - \omega_2^2)}{t^2 (\omega_1^2 + \omega_2^2)} = 
         \frac{\omega_1^2 - \omega_2^2}{\omega_1^2 + \omega_2^2}
     \]
@@ -1691,10 +1693,10 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
 \subsection{Определение}
 
 \begin{definition}
-    Говорят, что $f(x)$ имеет порядок функции (асимптотику) $\phi(x)$ на множестве $A$,
+    Говорят, что $f(x)$ имеет порядок функции (асимптотику) $ \varphi(x)$ на множестве $A$,
     если $\exists C > 0:\: \forall x \in A$ ($C$ -- const) выполняется
-    $|f(x)| \le C*|\phi(x)|$. (Или если при $x \approach{} a$ существует окрестность точки $a$, 
-    в которой выполняется $|f(x)| \le C*|\phi(x)|$), и обозначают $f(x) = O (\phi(x))$ 
+    $|f(x)| \le C*| \varphi(x)|$. (Или если при $x \approach{} a$ существует окрестность точки $a$, 
+    в которой выполняется $|f(x)| \le C*| \varphi(x)|$), и обозначают $f(x) = O ( \varphi(x))$ 
     (Или на $A$ при $x \approach{} a$)
 \end{definition}
 
@@ -1708,15 +1710,15 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
 \begin{remark}
     \begin{enumerate}
         \item $f(x) = O(1)$ на $A$ означает что $f(x)$ - ограничена на $A$.
-        \item Если на множестве $A$ $f(x) = O(\phi_1(x)), \; \phi_1(x) = O(f_2(x)) \implies f(x) = O (\phi_2(x))$ на $A$
+        \item Если на множестве $A$ $f(x) = O( \varphi_1(x)), \;  \varphi_1(x) = O(f_2(x)) \implies f(x) = O ( \varphi_2(x))$ на $A$
     \end{enumerate}
 \end{remark}
 
 \begin{definition}
-    Говорят, что $f(x)$ имеет порядок малости функции $\phi(x)$ при $x \approach{} a$, 
-    если $\exists \eps(x):\: f(x) = \eps(x) * \phi(x)$ и $\dslim_{x \to a} \eps(x) = 0$ 
-    (т.е. $\dslim_{x \to a} \frac{f(x)}{\phi(x)} = 0$), и обозначают 
-    $f(x) = o(\phi(x))$ при $x \approach{} a$
+    Говорят, что $f(x)$ имеет порядок малости функции $ \varphi(x)$ при $x \approach{} a$, 
+    если $\exists \eps(x):\: f(x) = \eps(x) *  \varphi(x)$ и $\dslim_{x \to a} \eps(x) = 0$ 
+    (т.е. $\dslim_{x \to a} \frac{f(x)}{ \varphi(x)} = 0$), и обозначают 
+    $f(x) = o( \varphi(x))$ при $x \approach{} a$
 \end{definition}
 
 \begin{example}
@@ -1735,17 +1737,17 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
     \item 
         Если 
         $\begin{cases}
-            f(x) = O(\phi(x)) &\textnormal{ при } x \to a \\
-            g(x) = o(\phi(x)) &\textnormal{ при } x \to a
+            f(x) = O( \varphi(x)) &\textnormal{ при } x \to a \\
+            g(x) = o( \varphi(x)) &\textnormal{ при } x \to a
         \end{cases}$ 
-        $\implies f(x) + g(x)= O(\phi(x))$ при $x \to a$
+        $\implies f(x) + g(x)= O( \varphi(x))$ при $x \to a$
     
     \item 
-        Если $f(x) = o(\phi_1(x))$ и $\phi_1(x) = o(\phi_2(x))$ при 
-        $x \approach{} a \implies f(x) = o(\phi_2(x))$ при $x \to a$
+        Если $f(x) = o( \varphi_1(x))$ и $ \varphi_1(x) = o( \varphi_2(x))$ при 
+        $x \approach{} a \implies f(x) = o( \varphi_2(x))$ при $x \to a$
     
-    \item Если $f(x) = O(\phi(x))$ при $x \to a$, то $f(x) * g(x) = O(\phi(x) * g(x))$ при $x \to a$
-    \item Если $f(x) = o(\phi(x))$ при $x \to a$, то $f(x) * g(x) = o(\phi(x) * g(x))$ при $x \to a$
+    \item Если $f(x) = O( \varphi(x))$ при $x \to a$, то $f(x) * g(x) = O( \varphi(x) * g(x))$ при $x \to a$
+    \item Если $f(x) = o( \varphi(x))$ при $x \to a$, то $f(x) * g(x) = o( \varphi(x) * g(x))$ при $x \to a$
     \item $f(x) = o(1)$ при $x \to a$ означает $\dslim_{x \to a} f(x) = 0$
 \end{enumerate}
 
@@ -1776,9 +1778,9 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
             $\exists \dslim_{x \to a} f_1(x) = \dslim_{x \to a} f_2(x) = b \implies \dslim_{x \to a} f(x) = b$
 
         \item 
-            Пусть $t = \phi(x)$ и $y = f(t)$ заданы так, что $D_y = A$, $E_g = B$, $D_f = B$. 
-            Пусть $\exists \dslim_{x \to a} \phi(x) = b$ и $\exists \dslim_{t \to b} f(t) = C$, $\phi(x) \ne b$ при $x \ne a$.
-            Тогда $\exists \dslim_{x \to a} f(\phi(x)) = C$
+            Пусть $t =  \varphi(x)$ и $y = f(t)$ заданы так, что $D_y = A$, $E_g = B$, $D_f = B$. 
+            Пусть $\exists \dslim_{x \to a}  \varphi(x) = b$ и $\exists \dslim_{t \to b} f(t) = C$, $ \varphi(x) \ne b$ при $x \ne a$.
+            Тогда $\exists \dslim_{x \to a} f( \varphi(x)) = C$
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -1816,12 +1818,12 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
             Возьмём $\forall {X_n}$:
 
             $X_n \in A,\, X_n \neq a,\, X_n \approach{} a$ $\implies$ (по опр Гейне)
-            $t_n = \phi(X_n) \approach{} b$
+            $t_n =  \varphi(X_n) \approach{} b$
 
             $t_n \in B,\, t_n \neq b$ $\implies$ (по опр Гейне) $f(t_n) \approach{} C$, 
 
-            т.е. $f(\phi(x_n)) \approach{} C$ 
-            $\implies$ (по опр Гейне) $\exists \dslim_{x \to a} f(\phi(x)) = C$
+            т.е. $f( \varphi(x_n)) \approach{} C$ 
+            $\implies$ (по опр Гейне) $\exists \dslim_{x \to a} f( \varphi(x)) = C$
     \end{enumerate}
 \end{proof}
 
@@ -1874,11 +1876,15 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
         Если $\exists \dslim_{x \to a} f(x)$, но он либо не равен $f(a)$, либо
         $a \notin A = D(f) \implies a$ называется точкой устранимого разрыва.
 
+        *рисунок*
+
         $f(x) = \frac{\sin x}{x} \implies x = 0$ -- точка устранимого разрыва.
 
     \item 
         Если $\exists \dslim_{x \to a - 0} f(x) \ne \dslim_{x \to a + 0} f(x)$, то
         точку $a$ называют точкой разрыва I рода.
+
+        *рисунок*
 
         $sgn x = \begin{cases}
             1  &\implies x > 0 \\
@@ -1891,6 +1897,8 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
     \item
         В остальных случаях точка $a$ называется точкой разрыва II-го рода, в частности,
         если в этой точке не существует хотя бы одного одностороннего предела.
+
+        *рисунок*
 
         $y = \frac{1}{x} \implies x = 0$ -- точка разрыва II-го рода.
 \end{enumerate}
@@ -2163,6 +2171,8 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
             Обозначим $y_0 = f(x_0), \, y_1 = f(x_0 - \eps), \, y_2 = f(x_0 + \eps)$
             и выберем $\delta = \min (y_2 - y_0; y_0 - y_1)$
 
+            *рисунок*
+
             Тогда, если $|y - y_0| < \delta \implies 
             y_1 = y_0 - (y_0 - y_1) \le y_0 - \delta < y_0 + \delta \le y_0 + (y_2 - y_0) = y_2$
             $\implies (y_0 - \delta; y_0 + \delta) \subset (y_1; y_2) \implies$ при
@@ -2249,7 +2259,11 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
                 \exists f'(x_0) = \dslim_{\Delta x \to 0} \frac{\Delta f(x_0)}{\Delta x} \implies
                 \dslim_{\Delta x \to 0} \left( \frac{\Delta f(x_0)}{\Delta x} - f'(x_0) \right) = 0
             \]
+            \[ \textnormal{То есть: } \frac{\Delta f(x_0)}{\Delta x} - f(x_0) = o(1) \quad \textnormal{при } \Delta x \approach{} 0 \]
+            \[ \implies \Delta f(x_0) = f'(x_0) \Delta x + o(1) \Delta x, \quad \Delta x \approach{} 0 \]
+            \[ \implies \Delta f(x_0) = f'(x_0) \Delta x + o(\Delta x), \quad \Delta x \approach{} 0 \]
 
+            $\bydef$ $f(x)$ дифференцируема в точке $x_0$.
     \end{enumerate}
 \end{proof}
 
@@ -2257,11 +2271,28 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
     Если $f(x)$ дифференцируема в точке $x_0 \implies f(x)$ непрерывна в точке $x_0$.
 \end{theorem}
 \begin{proof}
-    
+    $f(x)$ -- дифференцируема в точке $x_0 \implies $
+
+    \[ \Delta f(x_0) = f'(x_0) * \Delta x + o(\Delta x), \quad \Delta x \approach{} 0 \]
+    \[ \implies \dslim_{\Delta x \to 0} \Delta f(x_0) = \dslim{\Delta x \to 0} (f'(x_0) \Delta x + \frac{o(\Delta x)}{\Delta x} * \Delta x) = 0 \]
+    \[ \dslim_{x - x_0 \to 0} (f(x) - f(x_0)) = 0 \implies \dslim_{x \to x_0} f(x) = f(x_0) \]
+
+    $\bydef$ $f(x)$ -- непрерывна в точке $x_0$
 \end{proof}
 
 \begin{example}
-    \textbf{Обратное неверно}
+    \textbf{Обратное неверно} *рисунок*
+
+    $y = |x|$
+
+    $y = \begin{cases}
+        -x, &\textnormal{если } x < 0 \\
+         x, &\textnormal{если } x \ge 0
+    \end{cases}$
+
+    $y$ -- непрерывна в точке $x = 0$, но не дифференцируема.
+
+    $f_-(0) = -1,\, f_+(0) = 1 \implies \not\exists f'(0)$
 \end{example}
 
 \begin{theorem}[О дифференцируемости линейной комбинации, произведения, частного]
