@@ -1630,7 +1630,200 @@ $n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
     \end{enumerate}
 \end{proof}
 
-\textbf{ДОПИСАТЬ}
+\begin{definition}
+	Число $b$ называется левым (правым) пределом функции $f(x)$ в точке $x = a$, 
+    если $\forall \eps > 0 \quad \exists \delta_\eps > 0: \: \forall x \in A: \: a - \delta_\eps < x < a$ 
+    выполняется $|f(x) - b| < \eps \quad (a < x < a + \delta_\eps)$ и обозначается 
+    $b = \dslim_{x \to a - 0} f(x) (b = lim_(x \to a+0) f(X))$
+\end{definition}
+
+\textbf{Утверждение. }
+$\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x \to a + 0} = b$
+
+\begin{definition}
+    Пусть $\omega(\omega_1, \omega_2, \dots, \omega_m) \in R^m$ -- произвольный вектор
+    единичной длины $|\omega|=1$ и пусть в любой окрестности точки $a \in R^m$ имеются 
+    точки вида $x(t) = a + t \omega$ ($t \in R,\, 0 <= t <= t_0$), входящие в область определения $f(x)$.
+    Для таких $x(t)$ рассмотрим функцию $\phi(t) = f(x(t))$. Если $\exists \dslim_{t \to 0 + 0} \phi(t) = b$,
+    то его называют пределом $f(x)$ в точке $x = a$ по направлению вектора $\omega$.
+\end{definition}
+
+
+*Рисунок*
+
+\begin{example}
+    Если $\exists \dslim_{x \to a} f(x) \quad (x \in R^m) \implies f(x)$ 
+    имеет в точке a предел по любому направлению, обратное - неверно!
+
+    Рассмотрим $u(x_1, x_2) = \frac{x_1^2-x_2^2}{x_1^2+x_2^2}; \quad a(0, 0)$
+
+    $\forall\omega \implies$
+
+    \[ x(t) = (t \omega_1; t \omega_2) \]
+    \[ 
+        \phi(t) = u(x(t)) = 
+        \frac{(t \omega_1)^2 - (t \omega_2)^2}{(t \omega_1)^2 + (t \omega_2)^2} = 
+        \frac{t^2 (\omega_1^2 - \omega_2^2)}{t^2 (\omega_1^2 + \omega_2^2)}
+    \]
+    \[
+        \implies \exists \dslim_{t \to +0} \phi(t) = 
+        \dslim_{t \to +0} \frac{t^2 (\omega_1^2 - \omega_2^2)}{t^2 (\omega_1^2 + \omega_2^2)} = 
+        \frac{\omega_1^2 - \omega_2^2}{\omega_1^2 + \omega_2^2}
+    \]
+
+    Но для каждого направления этот предел свой $\implies \not\exists \dslim_{x \to a} u(x)$  
+\end{example}
+
+\begin{definition}
+    Будем обозначать: 
+    \begin{enumerate}
+        \item $\dslim_{x \to a} f(x) = \infty \iff \forall \eps > 0 \quad \exists \delta_\eps > 0 \quad \forall x \in A:\: 0 < |x-a| < \delta_\eps$ выполняется $|f(x)| > \eps$
+        \item $\dslim_{x \to a} f(x) = +\infty \iff \forall \eps > 0 \quad \exists \delta_\eps > 0 \quad \forall x \in A:\: 0 < |x-a| < \delta_\eps$ выполняется $f(x) > \eps$
+        \item $\dslim_{x \to a} f(x) = -\infty \iff \forall \eps > 0 \quad \exists \delta_\eps > 0 \quad \forall x \in A:\: 0 < |x-a| < \delta_\eps$ выполняется $f(x) < -\eps$
+        \item $\dslim_{x \to \infty} f(x) = b \iff \forall \eps > 0 \quad \exists \delta_\eps > 0 \quad \forall x \in A:\: |x| > \delta_\eps$ выполняется $|f(x)-b| < \eps$
+        \item $\dslim_{x \to +\infty} f(x) = b \iff $
+        \item $\dslim_{x \to -\infty} f(x) = b \iff $
+    \end{enumerate}
+\end{definition}
+
+\section{Символы Ландау}
+
+\subsection{Определение}
+
+\begin{definition}
+    Говорят, что $f(x)$ имеет порядок функции (асимптотику) $\phi(x)$ на множестве $A$,
+    если $\exists C > 0:\: \forall x \in A$ ($C$ -- const) выполняется
+    $|f(x)| \le C*|\phi(x)|$. (Или если при $x \approach{} a$ существует окрестность точки $a$, 
+    в которой выполняется $|f(x)| \le C*|\phi(x)|$), и обозначают $f(x) = O (\phi(x))$ 
+    (Или на $A$ при $x \approach{} a$)
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item $\sin x = O(1)$ при $x \in \R$
+        \item $x = O(x^2)$ на $A = [1; +\infty)$ т.к. $|x| \le x^2$ при $x \in [1; +\infty)$
+    \end{enumerate}
+\end{example}
+
+\begin{remark}
+    \begin{enumerate}
+        \item $f(x) = O(1)$ на $A$ означает что $f(x)$ - ограничена на $A$.
+        \item Если на множестве $A$ $f(x) = O(\phi_1(x)), \; \phi_1(x) = O(f_2(x)) \implies f(x) = O (\phi_2(x))$ на $A$
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}
+    Говорят, что $f(x)$ имеет порядок малости функции $\phi(x)$ при $x \approach{} a$, 
+    если $\exists \eps(x):\: f(x) = \eps(x) * \phi(x)$ и $\dslim_{x \to a} \eps(x) = 0$ 
+    (т.е. $\dslim_{x \to a} \frac{f(x)}{\phi(x)} = 0$), и обозначают 
+    $f(x) = o(\phi(x))$ при $x \approach{} a$
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item $x^2 = o(x)$ при $x \to 0 \quad \dslim_{x \to 0}  \frac{x^2}{x} = 0$
+        \item $\sin x = o(x)$ при $x \to \infty \quad \dslim_{x \to \infty} \frac{sin x}{x} = 0$
+    \end{enumerate}
+\end{example}
+
+\begin{remark}
+    a может быть $\pm\infty, \infty$
+\end{remark}
+
+\subsection{Свойства символов Ландау}
+\begin{enumerate}
+    \item 
+        Если 
+        $\begin{cases}
+            f(x) = O(\phi(x)) &\textnormal{ при } x \to a \\
+            g(x) = o(\phi(x)) &\textnormal{ при } x \to a
+        \end{cases}$ 
+        $\implies f(x) + g(x)= O(\phi(x))$ при $x \to a$
+    
+    \item 
+        Если $f(x) = o(\phi_1(x))$ и $\phi_1(x) = o(\phi_2(x))$ при 
+        $x \approach{} a \implies f(x) = o(\phi_2(x))$ при $x \to a$
+    
+    \item Если $f(x) = O(\phi(x))$ при $x \to a$, то $f(x) * g(x) = O(\phi(x) * g(x))$ при $x \to a$
+    \item Если $f(x) = o(\phi(x))$ при $x \to a$, то $f(x) * g(x) = o(\phi(x) * g(x))$ при $x \to a$
+    \item $f(x) = o(1)$ при $x \to a$ означает $\dslim_{x \to a} f(x) = 0$
+\end{enumerate}
+
+\begin{theorem}[Свойства предела функции]
+    \begin{enumerate}
+        \item Функция $f(x)$ можеть иметь только один предел в точке $a$
+        \item 
+            Если $\exists \dslim_{x \to a} f(x) = b$, то $f(x)$ является 
+            ограниченной в некоторой окрестности точки $a$, и, если $b \ne 0$, 
+            то $f(x)$ сохраняет знак $b$ в некоторой окрестности точки $a$
+
+        \item 
+            Если $\exists \dslim_{x \to a} f_1 (x) = b_1$ и 
+            $\exists \dslim_{x \to a} f_2 (x) = b_2$ и 
+            существует окрестность точки $a$, принадлежащая $D_{f_1} \cap D_{f_2}$, то 
+
+            \[ \exists \dslim_{x \to a} (C_1 * f_1(x) + C_2* f_2(x)) = C_1 * b_1 + C_2 * b_1 \]
+            \[ \exists \dslim_{x \to a} f_1(x) * f_2(x) = b_1 * b_2 \]
+            \[ \exists \dslim_{x \to a} \frac{f_1(x)}{f_2(x)} = \frac{b_1}{b_2} \quad (b_2 \ne 0, f_2(x) \ne 0) \]
+
+        \item 
+            Если $f_1(x) \le f_2(x)$ при $\forall x \in A$ и 
+            $\exists \dslim_{x \to a} f_1(x) = b_1$ и 
+            $\exists \dslim_{x \to a} f_2(x) = b_2$, то $b_1 \le b_2$
+
+        \item
+            Если $f_1(x) \le f(x) \le f_2(x)$ при $\forall x \in A$ и
+            $\exists \dslim_{x \to a} f_1(x) = \dslim_{x \to a} f_2(x) = b \implies \dslim_{x \to a} f(x) = b$
+
+        \item 
+            Пусть $t = \phi(x)$ и $y = f(t)$ заданы так, что $D_y = A$, $E_g = B$, $D_f = B$. 
+            Пусть $\exists \dslim_{x \to a} \phi(x) = b$ и $\exists \dslim_{t \to b} f(t) = C$, $\phi(x) \ne b$ при $x \ne a$.
+            Тогда $\exists \dslim_{x \to a} f(\phi(x)) = C$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Свойства 1, 3, 4, 5 доказываются, опираясь на определение Гейне (предела функции в точке) и на Теорему о свойствах сходящихся последовательностей.
+
+    \begin{enumerate}
+        \setcounter{enumi}{1} \item 
+            \begin{enumerate}
+                \item 
+                    $\exists \dslim_{x \to a} f(x) = b$ $\implies$ (по определению Коши) $\forall \eps > 0 \quad 
+                    \exists \delta_\eps > 0 \quad \forall x \in A:\: 0 < |x - a| < \delta_\eps$ выполняется $|f(x) - b| < \eps$
+
+                    Возьмём $\eps = 1 \implies \exists \delta_1 > 0 \quad \exists x \in A:\: 0 < |x - a | < \delta_1$ выполняется $|f(x)-b| < 1$
+
+                    \[ |f(x) - |b|| \le |f(x) - b| < 1 \]
+                    \[ -1 \le |f(x)| - |b| \le 1 \]
+                    \[ |b| - 1 \le |f(x)| \le |b| + 1 \implies f(x) \textnormal{ -- ограниченная в окрестности точки } a \]
+                
+                
+                \item 
+                    $\exists \dslim_{x \to a} f(x) = b \neq 0$ $\implies$ (по определению Коши) 
+                    $\forall \eps > 0 \exists \delta_\eps > 0 \quad \forall x \in A:\: 0 < |x - a| < \delta_\eps$ выполняется $|f(x) - b| < \eps$
+
+                    Возьмём $\eps = \frac{|b|}{2} > 0 \implies \exists \delta_* > 0 \quad \forall x \in A:\: 0 < |x - a| < \delta_*$ выполняется
+
+                    \[ |f(x) - b| < \frac{|b|}{2} \]
+                    \[ -\frac{|b|}{2} < |f(x) - b| < \frac{|b|}{2} \]
+                    \[ 
+                        b - \frac{|b|}{2} < f(x) < b + \frac{|b|}{2} \implies
+                        f(x) \textnormal{ сохраняет знак числа b в окрестности точки } a
+                    \]
+            \end{enumerate}
+
+        \setcounter{enumi}{5} \item 
+            Возьмём $\forall {X_n}$:
+
+            $X_n \in A,\, X_n \neq a,\, X_n \approach{} a$ $\implies$ (по опр Гейне)
+            $t_n = \phi(X_n) \approach{} b$
+
+            $t_n \in B,\, t_n \neq b$ $\implies$ (по опр Гейне) $f(t_n) \approach{} C$, 
+
+            т.е. $f(\phi(x_n)) \approach{} C$ 
+            $\implies$ (по опр Гейне) $\exists \dslim_{x \to a} f(\phi(x)) = C$
+    \end{enumerate}
+\end{proof}
 
 \section{Непрерывность функций}
 
@@ -2029,15 +2222,35 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
 \begin{example}
     
 \end{example}
-% \textbf{Пример}
 
 \subsection{Геометрический смысл производной и дифференциала}
 
-\begin{theorem}[Критерий дифференцируемости в точке]
+\begin{theorem}[Критерий дифференцируемости функции в точке]
     Для того, чтобы $f(x)$ была дифференцируема в точке $x_0 \iff $ чтобы в точке $x_0$ существовала $f'(x_0)$.
 \end{theorem}
 \begin{proof}
-    
+    \begin{enumerate}[label=\alph*)]
+        \item 
+            Необходимость
+
+            $f(x)$ дифференцируема в точке $x_0 \implies$ по определению.
+            \[ \Delta f(x_0) = A * \Delta x + O(\Delta x), \, \Delta x \approach{} 0 \quad \frac{1}{\Delta x} \]
+            \[ 
+                \dslim_{\Delta x \to 0} \frac{\Delta f(x_0)}{\Delta x} =
+                \dslim_{\Delta x \to 0} \left( A + \frac{o(\Delta x)}{\Delta x} \right) = A
+            \]
+
+            $\bydef \exists f'(x_0) = A$
+        
+        \item
+            Достаточность
+
+            \[ 
+                \exists f'(x_0) = \dslim_{\Delta x \to 0} \frac{\Delta f(x_0)}{\Delta x} \implies
+                \dslim_{\Delta x \to 0} \left( \frac{\Delta f(x_0)}{\Delta x} - f'(x_0) \right) = 0
+            \]
+
+    \end{enumerate}
 \end{proof}
 
 \begin{theorem}[Связь непрерывности и дифференцируемости]
@@ -2086,7 +2299,12 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
     \[ \varphi' (y_0) = \frac{1}{f'(x_0)} \]
 \end{theorem}
 \begin{proof}
-    
+    По теореме об обратной функции: $x= \varphi (x)$ существует, непрерывна и
+    $\Delta x = \Delta \varphi (y_0) \approach{} 0$ при $\Delta y = \Delta f(x_0) \approach{} 0$
+
+    Тогда рассмотрим $\dslim_{\Delta y \to 0} \frac{\Delta \varphi (y_0)}{\Delta y} =
+    \dslim_{\Delta x \to 0} \frac{1}{\frac{\Delta f(x_0)}{\Delta x}} = \frac{1}{f'(x_0)}
+    \implies \varphi'(y_0) = \frac{1}{f'(x_0)}$
 \end{proof}
 
 \end{document}
