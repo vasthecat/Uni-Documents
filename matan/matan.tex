@@ -21,6 +21,8 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
+\usepackage{tikz}
+
 \newcommand{\bydef}{\stackrel{\text{по опр.}}{\implies}} % by definition - по определению
 \newcommand{\parspace}{\vspace{10pt}}
 
@@ -2192,7 +2194,52 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
 %%%%%%%%%%%%%%%%%%
 \section{Некоторые замечательные пределы}
 
-\textbf{ДОБАВИТЬ}
+\subsection{I замечательный предел}
+
+*рисунок*
+
+Сектор единичного радиуса с углом $x \in (0; \frac{\pi}{2})$
+
+\[ S_{\triangle OMA} < S_{\textnormal{сект.} OMA} < S_{\triangle OBA} \]
+\[ \frac{1}{2} OM * OA * \sin \angle MOA < \frac{x}{2 \pi} * \pi * OA^2 < \frac{1}{2} OA * OB = OA * \tan \angle BOA \]
+
+Получаем
+\[ \sin x < x < \tan x \implies \frac{1}{\tan x} < \frac{1}{x} < \frac{1}{\sin x}\]
+
+Домножим на $\sin x$:
+
+\[ \cos x < \frac{\sin x}{x} < 1 \implies \dslim_{x \to +0} \frac{\sin x}{x} = 1 \]
+
+Но $\frac{\sin x}{x}$ -- чётная $\implies \dslim_{x \to -0} \frac{\sin x}{x} = 1$
+$\implies \dslim_{x \to 0} \frac{\sin x}{x} = 1$
+
+\subsection{II замечательный предел}
+
+$[x]$ -- целая часть числа $x$ (наибольшее целое, не превосходящее $x$)
+
+\[ [x] \le x \le [x] + 1 \]
+\[
+    \left( 1 + \frac{1}{[x] + 1} \right)^{[x]} \le
+    \left( 1 + \frac{1}{x} \right)^{x} \le
+    \left( 1 + \frac{1}{[x]} \right)^{[x] + 1}
+\]
+
+Возьмём такие $[x] = n,\, n \in \N$
+
+\[
+    \left( 1 + \frac{1}{n + 1} \right)^{n} \le
+    \left( 1 + \frac{1}{x} \right)^{x} \le
+    \left( 1 + \frac{1}{n} \right)^{n + 1}
+\]
+
+Если $[x] \approach{} +\infty \implies x \approach{} +\infty \implies \dslim_{x \to +\infty} \left( 1 + \frac{1}{x} \right)^x = e$
+
+Пусть $x \approach{} -\infty$. Возьмём $x = -(1 + t)$. Тогда
+\[
+    \dslim_{x \to -\infty} \left( 1 + \frac{1}{x} \right)^x =
+    \dslim_{t \to +\infty} \left( 1 + \frac{1}{t} \right)^t \left( 1 + \frac{1}{t} \right) = e
+    \implies \dslim_{x \to \infty} \left( 1 + \frac{1}{x} \right)^x = e
+\]
 
 %%%%%%%%%%%%%%%%%%
 \section{Дифференциальное исчисление}
