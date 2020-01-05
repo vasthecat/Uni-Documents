@@ -89,6 +89,82 @@
 
 \begin{document}
 
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for horizontal lines, change thickness here
+	
+	\center % Centre everything on the page
+	
+	%------------------------------------------------
+	%	Headings
+	%------------------------------------------------
+	
+	\textsc{\LARGE Издательство Бибы и Бобы}\\[1.5cm] % Main heading such as the name of your university/college
+	
+	\textsc{\Large }\\[0.5cm] % Major heading such as course name
+	
+	\textsc{\large }\\[0.5cm] % Minor heading such as course title
+	
+	%------------------------------------------------
+	%	Title
+	%------------------------------------------------
+	
+	\HRule\\[0.4cm]
+	
+	{\huge\bfseries Лекции по математическому анализу}\\[0.4cm] % Title of your document
+	
+	\HRule\\[1.5cm]
+	
+	%------------------------------------------------
+	%	Author(s)
+	%------------------------------------------------
+	
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Автор}\\
+			\textsc{Биба} % Your name
+		\end{flushleft}
+	\end{minipage}
+	~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Редактор}\\
+			\textsc{Боба} % Supervisor's name
+		\end{flushright}
+	\end{minipage}
+	
+	% If you don't want a supervisor, uncomment the two lines below and comment the code above
+	%{\large\textit{Author}}\\
+	%John \textsc{Smith} % Your name
+	
+	%------------------------------------------------
+	%	Date
+	%------------------------------------------------
+	
+	\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today} % Date, change the \today to a set date if you want to be precise
+	
+	%------------------------------------------------
+	%	Logo
+	%------------------------------------------------
+	
+	%\vfill\vfill
+	%\includegraphics[width=0.2\textwidth]{placeholder.jpg}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+	%----------------------------------------------------------------------------------------
+	
+	\vfill % Push the date up 1/4 of the remaining page
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
 \section{Теория действительного (вещественного) числа}
 
 \subsection{Определение действительного числа}
@@ -1192,6 +1268,7 @@ $n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
 
 \begin{theorem}[Свойства верхнего (и нижнего) предела последовательности]
     Если $\exists \displaystyle\varlimsup_{n \to \infty} x_n = a$ 
+
     или ($\exists \displaystyle\varliminf_{n \to \infty} x_n = a$)
     $\implies \forall \varepsilon > 0$ существует лишь конечное число элементов
     последовательности превосходящие $(a + \varepsilon)$ (меньше $(a - \varepsilon)$).
@@ -1616,7 +1693,7 @@ $n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
                 0 < |x' - a| < \delta_\eps \\
                 0 < |x'' - a| < \delta_\eps
             \end{array}$
-            $\implies |f(x') - f(x'')| < \eps$ или $|f(x_n) - f(x_n)| < \eps$.
+            $\implies |f(x') - f(x'')| < \eps$ или $|f(x_n) - f(x_m)| < \eps$.
             
             Получили, что $\forall \eps > 0 \quad \exists n_\eps = n_{\delta^*} \in \N: \:
             \forall n \ge n_\eps$ выполняется $|f(x_n) - f(x_m)| < \eps \implies
@@ -1638,7 +1715,7 @@ $n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
 	Число $b$ называется левым (правым) пределом функции $f(x)$ в точке $x = a$, 
     если $\forall \eps > 0 \quad \exists \delta_\eps > 0: \: \forall x \in A: \: a - \delta_\eps < x < a$ 
     выполняется $|f(x) - b| < \eps \quad (a < x < a + \delta_\eps)$ и обозначается 
-    $b = \dslim_{x \to a - 0} f(x) (b = lim_(x \to a+0) f(X))$
+    $b = \dslim_{x \to a - 0} f(x) \quad (b = \dslim_{x \to a + 0} f(X))$
 \end{definition}
 
 \textbf{Утверждение. }
@@ -1647,7 +1724,7 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
 \begin{definition}
     Пусть $\omega(\omega_1, \omega_2, \dots, \omega_m) \in R^m$ -- произвольный вектор
     единичной длины $|\omega|=1$ и пусть в любой окрестности точки $a \in R^m$ имеются 
-    точки вида $x(t) = a + t \omega$ ($t \in R,\, 0 <= t <= t_0$), входящие в область определения $f(x)$.
+    точки вида $x(t) = a + t \omega$ ($t \in R,\, 0 \le t \le t_0$), входящие в область определения $f(x)$.
     Для таких $x(t)$ рассмотрим функцию $ \varphi(t) = f(x(t))$. Если $\exists \dslim_{t \to 0 + 0}  \varphi(t) = b$,
     то его называют пределом $f(x)$ в точке $x = a$ по направлению вектора $\omega$.
 \end{definition}
@@ -1924,7 +2001,7 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
     \end{enumerate}
 \end{theorem}
 
-\subsection{Некоторые свойства функций непрерывных на замкнутом ограниченном множестве}
+\subsection{Некоторые свойства функций непрерывных на замкнутом ограниченном\\ множестве}
 
 \begin{definition}
     Непрерывную на множестве $A$ функцию $f(x)$, ($A \subset \R$ или $A \subset \R^m$)
@@ -2145,7 +2222,7 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
     тогда на $[A; B]$ существует непрерывная строго монотонная функция
     $\varphi(x)$, обратная функции $f(x)$.
 \end{theorem}
-\begin{proof}\ \\
+\begin{proof}
     \begin{enumerate}
         \item 
             Существование
@@ -2277,10 +2354,45 @@ $[x]$ -- целая часть числа $x$ (наибольшее целое, 
 \end{definition}
 
 \begin{example}
-    
+    \[ f(x) = x^2 \]
+    \[ 
+        \Delta f(x_0) = f(x_0 + \Delta x) - f(x_0) = (x_0 - \Delta x)^2 - x_0^2 =
+        x_0^2 + 2 x_0 * \Delta x + (\Delta x) ^ 2 - x_0^2 = 2 x_0 * \Delta x + (\Delta x)^2
+    \]
+    \[ \Delta f(x_0) = 2 x_0 * \Delta x + (\Delta x)^2 \]
+
+    Так как $\dslim_{\Delta x \to 0} \frac{(\Delta x)^2}{\Delta x} = 0$
+    $\implies (\Delta x)^2 = o(\Delta x)$ при $\Delta x \approach{} 0$ по определению.
+
+    $\Delta f(x_0) = 2 x_0 * \Delta x + o(\Delta x) \implies f(x) = x^2$
+    дифференцируема в точке $x_0$, $df(x_0) = 2 x_0 * \Delta x$
 \end{example}
 
 \subsection{Геометрический смысл производной и дифференциала}
+
+Проведём через точки $P_0(x_0; f(x_0))$, $P(x_0 + \Delta x; f(x_0 + \Delta x))$ секущую.
+Получим прямоугольный треугольник.
+
+\[ \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} = \tan \alpha \]
+\[ y = y_0 + \tan \alpha * (x - x_0) \textnormal{ -- уравнение секущей} \]
+
+При этом $\Delta x \approach{} 0 \implies P \approach{} P_0$.
+
+При этом в пределе секущая займёт положение, называемое касательной к графику функции $y = f(x)$ в точке $x_0$
+и $\tan \alpha \approach{} \tan \alpha_0$, где $\alpha_0$ -- угол наклона касательной к положительной оси $Ox$.
+
+То есть $\dslim_{\Delta x \to 0} \frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x} = \tan \alpha_0 = f'(x_0)$
+
+При этом уравнение касательной $y = y_0 + \tan \alpha_0 * (x - x_0)$, то есть $y = f(x_0) + f'(x_0) (x - x_0)$
+
+Дифференциал $df(x_0) = A * \Delta x = f'(x_0) \Delta x = \tan \alpha_0 * \Delta x$
+
+*рисунок*
+
+То есть $df(x)$ -- то приращение, которое получила бы функция, если бы после точки $x_0$ функция стала бы
+изменяться по графику своей касательной. Если $\Delta x << 1$ (много меньше), то $\Delta f(x_0) \approx df(x_0)$
+
+\subsection{Дифференцируемость}
 
 \begin{theorem}[Критерий дифференцируемости функции в точке]
     Для того, чтобы $f(x)$ была дифференцируема в точке $x_0 \iff $ чтобы в точке $x_0$ существовала $f'(x_0)$.
@@ -2356,7 +2468,34 @@ $[x]$ -- целая часть числа $x$ (наибольшее целое, 
     \[ \left( \frac{u(x)}{v(x)} \right)' |_{x = x_0} = \frac{u'(x_0) * v(x_0) - u(x_0) * v'(x_0)}{v^2(x_0)} \]
 \end{theorem}
 \begin{proof}
-    
+    По условию $\implies \begin{cases}
+        \exists \dslim_{\Delta x \to 0} \frac{u(x_0 + \Delta x) - u(x_0)}{\Delta x} = u'(x_0) \\
+        \exists \dslim_{\Delta x \to 0} \frac{v(x_0 + \Delta x) - v(x_0)}{\Delta x} = v'(x_0)
+    \end{cases}$
+
+    \begin{enumerate}[label=\alph*)]
+        \item
+            \[ \dslim_{\Delta x \to 0} \frac{(c_1 u(x_0 + \Delta x_0) + c_2 v(x_0 + \Delta x)) - (c_1 u(x_0) + c_2 v(x_0))}{\Delta x} = \]
+            \[ 
+                = \dslim_{\Delta x \to 0} \left( c_1 \frac{u(x_0 + \Delta x_0) - u(x_0)}{\Delta x} + c_2 \frac{v(x_0 + \Delta x) - v(x_0)}{\Delta x} \right) 
+                = c_1 u'(x_0) + c_2 v'(x_0) 
+            \]
+
+        \item 
+            \[ \dslim_{\Delta x \to 0} \frac{u(x_0 + \Delta x) v(x_0 + \Delta x) - u(x_0) v(x_0)}{\Delta x} = \]
+            \[ = \dslim_{\Delta x \to 0} \frac{(u(x_0 + \Delta x) - u(x_0)) v(x_0 + \Delta x) - u(x_0) (v(x_0 + \Delta x) - v(x_0))}{\Delta x} = \]
+            \[ = \dslim_{\Delta x \to 0} \left( \frac{(u(x_0 + \Delta x) - u(x_0))}{\Delta x} v(x_0 + \Delta x) + u(x_0) \frac{(v(x_0 + \Delta x) - v(x_0))}{\Delta x} \right) = \]
+            \[ = u'(x_0) v(x_0) + u(x_0) v'(x_0) \]
+
+        \item
+            \[
+                \dslim_{\Delta x \to 0} \frac{ \frac{u(x_0 + \Delta x)}{v(x_0 + \Delta x)} - \frac{u(x_0)}{v(x_0)} }{\Delta x}
+                = \dslim_{\Delta x \to 0} \frac{ u(x_0 + \Delta x) v(x_0) - u(x_0) v(x_0 + \Delta x) }{ v(x_0 + \Delta x) v(x_0) \Delta x } =
+            \]
+            \[ = \dslim_{\Delta x \to 0} \frac{(u(x_0 + \Delta x) - u(x_0)) v(x_0 + \Delta x) - u(x_0) (v(x_0 + \Delta x) - v(x_0))}{ v(x_0 + \Delta x) v(x_0) \Delta x } = \]
+            \[ = \dslim_{\Delta x \to 0} \frac{ \frac{(u(x_0 + \Delta x) - u(x_0))}{\Delta x} v(x_0) - u(x_0) \frac{(v(x_0 + \Delta x) - v(x_0))}{\Delta x} }{v(x_0 + \Delta x) v(x_0)} = \]
+            \[ = \frac{u'(x_0) v(x_0) - u(x_0) v'(x_0)}{v^2(x_0)} \]
+    \end{enumerate}
 \end{proof}
 
 \begin{theorem}[О дифференцируемости сложной функции]
@@ -2366,7 +2505,31 @@ $[x]$ -- целая часть числа $x$ (наибольшее целое, 
     $(f(\varphi (x)))' |_{x = x_0} = f'(t_0) * \varphi' (x_0)$
 \end{theorem}
 \begin{proof}
-    
+    $\varphi (x)$ дифференцируема в точке $x_0 \implies \Delta \varphi (x_0) = \varphi' (x_0) \Delta x + o(\Delta x), \quad \Delta x \approach{} 0$
+
+    $f(t)$ дифференцируема в точке $t_0 \implies \Delta f(t_0) = f'(t_0) \Delta t + o(\Delta t), \quad \Delta t \approach{} 0$
+
+    Рассмотрим $\Delta f(\varphi (x_0)) = f(\underbrace{\varphi (x)}_t) - f(\underbrace{\varphi (x_0)}_{t_0}) =$
+
+    \[ 
+        = f'(t_0) * \Delta \varphi (x_0) + o(\Delta \varphi (x_0))
+        = f'(t_0) (\varphi' (x_0) \Delta x + o(\Delta x)) + o(\Delta \varphi (x_0)) =
+    \]
+    \[ = f'(t_0) \varphi'(x_0) \Delta x + f'(t_0) * o(\Delta x) + o(\Delta \varphi (x_0)) \]
+
+    Осталось доказать, что $f'(t_0) * o(\Delta x) + o(\Delta \varphi (x_0)) = o(\Delta x), \quad \Delta x \approach{} 0$
+
+    Для этого рассмотрим 
+    \[
+        \dslim_{\Delta x \to 0} \frac{f'(t_0) * o(\Delta x) + o(\Delta \varphi (x_0))}{\Delta x} =
+        \dslim_{\Delta x \to 0} \left( f'(t_0) \frac{o(\Delta x)}{\Delta x} + \frac{o(\Delta \varphi (x_0))}{\Delta \varphi (x_0)} * \frac{\Delta \varphi (x_0)}{\Delta x} \right) =
+    \]
+    \[ \dslim_{\Delta x \to 0} \left( f'(t_0) \frac{o(\Delta x)}{\Delta x} + \frac{o(\Delta \varphi (x_0))}{\Delta \varphi (x_0)} * \left( \varphi' (x_0) + \frac{o(\Delta x)}{\Delta x} \right) \right) = 0\]
+
+    То есть получили, что $\Delta f(\varphi (x_0)) = f'(t_0) * \varphi' (x_0) \Delta x + o(\Delta x), \quad \Delta x \approach{} 0$
+
+    $\bydef f(\varphi (x))$ -- дифференцируема в точке $x_0$ и $(f(\varphi (x)))' |_{x = x_0} = f'(t_0) * \varphi' (x_0)$
+
 \end{proof}
 
 \begin{theorem}[О производной обратной функции]
