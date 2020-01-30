@@ -1381,7 +1381,7 @@ $n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
         Рассмотрим $\frac{x_n}{x_{n-1}} = 
         \frac{\left( 1 + \frac{1}{n} \right)^{n - 1}}{\left( 1 + \frac{1}{n - 1} \right)^{n}}
         = \frac{(n + 1)^{n+1} * (n - 1)^n}{n^{n+1} * n^n}
-        = \left( \frac{(n + m1) * (n - 1)}{n^2} \right)^2 * \frac{n + 1}{n}
+        = \left( \frac{(n + 1) * (n - 1)}{n^2} \right)^n * \frac{n + 1}{n}
         = \left( 1 - \frac{1}{n^2} \right)^{n} * \left( 1 + \frac{1}{n} \right)
         \le \left( 1 - \frac{1}{n^2} \right)^{n} * \left( 1 + \frac{1}{n^2} \right)^n
         \le \left( 1 - \frac{1}{n^4} \right)^{n} < 1 \implies x_n < x_{n-1}$
@@ -1614,7 +1614,7 @@ $n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
 
         \item
             Пусть $b = \dslim_{x \to a} f(x)$ в смысле Гейне.
-            $\bydef$ $\forall \{ x_n \}: x_n \in A, x_n \ne a, \dslimn x_n a$
+            $\bydef$ $\forall \{ x_n \}: x_n \in A, x_n \ne a, \dslimn x_n = a$
             выполняется $f(x_n) \approach{n \to \infty} b$.
 
             \textit{Допустим от противного}, $b$ не является пределом $f(x)$ в точке $a$ в смысле Коши:
@@ -1844,7 +1844,7 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
             существует окрестность точки $a$, принадлежащая $D_{f_1} \cap D_{f_2}$, то 
 
             \[ \exists \dslim_{x \to a} (C_1 * f_1(x) + C_2* f_2(x)) = C_1 * b_1 + C_2 * b_1 \]
-            \[ \exists \dslim_{x \to a} f_1(x) * f_2(x) = b_1 * b_2 \]
+            \[ \exists \dslim_{x \to a} (f_1(x) * f_2(x)) = b_1 * b_2 \]
             \[ \exists \dslim_{x \to a} \frac{f_1(x)}{f_2(x)} = \frac{b_1}{b_2} \quad (b_2 \ne 0, f_2(x) \ne 0) \]
 
         \item 
@@ -1857,7 +1857,7 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
             $\exists \dslim_{x \to a} f_1(x) = \dslim_{x \to a} f_2(x) = b \implies \dslim_{x \to a} f(x) = b$
 
         \item 
-            Пусть $t =  \varphi(x)$ и $y = f(t)$ заданы так, что $D_y = A$, $E_g = B$, $D_f = B$. 
+            Пусть $t =  \varphi(x)$ и $y = f(t)$ заданы так, что $D_y = A$, $E_\varphi = B$, $D_f = B$. 
             Пусть $\exists \dslim_{x \to a}  \varphi(x) = b$ и $\exists \dslim_{t \to b} f(t) = C$, $ \varphi(x) \ne b$ при $x \ne a$.
             Тогда $\exists \dslim_{x \to a} f( \varphi(x)) = C$
     \end{enumerate}
@@ -1894,10 +1894,10 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
             \end{enumerate}
 
         \setcounter{enumi}{5} \item 
-            Возьмём $\forall {X_n}$:
+            Возьмём $\forall \{ x_n \}$:
 
-            $X_n \in A,\, X_n \neq a,\, X_n \approach{} a$ $\implies$ (по опр Гейне)
-            $t_n =  \varphi(X_n) \approach{} b$
+            $x_n \in A,\, x_n \neq a,\, x_n \approach{} a$ $\implies$ (по опр Гейне)
+            $t_n =  \varphi(x_n) \approach{} b$
 
             $t_n \in B,\, t_n \neq b$ $\implies$ (по опр Гейне) $f(t_n) \approach{} C$, 
 
@@ -2005,7 +2005,7 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
 
 \begin{definition}
     Непрерывную на множестве $A$ функцию $f(x)$, ($A \subset \R$ или $A \subset \R^m$)
-    называют \textbf{равномрно непрерывной} на $A$, если
+    называют \textbf{равномерно непрерывной} на $A$, если
     \[
         \forall \eps > 0 \quad \exists \delta_\eps > 0 \quad \forall x', x'' \in A:
         |x' - x''| < \delta_\eps
@@ -2136,10 +2136,10 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
 
     Если процесс бесконечен, то простроим две последовательности:
     \[ \{a_n\} \textnormal{ -- монотонно неубывающую, ограниченную } (a_n < b) \]
-    \[ \{a_n\} \textnormal{ -- монотонно невозрастающую, ограниченную } (b_n < a) \]
+    \[ \{b_n\} \textnormal{ -- монотонно невозрастающую, ограниченную } (b_n < a) \]
 
     $\implies \exists \dslim_{x \to \infty} a_n$ обозначим $x_0$ и 
-    $\implies \exists \dslim_{x \to \infty} b_n = x_0$, так как
+    $\exists \dslim_{x \to \infty} b_n = x_0$, так как
 
     \[ 0 < b_n - a_n < \frac{b - a}{2^n} \]
     \[ 0 \approach{} 0, \, \frac{b - a}{2^n} \approach{} 0 \implies b_n - a_n \approach{} 0 \]
@@ -2166,7 +2166,7 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
         f(x_1) > f(x_2) 
     )$
 
-    Неубывающие (возрастающие; невозрастающие; убывающие) функции называбт монотонными. Иногда \textbf{возрастающие и убывающие}
+    Неубывающие (возрастающие; невозрастающие; убывающие) функции называют монотонными. Иногда \textbf{возрастающие и убывающие}
     называют \textbf{строго монотонными}.
 \end{definition}
 
@@ -2189,19 +2189,19 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
     \[ \forall \eps > 0 \quad \exists \delta_\eps = \xi - x_0 > 0 \]
     \[ \forall \xi - \delta_\eps < x < \xi \textnormal{ выполняется } |f(x) - \sup f(x)| < \eps \quad (x < \xi)\]
 
-    $\bydef \sup f(x) = f(\eps - 0) \quad (x < \xi)$
+    $\bydef \sup f(x) = f(\xi - 0) \quad (x < \xi)$
 
-    $\exists f(\eps + 0) = \inf f(x) \quad (x > \xi)$ доказывается аналогично
+    $\exists f(\xi + 0) = \inf f(x) \quad (x > \xi)$ доказывается аналогично
 
     $f(\xi) \ge \inf f(x) \quad (x > \xi)$
 \end{proof}
 
 \begin{theorem}[Т2. О монотонной непрерывной функции]
-    Если $f(x)$ монотонна и непрерывна на интревале $(a; b)$, то она принимает на $(a; b)$
+    Если $f(x)$ монотонна и непрерывна на интервале $(a; b)$, то она принимает на $(a; b)$
     все значения между $f(a + 0)$ и $f(b - 0)$
 \end{theorem}
 \begin{proof}
-    Пусть $f(x)$ монотонна неубывает на $(a; b)$ $\implies$
+    Пусть $f(x)$ монотонно неубывает на $(a; b)$ $\implies$
     по Т1 $\exists f(a + 0) = \inf f(x), \, \exists f(b - 0) = \sup f(x) \quad (x \in (a; b))$
 
     Пусть число $\gamma:\: f(a + 0) < \gamma < f(b - 0) \implies$ по признаку sup и inf ($\prop{2}$)
@@ -2255,9 +2255,9 @@ $\underbrace{|f(x') - f(x'')|}_2 \ge \underbrace{\eps_0}_\frac{1}{10} \implies \
             Тогда, если $|y - y_0| < \delta \implies 
             y_1 = y_0 - (y_0 - y_1) \le y_0 - \delta < y_0 + \delta \le y_0 + (y_2 - y_0) = y_2$
             $\implies (y_0 - \delta; y_0 + \delta) \subset (y_1; y_2) \implies$ при
-            $|y - y_0| < \delta$ получим $x_0 < \eps = \varphi(y_1) < \varphi(y) < \varphi(y_2) = x_0 + \eps$
+            $|y - y_0| < \delta$ получим $x_0 - \eps = \varphi(y_1) < \varphi(y) < \varphi(y_2) = x_0 + \eps$
             $\implies |\varphi(y) - \varphi(y_0)| < \eps \implies$ по определению $\varphi(y)$
-            непрерывна в точке $y_0$, $y_0 \in (A; B)$, а в силу того, что $x_0$ была выбрана
+            непрерывна в точке $y_0$; $y_0 \in (A; B)$, а в силу того, что $x_0$ была выбрана
             произвольно $\implies y_0$ произвольна $\implies$ получаем $\varphi(y)$ непрерывна на $(A; B)$.
 
             В концах $A$, $B$ непрерывность доказывается аналогично.

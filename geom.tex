@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage{underscore}
+\usepackage{setspace}
+\usepackage{indentfirst} 
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{amsthm}
+\usepackage{cancel}
+\usepackage[left=7cm,right=7cm,
+    top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+\singlespacing
+
+\usepackage{graphicx}
+\graphicspath{ {./images/matan/} }
+
+\newcommand{\bydef}{\stackrel{\text{по опр.}}{\implies}} % by definition - по определению
+\newcommand{\parspace}{\vspace{20pt}}
+
+\newcommand{\imagin}{\mathrm{Im} \,}
+\newcommand{\real}{\mathrm{Re} \,}
+
+\newcommand{\dslim}{\displaystyle\lim}
+\newcommand{\dslimn}{\dslim_{n \to \infty}}
+
+\newcommand{\prop}[1]{#1^{\text{o}}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+
+\newcommand{\approach}[1]{\underset{#1}{\longrightarrow}}
+
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+\theoremstyle{break}
+\newtheorem{theorem}{Теорема}[subsection]
+
+\newtheorem{definition}{Определение}[subsection]
+
+\begin{document}
+
+\section{}
+
+\[ l_1: \frac{x - x_1}{a^x} = \frac{y - y_1}{a^y} = \frac{z - z_1}{a^z} \]
+\[ l_2: \frac{x - x_1}{b^x} = \frac{y - y_1}{b^y} = \frac{z - z_1}{b^z} \]
+
+\parspace
+
+Уравнение прямой, проходящей через данную точку $M_0(x_0, y_0, z_0)$ параллельно
+данному вектору $a(a^x; a^y; a^z)$:
+
+\[\frac{x - x_0}{a^x} = \frac{y - y_0}{a^y} = \frac{z - z_0}{a^z} \]
+
+\parspace
+
+Уравнение плоскости, проходящей через три данные точки
+$M_1(x_1, y_1)$, $M_2(x_2, y_2)$, $M_3(x_3, y_3)$:
+
+\[ \left| \begin{matrix}
+  x - x_1 & y - y_1 & z - z_1 \\
+  x - x_2 & y - y_2 & z - z_2 \\
+  x - x_3 & y - y_3 & z - z_3 
+\end{matrix} \right| = 0 \]
+
+\parspace
+
+Нахождение синуса угла $\varphi$ между прямой и плоскостью в пространстве:
+
+\[ \sin \varphi = \pm
+\frac{A a^x + B a^y + C a^z}
+{\sqrt{(a^x)^2 + (a^y)^2 + (a^z)^2} \sqrt{A^2 + B^2 + C^2}} \]
+
+\parspace
+
+Две прямые лежат в одной плоскости тогда и только тогда, когда
+
+\[ \left| \begin{matrix}
+  x_2 - x_1 & y_2 - y_1 & z_2 - z_1 \\
+  a^x & a^y & a^z \\
+  b^x & b^y & b^z
+\end{matrix} \right| = 0 \]
+
+\parspace
+
+Расстояние от точки $M_0(x_0, y_0)$ до прямой $Ax + By + C = 0$:
+
+\[ \rho = \frac{| Ax_0 + By_0 + C |}{\sqrt{A^2 + B^2}} \]
+
+\parspace
+
+Уравнение прямой в пространстве, проходящей через две данные точки:
+
+\[ \frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1} = \frac{z - z_1}{z_2 - z_1} \]
+
+\end{document}
