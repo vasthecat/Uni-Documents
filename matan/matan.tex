@@ -2548,4 +2548,119 @@ $[x]$ -- целая часть числа $x$ (наибольшее целое, 
     \implies \varphi'(y_0) = \frac{1}{f'(x_0)}$
 \end{proof}
 
+
+
+
+\textbf{Свойства дифференциалов имеют вид:}
+\begin{enumerate}
+    \item $df(x_0) = f'(x_0)*\Delta x = f'(x_0)dx$
+    \item $d(\cos x) = -\sin x * dx$
+    \item $d(c_1*f(x) + c_2*g(x)) = c_1*df(x) + c_2*dg(x)$
+    \item $d(f(x)*g(x)) = g(x)df(x) + f(x)dg(x)$
+    \item $d(\frac{f(x)}{g(x)}) = \frac{df(x)g(x) - f(x)dg(x)}{g^2(x)}$
+    \item $df(\varphi(x)) = f'(\varphi(x)) * \frac{\varphi'(x)dx}{d\varphi(x)} = f'(\varphi)d\varphi$
+\end{enumerate}
+
+
+\subsection{Производные и дифференциалы высших порядков для функции одной переменной}
+\begin{definition}
+    Пусть $f(x)$ дифференцируема в точке $\forall x \in A$. Таким образом, каждой точке $x$ из множества $A$ можно
+    сопоставить $f'(x)$ и таким образом сопоставить функцию $y = f'(x)$, которая называется производной функцией от $f(x)$.
+    Если эта функция дифференцируема в точке $x$, то её производную мы назовём второй производной функции $f(x)$ и обозначим $f''(x)$
+    
+    Аналогично, можно определить n-ую производную $f^{(n)}(x) = (f^{(n-1)}(x))'$
+    \[(x^\alpha)^{(n)} = \alpha(\alpha-1)...(\alpha-n+1)x^{\alpha-n}\]
+    \[(e^x)^{(n)} = e^x, \, (a^x)^{(n)} = a^x \ln^n a\]
+    \[(\sin x)^{(n)} = \sin(x+\frac{\pi n}{2}), \, (\cos x)^{(n)} = \cos (x + \frac{\pi n}{2})\]
+    \[(c_1*f(x) + c_2*g(x))^{(n)} = c_1*f^{(n)}(x) + c_2*g^{(n)}(x)\]
+\end{definition}
+
+
+
+\begin{theorem}[Формула Лейбница]
+    Пусть $u(x)$ и $v(x)$ $n$ раз дифференцируемы в точке x. Тогда $$(u(x)*v(x))^{(n)} = \sum_{k=0}^n C^k_n \cdot U^{(k)}(x) \cdot V^{(n-k)}(x)$$ 
+\end{theorem}
+\begin{proof}
+    Докажем по ММИ:
+
+    База индукции: $n=1$
+    \[(u(x) \cdot v(x))' =  \sum_{k=0}^1 C^k_1 \cdot u^{(k)}(x) \cdot v^{(1-k)}(x)\]
+    \[u'(x)\cdot v(x)+u(x)\cdot v'(x) = C^0_1 \cdot u^0(x) \cdot v'(x) + C^1_1 \cdot u'(x) \cdot v^0(x)\]
+    Имеем $C^0_1 = 1$, $C^1_1 = 1$, $u^{(0)} = u$, $v^{(0)} = v$ $\implies$ База индукции доказана. Перейдём к шагу индукции:
+    
+
+    Пусть $$(u(x) \cdot v(x))^{(m)} = \sum_{k=0}^m C^k_m \cdot u^{(k)}(x) \cdot v^{(m-k)}(x)$$ - верно. Надо доказать, что
+    $$(u(x) \cdot v(x))^{(m+1)} = \sum_{k=0}^{m+1} C^k_{m+1} \cdot u^{(k)}(x) \cdot v^{(m+1-k)}(x)$$
+
+    Имеем $$(u(x) \cdot v(x))^{(m+1)} = ((u(x) \cdot v(x))^m)' = (\sum_{k=0}^{m}C^k_m \cdot u^{(k)}(x) \cdot v^{(m-k)}(x))' = \sum_{k=0}^{m}C^k_m (u^{(k)}(x) \cdot v^{(m-k)}(x))' =$$ 
+    $$\sum_{k=0}^{m}C^k_m \cdot u^{(k+1)}(x) \cdot v^{(m-k)}(x) + \sum_{k=0}^{m}C^k_m \cdot u^{(k)}(x) \cdot v^{(m-k+1)}(x)$$
+    В первой сумме заменим $k$ на $k-1$. Получим следующее:
+    $$\sum_{k=1}^{m+1}C^{k-1}_m \cdot u^{(k)}(x) \cdot v^{(m-k+1)}(x) + \sum_{k=0}^{m}C^k_m \cdot u^{(k)}(x) \cdot v^{(m-k+1)}(x) = $$
+    $$\sum_{k=1}^{m}(C^{k-1}_m+C^k_m) u^{(k)}(x)\cdot v^{(m+1-k)}(x) + C^m_m \cdot u^{(m+1)}(x) \cdot v^{(0)}(x) + C^0_m \cdot u^{(0)}(x) \cdot v^{(m+1)}(x) =$$
+    При замене биномиальных коэффициентов мы получаем:
+    $$\sum_{k=0}^{m+1}C^k_{m+1} \cdot u^{(k)}(x) \cdot v^{(m+1-k)}(x)$$
+\end{proof}
+
+    $d^{(n)}f(x) = d(d^{(n-1)}f(x)) = f^{(n)}(x) \cdot (dx)^n$
+
+    \subsection{Применение производных для изучения поведения функции одной переменной}
+
+    \begin{definition}
+        Функция $f(x)$ возрастает/убывает в точке $x_0$, если $\exists\delta >0$, $0<|x-x_0|<\delta$, то выполняется $\frac{\Delta f(x_0)}{\Delta x} = \frac{F(x)-F(x_0)}{x-x_0}>0 (<0)$
+    \end{definition}
+    \begin{definition}
+        Говорят, что функция $f(x)$ имеет в точке $x_0$ локальный максимум (минимум), если $\exists \delta >0$, $0<|x-x_0|<\delta$ выполняется $ f(x)<f(x_0) $ или $(f(x)>f(x_0))$.
+        У этих точек есть общее название - локальный экстремум.
+    \end{definition}
+
+
+    \begin{theorem}[Признак возрастающей (убывающей) функции в точке (Лемма Дарбу)]
+        Если в точке $x_0$ $\exists f'(x_0)>0 (<0) \implies f(x)$ возрастает (убывает) в точке $x_0$.
+    \end{theorem}
+    \begin{proof}
+        Если $f'(x_0)>0$, то $\implies$ (по теореме о сохранении знака)
+        \[\lim_{x\to x_0} \frac{f(x)-f(x_0)}{x-x_0}>0\] 
+        $\implies \exists$ окрестность точки $x_0$, в которой $\frac{f(x)-f(x_0)}{x-x_0}>0$ $\implies f(x)$ возрастает в точке $x_0$ (для убывания аналогично).
+    \end{proof}
+
+    \begin{theorem}[необходимое условие локального экстремума (Теорема Ферма)]
+        Если у $f(x)$ в точке $x_0$ существует локальный экстремум и если $\exists f'(x_0)$, то $f'(x_0)=0$
+    \end{theorem}
+    \begin{proof}
+        Допустим от противного, что $f'(x_0) \neq 0$ $\implies$ $f'(x_0)>0$ или $f'(x_0)<0$ в точке $x_0$ $\implies f(x)$ возрастает или убывает в точке $x_0$ по Дарбу $\implies$ противоречие.
+    \end{proof}
+    \begin{theorem}[Теорема Ролля]
+        Пусть $y = f(x)$ непрерывна на $[a,b]$ и дифференцируема в $(a, b)$ и $f(a) = f(b) \implies \exists c \in (a, b)$, где $f'(c)=0$ 
+    \end{theorem}
+    \begin{proof}
+        *рисунок*
+        Так как $f(x)$ непрерывна на отрезке $[a, b]$, то она достигает на $[a, b]$ своего наибольшего и наименьшего значения, то есть $\exists c_1,c_2 \in [a, b]:f(c_1)=min f(x)$ и $f(c_2)=max f(x)$, где $x \in [a, b]$
+
+        1 случай:
+
+        $c_1, c_2$ совпадает с концами отрезка $\implies f(x) = c$, где $c = const \implies f'(x)=0$, $\forall x \in (a, b)$
+        
+        2 случай:
+
+        $c_1$ или $c_2$ $\in (a, b) \implies$ является точкой локального экстремума, значит по теореме Ферма $\implies f'(c_1) = 0$ (или $f'(c_2) = 0$)   
+    \end{proof}
+
+    Замечание:
+
+    Если $f(a) = f(b) = 0$, то Теорема Ролля говорит о том, что между любыми двумя нулями функции находится нуль производной.
+    \begin{theorem}[Теорема Коши о среднем приращении]
+        Пусть $\varphi(x)$ и $\psi(x)$ непрерывны на $[a, b]$ и дифференцируемы на $(a, b)$ и $\forall x \in (a, b)$, $(\psi'(x))^2+(\varphi'(x))^2 \neq 0$, и $\varphi(b) \neq \varphi(a)$.
+        Тогда $\exists c \in (a, b)$, где $\frac{\psi(b) - \psi(a)}{\varphi(b) - \varphi(a)} = \frac{\psi'(c)}{\varphi'(c)}$.
+    \end{theorem}
+    \begin{proof}
+        Рассмотрим функцию $f(x) = \frac{\psi(b) - \psi(a)}{\varphi(b) - \varphi(a)} \cdot \varphi(x) - \psi(x)$, которая непрерывна на отрезке $[a, b]$ и дифференцируема на $(a, b)$.
+        \[f(a)=\frac{\psi(b) - \psi(a)}{\varphi(b) - \varphi(a)}\varphi(a)-\psi(a) = \frac{\psi(b)\varphi(a)-\psi(a)\varphi(a)-\psi(a)\varphi(b)+\varphi(a)\psi(a)}{\varphi(b) - \varphi(a)}\] *возможно какая-то ошибка при умножении*
+        \[f(b)=\frac{\psi(b) - \psi(a)}{\varphi(b) - \varphi(a)}\varphi(b)-\psi(b) = \frac{\psi(b)\varphi(b)-\psi(a)\varphi(b)-\psi(b)\varphi(b)+\varphi(a)\psi(b)}{\varphi(b) - \varphi(a)}\]
+        $\implies f(a)=f(b)$ по теореме Ролля $\implies \exists c \in (a, b): f'(c) = 0$
+        \[f'(c) = \frac{\psi(b)-\psi(a)}{\varphi(b)-\varphi(a)} \cdot \varphi'(c)-\psi'(c) = 0 \implies \frac{\psi(b)-\psi(a)}{\varphi(b)-\varphi(a)} = \frac{\psi'(c)}{\varphi'(c)}\]
+    \end{proof}
+
+    \begin{theorem}[Теорема Лагранжа]
+        Если $f(x)$ непрерывна на $[a, b]$ и дифференцируема на $(a, b) \implies \exists c \in (a, b): f(a)-f(b)=f'(c)(a-b)$ *рисунок*
+    \end{theorem}
 \end{document}
