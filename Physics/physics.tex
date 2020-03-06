@@ -1,0 +1,225 @@
+\documentclass[a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage{underscore}
+\usepackage{setspace}
+\usepackage{indentfirst} 
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+% \usepackage[standard]{ntheorem}
+\usepackage{amsthm}
+\usepackage{cancel}
+\usepackage[left=1.4cm,right=1.4cm,
+    top=2.3cm,bottom=2.3cm,bindingoffset=0cm]{geometry}
+\singlespacing
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{tikz}
+
+% \theoremstyle{break}
+
+% --- Теорема --- %
+% \newtheoremstyle{break}% name
+%   {}%         Space above, empty = `usual value'
+%   {}%         Space below
+%   {\itshape}% Body font
+%   {}%         Indent amount (empty = no indent, \parindent = para indent)
+%   {\bfseries}% Thm head font
+%   {.}%        Punctuation after thm head
+%   {\newline}% Space after thm head: \newline = linebreak
+%   {}%         Thm head spec
+% \theorembodyfont{\normalfont}
+% \theoremstyle{break}
+\newtheorem{theorem}{Теорема}[subsection]
+% --------------- %
+
+% --- Определение --- %
+% \theorembodyfont{\normalfont}
+% \newtheoremstyle{break}
+%   {\topsep}{\topsep}%
+%   {\itshape}{}%
+%   {\bfseries}{}%
+%   {\newline}{}%
+% \theoremstyle{break}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[subsection]
+% ------------------- %
+
+% --- Доказательство --- %
+% \theoremheaderfont{\normalfont\itshape}
+% \theorembodyfont{\normalfont}
+% \newtheorem*{proof}{Доказательство.}
+% ---------------------- %
+
+% --- Пример --- %
+\theoremstyle{definition}
+\newtheorem*{example}{Пример}
+% -------------- %
+
+% --- Следствие --- %
+% Corollary
+% ----------------- %
+
+% --- Замечание --- %
+% Remark
+\theoremstyle{definition}
+\newtheorem*{remark}{Замечание}
+% ----------------- %
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\dslim}{\displaystyle\lim}
+\newcommand{\dslimn}{\dslim_{n \to \infty}}
+\newcommand{\approach}[1]{\underset{#1}{\longrightarrow}}
+
+\begin{document}
+% \section{Кинематика}
+% \subsection{Перемещение точки. Путь.}
+% \begin{definition}
+%     Материальная точка при движении описывает некоторую линию - \tbf{траекторию}.
+    
+%     \tbf{Путь} - длина траектории.
+
+%     \tbf {Перемещение} - расстояние между началом и концом точек траектории.
+% \end{definition}
+
+% \subsection{Скорость.}
+% $\vec{V} = \dslim_{\Delta \to 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d \vec{r}}{dt}$
+
+% $\vec{V}$ совпадает с $\vec{r}$ в каждый момент времени.
+
+\section{Механика.}
+\subsection{Кинематика: криволинейное движение.}
+    \tbf{Криволинейное движение} - движение вдоль кривой линии.
+\tbf{*Рисунок*}
+
+$R_C$ - радиус кривизны. $C = \frac{1}{R_C}$
+
+\tbf{*Рисунок*}
+
+1-2 $\rightarrow \Delta S$. $\dslim_{\Delta S \to 0} \frac{\Delta \varphi} {\Delta S} = C$. $\frac {d \varphi} {dS} = C$.
+
+Для описания движения вводим криволинейную систему координат, то есть вводим координату, которая будет отмечать
+пройденное расстояние - $\varepsilon$
+
+\tbf{*Рисунок*}
+
+Для описания движения необходимо в каждой точке ввести нормальную и тангенциальную компоненту скорости.
+
+\tbf{*Рисунок*}
+
+$| \vec{\tau} | = 1$, $| \vec{n} | = 1$
+\[
+\begin{cases}
+    \vec{V_n} - \text{нормальная скорость} \\
+    \vec{V_\tau} - \text{тангенциальная скорость}
+\end{cases}
+\]    
+Отсюда следует, что существует нормальное и тангенциальное ускорение:
+\[
+\begin{cases}
+    \vec{a_n} - \text{нормальное ускорение} \\
+    \vec{a_\tau} - \text{тангенциальное ускорение}
+\end{cases}
+\]
+
+Кинетическое уравнение криволинейного движения имеет вид: $\xi = \xi_0 + V_0t + \frac {at^2} {2}$
+
+Нормальное ускорение всегда направлено к центру кривизны и определяется как $a_n = \frac {V^2} {R_C}$
+
+\subsubsection{Криволинейное движение по окружности (вращательное движение)}
+
+\tbf{*Рисунок*}
+
+\tbf{Аксиальные} и \tbf{полярные} векторы. Полярные это те, направление которых определяется естественным образом
+в данных условиях. Например: $\vec{V}, \vec{x}, \vec{a}$. Аксиальные вводятся для удобства
+описания вращательного движения. Например: $\vec{\varphi}, \vec{\omega}, \vec{\varepsilon}$.
+
+$[ \omega ]$ - угловая скорость $\frac{\text{рад}} {c}$
+
+$[ \varphi ]$ - $\text{рад}$; $[ \varepsilon ]$ - $\frac{\text{рад}} {c^2}$
+
+За положительное направление принято направление против часовой стрелки и $\varphi$ на оси 
+располагается так (рисунок).
+
+$\vec{\omega} = \frac {d\varphi} {dt}$, $\vec{\varepsilon} = \frac{d\vec{\omega}} {dt}$.
+
+Кинематическое уравнение вращательного движения: $\varphi = \varphi_0 + \omega_0t + \frac {\varepsilon t^2} {2}$
+
+$\vec{V} = [ \vec{\omega} * \vec{R} ]$, $a_n = \omega^2R$
+
+\subsection{Динамика}
+Динамика изучает закономерности движения с одновременным рассмотрением причины этого движения.
+
+\tbf{Масса} - мера инертности. \tbf{Сила} - мера интенсивности взаимодействия.
+
+Радиус-вектор задаёт положение в пространстве относительно фиксированного центра
+
+\tbf{*Рисунок*}
+
+Введём углы между каждой осью и радиус вектором.
+\[
+\begin{cases}
+    \text{Проекция } \vec{r_x} = r \cos(\alpha) \\
+    \text{Проекция } \vec{r_y} = r \cos(\beta) \\
+    \text{Проекция } \vec{r_z} = r \cos(\gamma)
+\end{cases}
+\]
+
+Эти косинусы называются направляющими. $\vec{r} = r (i\cos(\alpha) + j\cos(\beta) + k\cos(\gamma))$
+
+\subsubsection{Законы классической механики}
+
+\tbf{I Закон Ньютона}. Если на тело не действует силы или равнодействующая всех сил равна нулю,
+тело находится в покое или движется прямолинейно и равномерно. Подобные системы называются \textit{инерциальными}.
+
+\tbf{II Закон Ньютона}. Скорость изменения импульса определяется силой, действующей на него. $\frac{d \vec{P}} {dt} = \vec{F}$.
+Если m = const, то $m\vec{a}=\vec{F} \implies \vec{a}=\frac{\vec{F_p}} {m}$
+
+\tbf{III Закон Ньютона} В инерциальной системе отсчёта все тела взаимодействуют с одинаковыми по величине силам
+и противоположными по знаку.
+
+Следствия - закон сохранения механической энергии и сохранения импульса для замкнутых систем.
+
+
+\subsubsection{Работа силы. Механическая энергия}
+При движении под действием некоторой силы, этой силой совершается работа.
+
+$dA = \vec{F} d \vec{S}$, $A = \int_1^2 \vec{F} d \vec{S}$, $d\vec{S}$ - дифференциально малое перемещение. 
+
+Из \textit{II закона Ньютона} запишем силу и подставим: 
+$A = \int_1^2 d \vec{P} * \frac{d \vec{S}} {dt} = \int_1^2 \vec{V} d \vec{P} = m \int_1^2 \vec{V} d \vec{V}$.
+
+$A = \frac{m V_2^2}{2} - \frac{m V_1^2}{2} = K_2 - K_1 (\text{приращение кинетической энергии})$.
+
+Рассмотрим работу, совершаемую силой тяжести:
+
+\tbf{*Рисунок*}
+
+$A = mg(h_1 - h_2) = U_1 - U_2$.
+
+Потенциальная энергия определяет положение в пространстве. В отсутствие силы трения $K + U = const$. 
+Работа силы трения всегда меньше нуля.
+
+\subsubsection{Поле центральной силы}
+Если в любой точке пространства сила направлена к одному и тому же центру или от него,
+сила называется \tbf{центральной}.
+
+\tbf{*Рисунок*}
+
+$A = \int_1^2 \vec{F} d \vec{r}$
+
+$\vec{r} \uparrow \uparrow \vec{F}$
+
+$A = \int_1^2 Fdr$
+
+В поле центральной силы работа определяется радиус-вектором начального и конечного положений.
+Работа силы по замкнутому контуру равна 0.
+
+
+\end{document}
