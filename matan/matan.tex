@@ -2001,7 +2001,7 @@ $\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x
     \end{enumerate}
 \end{theorem}
 
-\subsection{Некоторые свойства функций непрерывных на замкнутом ограниченном\\ множестве}
+\subsection{Некоторые свойства функций непрерывных на замкнутом ограниченном множестве}
 
 \begin{definition}
     Непрерывную на множестве $A$ функцию $f(x)$, ($A \subset \R$ или $A \subset \R^m$)
@@ -2603,36 +2603,36 @@ $[x]$ -- целая часть числа $x$ (наибольшее целое, 
 
     $d^{(n)}f(x) = d(d^{(n-1)}f(x)) = f^{(n)}(x) \cdot (dx)^n$
 
-    \subsection{Применение производных для изучения поведения функции одной переменной}
+\subsection{Применение производных для изучения поведения функции одной переменной}
 
-    \begin{definition}
+\begin{definition}
         Функция $f(x)$ возрастает/убывает в точке $x_0$, если $\exists\delta >0$, $0<|x-x_0|<\delta$, то выполняется $\frac{\Delta f(x_0)}{\Delta x} = \frac{F(x)-F(x_0)}{x-x_0}>0 (<0)$
-    \end{definition}
-    \begin{definition}
+\end{definition}
+\begin{definition}
         Говорят, что функция $f(x)$ имеет в точке $x_0$ локальный максимум (минимум), если $\exists \delta >0$, $0<|x-x_0|<\delta$ выполняется $ f(x)<f(x_0) $ или $(f(x)>f(x_0))$.
         У этих точек есть общее название - локальный экстремум.
-    \end{definition}
+\end{definition}
 
 
-    \begin{theorem}[Признак возрастающей (убывающей) функции в точке (Лемма Дарбу)]
+\begin{theorem}[Признак возрастающей (убывающей) функции в точке (Лемма Дарбу)]
         Если в точке $x_0$ $\exists f'(x_0)>0 (<0) \implies f(x)$ возрастает (убывает) в точке $x_0$.
-    \end{theorem}
-    \begin{proof}
+\end{theorem}
+\begin{proof}
         Если $f'(x_0)>0$, то $\implies$ (по теореме о сохранении знака)
         \[\lim_{x\to x_0} \frac{f(x)-f(x_0)}{x-x_0}>0\] 
         $\implies \exists$ окрестность точки $x_0$, в которой $\frac{f(x)-f(x_0)}{x-x_0}>0$ $\implies f(x)$ возрастает в точке $x_0$ (для убывания аналогично).
-    \end{proof}
+\end{proof}
 
-    \begin{theorem}[необходимое условие локального экстремума (Теорема Ферма)]
+\begin{theorem}[необходимое условие локального экстремума (Теорема Ферма)]
         Если у $f(x)$ в точке $x_0$ существует локальный экстремум и если $\exists f'(x_0)$, то $f'(x_0)=0$
-    \end{theorem}
-    \begin{proof}
+\end{theorem}
+\begin{proof}
         Допустим от противного, что $f'(x_0) \neq 0$ $\implies$ $f'(x_0)>0$ или $f'(x_0)<0$ в точке $x_0$ $\implies f(x)$ возрастает или убывает в точке $x_0$ по Дарбу $\implies$ противоречие.
-    \end{proof}
-    \begin{theorem}[Теорема Ролля]
+\end{proof}
+\begin{theorem}[Теорема Ролля]
         Пусть $y = f(x)$ непрерывна на $[a,b]$ и дифференцируема в $(a, b)$ и $f(a) = f(b) \implies \exists c \in (a, b)$, где $f'(c)=0$ 
-    \end{theorem}
-    \begin{proof}
+\end{theorem}
+\begin{proof}
         *рисунок*
         Так как $f(x)$ непрерывна на отрезке $[a, b]$, то она достигает на $[a, b]$ своего наибольшего и наименьшего значения, то есть $\exists c_1,c_2 \in [a, b]:f(c_1)=min f(x)$ и $f(c_2)=max f(x)$, где $x \in [a, b]$
 
@@ -2643,24 +2643,134 @@ $[x]$ -- целая часть числа $x$ (наибольшее целое, 
         2 случай:
 
         $c_1$ или $c_2$ $\in (a, b) \implies$ является точкой локального экстремума, значит по теореме Ферма $\implies f'(c_1) = 0$ (или $f'(c_2) = 0$)   
-    \end{proof}
+\end{proof}
 
     Замечание:
 
     Если $f(a) = f(b) = 0$, то Теорема Ролля говорит о том, что между любыми двумя нулями функции находится нуль производной.
-    \begin{theorem}[Теорема Коши о среднем приращении]
+\begin{theorem}[Теорема Коши о среднем приращении]
         Пусть $\varphi(x)$ и $\psi(x)$ непрерывны на $[a, b]$ и дифференцируемы на $(a, b)$ и $\forall x \in (a, b)$, $(\psi'(x))^2+(\varphi'(x))^2 \neq 0$, и $\varphi(b) \neq \varphi(a)$.
         Тогда $\exists c \in (a, b)$, где $\frac{\psi(b) - \psi(a)}{\varphi(b) - \varphi(a)} = \frac{\psi'(c)}{\varphi'(c)}$.
-    \end{theorem}
-    \begin{proof}
+\end{theorem}
+\begin{proof}
         Рассмотрим функцию $f(x) = \frac{\psi(b) - \psi(a)}{\varphi(b) - \varphi(a)} \cdot \varphi(x) - \psi(x)$, которая непрерывна на отрезке $[a, b]$ и дифференцируема на $(a, b)$.
         \[f(a)=\frac{\psi(b) - \psi(a)}{\varphi(b) - \varphi(a)}\varphi(a)-\psi(a) = \frac{\psi(b)\varphi(a)-\psi(a)\varphi(a)-\psi(a)\varphi(b)+\varphi(a)\psi(a)}{\varphi(b) - \varphi(a)}\] *возможно какая-то ошибка при умножении*
         \[f(b)=\frac{\psi(b) - \psi(a)}{\varphi(b) - \varphi(a)}\varphi(b)-\psi(b) = \frac{\psi(b)\varphi(b)-\psi(a)\varphi(b)-\psi(b)\varphi(b)+\varphi(a)\psi(b)}{\varphi(b) - \varphi(a)}\]
         $\implies f(a)=f(b)$ по теореме Ролля $\implies \exists c \in (a, b): f'(c) = 0$
         \[f'(c) = \frac{\psi(b)-\psi(a)}{\varphi(b)-\varphi(a)} \cdot \varphi'(c)-\psi'(c) = 0 \implies \frac{\psi(b)-\psi(a)}{\varphi(b)-\varphi(a)} = \frac{\psi'(c)}{\varphi'(c)}\]
-    \end{proof}
+\end{proof}
 
-    \begin{theorem}[Теорема Лагранжа]
+\begin{theorem}[Теорема Лагранжа]
         Если $f(x)$ непрерывна на $[a, b]$ и дифференцируема на $(a, b) \implies \exists c \in (a, b): f(a)-f(b)=f'(c)(a-b)$ *рисунок*
-    \end{theorem}
+\end{theorem}
+
+\begin{theorem}[О возрастании/убывании функции в промежутке]
+    Если $f(x)$ непрерывна на $[a, b]$ и $f'(x)>0 (\geq 0, <0, \leq 0): \forall x \in (a, b) \implies f(x)$ - возрастает (неубывает, убывает, невозрастает) на $(a, b)$.
+\end{theorem}
+\begin{proof}
+    Возьмём $\forall x_1, x_2: a < x_1 < x_2 < b$. По теореме Лагранжа $\exists c \in (x_1, x_2): f(x_2) - f(x_1) = f'(c)(x_2-x_1) \implies f(x_2) > f(x_1)$, что по определению означает, что $f(x)$ возрастает на $(a, b)$. Остальное - аналогично. 
+\end{proof}
+
+\begin{theorem}[О константе]
+    Если $\forall x \in (a, b)$  $\exists f'(x) = 0 \implies \forall x \in (a, b)$ $f(x) \equiv$ c, где $c = const$.
+\end{theorem}
+\begin{proof}
+    Возьмём $\forall x_1, x_2: a < x_1 < x_2 < b$. По теореме Лагранжа $f(x_2) - f(x_1) = f'(c)(x_2-x_1)$, где $c \in (x_1, x_2) \implies f(x_2) = f(x_1) \equiv c \implies \forall x \in (a, b)$ $f(x) \equiv c$
+\end{proof}
+
+\begin{theorem}[Первое достаточное условение локального экстремума]
+    Пусть $f(x)$ непрерывна в некоторой окрестности точки $x_0$, и в этой окрестности $f'(x) \geq 0$ $(\leq 0)$ при $x < x_0$ и $f'(x) \leq 0$ $(\geq 0)$ при $x > x_0$. Тогда в точке $x_0$ функция $f(x)$ имеет локальный максимум (минимум).
+\end{theorem}
+\begin{proof}
+    Возьмём произвольную точку $x$ из заданной окрестности. Тогда по теореме Лагранжа $f(x)-f(x_0) = f'(c)(x - x_0)$, где $c$ между $x$ и $x_0$. Тогда $f'(c)(x - x_0) \leq 0$ для $\forall x$ из этой окрестности $\implies f(x) \leq f(x_0)$, что по определению $\implies x_0$ - точка локального максимума.
+\end{proof}
+
+\begin{theorem}[Второе достаточное условие локального экстремума]
+    Пусть $f(x)$ имеет $f'(x)$ в некоторой окрестности точки $x_0$ и $\exists f''(x_0)$. Если $f'(x_0) = 0$, а $f''(x_0) > 0 (< 0)$, то $x_0$ - точка локального максимума (минимума).
+\end{theorem}
+\begin{proof}
+    $\exists f'(x)$ в некоторой окрестности точки $x_0 \implies f(x)$ непрерывна в этой окрестности. $f''(x_0) > 0$, по теореме Дарбу $\implies f'(x_0)$ возрастает в точке $x_0$. Но $f'(x_0) = 0 \implies f'(x) < 0$ при $x < x_0$ и $f'(x) > 0$ при $x > x_0 \implies$ по теореме о первом условии, точка $x_0$ - точка локального минимума $f(x)$.
+\end{proof}
+
+
+\subsection{Производные и дифференциалы для функций многих переменных}
+\begin{definition}
+    Пусть $u = f(x)$, $x, x_0 \in \R^m$ и тогда $$\exists \lim_{\Delta x_k \to 0} \frac{f(x^0_1, x^0_2, ..., x^0_{k-1}, x^0_k+\Delta x_k, x^0_{k+1}, ..., x^0_m)-f(x^0_1, ..., x^0_m)}{\Delta x_k}=\frac{df}{dx_k}(x_0)$$
+
+    Пример: $u(x, y) = x^3 \cdot y^2$. 
+    
+    $\frac{du}{dx} = y^2 \cdot 3x^2$, $\frac{du}{dy} = x^3 \cdot 2y$
+\end{definition}
+\begin{definition}
+    Если $\omega \in \R^m: |\omega| = 1$, то производной функции $f(x)$ в точке $x_0$ по направлению вектора $\omega$ называется $$\lim_{t \to 0+} \frac{f(x_0+t\omega)-f(x_0)}{t} = \frac{df}{d\omega}(x_0)$$
+*рисунок*
+\end{definition}
+
+\begin{definition}
+    Пусть $f(x)$ определена в некоторой окрестности точки $x_0$, $(x_0 \in \R^m)$, и $\Delta f(x_0) = f(x_0+\Delta x) - f(x_0)$, ($\Delta x \in \R^m$, $\Delta x(\Delta x_1, ..., \Delta x_m)$) полное приращение можно представить в виде $$\Delta f(x_0) = \sum_{k=1}^m A_k \cdot \Delta x_k + o(|\Delta x|)$$ при $\Delta x \to 0$.
+    $(|a| = \sqrt{a^2_1+...+a^2_m})$, то $f(x)$ называют дифференцируемой в точке $x_0$. Сумму $$\sum_{k=1}^m A_k \cdot \Delta x_k$$ называют полным дифференциалом функции $f(x)$ в точке $x_0$ и обозначают $df(x_0)$.
+\end{definition}
+
+\begin{theorem}[Связь дифференцируемости и существования частных производных]
+    Если $f(x)$ дифференцируема в точке $x_0$, $(x, x_0 \in \R^m) \implies \exists \frac{df}{dx_k}(x_0)$, $\forall k: 1 \leq k \leq m$
+\end{theorem}
+\begin{proof}
+    $f(x)$ - дифференцируема в точке $x_0$ по определению $\implies$ $$\Delta f(x_0) = \sum_{k=1}^m A_k \cdot \Delta x_k + o(|\Delta x|)$$ при $\Delta x \to 0$.
+    Возьмём $\Delta x = (0,..., 0, \Delta x_k, 0,...,0) \implies f(x^0_1, x^0_2, ..., x^0_{k-1}, x^0_k+\Delta x_k, x^0_{k+1}, ..., x^0_m)-f(x^0_1, ..., x^0_m) = A_k \cdot \Delta x_k + o(|\Delta x|)$ при $\Delta x_k \to 0 \implies$ 
+    $$\exists \lim_{\Delta x_k \to 0} \frac{f(x^0_1, x^0_2, ..., x^0_{k-1}, x^0_k+\Delta x_k, x^0_{k+1}, ..., x^0_m)-f(x^0_1, ..., x^0_m)}{\Delta x_k} = \lim_{\Delta x_k \to 0} (A_k + \frac{o(|\Delta x_k|)}{\Delta x_k}) \implies \exists \frac{df}{dx_k}(x_0) = A_k$$, где $\forall k: 1 \leq k \leq m$
+\end{proof}
+
+Замечание: это условие является необходимым, но не достаточным.
+
+\begin{theorem}[Связь дифференцируемости и непрерывности]
+    Если $f(x)$ дифференцируема в точке $x_0$, то она непрерывна в точке $x_0$.
+\end{theorem}
+\begin{proof}
+    $f(x)$ дифференцируема в точке $x_0$ $\implies$ $$\Delta f(x_0) = \sum_{k=1}^m \frac{df}{dx_k}(x_0) \cdot \Delta x_k + o(|\Delta x|), \Delta x \to 0$$
+    Рассмотрим $$\lim_{\Delta x \to 0} \Delta f(x_0) = \lim_{\Delta x \to 0} (\sum_{k=1}^m \frac{df}{dx_k}(x_0) \cdot \Delta x_k + \frac{o(|\Delta x|)}{|\Delta x|} \cdot |\Delta x|) = 0$$
+    Значит, $f(x)$ непрерывна в точке $x_0$.
+\end{proof}
+
+\begin{theorem}[Достаточные условия дифференцируемости фукнций многих переменных]
+    Если в некоторой окрестности точки $x_0$ существует $\frac{df}{dx_k}$, где $\forall k = \overline{1, m}$, и они непрерывны в точке $x_0 \implies f(x)$ дифференцируема в точке $x_0$. 
+\end{theorem}
+\begin{proof}
+    $\Delta f(x_0) = f(x^0_1+\Delta x_1, x^0_2+\Delta x_2,..., x^0_m+\Delta x_m)-f(x^0_1,..., x^0_m)$
+    Обозначим $$f_k(x_0) = f(x^0_1+\Delta x_1;...; x^0_{k-1}+\Delta x_{k-1}; x^0_k; x^0_{k+1};...; x^0_m)$$
+    $f_1(x_0) = f(x^0_1;...;x^0_m) ; f_{m+1}(x_0) = f(x^0_1+\Delta x_1;...; x^0_1+\Delta x^0_m) ; f_2(x_0) = f(x^0_1+\Delta x_1; x^0_2;...; x^0_m)$
+    $$= f_{m+2}(x_0) - f_1(x_0) = (f_{m+1}(x_0) - f_m(x_0)) + (f_m(x_0) - f_{m-1}(x_0)) + ... +(f_3(x_0) - f_2(x_0)) + (f_2(x_0) - f_1(x_0)) =$$ 
+    $$\sum_{k=1}^m(f_{k+1}(x_0) - f_k(x_0))$$
+    Применим к каждому слагаемому теорему Лагранжа:
+    $$f_{k+1}(x_0) - f_k(x_0) = f(x^0_1+\Delta x_1;...; x^0_k+\Delta x_k; x^0_{k+1};...; x^0_m) - f(x^0_1+\Delta x_1;...; x^0_{k-1}+\Delta x_{k-1}; x^0_k;...; x^0_m) = $$ $$\frac{df}{dx_k}(x^0_1+\Delta x_1;...; x^0_{k-1}+\Delta x_{k-1}; \overline{x_k}; x^0_{k+1};...; x^0_m)\Delta x_k$$, где
+    $\overline{x_k}$ между $x^0_k$ и $x^0_k+\Delta x_k$.
+    Так как $\frac{df}{dx_k}$ непрерывна в точке $x_0 \implies$ $$\frac{df}{dx_k}(x^0_1+\Delta x_1;...; x^0_{k-1}+\Delta x_{k-1}; \overline{x_k}; x^0_{k+1};...; x^0_m)$$
+    $\implies \frac{df}{dx_k}(x_0)$ при $|\Delta x| \to 0 =$
+    $$(\frac{df}{dx_k}(x_0) + o(1))\Delta x_k = \frac{df}{dx_k}(x_0)\Delta x_k + o(\Delta x_k)$$ при $|\Delta x| \to 0 \implies$
+    $$\sum_{k=1}^m(\frac{df}{dx_k}(x_0)\Delta x_k + o(\Delta x_k)) = \sum_{k=1}^m\frac{df}{dx_k}(x_0)\Delta x_k + o(\Delta x_k)$$ при $|\Delta x| \to 0$, что по определению означает, что $f(x)$ дифференцируема в точке $x_0$.
+\end{proof}
+
+\begin{definition}
+    Вектор $\frac{df}{dx_1}(x_0), \frac{df}{dx_2}(x_0), ..., \frac{df}{dx_m}(x_0)$ называется вектором градиента функции $f(x)$ в точке $x_0$ и обозначается
+    $$grad f(x_0) = (\frac{df}{dx_1}(x_0), \frac{df}{dx_2}(x_0), ..., \frac{df}{dx_m}(x_0))$$
+    Замечание:
+
+    Так как $$df(x_0) = \sum_{k=1}^m\frac{df}{dx_k}(x_0)\Delta x_k = grad f(x_0) \Delta x \implies$$
+    $$\frac{df}{d\omega}(x_0) = \lim_{t \to +0}\frac{f(x_0+t\omega)-f(x_0)}{t} = \lim_{t \to +0}\frac{\sum_{k=1}^m\frac{df}{dx_k}(x_0)\cdot t\omega_k + o(|t\omega|)}{t} =$$
+    $$\lim_{t \to t_0}(\sum_{k=1}^m\frac{df}{dx_k}(x_0)\omega_k+\frac{o(t)}{t}) = \sum_{k=1}^m\frac{df}{dx_k}(x_0)\omega_k = grad f(x_0)\cdot\omega$$
+\end{definition}
+
+\begin{theorem}[О направлении наибольшего роста фукнции]
+    $|\frac{df}{d\omega}(x)| \leq |grad f(x)|$
+\end{theorem}
+\begin{proof}
+    $|\frac{df}{d\omega}(x)| = |grad f(x)\cdot\omega| \leq |grad f(x)|\cdot|\omega|$, где $|\omega| = 1$.
+
+    И $|\frac{df}{d\omega}(x)| = |grad f(x)|$, если $\omega = \frac{gradf(x)}{|gradf(x)|}$, то есть функция растет быстрее всего в направлении своего градиента.
+\end{proof}
+
+\begin{theorem}[О дифференцируемости сложной функции]
+    Пусть дана функция $\varphi_k(x)$, $k = \overline{1,l}$ и $f(t)$ дифференцируема в точке $x = a = (a_1,...,a_m)$ и $t = \varphi(a) = b = (b_1,...,b_l)$ соответственно.
+    
+    Имеем $(x\in\R^m, t\in\R^l; \varphi(a) = (\varphi_1(a),...,\varphi_l(a))) = (\varphi_1(a_1,...,a_m),...,\varphi_l(a_1,...,a_m)) \implies f(x)=f(\varphi(x))$ - дифференцируема в точке $a$.
+\end{theorem}
 \end{document}
