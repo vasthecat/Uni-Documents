@@ -1,0 +1,328 @@
+\documentclass[a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage{underscore}
+\usepackage{setspace}
+\usepackage{indentfirst} 
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+% \usepackage[standard]{ntheorem}
+\usepackage{amsthm}
+\usepackage{cancel}
+\usepackage[left=1.4cm,right=1.4cm,
+    top=2.3cm,bottom=2.3cm,bindingoffset=0cm]{geometry}
+\singlespacing
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{tikz}
+
+% \theoremstyle{break}
+
+% --- Теорема --- %
+% \newtheoremstyle{break}% name
+%   {}%         Space above, empty = `usual value'
+%   {}%         Space below
+%   {\itshape}% Body font
+%   {}%         Indent amount (empty = no indent, \parindent = para indent)
+%   {\bfseries}% Thm head font
+%   {.}%        Punctuation after thm head
+%   {\newline}% Space after thm head: \newline = linebreak
+%   {}%         Thm head spec
+% \theorembodyfont{\normalfont}
+% \theoremstyle{break}
+\newtheorem{theorem}{Теорема}[subsection]
+% --------------- %
+
+% --- Определение --- %
+% \theorembodyfont{\normalfont}
+% \newtheoremstyle{break}
+%   {\topsep}{\topsep}%
+%   {\itshape}{}%
+%   {\bfseries}{}%
+%   {\newline}{}%
+% \theoremstyle{break}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[subsection]
+% ------------------- %
+
+% --- Доказательство --- %
+% \theoremheaderfont{\normalfont\itshape}
+% \theorembodyfont{\normalfont}
+% \newtheorem*{proof}{Доказательство.}
+% ---------------------- %
+
+% --- Пример --- %
+\theoremstyle{definition}
+\newtheorem*{example}{Пример}
+% -------------- %
+
+% --- Следствие --- %
+% Corollary
+% ----------------- %
+
+% --- Замечание --- %
+% Remark
+\theoremstyle{definition}
+\newtheorem*{remark}{Замечание}
+% ----------------- %
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\dslim}{\displaystyle\lim}
+\newcommand{\dslimn}{\dslim_{n \to \infty}}
+\newcommand{\approach}[1]{\underset{#1}{\longrightarrow}}
+\newcommand{\dsint}{\displaystyle\int}
+
+\begin{document}
+% \section{Кинематика}
+% \subsection{Перемещение точки. Путь.}
+% \begin{definition}
+%     Материальная точка при движении описывает некоторую линию - \tbf{траекторию}.
+    
+%     \tbf{Путь} - длина траектории.
+
+%     \tbf {Перемещение} - расстояние между началом и концом точек траектории.
+% \end{definition}
+
+% \subsection{Скорость.}
+% $\vec{V} = \dslim_{\Delta \to 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d \vec{r}}{dt}$
+
+% $\vec{V}$ совпадает с $\vec{r}$ в каждый момент времени.
+
+\section{Механика}
+\subsection{Кинематика: криволинейное движение}
+    \tbf{Криволинейное движение} - движение вдоль кривой линии.
+
+\tbf{*Рисунок*}
+
+\[R_C - \text{радиус кривизны. } C = \frac{1}{R_C}\]
+
+\tbf{*Рисунок*}
+
+1-2 $\rightarrow \Delta S$. $\dslim_{\Delta S \to 0} \frac{\Delta \varphi}{\Delta S} = C$. $\frac {d \varphi}{dS} = C$.
+
+Для описания движения вводим криволинейную систему координат, то есть вводим координату, которая будет отмечать
+пройденное расстояние -- $\varepsilon$
+
+\tbf{*Рисунок*}
+
+Для описания движения необходимо в каждой точке ввести нормальную и тангенциальную компоненту скорости.
+
+\tbf{*Рисунок*}
+
+$| \vec{\tau} | = 1$, $| \vec{n} | = 1$
+\[
+\begin{cases}
+    \vec{V_n} - \text{нормальная скорость} \\
+    \vec{V_\tau} - \text{тангенциальная скорость}
+\end{cases}
+\]    
+Отсюда следует, что существует нормальное и тангенциальное ускорение:
+\[
+\begin{cases}
+    \vec{a_n} - \text{нормальное ускорение} \\
+    \vec{a_\tau} - \text{тангенциальное ускорение}
+\end{cases}
+\]
+
+Кинетическое уравнение криволинейного движения имеет вид: $\xi = \xi_0 + V_0t + \frac {at^2}{2}$
+
+Нормальное ускорение всегда направлено к центру кривизны и определяется как $a_n = \frac {V^2}{R_C}$
+
+\subsubsection{Криволинейное движение по окружности (вращательное движение)}
+
+\tbf{*Рисунок*}
+
+\tbf{Аксиальные} и \tbf{полярные} векторы. Полярные это те, направление которых определяется естественным образом
+в данных условиях. Например: $\vec{V}, \vec{x}, \vec{a}$. Аксиальные вводятся для удобства
+описания вращательного движения. Например: $\vec{\varphi}, \vec{\omega}, \vec{\varepsilon}$.
+
+$[ \omega ]$ -- угловая скорость $\frac{\text{рад}}{c}$
+
+$[ \varphi ]$ -- $\text{рад}$; $[ \varepsilon ]$ -- $\frac{\text{рад}}{c^2}$
+
+За положительное направление принято направление против часовой стрелки и $\varphi$ на оси 
+располагается так (рисунок).
+
+$\vec{\omega} = \frac {d\varphi}{dt}$, $\vec{\varepsilon} = \frac{d\vec{\omega}}{dt}$.
+
+Кинематическое уравнение вращательного движения: $\varphi = \varphi_0 + \omega_0t + \frac {\varepsilon t^2}{2}$
+
+$\vec{V} = [ \vec{\omega} * \vec{R} ]$, $a_n = \omega^2R$
+
+\subsection{Динамика}
+Динамика изучает закономерности движения с одновременным рассмотрением причины этого движения.
+
+\tbf{Масса} -- мера инертности. \tbf{Сила} -- мера интенсивности взаимодействия.
+
+Радиус-вектор задаёт положение в пространстве относительно фиксированного центра
+
+\tbf{*Рисунок*}
+
+Введём углы между каждой осью и радиус вектором.
+\[
+\begin{cases}
+    {r_x} = r \cos(\alpha) \\
+    {r_y} = r \cos(\beta) \\
+    {r_z} = r \cos(\gamma)
+\end{cases}
+\]
+
+Эти косинусы называются направляющими. $\vec{r} = r (\vec{i}\cos(\alpha) + \vec{j}\cos(\beta) + \vec{k}\cos(\gamma))$
+
+\subsubsection{Законы классической механики}
+
+\tbf{I Закон Ньютона}. Если на тело не действует силы или равнодействующая всех сил равна нулю,
+тело находится в покое или движется прямолинейно и равномерно. Подобные системы называются \textit{инерциальными}.
+
+\tbf{II Закон Ньютона}. Скорость изменения импульса определяется силой, действующей на него. $\frac{d \vec{P}}{dt} = \vec{F}$.
+Если m = const, то $m\vec{a}=\vec{F} \implies \vec{a}=\frac{\vec{F_p}}{m}$
+
+\tbf{III Закон Ньютона} В инерциальной системе отсчёта все тела взаимодействуют с одинаковыми по величине силам
+и противоположными по знаку.
+
+Следствия -- закон сохранения механической энергии и сохранения импульса для замкнутых систем.
+
+
+\subsubsection{Работа силы. Механическая энергия}
+При движении под действием некоторой силы, этой силой совершается работа.
+
+$dA = \vec{F} d \vec{S}$, $A = \dsint_1^2 \vec{F} d \vec{S}$, $d\vec{S}$ -- дифференциально малое перемещение. 
+
+Из \textit{II закона Ньютона} запишем силу и подставим: 
+$A = \dsint_1^2 d \vec{P} * \frac{d \vec{S}}{dt} = \dsint_1^2 \vec{V} d \vec{P} = m \dsint_1^2 \vec{V} d \vec{V}$.
+
+$A = \frac{m V_2^2}{2} - \frac{m V_1^2}{2} = K_2 - K_1 (\text{приращение кинетической энергии})$.
+
+Рассмотрим работу, совершаемую силой тяжести:
+
+\tbf{*Рисунок*}
+
+$A = mg(h_1 - h_2) = U_1 - U_2$.
+
+Потенциальная энергия определяет положение в пространстве. В отсутствие силы трения $K + U = const$. 
+Работа силы трения всегда меньше нуля.
+
+\subsubsection{Поле центральной силы}
+Если в любой точке пространства сила направлена к одному и тому же центру или от него,
+сила называется \tbf{центральной}.
+
+\tbf{*Рисунок*}
+
+$A = \dsint_1^2 \vec{F} d \vec{r}$
+
+$\vec{r} \uparrow \uparrow \vec{F}$
+
+$A = \dsint_1^2 Fdr$
+
+В поле центральной силы работа определяется радиус-вектором начального и конечного положений.
+Работа силы по замкнутому контуру равна 0.
+
+\subsubsection{Профиль функции потенциальной энергии}
+Профиль -- график изменения функции с изменением координаты.
+
+\tbf{*Рисунок*}
+
+Если объект находится на промежутке $[a;b]$, то для данного случая энергия не превышает $U_1$, и, таким образом, объект находится
+в потенциальной яме, так как при движении по $x$ или в противоположную сторону энергия должна увеличиваться,
+а её значение не больше $U_1$. Движения являтся финитным, то есть ограниченным.
+
+\begin{enumerate}
+    \item $x \in (a;b)$ -- потенциальная яма. Для этого объекта $x < a$ и $x > b$ - потенциальные барьеры.
+    \item $x \geq c$ движение называется инфинитным
+
+    $x < c$ -- потенциальный барьер
+    \item $x \in (b;c)$, $x < a$ -- потенциальный барьер
+\end{enumerate}
+\subsubsection{Взаимосвязь силы и потенциальной энергии}
+\tbf{*Рисунок*}
+
+Направление максимального изменения функции задаётся её градиентом $\text{grad } U(x,y,z)$.
+Градиент -- оператор, который скалярную функцию переводит в векторную, и этот вектор показывает направление максимального изменения.
+
+\[\text{grad } U(x,y,z) = \vec{i} \frac{dU}{dx} + \vec{j} \frac{dU}{dy} + \vec{k} \frac{dU}{dz}\].
+
+\[\vec{F_{\text{т}}} = -\frac{dU} {dz} \vec{k} \text{; } \vec{F} = -\text{grad } U(x,y,z)\].
+
+\subsubsection{Движение в неинерциальных системах отсчёта}
+Неинерциальные системы отсчёта двигаются произвольным образом. Произвольное движение можно представить как совокупность
+вращательного движения относительно мгновенной оси и линейного.
+
+\tbf{*Рисунок*}
+
+$\vec{R} = \vec{R_0} + \vec{r}$
+
+\tbf{Задача}: составить уравнение относительного движения для объекта с массой $m$.
+
+$\vec{R_0}$ радиус-вектор, задающий положение точки $O$, и скорость её движения не учитывает возможный 
+поворот неинерциальной системы. В каждый момент времени необходимо вводить и учитывать мгновенную ось поворота.
+\begin{enumerate} 
+    \item Найдём относительную скорость движения.
+
+Продифференцируем $\vec{R} = \vec{R_0} + \vec{r}$:
+
+\[\frac{dR}{dt} = \frac{dR_0}{dt} + \frac{d}{dt} (\vec{i}x + \vec{j}y + \vec{k}z)\]
+
+Из векторного анализа известно, что при уголовой скорости $\omega$ производная вектора есть векторное произведение
+на соответсвующий вектор координаты:
+
+\[\vec{V_0} +([ \vec{\omega} * \vec{x} ] + [ \vec{\omega} * \vec{y} ] + [ \vec{\omega} * \vec{z} ])
+ + (\vec{i} \frac {dx}{dt} + \vec{j} \frac {dy}{dt} + \vec{k} \frac {dz}{dt})\]
+
+ \[\vec{V_\text{абс}} = \vec{V_0} + [\vec{\omega} * \vec{r}] + \vec{V_\text{отн}}\]
+
+ Движение относительно инерциальной системы отсчёта будем называть \textit{абсолютным}, и это движение складывается
+ из относительного и переносного.
+
+ 
+    \item Поиск ускорения абсолютного движения: $\vec{a_{\text{абс}}}$.
+
+ \[\frac{d \vec{r}}{dt} = [\vec{\omega} * \vec{r}] + \vec{V_{\text{отн}}}\]
+
+ \[ \frac{d \vec{V_\text{абс}}}{dt} = \frac{d \vec{V_0}}{dt} + 
+ ([\dot{\vec{\omega}} * \vec{r}] + [\vec{\omega} + \dot{\vec{r}}]) + \frac{d}{dt} (\vec{i} V_x + \vec{j} V_y + \vec{k} V_z) = \] 
+\[= \vec{a_0} + ([\dot{\vec{\omega}} * \vec{r}] + ([\vec{\omega} * ([\vec{\omega} * \vec{r}] + \vec{V_\text{отн}})]) + 
+([\vec{\omega} * \vec{V_\text{отн}}] + \vec{a_\text{отн}}) = \] 
+\[ = \vec{V_0} + [\dot{\vec{\omega}} * \vec{r}] + [\vec{\omega} * [\vec{\omega} * \vec{r}]] + [\vec{\omega} * \vec{V_\text{отн}}] +
+[\vec{\omega} * \vec{V_\text{отн}}] + \vec{a_\text{отн}} \]
+\[ \vec{a_\text{абс}} = \vec{a_\text{отн}} + [\dot{\vec{\omega}} * \vec{r}] + [\vec{\omega} * [\vec{\omega} * \vec{r}]] +
+\dot{\vec{V_0}} + 2[\vec{\omega} * \vec{V_\text{отн}}] \]
+\end{enumerate}
+
+\tbf{Теорема Кориолиса}. 
+
+Абсолютное ускорение есть сумма относительного ускорения, переносного и кориолисова.
+
+Переносное ускорение включает в себя:
+\begin{itemize}
+    \item Линейное ускорение ($\dot{\vec{V_0}}$)
+    \item Угловое ускорение ($\dot{\vec{\omega}}$)
+    \item Центробежное ускорение ($[\vec{\omega} * [\vec{\omega} * \vec{r}]] = -\vec{\omega^2} \vec{r_\perp}$,
+     где $\vec{r_\perp}$ -- радиус-вектор объекта относительно оси поворота)
+\end{itemize}
+
+\tbf{*Рисунок*}
+
+Составим уравнение движения в неинерциальной системе отсчёта:
+
+\[ \vec{a_\text{отн}}m = \vec{F} + \vec{\omega^2} \vec{r_\perp}m - m[\dot{\vec{\omega}} * \vec{r}] - m\dot{\vec{V_0}} + 2m[\vec{V_\text{отн}} * \vec{\omega}] \]
+Все остальные слагаемые называются силами инерции:
+\begin{itemize}
+    \item $\vec{\omega^2} \vec{r_\perp}m$ -- центробежная сила;
+    \item $ -m[\dot{\vec{\omega}} * \vec{r}]$ -- сила инерции при ускоренном повороте;
+    \item $ -m\dot{\vec{V_0}}$ -- сила инерции из-за ускорения центра неинерциальной системы отсчёта;
+    \item $ \vec{F_\text{Кор}} = 2m[\vec{V_\text{отн}} * \vec{\omega}]$.
+\end{itemize}
+
+Рассмотрим движение объекта во вращательной системе. В качестве вращательной системы --
+вращение Земли, а движущийся объект -- река. 
+
+\tbf{*Рисунок*}
+
+Сила Кориолиса не может быть скомпенсирована и играет формирующую роль.
+\end{document}
