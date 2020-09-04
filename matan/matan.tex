@@ -42,6 +42,8 @@
 
 \newcommand{\approach}[1]{\underset{#1}{\longrightarrow}}
 
+\newcommand{\series}[1]{\displaystyle\sum_{k=1}^\infty #1}
+\newcommand{\seriesx}{\displaystyle\sum_{k=1}^\infty x_k}
 % \theoremstyle{break}
 
 % --- Теорема --- %
@@ -2773,4 +2775,34 @@ $[x]$ -- целая часть числа $x$ (наибольшее целое, 
     
     Имеем $(x\in\R^m, t\in\R^l; \varphi(a) = (\varphi_1(a),...,\varphi_l(a))) = (\varphi_1(a_1,...,a_m),...,\varphi_l(a_1,...,a_m)) \implies f(x)=f(\varphi(x))$ - дифференцируема в точке $a$.
 \end{theorem}
+
+\section{Числовые ряды}
+\begin{definition}
+    Числовым рядом с элементами $\{x_n\}$ называется выражение вида $x_1 + \dots + x_n + \dots = \seriesx$.
+\end{definition}
+
+\begin{definition}
+    Последовательность $\{S_n\}$: $S_1 = x_1, S_2 = x_1 + x_2, \dots, S_n = x_1 + \dots + x_n, \dots$ называется последовательностью частичных сумм $\seriesx$.
+\end{definition}
+
+\begin{definition}
+    Числовым рядом называется пара последовательностей ($\{x_n\}, \{S_n\}$).
+\end{definition}
+
+\begin{definition}
+    Говорят, что ряд $\seriesx$ сходится, если $\exists \dslimn S_n = S$, где $S$ называется суммой ряда, в противном случае говорят, что ряд расходится.
+\end{definition}
+
+\begin{remark}
+    Получается, что сходимость ряда связана со сходимостью последовательности $\{S_n\}$, и наоборот сходимость любой последовательности $\{y_n\}$ можно связать со сходимостью ряда.
+    \[ \{y_n\}  \text{ -- сходится} \iff \series{(y_k - y_{k-1})} \text{ -- сходится}, \; (y_0 = 0) \]
+    \[ S_n = (y_1 - y_0) + (y_2 - y_1) + \dots + (y_n - y_{n-1}) = y_n \]
+\end{remark}
+
+\begin{theorem}[Критерий Коши сходимости числового ряда]
+    \[ \series{x_n} \text{ сходится} \iff \forall \varepsilon > 0 \; \exists n_\varepsilon \! : \forall n \geq n_\varepsilon , \forall m \geq n_\varepsilon      \]
+    \[ \left| \displaystyle\sum_{k=n+1}^m x_k \right| < \varepsilon \; (|x_{n+1} + \dots + x_m| < \varepsilon \; \text{или } |S_m - S_n| < \varepsilon) \]
+
+\end{theorem}
+
 \end{document}
