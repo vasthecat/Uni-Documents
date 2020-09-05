@@ -24,6 +24,7 @@
 \usepackage{tikz}
 
 \newcommand{\bydef}{\stackrel{\text{по опр.}}{\implies}} % by definition - по определению
+\newcommand{\dn}{\stackrel{\text{об.}}{=}} % denote - обозначим
 \newcommand{\parspace}{\vspace{10pt}}
 
 \newcommand{\imagin}{\mathrm{Im} \,}
@@ -44,6 +45,7 @@
 
 \newcommand{\series}[1]{\displaystyle\sum_{k=1}^\infty #1}
 \newcommand{\seriesx}{\displaystyle\sum_{k=1}^\infty x_k}
+\newcommand{\dssum}{\displaystyle\sum}
 % \theoremstyle{break}
 
 % --- Теорема --- %
@@ -2802,7 +2804,56 @@ $[x]$ -- целая часть числа $x$ (наибольшее целое, 
 \begin{theorem}[Критерий Коши сходимости числового ряда]
     \[ \series{x_n} \text{ сходится} \iff \forall \varepsilon > 0 \; \exists n_\varepsilon \! : \forall n \geq n_\varepsilon , \forall m \geq n_\varepsilon      \]
     \[ \left| \displaystyle\sum_{k=n+1}^m x_k \right| < \varepsilon \; (|x_{n+1} + \dots + x_m| < \varepsilon \; \text{или } |S_m - S_n| < \varepsilon) \]
-
 \end{theorem}
+
+\begin{proof}
+        \[ \seriesx \text{ -- сходится} \iff \{S_n\} \text{ -- сходится} \iff \text{по критерию Коши сходимости последовательности} \] 
+        \[ \forall \varepsilon > 0 \; \exists n_\varepsilon \; \forall n \geq n_\varepsilon \text{ выполняется } |S_m - S_n| < \varepsilon \]
+\end{proof}
+
+\textbf{Следствие} (необходимое условие сходимости ряда)
+
+Если $\seriesx$ сходится, то $\dslimn x_n = 0$.
+
+\textbf{Пример.} Обратное неверно:
+
+\[ \displaystyle\sum_{n=1}^\infty \frac{1}{n} \; \dslimn \frac{1}{n} = 0 , \text{ но } \varepsilon_0 = \frac{1}{2}, \; \forall k \; \exists n > k \text{ и } \exists m = 2n > k. \]
+\[ S_m - S_n = \frac{1}{n+1} + \frac{1}{n+2} + \dots + \frac{1}{2n} > \frac{1}{2n} + \dots + \frac{1}{2n} = \frac{1}{2} = \varepsilon \implies \]
+\[ \text{не выполняются условия Коши } \implies \text{ряд расходится}. \]
+
+\begin{definition}
+    Если $\series{|x_k|}$ сходится, то говорят, что $\seriesx$ сходится абсолютно. А если $\series{|x_k|}$ расходится, а сам $\seriesx$ сходится, то говорят, что $\seriesx$ сходится условно.
+\end{definition}
+
+\begin{theorem}[Признаки сходимости числового ряда]
+    Имеют место следующие признаки сходимости $\seriesx$:
+\begin{enumerate}
+    \item $\text{Если } \exists C > 0 \; \forall n \; \series{|x_k|} \leq C \implies \seriesx \text{ сходится абсолютно.}$
+    \item (сравнения) Если $\forall k \geq n_0 \; |x_k| \leq y_k$ и $\series{y_k}$ сходится, то $\seriesx$ сходится абсолютно. Если же $\forall k \geq n_0 \; x_k \geq y_k$ и $\series{y_k}$ расходится, то $\seriesx$ расходится.
+    \item (Коши) Пусть $\alpha = \overline{\dslimn} \sqrt[k]{|x_k|}$ тогда $\seriesx$ сходится абсолютно при $\alpha < 1$ и расходится при $\alpha > 1$.
+    \item (Даламбера) Пусть $\beta = \overline{\dslim_{k \to \infty}} \left| \frac{x_{k+1}}{x_k} \right| \quad (x_k \neq 0)$. Тогда при $\beta < 1$ ряд сходится абсолютно. Если же $\forall k \geq n_0 \; \left| \frac{x_{k+1}}{x_k} \right| \geq 1$, то ряд расходится.
+\end{enumerate}
+\end{theorem}p
+
+\begin{proof}
+    \begin{enumerate}
+        \item Пусть $S_n^* = \displaystyle\sum_{k=1}^n |x_k|$. Тогда $\{S_n^*\}$ монотонно неубывающая и ограниченная сверху ($|S_n^*\ \leq C$) $\implies$ по теореме о сходимости монотонной последовательности ($\{S_n^*\}$) сходится $\bydef \series{|x_k|}$ -- сходится $\bydef \seriesx$ сходится абсолютно.
+
+        \item
+        \textbf{a)} По условию $\forall k \geq n_0 \; |x_k| \leq y_k$ и $\series{y_k}$ -- сходится $\iff$ по критерию Коши $\forall \varepsilon > 0 \; \exists n_\varepsilon \; \forall n \geq n_\varepsilon \; \forall m \geq n_\varepsilon$ $\left| \displaystyle\sum_{k=n+1}^m |x_k| \right| \leq \left| \displaystyle\sum_{k=n+1}^\infty y_k \right| < \varepsilon \implies$ по критерию Коши $\series{|x_k|}$ сходится $\implies \seriesx$ сходится абсолютно.
+        
+        \textbf{б)} По условию $\forall k \geq n_0 \; x_k \geq y_k$ и $\series{y_k}$ расходится. Пусть от противного $\seriesx$ сходится $\implies$ по \textbf{а)} $\series{y_k}$ сходится -- противоречие.
+
+        \item Если $\alpha = \overline{\dslim_{k \to \infty}} \sqrt[k]{|x_k|} < 1 \iff$ по свойству верхнего предела $\forall \varepsilon > 0 \; \exists N_\varepsilon \; \forall k \geq N_\varepsilon \; \sqrt[k]{|x_k|} < \alpha + \varepsilon$. Возьмём $\varepsilon > 0$: $\alpha + \varepsilon \dn q < 1$ тогда $\sqrt[k]{|x_k|} < q$ или $|x_k| < q^k \forall k \geq N_\varepsilon$, но $\series{q^k}$ сходится ($q < 1, q^k$ -- бесконечно убывающая геометрическая прогрессия) $\implies$ по 2) $\seriesx{|x_k|}$ сходится $\implies \seriesx$ сходится абсолютно.
+        
+        Если $\alpha > 1$, то $\forall \varepsilon > 0$ найдётся бесконечное число элементов последовательности, удовлетворяющий условию: $\sqrt[k]{|x_k|} \geq \alpha - \varepsilon \implies |x_k| \geq (\alpha - \varepsilon)^k$. Возьмём $\varepsilon > 0: \alpha - \varepsilon > 1 \implies (\alpha - \varepsilon)^k \cancel\to 0 \implies$ бесконечное число элементов $x_k > 1 \implies x_k \cancel\to 0 \implies$ не выполнено необходимое условие сходимости ряда $\implies \seriesx$ расходится.
+
+        \item Пусть $\beta = \overline{\dslim_{k \to \infty}} \left| \frac{x_{k+1}}{x_k} \right| < 1 \implies$ по свойству верхнего предела $\forall \varepsilon > 0 \; \exists N_\varepsilon \; \forall k > N_\varepsilon | \frac{x_{k+1}}{x_k} | < \beta + \varepsilon$. Возьмём $\varepsilon > 0: \beta + \varepsilon < 1 \implies \forall k > N_\varepsilon \; | \frac{x_{k+1}}{x_k} | < q \implies |x_{k+1}| < q |x_k| < q^2|x_{k-1}| < \dots < q^{k - \frac{1}{\varepsilon}}|x_{k/\varepsilon}|$, но $\series{q^{k-{N_\varepsilon}}}|x_{N_\varepsilon}|$ -- сходится ($\series{\frac{x_{N_\varepsilon}}{q^{N_\varepsilon}}q^k}$ - сумма бесконечно убывающей геометрической прогрессии) $\implies \series{|x_k|}$ сходится абсолютно.
+        
+        Если же при $k \geq n_0 \; \frac{x_{k+1}}{x_k} \geq 1 \implies |x_{k+1}| \geq |x_k| \implies \{|x_k|\}$ монотонно неубывает $\implies |x_k| \cancel\to 0 \; (k \to \infty) \implies x_k \cancel\to 0 \implies$ по необходимому условию $\seriesx$ расходится.
+    \end{enumerate}
+\end{proof}
+
+
 
 \end{document}
