@@ -1,0 +1,177 @@
+\documentclass[a4paper,oneside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage{underscore}
+\usepackage{setspace}
+\usepackage{indentfirst} 
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+% \usepackage[standard]{ntheorem}
+\usepackage{amsthm}
+\usepackage{cancel}
+\usepackage{amssymb}
+\usepackage[left=1.4cm,right=1.4cm,
+    top=2.3cm,bottom=2.3cm,bindingoffset=0cm]{geometry}
+\singlespacing
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{tikz}
+
+\usepackage{tabularx}
+\newcommand{\bydef}{\stackrel{\text{по опр.}}{\implies}} % by definition - по определению
+\newcommand{\parspace}{\vspace{10pt}}
+
+\newcommand{\logor}{\vee}
+\newcommand{\logand}{\wedge}
+
+\newcommand{\imagin}{\mathrm{Im} \,}
+\newcommand{\real}{\mathrm{Re} \,}
+
+\newcommand{\dslim}{\displaystyle\lim}
+\newcommand{\dslimn}{\dslim_{n \to \infty}}
+
+\newcommand{\prop}[1]{#1^{\text{o}}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\approach}[1]{\underset{#1}{\longrightarrow}}
+
+% \theoremstyle{break}
+
+% --- Теорема --- %
+% \newtheoremstyle{break}% name
+%   {}%         Space above, empty = `usual value'
+%   {}%         Space below
+%   {\itshape}% Body font
+%   {}%         Indent amount (empty = no indent, \parindent = para indent)
+%   {\bfseries}% Thm head font
+%   {.}%        Punctuation after thm head
+%   {\newline}% Space after thm head: \newline = linebreak
+%   {}%         Thm head spec
+% \theorembodyfont{\normalfont}
+% \theoremstyle{break}
+\newtheorem{theorem}{Теорема}[subsection]
+% --------------- %
+
+% --- Определение --- %
+% \theorembodyfont{\normalfont}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[subsection]
+% ------------------- %
+
+% --- Доказательство --- %
+% \theoremheaderfont{\normalfont\itshape}
+% \theorembodyfont{\normalfont}
+% \newtheorem*{proof}{Доказательство.}
+% ---------------------- %
+
+% --- Пример --- %
+\theoremstyle{definition}
+\newtheorem*{example}{Пример}
+% -------------- %
+
+% --- Следствие --- %
+% Corollary
+% ----------------- %
+
+% --- Замечание --- %
+% Remark
+\theoremstyle{definition}
+\newtheorem*{remark}{Замечание}
+% ----------------- %
+
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for horizontal lines, change thickness here
+	
+	\center % Centre everything on the page
+	
+	%------------------------------------------------
+	%	Headings
+	%------------------------------------------------
+	
+	\textsc{\LARGE Издательство Пупы и Лупы}\\[1.5cm] % Main heading such as the name of your university/college
+	
+	\textsc{\Large }\\[0.5cm] % Major heading such as course name
+	
+	\textsc{\large }\\[0.5cm] % Minor heading such as course title
+	
+	%------------------------------------------------
+	%	Title
+	%------------------------------------------------
+	
+	\HRule\\[0.4cm]
+	
+	{\huge\bfseries Лекции по дискретной математике}\\[0.4cm] % Title of your document
+	
+	\HRule\\[1.5cm]
+	
+	%------------------------------------------------
+	%	Author(s)
+	%------------------------------------------------
+	
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushleft}
+			\large
+			\textit{Автор}\\
+			\textsc{Пупа} % Your name
+		\end{flushleft}
+	\end{minipage}
+	~
+	\begin{minipage}{0.4\textwidth}
+		\begin{flushright}
+			\large
+			\textit{Редактор}\\
+			\textsc{Лупа} % Supervisor's name
+		\end{flushright}
+	\end{minipage}
+	
+	% If you don't want a supervisor, uncomment the two lines below and comment the code above
+	%{\large\textit{Author}}\\
+	%John \textsc{Smith} % Your name
+	
+	%------------------------------------------------
+	%	Date
+	%------------------------------------------------
+	
+	\vfill\vfill\vfill % Position the date 3/4 down the remaining page
+	
+	{\large\today} % Date, change the \today to a set date if you want to be precise
+	
+	%------------------------------------------------
+	%	Logo
+	%------------------------------------------------
+	
+	%\vfill\vfill
+	%\includegraphics[width=0.2\textwidth]{placeholder.jpg}\\[1cm] % Include a department/university logo - this will require the graphicx package
+	 
+	%----------------------------------------------------------------------------------------
+	
+	\vfill % Push the date up 1/4 of the remaining page
+	
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+
+\input{lect1.tex}
+\input{lect2.tex}
+\input{lect3.tex}
+
+\end{document}
