@@ -150,3 +150,91 @@
     Если $x_0$ -- изолированная точка множества $A$, то $f(x)$ непрерывна в
     точке $x_0$ по определению.
 \end{proof}
+
+\begin{theorem}[о почленном дифференцировании функциональной последовательности]
+    Пусть $\forall n \in \N$ функция $f_n(x)$ дифференцируема на $[a; b]$,
+    причём последовательность $\{ f_n'(x) \}$ равномерно сходится на $[a; b]$,
+    а функциональная последовательность $\{ f_n(x) \}$ сходится в точке
+    $x_0 \in [a; b]$. Тогда функциональная последовательность $\{ f_n(x) \}$
+    сходится на $[a; b]$ к некоторой дифференцируемой на $[a; b]$ 
+    функции $f(x)$, причём $f'(x) = \dslimn f_n' (x)$
+\end{theorem}
+\begin{proof}
+    Рассмотрим
+    \[
+        \frac{\Delta f_n(x_0)}{\Delta x}
+        = \frac{f_n(x) - f_n(x_0)}{x - x_0}, 
+        \; \Delta x = x - x_0, \; x \ne x_0
+    \]
+
+    Докажем, что функциональная последовательность 
+    $\{ \frac{\Delta f_n(x_0)}{\Delta x} \}$ сходится равномерно на $[a; b]$.
+    По критерию Коши
+    \[
+        \frac{\Delta f_n(x_0)}{\Delta x} - \frac{\Delta f_m(x_0)}{\Delta x}
+        = \frac{\Delta (f_n - f_m)(x_0)}{\Delta x}
+        = \frac{(f_n(x) - f_m(x)) - (f_n(x_0) - f_m(x_0))}{\Delta x}
+    \]
+
+    По теореме Лагранжа $\exists \xi$ между $x$ и $x_0$ $\implies$
+    \[
+        \frac{1}{\Delta x} \cdot 
+        \frac{d}{dx} (f_n (x) - f_n(x)) \Big|_{x=\varepsilon} \cdot (x - x_0)
+        = f_n'(\xi) - f_m'(\xi)
+    \]
+
+    Так как $\{ f_n'(x) \}$ равномерно сходится на $[a; b]$ $\implies$
+    по критерию Коши равномерной сходимости функциональной последовательности
+    $\forall \varepsilon > 0 \; \exists n_\varepsilon \;
+    \forall n \geq n_\varepsilon \; \forall m \geq n_\varepsilon \;
+    \forall x \in [a; b]$ выполняется $|f_n'(x) - f_m'(x)| < \varepsilon$
+    $\implies \forall \varepsilon > 0 \; \exists n_\varepsilon \;
+    \forall n \geq n_\varepsilon \; \forall m \geq n_\varepsilon \;
+    \forall x \in [a; b]$ выполняется
+    $\left| \frac{\Delta f_n(x_0)}{\Delta x} - \frac{\Delta f_m(x_0)}{\Delta x} \right| < \varepsilon$
+    $implies$ по критерию Коши равномерной сходимости функциональной
+    последовательности $\left\{ \frac{\Delta f_n(x_0)}{\Delta x} \right\}$
+    равномерно сходится на $[a; b]$.
+
+    Рассмотрим $f_n(x) = f_n(x_0) + \frac{\Delta f_n(x_0)}{\Delta x} \cdot \Delta x$.
+    $f_n(x_0)$ сходится при $n \approach{} \infty$. 
+    $\frac{\Delta f_n(x_0)}{\Delta x}$ сходится при $n \approach{} \infty$ в
+    $\forall x \in [a; b]$.
+    Следовательно, $\{ f_n(x) \}$ сходится на $[a; b]$.
+
+    Обозначим $\dslimn f_n(x) = f(x)$
+
+    Тогда
+    \[
+        \dslimn \frac{\Delta f_n(x)}{\Delta x}
+        = \dslimn \frac{f_n(x) - f_n(x_0)}{x - x_0}
+        = \frac{f(x) - f(x_0)}{x - x_0} = \frac{\Delta f(x_0)}{\Delta x}
+    \]
+
+    Рассмотрим 
+    \[
+        \forall x_0 \in [a; b] \quad \exists \dslimn f_n'(x)
+        = \dslimn \left( \dslim_{x \to x_0} \frac{f_n(x) - f_n(x_0)}{x - x_0} \right)
+        = \dslimn \left( \dslim_{x \to x_0} \frac{\Delta f_n(x_0)}{\Delta x} \right)
+    \]
+
+    По теореме об изменении порядка предельного перехода:
+    \[
+        \dslim_{x \to x_0} (\dslimn \frac{\Delta f_n(x_0)}{\Delta x})
+        = \dslim_{x \to x_0} \frac{\Delta f(x_0)}{\Delta x} = f'(x_0)
+    \]
+    $\implies$ $f(x)$ дифференцируема на $[a; b]$ и $f'(x) = \dslimn f_n'(x)$
+\end{proof}
+
+\begin{remark}
+    Аналогично можно доказать теорему для функциональной последовательности
+    многих переменных:
+
+    Если $\forall n \in \N \; f_n(x), \; x \in A \subset \R^m$ определены на
+    выпуклом множестве $A$, имеют на $A$ частные производные 
+    $\frac{d f_n}{d x_k} (x)$ при фиксированном $k$ и
+    $\{ f_n(x) \}$ и $\{ \frac{d f_n}{d x_k} (x) \}$ равномерно сходятся на
+    $A$, то функция $f(x) = \dslimn f_n(x)$ имеет на $A \;$ 
+    $\frac{df}{dx_k} (x)$ 
+    и $\frac{df}{dx_k} (x) = \dslimn \frac{df_n}{dx_k} (x)$ 
+\end{remark}
