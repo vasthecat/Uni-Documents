@@ -1,1 +1,152 @@
 \section{Функциональные последовательности и ряды}
+
+\begin{definition}
+    Если любому $n \in \N$ поставить в соответствие функцию $f_n(x)$
+    определённую на $A$ ($A \subset \R$ или $A \subset \R^m$), то говорится,
+    что на множестве $A$ задана функциональная последовательность $\{ f_n(x) \}$
+\end{definition}
+
+\begin{definition}
+    Зафиксируем $x_0 \in A$. Если сходится числовая последовательность
+    $\{ f_n(x_0) \}$, то говорят, что функциональная последовательность
+    $\{ f_n(x) \}$ сходится в точке $x_0$.
+
+    А если функциональная последовательность $\{ f_n(x) \}$ сходится в
+    каждой точке множества $A$, то говорят, что $\{ f_n(x) \}$ сходится на
+    множестве $A$ (поточечно). И это значит, что существует предельная
+    функция $f(x) = \dslimn f_n(x)$
+
+    (То есть $\forall x \in A \; \forall \varepsilon > 0 \; 
+    \exists n_{\varepsilon,x} \; \forall n \geq n_{\varepsilon,x}$
+    выполняется $|f_n(x) - f(x)| < \varepsilon$)
+\end{definition}
+
+\begin{definition}
+    Говорят, что функциональная последовательность $\{ f_n(x) \}$ сходится
+    равномерно на множестве $A$ к $f(x)$, если
+    $\forall \varepsilon > 0 \; \exists n_\varepsilon \;
+    \forall n \geq n_\varepsilon \; \forall x \in A$ выполняется
+    $|f_n(x) - f(x)| < \varepsilon$
+\end{definition}
+
+\begin{example}
+    Равномерная сходимость -- условие более жёсткое, чем поточечная. Из того,
+    что функциональная последовательность сходится равномерно $\implies$
+    она сходится и поточечно. Обратное неверно.
+
+    \[ f_n(x) = x^n \quad A = (0; 1) \]
+    Имеем $\exists \dslimn x^n = 0 \implies f(x) = 0 \quad (x \in A)$.
+    Но $x^n$ сходится к 0 на интервале $(0; 1)$ только поточечно, но не
+    равномерно.
+
+    $\exists \varepsilon_0 = \frac{1}{4}$ ($\varepsilon_0$ достаточно взять
+    конкретным положительным $< \frac{1}{2}$).
+    $\forall n \; \exists x_n = \sqrt[n]{0.5} \in (0; 1): \; f_n(x_n) - f(x) =
+    \sqrt[n]{0.5} - 0 = 0.5 > \varepsilon_0 = 0.25$
+\end{example}
+
+\begin{theorem}[Критерий Коши для равномерной сходимости функциональной последовательности]
+    Для того, чтобы функциональная последовательность $\{ f_n(x) \}$ равномерно
+    сходилась на множестве $A$ $\iff$ 
+    $\forall \varepsilon > 0 \; \exists n_\varepsilon: \;
+    \forall m \geq n_\varepsilon \; \forall n \geq n_\varepsilon \;
+    \forall x \in a$ выполняется $|f_n(x) - f_m(x)| < \varepsilon$
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 
+            Необходимость
+
+            Пусть $\{ f_n(x) \}$ равномерно сходится на множестве $A$ к $f(x)$
+            $\bydef \forall \varepsilon_1 > 0 \; \exists n_{\varepsilon_1}: \;
+            \forall n \geq n_{\varepsilon_1} \; \forall x \in A$ выполняется
+            $|f_n(x) - f(x)| < \varepsilon_1$
+
+        \item 
+            Достаточность
+
+            Пусть $\forall \varepsilon_1 > 0 \; \exists n_{\varepsilon_1}: \;
+            \forall n \geq n_{\varepsilon_1} \;
+            \forall m \geq n_{\varepsilon_1} \; \forall x \in A$ выполняется
+            $|f_n(x) - f_m(x)| < \varepsilon_1 \; (*)$
+
+            Зафиксируем $x \in A$. По критерию Коши сходимости числовой 
+            последовательности $\implies \{ f_n(x) \}$ в фиксированной точке
+            $x$ сходится. И это справедливо $\forall x \in A$
+            $\implies \{ f_n(x) \}$ сходится поточечно на $A$ к 
+            некоторой $f(x)$, то есть $\exists \dslimn f_n(x) = f(x)$
+
+            Перейдём в $(*)$ к пределу при $m \approach{} \infty$.
+            Получим $|f_n(x) - f(x)| \leq \varepsilon_1$. Тогда
+            $\forall \varepsilon > 0$ возьмём $0 < \varepsilon_1 < \varepsilon$.
+            Получим $\exists n_\varepsilon = n_{\varepsilon_1}: \;
+            \forall n \geq n_\varepsilon \; \forall x \in A$ выполняется
+            $|f_n(x) - f(x)| < \varepsilon$ $\bydef \{ f_n(x) \}$ равномерно
+            сходится на $A$ к $f(x)$.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[об изменении порядка предельного перехода в функциональной последовательности]
+    Пусть функциональная последовательность $f_n(x)$ сходится равномерно
+    на $A$ к $f(x)$ и пусть $\exists \dslim_{x \to a} f_n (x) = b_n$.
+    Тогда $\exists \dslim_{x \to a} f(x) = b$, где $b = \dslimn b_n$
+    (то есть $\dslim_{x \to a} (\dslimn f(x)) = \dslimn (\dslim_{x \to a} f(x))$)
+\end{theorem}
+\begin{proof}
+    $\{ f_n(x) \}$ равномерно сходится к $f(x)$ на $A$ $\implies$ по критерию
+    Коши равномерной сходимости функциональной последовательности
+    $\forall \varepsilon_1 > 0 \; \exists n_{\varepsilon_1} \;
+    \forall n \geq n_{\varepsilon_1} \; \forall m \geq n_{\varepsilon_1} \;
+    \forall x \in A$ выполняется $|f_n(x) - f_m(x)| < \varepsilon_1 \quad (*)$
+
+    Перейдём в $(*)$ к пределу при $x \approach{} a$ 
+    $\implies |b_n - b_m| \leq \varepsilon_1 \quad (**)$. 
+    Тогда $\forall \varepsilon > 0$ выбрав $0 < \varepsilon_1 < \varepsilon$
+    $\implies \exists n_\varepsilon = n_{\varepsilon_1}: \;
+    \forall n \geq n_\varepsilon \; \forall m \geq n_\varepsilon$ выполняется
+    $|b_n - b_m| < \varepsilon \implies$ по критерию Коши сходимости
+    числовой последовательности $\{ b_n \}$ сходится 
+    $\implies \exists \dslimn b_n \dn b$
+
+    Перейдём в $(**)$ к пределу при $m \approach{} \infty$
+    $\implies |b_n - b| \leq \varepsilon_1 \; \forall n \geq n_{\varepsilon_1}$.
+    И перейдём в $(*)$ к пределу при $m \approach{} \infty$
+    $\implies |f_n(x) - f(x)| \leq \varepsilon_1 \; 
+    \forall n \geq n_\varepsilon \; \forall x \in A$
+
+    Рассмотрим $|f(x) - b| 
+    = |f(x) - f_n(x) + f_n(x) - b_n + b_n - b| 
+    \leq |f(x) - f_n(x)| + |f_n(x) - b_n| + |b_n - b|
+    \leq 2 \varepsilon_1 + |f_n(x) - b_n| 
+    \quad \forall x \in a \; \forall n \geq n_\varepsilon$
+
+    Зафиксируем $n \geq n_{\varepsilon_1}$. Так как по условию
+    $\dslim_{x \to a} f_n(x) = b_n \bydef$ для нашего 
+    $\varepsilon_1 > 0 \; \exists \delta_{\varepsilon_1} > 0: \;
+    \forall x \in a: \; 0 < |x - a| < \delta_{\varepsilon_1}$ выполняется
+    $|f_n(x) - b_n| < \varepsilon_1$.
+
+    Тогда получаем $|f(x) - b| < 3 \varepsilon_1 \dn \varepsilon
+    \implies \forall \varepsilon > 0 \; 
+    \exists \delta_\varepsilon = \delta_{\varepsilon_1} > 0: \;
+    \forall x \in A: \; 0 < |x - a| < \delta_\varepsilon$ выполняется
+    $|f(x) - b| < \varepsilon$ $\implies$ по определению Коши предела
+    функции в точке $\exists \dslim_{x \to a} f(x) = b$
+\end{proof}
+
+\begin{corollary}
+    Если $\forall n \in \N \; f_n(x)$ непрерывна в $x_0 \in A$ и
+    функциональная последовательность $\{ f_n(x) \}$ сходится равномерно на $A$
+    к $f(x)$ $\implies$ $f(x)$ непрерывна в точке $x_0$
+\end{corollary}
+\begin{proof}
+    Если $x_0$ -- предельная точка $A$, то по предыдущей теореме $\implies$
+    $\dslim_{x \to x_0} f(x) 
+    = \dslim_{x \to x_0} (\dslimn f_n(x))
+    = \dslimn (\dslim_{x \to x_0} f_n(x))
+    = \dslimn f_n (x_0) = f(x_0)$ 
+    $\bydef$ функция $f(x)$ непрерывна в точке $x_0$
+
+    Если $x_0$ -- изолированная точка множества $A$, то $f(x)$ непрерывна в
+    точке $x_0$ по определению.
+\end{proof}

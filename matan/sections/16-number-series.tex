@@ -283,7 +283,7 @@
     $\forall \varepsilon > 0 \; \exists n_\varepsilon 
     \forall m \geq n_\varepsilon \forall p \geq n_\varepsilon (p > m)$
     выполняется $\dssum_{k=m+1}^p |x_k| < \varepsilon$ или
-    $|S_p - S_m| < \varepsilon \; \Big| \dslim_{p \approach{\infty}}
+    $|S_p - S_m| < \varepsilon \; \Big| \dslim_{p \to \infty}
     \implies |S - S_m| \leq \varepsilon$, где $S$ -- сумма $\series{|x_k|}$
 
     Рассмотрим сумму $S_n'$, которая содержит все члены $S_m$ 
@@ -299,7 +299,7 @@
     $\forall \varepsilon^* > 0 \; 
     \exists n_{\varepsilon^*} = \max(n_\varepsilon, N) \;
     \forall n > n_{\varepsilon^*}$ выполняется $S_n' - S| < \varepsilon$
-    $\implies$ по определению $\exists \dslim_{n \approach{\infty}} S_n' = s$
+    $\implies$ по определению $\exists \dslimn S_n' = s$
     $\implies$ по определению $\series{|x_k'|}$ сходится
     $\implies \series{x_k'}$ сходится абсолютно к сумме S.
 \end{proof}
@@ -388,7 +388,7 @@
     $\delta_N$ соответствует всем значениям $m \leq N$. Тогда в неё входят все
     $x_k$ при $k \leq N$ и все $y_l$ при $l \leq N$.
     Тогда $\delta_n = \dssum_{k = 1}^N x_k \cdot \dssum_{l = 1}^N y_l
-    \implies \exists \dslim {N \approach{\infty}} \delta_N = X \cdot Y
+    \implies \exists \dslim_{N \to \infty} \delta_N = X \cdot Y
     \implies \dssum_{i = 1}^\infty z_i$ сходится абсолютно к $X \cdot Y$
 \end{proof}
 
