@@ -1,0 +1,245 @@
+\section{Пределы функций}
+
+\subsection{Пределы функций}
+
+\begin{definition}
+    Если каждому $x \in A$ поставить в соответствие единственное число $y \in B$,
+    то говорят, что это соответствие задаёт функцию $y = f(x)$.
+
+    Множество $A$ называют \textit{областью определения функции} и обозначают $D_f$.
+
+    Множество $B$ называют \textit{областью значений функции} и обозначают $E_f$.
+
+    $x$ -- аргумент, $y = f(x)$ -- значение функции в точке $x$.
+\end{definition}
+
+\parspace
+
+\textbf{Примеры:}
+\begin{enumerate}
+    \item $A \subset \R, B \subset \R \quad y = f(x)$ -- действительная
+    функция действительного аргумента
+
+    \item $A \subset \bb{C}, B \subset \bb{C} \quad w = f(z)$ -- комплексная
+    функция комплексного аргумента.
+
+    \item $A \subset \R^m, B \subset \R \quad y = f(x_1, \dots, x_m)$ --
+    действительная функция многих переменных.
+
+    \item $A \subset \R^m, B \subset \R^n \quad 
+    (y_1, \dots, y_n) = (f_1(x_1, \dots, x_m), f_2(x_1, \dots, x_m), \dots, f_n(x_1, \dots, x_m))$ --
+    векторная функция векторного аргумента.
+\end{enumerate}
+
+\begin{definition}
+    Функция $y = f(x)$ называется ограниченой (сверху, снизу), если её множество
+    значений ограничено (сверху, снизу), т.е 
+    \[
+        \exists m, M: \, \forall x \in D_f \quad m \le f(x) \le M
+        \text{ или }
+        \exists C: \, \forall x \in D_f \quad  | f(x) | \le C
+        \; \text{(ограничено)}
+    \]
+
+    \[\exists M: \, \forall x \in D_f \quad f(x) \le M \; \text{(огр. сверху)}\]
+
+    \[\exists m: \, \forall x \in D_f \quad m \le f(x) \; \text{(огр. снизу)}\]
+\end{definition}
+
+Пусть функция $y = f(x)$ задана на множестве $A$ и $a$ -- предельная точка $A$.
+
+\begin{definition}[предела функции по Гейне]
+    Число $b$ называют пределом функции $f(x)$ в точке $a$ \textbf{в смысле Гейне}
+    и обозначают $\dslim_{x \to a} f(x) = b$, если
+    $\forall \{ x_n \}: x_n \in A, x_n \ne a, x_n \approach{n \to \infty} a$ выполняется
+    $f(x_n) \approach{n \to \infty} b$, то $b$ -- предел функции $f$ в точке $a$.
+\end{definition}
+
+\begin{definition}[предела функции по Коши]
+    Число $b$ называют пределом функции $f(x)$ в точке $a$ \textbf{в смысле Коши}
+    и обозначают $\dslim_{x \to a} f(x) = b$, если
+    $\forall \varepsilon > 0 \quad \exists \delta_\varepsilon > 0 \quad
+    \forall x \in A : \; 0 < | x - a | < \delta_\varepsilon$ выполняется
+    $|f(x) - b| < \varepsilon$
+
+    *рисунок*
+\end{definition}
+
+\begin{theorem}[Об эквивалентности определений Коши и Гейне]
+    Определение Коши и Гейне предела функции в точке эквивалентны.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}[label=\alph*)]
+        \item 
+            Пусть $b = \dslim_{x \to a} f(x)$ в смысле Коши.
+            $\bydef$ $\forall \varepsilon > 0 \quad 
+            \exists \delta_\varepsilon > 0 \quad \forall x \in A: \; 0 < |x - a| < \delta_\varepsilon$
+            выполняется $|f(x) - b| < \varepsilon$.
+
+            Возьмём $\forall \{ x_n \}: x_n \in A, x_n \ne a, \dslimn x_n = a$
+            $\bydef$ $\forall \delta > 0 \quad \exists n_\delta \in \N: 
+            \forall n \ge n_\delta$ выполняется $| x_n - a | < \delta$
+
+            Возьмём $\delta = \delta_\varepsilon$ и тогда имеем, что $0 < |x_n - a| < \delta_\varepsilon$
+
+            Тогда получим, что $|f(x_n) - b| < \varepsilon \implies 
+            \forall \varepsilon > 0 \quad \exists n_\varepsilon = n_\delta \in \N \quad
+            \forall n \ge n_\varepsilon$ выполняется $|f(x_n) - b| < \varepsilon
+            \bydef \exists \dslim_{n \to b} f(x_n) = b \implies b = \dslim_{x \to a} f(x)$
+            в смысле Гейне.
+
+        \item
+            Пусть $b = \dslim_{x \to a} f(x)$ в смысле Гейне.
+            $\bydef$ $\forall \{ x_n \}: x_n \in A, x_n \ne a, \dslimn x_n = a$
+            выполняется $f(x_n) \approach{n \to \infty} b$.
+
+            \textit{Допустим от противного}, $b$ не является пределом $f(x)$ в точке $a$ в смысле Коши:
+            $\forall \varepsilon_0 > 0 \quad \forall \delta > 0 \quad \exists x_0 \in A: \; 0 < |x_0 - a| < \delta$,
+            но $|f(x_0) - b| \ge \varepsilon_0$
+
+            Возьмём
+            \[\delta = 1 \implies \exists x_1 \in A: \; 0 < |x_1 - a| < 1 \text{, но } |f(x_1) - b| \ge \varepsilon_0\]
+            \[\delta = \frac{1}{2} \implies \exists x_2 \in A: \; 0 < |x_2 - a| < \frac{1}{2} \text{, но } |f(x_2) - b| \ge \varepsilon_0\]
+            \[\dots\]
+            \[\delta = \frac{1}{n} \implies \exists x_n \in A: \; 0 < |x_n - a| < \frac{1}{n} \text{, но } |f(x_n) - b| \ge \varepsilon_0\]
+            \[\dots\]
+
+            Получим $\{ x_n \}: x \in A, x_n \ne 0$ и $0 < |x_n - a| < \frac{1}{n}$, т.е.
+            $x_n \approach{n \to \infty} a$, но
+            $f(x_n)$ \cancel{$\approach{n \to \infty}$} $b$ (т.к. $|f(x_n) - b| \ge \varepsilon_0$),
+            т.е. определение Гейне не выполняется.
+
+            Получили противоречие $\implies$ $b$ является пределом $f(x)$ в точке $a$ в смысле Коши.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Критерий Коши предела функции в точке]
+    Для того, чтобы существовал $\dslim_{x \to a} f(x)$ необходимо и достаточно, чтобы
+    $\forall \eps > 0 \quad \exists \delta_\eps > 0: \forall x' \in A, x'' \in A:
+    \begin{array}{c}
+        0 < | x' - a | < \delta_\eps \\
+        0 < | x'' - a | < \delta_\eps
+    \end{array}$ выполняется $| f(x') - f(x'') | < \eps$.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}[label=\alph*)]
+        \item 
+            Необходимость
+
+            Имеем, что $\exists \dslim_{x \to a} f(x) = b$ $\implies$ по определению Коши
+            $\forall \eps > 0 \quad \exists \delta_\eps > 0: \forall x \in A: 0 < | x - a | < \delta_\eps$
+            выполняется $| f(x) - b | < \frac{\eps}{2}$
+
+            Возьмём $x', x'' \in A:
+            \begin{array}{c}
+                0 < | x' - a | < \delta_\eps \\
+                0 < | x'' - a | < \delta_\eps
+            \end{array}$
+
+            Тогда $| f(x') - b | < \frac{\eps}{2}$ и $| f(x'') - b | < \frac{\eps}{2}$
+
+            Рассмотрим $| f(x') - f(x'') | = | (f(x') - b) + (b - f(x'')) | \stackrel{\triangle}{\le}
+            | f(x') - b | + | f(x'') - b | < \eps$.
+
+            Получили что и требовалось доказать.
+        
+        \item
+            Достаточность
+
+            Пусть $\forall \eps > 0 \quad \exists \delta_\eps > 0: \forall x', x'' \in A:
+            \begin{array}{c}
+                0 < | x' - a | < \delta_\eps \\
+                0 < | x'' - a | < \delta_\eps
+            \end{array}$ выполняется $| f(x') - f(x'') | < \eps$
+
+            Возьмём $\forall \{ x_n \}: \: x_n \in A, x_n \ne a, x_n \approach{n \to \infty} a$
+            $\implies$ по критерию Коши $\forall \delta > 0 \quad \exists n_\delta \in \N:
+            \forall n \ge n_\delta, \forall m \ge n_\delta$ выполняется $| x_n - x_m | < \delta$.
+
+            Возьмём $\delta = \delta_\eps, x' = x_n, x'' = x_m \implies | x' - x'' | < \delta$.
+
+            Если использовать определение предела, то есть для $\delta > 0 \quad \exists n_{\delta^*} \in \N:
+            \begin{array}{c}
+                \forall n \ge n_{\delta^*} \text{ выполняется } | x_n - a | < \delta \\
+                \forall m \ge n_{\delta^*} \text{ выполняется } | x_m - a | < \delta
+            \end{array}$
+
+            $\delta = \delta_\eps, x' = x_n, x'' = x_m$ выполняется
+            $\begin{array}{c}
+                0 < |x' - a| < \delta_\eps \\
+                0 < |x'' - a| < \delta_\eps
+            \end{array}$
+            $\implies |f(x') - f(x'')| < \eps$ или $|f(x_n) - f(x_m)| < \eps$.
+            
+            Получили, что $\forall \eps > 0 \quad \exists n_\eps = n_{\delta^*} \in \N: \:
+            \forall n \ge n_\eps$ выполняется $|f(x_n) - f(x_m)| < \eps \implies
+            \{ f(x_n) \}$ -- фундаментальна $\implies \{ f(x_n) \}$ -- сходится и пусть
+            $b = \dslimn f(x_n)$.
+
+            Осталось доказать, что $b$ не зависит от выбора $\{ x_n \}$.
+
+            Пусть $x'_n \approach{} a, x_n'' \approach{} a$. Сопоставим последовательность
+            $x'_1, x''_1, x'_2, x''_2, \dots, x'_n, x''_n: \: y_n \implies y_n \approach{} a
+            \implies f(y_n)$ -- сходится.
+
+            Но если $\dslimn f(x'_n) = b \implies \dslimn f(x''_n) = b \implies b = \dslim_{x \to a} f(x)$
+            в смысле Гейне.
+    \end{enumerate}
+\end{proof}
+
+\begin{definition}
+	Число $b$ называется левым (правым) пределом функции $f(x)$ в точке $x = a$, 
+    если $\forall \eps > 0 \quad \exists \delta_\eps > 0: \: \forall x \in A: \: a - \delta_\eps < x < a$ 
+    выполняется $|f(x) - b| < \eps \quad (a < x < a + \delta_\eps)$ и обозначается 
+    $b = \dslim_{x \to a - 0} f(x) \quad (b = \dslim_{x \to a + 0} f(X))$
+\end{definition}
+
+\textbf{Утверждение. }
+$\exists \dslim_{x \to a} f(x) - b \iff \exists \dslim_{x \to a - 0} = \dslim_{x \to a + 0} = b$
+
+\begin{definition}
+    Пусть $\omega(\omega_1, \omega_2, \dots, \omega_m) \in R^m$ -- произвольный вектор
+    единичной длины $|\omega|=1$ и пусть в любой окрестности точки $a \in R^m$ имеются 
+    точки вида $x(t) = a + t \omega$ ($t \in R,\, 0 \le t \le t_0$), входящие в область определения $f(x)$.
+    Для таких $x(t)$ рассмотрим функцию $ \varphi(t) = f(x(t))$. Если $\exists \dslim_{t \to 0 + 0}  \varphi(t) = b$,
+    то его называют пределом $f(x)$ в точке $x = a$ по направлению вектора $\omega$.
+\end{definition}
+
+
+*Рисунок*
+
+\begin{example}
+    Если $\exists \dslim_{x \to a} f(x) \quad (x \in R^m) \implies f(x)$ 
+    имеет в точке a предел по любому направлению, обратное - неверно!
+
+    Рассмотрим $u(x_1, x_2) = \frac{x_1^2-x_2^2}{x_1^2+x_2^2}; \quad a(0, 0)$
+
+    $\forall\omega \implies$
+
+    \[ x(t) = (t \omega_1; t \omega_2) \]
+    \[ 
+         \varphi(t) = u(x(t)) = 
+        \frac{(t \omega_1)^2 - (t \omega_2)^2}{(t \omega_1)^2 + (t \omega_2)^2} = 
+        \frac{t^2 (\omega_1^2 - \omega_2^2)}{t^2 (\omega_1^2 + \omega_2^2)}
+    \]
+    \[
+        \implies \exists \dslim_{t \to +0}  \varphi(t) = 
+        \dslim_{t \to +0} \frac{t^2 (\omega_1^2 - \omega_2^2)}{t^2 (\omega_1^2 + \omega_2^2)} = 
+        \frac{\omega_1^2 - \omega_2^2}{\omega_1^2 + \omega_2^2}
+    \]
+
+    Но для каждого направления этот предел свой $\implies \not\exists \dslim_{x \to a} u(x)$  
+\end{example}
+
+\begin{definition}
+    Будем обозначать: 
+    \begin{enumerate}
+        \item $\dslim_{x \to a} f(x) = \infty \iff \forall \eps > 0 \quad \exists \delta_\eps > 0 \quad \forall x \in A:\: 0 < |x-a| < \delta_\eps$ выполняется $|f(x)| > \eps$
+        \item $\dslim_{x \to a} f(x) = +\infty \iff \forall \eps > 0 \quad \exists \delta_\eps > 0 \quad \forall x \in A:\: 0 < |x-a| < \delta_\eps$ выполняется $f(x) > \eps$
+        \item $\dslim_{x \to a} f(x) = -\infty \iff \forall \eps > 0 \quad \exists \delta_\eps > 0 \quad \forall x \in A:\: 0 < |x-a| < \delta_\eps$ выполняется $f(x) < -\eps$
+        \item $\dslim_{x \to \infty} f(x) = b \iff \forall \eps > 0 \quad \exists \delta_\eps > 0 \quad \forall x \in A:\: |x| > \delta_\eps$ выполняется $|f(x)-b| < \eps$
+        \item $\dslim_{x \to +\infty} f(x) = b \iff $
+        \item $\dslim_{x \to -\infty} f(x) = b \iff $
+    \end{enumerate}
+\end{definition}
+

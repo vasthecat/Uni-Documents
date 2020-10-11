@@ -1,0 +1,510 @@
+\section{Числовые последовательности}
+
+\subsection{Числовые последовательности}
+
+\begin{definition}
+    Пусть $\forall n \in \mathbb{N}$ поставлено в соответствие единственное $x_n \in \mathbb{R}$,
+    тогда говорят, что задана \textbf{числовая последовательность}, которую обозначают
+    $\{x_n\}$, число $x_n$ называют $n$-ным членом последовательности.
+\end{definition}
+
+\begin{definition}
+    Суммой, разностью, произведением, частным, линейной комбинацией последовательностей 
+    $\{x_n\}$ и $\{y_n\}$ называется последовательность члены которой образуются 
+    по следующим правилам соответственно: 
+    $x_n + y_n; x_n - y_n; x_n * y_n; \frac{x_n}{y_n} (y_n \ne 0); \alpha x_n + \beta y_n (\alpha, \beta \in \mathbb{R})$.
+\end{definition}
+
+\begin{definition}
+    $\{x_n\}$ называют ограниченной, если множество её элементов ограничено.
+\end{definition}
+
+\begin{definition}
+    $\{x_n\}$ называют возрастающей (неубывающей, убывающей, невозрастающей), если
+    $\forall n \in \mathbb{N} \quad x_n < x_{n + 1} (x_n \le x_{n + 1}; x_n > x_{n + 1}; x_n \ge x_{n + 1})$.
+\end{definition}
+
+\begin{definition}
+    Последовательность $\{x_n\}$ называют сходящейся к числу $a$, а число $a$ называют
+    \textbf{пределом} последовательности $\{x_n\}$ и обозначают 
+    $\displaystyle\lim_{n \rightarrow \infty} x_n = a$, если 
+    $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}: \forall n \ge n_\varepsilon$
+    выполняется неравенство $|x_n - a| < \varepsilon$.
+\end{definition}
+
+\underline{\textbf{Замечание}}.
+
+$|x_n - a| < \varepsilon \Leftrightarrow -\varepsilon < x_n - a < \varepsilon 
+\Leftrightarrow a - \varepsilon < x_n < a + \varepsilon
+\Leftrightarrow x_n \in (a - \varepsilon; a + \varepsilon)$
+
+\parspace
+
+\underline{\textbf{Замечание}}.
+
+$\displaystyle\lim_{x \rightarrow \infty} x_n = a$ означает, что
+$\forall \varepsilon$-окрестностей точки $a$ найдется такой номер, 
+начиная с которого все члены последовательности содержатся в этой
+$\varepsilon$-окрестности точки $a$.
+
+\begin{definition}
+    $\{x_n\}$ называются бесконечно большой, если
+    $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+    \forall n \ge n_\varepsilon$ выполняется $|x_n| > \varepsilon$ и
+    обозначается $\dslimn x_n = \infty$.
+\end{definition}
+
+\parspace
+
+\underline{\textbf{Пример}}.
+
+Докажем по определению 
+$\dslimn \frac{1}{\sqrt[3]{n^2 + 1}} = 0$,
+т.е. докажем, что $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+\forall n \ge n_\varepsilon$ выполняется $\left|\frac{1}{\sqrt[3]{n^2 + 1}} - 0\right| < \varepsilon$
+т.к. $\left|\frac{1}{\sqrt[3]{n^2 + 1}}\right| < \frac{1}{\sqrt[3]{n^2}}$,
+а $\frac{1}{\sqrt[3]{n^2}} < \varepsilon \Leftrightarrow n > \frac{1}{\sqrt{\varepsilon^3}}
+\implies$ если $\forall \varepsilon > 0$ выбрать 
+$n_\varepsilon \in \mathbb{N}: n_\varepsilon > \frac{1}{\sqrt{\varepsilon^3}}$,
+то $\forall n \ge n_\varepsilon$ выполняется $\left|\frac{1}{\sqrt[3]{n^2 + 1}} - 0\right| < \varepsilon$.
+
+\begin{definition}
+    Пусть дана $\{x_n\}$ и $\{k_n\}$-возрастающая последовательность натуральных чисел.
+    Тогда $\{y_n\}: y_n = x_{k_n}$ называют подпоследовательностью последовательности $\{x_n\}$.
+\end{definition}
+
+\begin{definition}
+    Если у $\{x_n\}$ существует подпоследовательность $\{y_n\}$ сходящаяся к числу $a^*$,
+    то $a^*$ называют частичным пределом последовательности $\{x_n\}$.
+    
+    Наибольшим (наименьшим) из частичных пределов $\{x_n\}$ называют верхним (нижним) пределом
+    и обозначают $\displaystyle\varlimsup_{n \to \infty} x_n$
+    ($\displaystyle\varliminf_{n \to \infty} x_n$).
+\end{definition}
+
+\begin{theorem}[Больцано-Вейерштрасса для последовательностей]
+    Всякая ограниченная последовательность имеет хотя бы один частичный предел.    
+\end{theorem}
+\begin{proof}
+    $\{x_n\}$ -- ограниченная $\bydef$ множество $A$ её
+    элементов ограничено.
+    
+    \underline{1 случай.} $A$ -- конечно.
+    
+    $\implies$ некоторому $a \in A$ соответствует бесконечное число элементов последовательности 
+    \[x_{k_1} = 1, x_{k_2} = a, \dots, x_{k_n} = a, \dots\]
+    \[(k_1 < k_2 < k_3 < \dots < k_n < \cdots)\]
+    
+    Получаем подпоследовательность $\{y_n\}: y_n = a (y_n = x_{k_n})$ и
+    $\dslimn y_n = a \implies a$ -- частичный предел $\{x_n\}$.
+    
+    \underline{2 случай.} $A$ -- бесконечно (и ограничено).
+    
+    $\implies$ по \textit{Теореме Больцано-Вейерштрасса для множеств} у множества $A$
+    существует предельная точка $x$.
+    
+    Возьмём числа $\varepsilon_n = \frac{1}{10^n}$ тогда по определению предельной точки
+    в $\varepsilon_1$-окрестности точки $x$ найдется бесконечное количество элементов последовательности.
+    
+    Выберем $x_{k_1}$. В $\varepsilon_2$-окрестности точки $x$ найдется бесконечное
+    количество элементов последовательности.
+    
+    Выберем $x_{k_2}: k_2 > k_1$.
+    
+    Повторим процесс.
+    
+    $\{x_{k_n}\}: \left| x_{k_n} - x \right| < \varepsilon_N \quad n \ge N$
+    
+    Тогда $\forall \varepsilon > 0$ выберем $\varepsilon_N < \varepsilon$
+    (возьмём $N > \lg \frac{1}{\varepsilon}$) и $\forall n \ge N$ будем иметь 
+    $\left| x_{k_n} - x \right| < \varepsilon$ 
+    $\bydef \dslimn x_{k_n} = x$
+    $\bydef x$ -- частичный предел последовательности $\{x_n\}$.    
+\end{proof}
+
+\underline{\textbf{Замечания}}.
+\begin{enumerate}
+    \item Тот факт, что $\{x_n\}$ не ограничено сверху (снизу) обозначается как 
+    $\displaystyle\varlimsup_{n \to \infty} x_n = +\infty$ 
+    ($\displaystyle\varliminf_{n \to \infty} x_n = -\infty$).
+
+    \item Методом, предложенным в Теореме можно доказать, что определение точки
+    эквивалентно другому определению: \textit{``Точка $x$ называется предельной точкой
+    множества $A$, если существует последовательность, состоящая из элементов
+    множества, сходящаяся к этой точке''}.
+\end{enumerate}
+
+\begin{theorem}[Свойства сходящихся последовательностей]
+    \begin{enumerate}
+        \item Если последовательность $\{x_n\} \underset{n \to \infty}{\to} a$,
+        то любая её подпоследовательность $\underset{n \to \infty}{\to} a$.
+    
+        \item Сходящаяся последовательность может иметь только один предел.
+        \item Если $\exists \dslimn x_n = a \ne 0 \implies
+        \exists n_0 \in \mathbb{N} \quad \forall n \ge n_0$ $x_n$ имеет знак числа $a$.
+    
+        \item Сходящаяся последовательность ограничена.
+        \item Если $\exists \dslimn x_n = x$ и
+        $\exists \dslimn y_n = y \implies$
+    
+        $\exists \dslimn (\alpha x_n + \beta y_n) = \alpha x + \beta y$
+        ($\alpha, \beta$ -- const)
+    
+        $\exists \dslimn (x_n y_n) = x y$
+    
+        $\exists \dslimn \frac{x_n}{y_n} = \frac{x}{y}$
+        ($y_n \ne 0, y \ne 0$)
+    
+        \item Если $\forall n \ge n_0 \quad x_n \le y_n$ и 
+        $\exists \dslimn x_n = x$ и
+        $\exists \dslimn y_n = y$ $\implies x \le y$.
+    
+        \item Если $\forall n \ge n_0 \quad x_n \le y_n \le z_n$ и
+        $\exists \dslimn x_n = 
+        \dslimn z_n = a$
+        $\implies \exists \dslimn y_n = a$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        %--------------------------------------------------------------------------------------
+        \item 
+            По условию $\exists \dslimn x_n = a$
+            $\bydef \underline{\forall \varepsilon > 0}
+            \quad \underline{\exists n_\varepsilon \in \mathbb{N}}: 
+            \forall n \ge \underline{n_\varepsilon}$ выполняется 
+            $\left| x_n - a \right| < \varepsilon$. Но $\underline{k_n \ge n}$
+            ($\{k_n\}$ -- возрастающая последовательность натуральных чисел)
+            $\implies$ \underline{выполняется $\left| x_{k_n} - a \right| < \varepsilon$}
+            $\implies$ $\dslimn x_{k_n} = a$.
+    
+        %--------------------------------------------------------------------------------------
+        \item 
+            \textit{От противного.} Пусть $\dslimn x_n = a$ и
+            $\dslimn x_n = b \bydef$
+            $\forall \varepsilon > 0 \begin{cases}
+                \exists n_1 \in \mathbb{N}: \forall n \ge n_1 \quad \left| x_n - a \right| < \varepsilon \\
+                \exists n_2 \in \mathbb{N}: \forall n \ge n_2 \quad \left| x_n - b \right| < \varepsilon
+            \end{cases}$
+        
+            Выберем $n_3 = \max \left( n_1, n_2 \right)$, тогда начиная с номера $n_3$ будут выполняться оба
+            неравенства одновременно.
+        
+            Рассмотрим $\left| a - b \right| = \left| a - x_n + x_n - b \right| = 
+            \left| (a - x_n) + (x_n - b) \right| \le \left| x_n - a \right| + 
+            \left| x_n - b \right| \underset{\forall n \ge n_3}{<}
+            \varepsilon + \varepsilon = 2 \varepsilon$, т.е. $\left| a - b \right| < 2 \varepsilon$,
+            при том, что $a - b$ -- неотрицательное число.
+        
+            Получаем, что неотрицательное число $<$ любого положительного 
+            $\implies a - b = 0 \implies a = b$. \textbf{Противоречие.}
+    
+        %--------------------------------------------------------------------------------------
+        \item 
+            Имеем: $\exists \dslimn x_n = a \ne 0$
+            $\bydef \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N} 
+            \forall n \ge n_\varepsilon$ выполняется $\left| x_n - a \right| < \varepsilon$
+            или $a - \varepsilon < x_n < a + \varepsilon$.
+            
+            Возьмём $\varepsilon = \frac{\left| a \right|}{2} > 0 \implies 
+            \exists n_0 \in \mathbb{N} \quad \forall n \ge n_0 \quad
+            a - \frac{\left| a \right|}{2} < x_n < a + \frac{\left| a \right|}{2}$
+        
+            Отсюда получаем, что $x_n$ начиная с номера $n_0$ имеют тот же знак, что и число $a$.
+    
+        %--------------------------------------------------------------------------------------
+        \item 
+            Дано: $\dslimn x_n = a$
+            $\bydef \forall \varepsilon > 0 \quad
+            \exists n_\varepsilon \in \mathbb{N}: \forall n \ge n_\varepsilon \quad
+            \left| x_n - a \right| < \varepsilon$.
+        
+            Возьмём $\varepsilon = 1 \implies \exists n_1 \in \mathbb{N}: \forall n \ge n_1 \quad
+            \left| x_n - a \right| < 1$ или $a - 1 < x_n < a + 1$.
+        
+            Возьмём $m = \min \left( x_1, x_2, \dots, x_{n_1 - 1}, a - 1 \right)$.
+        
+            Возьмём $M = \min \left( x_1, x_2, \dots, x_{n_1 - 1}, a + 1 \right)$.
+        
+            $\implies \forall n \in \mathbb{N} \quad m \le x_n \le M$ $\implies \{x_n\}$ -- ограничена.
+    
+        %--------------------------------------------------------------------------------------
+        \item 
+            Дано:
+            
+            $\dslimn x_n = x$
+            $\bydef \forall \varepsilon > 0 \quad
+            \exists n_1 \in \mathbb{N}: \forall n \ge n_1 \quad
+            \left| x_n - x \right| < \varepsilon$.
+        
+            $\dslimn y_n = y$
+            $\bydef \forall \varepsilon > 0 \quad
+            \exists n_2 \in \mathbb{N}: \forall n \ge n_2 \quad
+            \left| y_n - y \right| < \varepsilon$.
+        
+            $\implies \forall n \ge n_3 = \max \left( n_1, n_2 \right)$ 
+            выполняются оба неравенства одновременно.
+        
+            \begin{enumerate}[label*=\arabic*.]
+                \item 
+                    $|(\alpha x_n + \beta y_n) - (\alpha x + \beta y)| = 
+                    |\alpha (x_n - x) + \beta (y_n - y)| \le 
+                    |\alpha| |x_n - x| + |\beta| |y_n - y| 
+                    \underset{\forall n \ge n_3}{<}
+                    \underbrace{(|\alpha| + |\beta|) \varepsilon}_{\text{обозначим } \varepsilon^*} \\
+                    \implies \forall \varepsilon^* > 0 \exists n_{\varepsilon^*} = n_3 \in \mathbb{N}:
+                    \forall n \ge n_{\varepsilon^*}$ выполняется 
+                    $|(\alpha x_n + \beta y_n) - (\alpha x + \beta y)| < \varepsilon^* \\
+                    \bydef \dslimn (\alpha x_n + \beta y_n) = \alpha x + \beta y$
+        
+                \item 
+                    Рассмотрим $|x_n y_n - x y| = |x_n y_n - x y_n + x y_n - x y| = 
+                    |(x_n y_n - x y_n) + (x y_n - x y)| = 
+                    |(x_n - x) y_n + x (y_n - y)| \le |x_n - x| |y_n| + |x| |y_n - y| \quad (1)$
+            
+                    Но $\{y_n\}$ сходится $\stackrel{\text{по св 4}}{\implies} \{y_n\}$ -- ограничена
+                    $\implies \exists C > 0 \quad \forall n \in \mathbb{N} \quad |y_n| \le C$.
+            
+                    $\implies (1) \underset{\forall n \ge n_3}{<} 
+                    \underbrace{\varepsilon (C + |x|)}_{\varepsilon^*} \implies
+                    \forall \varepsilon^* > 0 \quad \exists n_{\varepsilon^*} = n \in \mathbb{N}:
+                    \forall n \ge n_{\varepsilon^*} \quad |x_n y_n - x y| < \varepsilon^*$.
+        
+                \item 
+                    $\left| \frac{x_n}{y_n} - \frac{x}{y} \right| = 
+                    \left| \frac{x_n y - x y_n}{y_n y} \right| =
+                    \left| \frac{x_n y - x y + x y - x y_n}{y_n y} \right| =
+                    \left| \frac{y (x_n - x) + x (y - y_n)}{y_n y} \right| \stackrel{\triangle}{\le}
+                    \frac{|x_n - x}{y_n} + \frac{|x|}{|y_n| |y|} |y_n - y| \quad (2)$
+            
+                    Так как $\{y_n\}$ сходится, то для 
+                    $\varepsilon = \frac{|y|}{2} \quad \exists n_4 \in \mathbb{N} \quad
+                    \forall n \ge n_4$ выполняется $|y_n - y| < \frac{|y|}{2} \implies
+                    \left| |y_n| - |y| \right| < \frac{|y|}{2} \implies
+                    |y_n| > |y| - \frac{|y|}{2} \implies \frac{1}{|y_n|} < \frac{2}{|y|}$.
+            
+                    $\implies (2) < \underbrace{\varepsilon ( \frac{2}{|y|} + \frac{|x|}{ (|y| - 1) |y| } )}_{\varepsilon^*}
+                    \implies \forall \varepsilon^* > 0 \quad 
+                    \exists n_{\varepsilon^*} = \max (n_3, n_4) \in \mathbb{N}:
+                    \forall n \ge n_4$ выполняется 
+                    $\left| \frac{x_n}{y_n} - \frac{x}{y} \right| < \varepsilon^* 
+                    \implies \dslimn \frac{x_n}{y_n} = \frac{x}{y}$.
+            \end{enumerate}
+    
+        %--------------------------------------------------------------------------------------
+        \item 
+            Имеем $\forall n \ge n_0 \quad x_n \le y_n \quad 
+            \exists \dslimn x_n = x 
+            \bydef \forall \varepsilon > 0 \quad
+            \exists n_1 \in \mathbb{N} \quad \forall n \ge n_1 \quad |x_n - x| < \varepsilon$
+            и $\exists \dslimn y_n = y 
+            \bydef \forall \varepsilon > 0 \quad
+            \exists n_2 \in \mathbb{N} \quad \forall n \ge n_2 \quad |y_n - y| < \varepsilon$
+        
+            Возьмём $n_3 = \max (n_0, n_1, n_2) \implies \forall n \ge n_3$ выполняются
+            все три неравенства одновременно.
+        
+            Пусть \textit{от противного} $x > y$. 
+            $x_n - y_n = (x_n - x) - (y_n - y) + (x - y) > 
+            -\varepsilon - \varepsilon + (x - y) = (x - y) - 2 \varepsilon$, где $(x - y) > 0$.
+        
+            Тогда неравенство будет верным, если $2 \varepsilon < (x - y) \implies x_n > y_n$,
+            а \textbf{это противоречит условию} $\implies x \le y$.
+    
+        %--------------------------------------------------------------------------------------
+        \item 
+            Дано: $\forall n \ge n_0 \quad x_n \le y_n \le z_n, 
+            \dslimn x_n = a \bydef
+            \forall \varepsilon > 0 \quad \exists n_1 \in \mathbb{N}:
+            \forall n \ge n_1 \quad |x_n - a| < \varepsilon$ или
+            $-\varepsilon < x_n - a < \varepsilon$.
+            
+            $\dslimn z_n = a \bydef
+            \forall \varepsilon > 0 \quad \exists n_2 \in \mathbb{N}:
+            \forall n \ge n_2 \quad |z_n - a| < \varepsilon$ или
+            $-\varepsilon < z_n - a < \varepsilon$.
+        
+            Тогда $\forall n \ge n_3 = \max (n_1, n_2, n_0)$ оба неравенства
+            будут выполняться одновременно.
+        
+            $\underline{-\varepsilon} < x_n - a \le \underline{y_n - a} \le
+            z_n - a < \underline{\varepsilon} \Leftrightarrow |y_n - a| < \varepsilon
+            \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon = n_3 \in \mathbb{N}:
+            \forall n \ge n_3 \quad |y_n - a| < \varepsilon \bydef 
+            \dslimn y_n = a$.
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[Свойства верхнего (и нижнего) предела последовательности]
+    Если $\exists \displaystyle\varlimsup_{n \to \infty} x_n = a$ 
+
+    или ($\exists \displaystyle\varliminf_{n \to \infty} x_n = a$)
+    $\implies \forall \varepsilon > 0$ существует лишь конечное число элементов
+    последовательности превосходящие $(a + \varepsilon)$ (меньше $(a - \varepsilon)$).
+\end{theorem}
+\begin{proof}
+    \textbf{ДОКАЗАТЬ ДЛЯ СЛУЧАЯ В СКОБКАХ!!!}
+
+    Пусть $\exists \displaystyle\varlimsup_{n \to \infty} x_n = a$ и $\varepsilon > 0$ и
+    пусть \textit{от противного} найдется бесконечное число элементов больших, чем
+    $(a + \varepsilon)$. Составим из них новую последовательность. Тогда по 
+    \textit{свойству 6 теоремы (свойства сходящихся последовательностей)} любой
+    частичный предел этой последовательности будет $\ge (a + \varepsilon)$.
+    
+    Но он является и частичным пределом исходной последовательности, причём $> a$, но
+    это противоречит тому, что $a$ -- верхний предел $\implies$ таких элементов может
+    быть только конечное число.
+\end{proof}
+
+\begin{definition}
+    Последовательность $\{x_n\}$ называется фундаментальной, если 
+    $\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+    \forall n \ge n_\varepsilon \quad \forall m \ge n_\varepsilon$
+    выполняется $|x_n - x_m| < \varepsilon$.
+\end{definition}
+
+\begin{theorem}[Критерий Коши сходимости последовательности]
+    Пусть $\{x_n\}$ сходится $\Leftrightarrow$ $\{x_n\}$ фундаментальна.    
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 
+            Сходится $\implies$ фундаментальна.
+            
+            По условию $\{x_n\}$ сходится $\implies \exists \dslimn x_n = a
+            \implies \underline{\forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N} \quad \forall n \ge n_\varepsilon}$
+            выполняется $|x_n - a| < \frac{\varepsilon}{2}$ и для $\underline{\forall m \ge n_\varepsilon}$ 
+            выполняется $|x_m - a| < \frac{\varepsilon}{2}$.
+        
+            Рассмотрим $\underline{|x_n - x_m|} = |(x_n - a) + (a - x_m)| 
+            \le |x_n - a| + |x_m - a| \le \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+            \bydef \{x_n\}$ -- фундаментальна.
+    
+        \item
+            Фундаментальна $\implies$ сходится.
+            
+            Имеем $\{x_n\}$ -- фундаментальна 
+            $\implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+            \forall n \ge n_\varepsilon \quad \forall m \ge n_\varepsilon$ выполняется
+            $|x_n - x_m| < \varepsilon$.
+        
+            Тогда для $\varepsilon = 1 \quad \exists n_1 \in \mathbb{N} \quad 
+            \forall n \ge n_1 \quad \forall m \ge n_1$ выполняется $|x_n - x_m| < 1$
+        
+            Зафиксируем $m: m \ge n_1$.
+        
+            $|x_n| = |(x_n - x_m) + x_m| \le |x_n - x_m| + |x_m| < 
+            \underbrace{1 + |x_m|}_{C \text{ -- const}} \quad \forall n \ge n_1$
+            $\implies \{x_n\}$ -- ограничена $\implies$ по 
+            \textit{Теореме Больцано-Вейерштрасса для последовательностей} у $\{x_n\}$
+            существует хотя бы один частичный предел, т.е. 
+            $\exists \{x_{k_n}\} \underset{n \to \infty}{\to} x$
+            $\bydef$ для нашего $\varepsilon > 0 \quad \exists k_{n_\varepsilon} \in \mathbb{N}:
+            \forall k_n \ge k_{n_\varepsilon}$ выполняется $|x_{k_n} - x| < \varepsilon$.
+        
+            Рассмотрим $\forall n \ge k_{n_\varepsilon} \ge n_\varepsilon:
+            |x_n - x| = |(x_n - x_{k_n}) + (x_{k_n} - x)| \le |x_n - x_{k_n}| + |x_{k_n} - x|
+            < \underbrace{2 \varepsilon}_{\varepsilon^*}$.
+        
+            Получим:
+            $\forall \varepsilon^* \quad \exists n_{\varepsilon^*} = n_\varepsilon \in \mathbb{N}:
+            \forall n \ge n_{\varepsilon^*}$ имеем $|x_n - x| < \varepsilon^*$
+            $\bydef \exists \dslimn x_n = x$
+    \end{enumerate}
+        
+\end{proof}
+
+\begin{theorem}[Признак сходимости монотонной последовательности]
+    Ограниченная сверху (снизу) неубывающая (возрастающая) последовательность сходится.
+\end{theorem}
+
+\begin{proof}
+    \textbf{ДОКАЗАТЬ ДЛЯ СЛУЧАЯ В СКОБКАХ!!!}
+
+    $\{x_n\}$ -- неубывающая и ограниченная сверху $\implies$ множество элементов
+    $\{x_n\}$ ограничено сверху $\implies$ по
+    \textit{Теореме О существовании верхней грани} 
+    $\exists \sup x_n \stackrel{\text{об.}}{=} a$ $\implies$ по признаку:
+    \begin{enumerate}
+        \item $\forall n \in \mathbb{N} \quad x_n \le a$
+        \item $\forall \varepsilon > 0 \quad 
+        \exists x_{n_\varepsilon} : x_{n_\varepsilon} > a - \varepsilon$
+    \end{enumerate}
+    
+    Возьмём $n \ge n_\varepsilon$: 
+    $a - \varepsilon < x_{n_\varepsilon} \le x_n \le a < a + \varepsilon
+    \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+    \forall n \ge n_\varepsilon$ выполняется $a - \varepsilon < x_n < a + \varepsilon$
+    или $|x_n - a| < \varepsilon \bydef \exists \dslimn x_n = a$.
+\end{proof}
+
+\subsection{Замечательные пределы}
+
+\begin{enumerate}
+    \item 
+        $\displaystyle \lim_{n \to \infty} \left( 1 + \frac{1}{n} \right)^n = e$ (Второй замечательный предел)
+        
+        Рассмотрим $x_n = \left( 1 + \frac{1}{n} \right)^{n + 1}$. 
+        Имеем $x_n > 1 \quad \forall n \in \mathbb{N}$ $\implies \{x_n\}$ -- ограничена снизу.
+
+        Рассмотрим $\frac{x_n}{x_{n-1}} = 
+        \frac{\left( 1 + \frac{1}{n} \right)^{n - 1}}{\left( 1 + \frac{1}{n - 1} \right)^{n}}
+        = \frac{(n + 1)^{n+1} * (n - 1)^n}{n^{n+1} * n^n}
+        = \left( \frac{(n + 1) * (n - 1)}{n^2} \right)^n * \frac{n + 1}{n}
+        = \left( 1 - \frac{1}{n^2} \right)^{n} * \left( 1 + \frac{1}{n} \right)
+        \le \left( 1 - \frac{1}{n^2} \right)^{n} * \left( 1 + \frac{1}{n^2} \right)^n
+        \le \left( 1 - \frac{1}{n^4} \right)^{n} < 1 \implies x_n < x_{n-1}$
+
+        Т.е. $\{x_n\}$ -- убывающая последовательность $\implies$
+        по \textit{Теореме О сходимости монотонной последовательности}
+        $\exists \dslimn x_n = 
+        \dslimn \left( 1 + \frac{1}{n} \right)^{n + 1} = e$
+
+        $\dslimn \left( 1 - \frac{1}{n} \right)^{n}
+        = \dslimn \frac{x_n}{1 + \frac{1}{n}} = e \approx 2.71828$
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item 
+        Докажем, что $\dslimn \frac{n^k}{a^n} = 0,
+        \quad k \in \mathbb{N}, \quad a > 1$
+
+        $\dslimn \frac{n^k}{a^n} = 
+        \dslimn \left( \frac{n}{(\sqrt[k]{a})^n} \right)^k$
+
+        Рассмотрим $(\sqrt[k]{a})^n = (1 + (\sqrt[k]{a} - 1)) ^ n = 
+        1 + n * (\sqrt[k]{a} - 1) + \frac{n (n - 1)}{2} (\sqrt[k]{a} - 1)^2
+        + \dots + (\sqrt[k]{a} - 1)^n > \frac{n (n - 1)}{2} (\sqrt[k]{a} - 1)^2$
+
+        Получаем $(\sqrt[k]{a})^n > \frac{n (n - 1)}{2} (\sqrt[k]{a} - 1)^2$
+
+        $\implies$ по \textit{$7^{\text{о}}$ свойству сходящихся последовательностей}
+        $\dslimn \frac{n}{(\sqrt[k]{a})^n} = 0
+        \implies \dslimn \frac{n^k}{a^n} = 0$
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \item 
+        $\dslimn \frac{a^n}{n!} = 0, \quad a > 0$
+
+        $0 < \underbrace{\frac{a}{1} * \frac{a}{2} * \frac{a}{3} * \dots * \frac{a}{k_0 - 1}}_A
+        * \underbrace{\frac{a}{k_0}}_{\frac{a}{k_0} = q < 1}
+        * \frac{a}{k_0 + 1} * \dots *
+        \frac{a}{n} < A * q^{n - k_0 + 1}$
+
+        $\implies$ по \textit{$7^{\text{о}}$ свойству сходящихся последовательностей}
+        $\dslimn \frac{a^n}{n!} = 0$
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \item 
+        $\dslimn \sqrt[n]{n} = 1$
+        
+        При $n > 1: \sqrt[n]{n} > 1 \implies \sqrt[n]{n} = 1 + \beta_n \implies
+        n = (1 + \beta_n)^n = 1 + n \beta_n + \frac{n (n - 1)}{2} (\beta_n)^2 + \dots +
+        (\beta_n)^n > \frac{n (n - 1)}{2} (\beta_n) ^ 2 \implies
+        0 < \beta_n < \sqrt{\frac{2}{n-1}} \implies
+        \dslimn \beta_n = 0 \implies
+        \dslimn \sqrt[n]{n} = 1$
+\end{enumerate}
+

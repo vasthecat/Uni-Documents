@@ -1,0 +1,139 @@
+\section{Символы Ландау}
+
+\subsection{Определение}
+
+\begin{definition}
+    Говорят, что $f(x)$ имеет порядок функции (асимптотику) $ \varphi(x)$ на множестве $A$,
+    если $\exists C > 0:\: \forall x \in A$ ($C$ -- const) выполняется
+    $|f(x)| \le C*| \varphi(x)|$. (Или если при $x \approach{} a$ существует окрестность точки $a$, 
+    в которой выполняется $|f(x)| \le C*| \varphi(x)|$), и обозначают $f(x) = O ( \varphi(x))$ 
+    (Или на $A$ при $x \approach{} a$)
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item $\sin x = O(1)$ при $x \in \R$
+        \item $x = O(x^2)$ на $A = [1; +\infty)$ т.к. $|x| \le x^2$ при $x \in [1; +\infty)$
+    \end{enumerate}
+\end{example}
+
+\begin{remark}
+    \begin{enumerate}
+        \item $f(x) = O(1)$ на $A$ означает что $f(x)$ - ограничена на $A$.
+        \item Если на множестве $A$ $f(x) = O( \varphi_1(x)), \;  \varphi_1(x) = O(f_2(x)) \implies f(x) = O ( \varphi_2(x))$ на $A$
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}
+    Говорят, что $f(x)$ имеет порядок малости функции $ \varphi(x)$ при $x \approach{} a$, 
+    если $\exists \eps(x):\: f(x) = \eps(x) *  \varphi(x)$ и $\dslim_{x \to a} \eps(x) = 0$ 
+    (т.е. $\dslim_{x \to a} \frac{f(x)}{ \varphi(x)} = 0$), и обозначают 
+    $f(x) = o( \varphi(x))$ при $x \approach{} a$
+\end{definition}
+
+\begin{example}
+    \begin{enumerate}
+        \item $x^2 = o(x)$ при $x \to 0 \quad \dslim_{x \to 0}  \frac{x^2}{x} = 0$
+        \item $\sin x = o(x)$ при $x \to \infty \quad \dslim_{x \to \infty} \frac{sin x}{x} = 0$
+    \end{enumerate}
+\end{example}
+
+\begin{remark}
+    a может быть $\pm\infty, \infty$
+\end{remark}
+
+\subsection{Свойства символов Ландау}
+\begin{enumerate}
+    \item 
+        Если 
+        $\begin{cases}
+            f(x) = O( \varphi(x)) &\textnormal{ при } x \to a \\
+            g(x) = o( \varphi(x)) &\textnormal{ при } x \to a
+        \end{cases}$ 
+        $\implies f(x) + g(x)= O( \varphi(x))$ при $x \to a$
+    
+    \item 
+        Если $f(x) = o( \varphi_1(x))$ и $ \varphi_1(x) = o( \varphi_2(x))$ при 
+        $x \approach{} a \implies f(x) = o( \varphi_2(x))$ при $x \to a$
+    
+    \item Если $f(x) = O( \varphi(x))$ при $x \to a$, то $f(x) * g(x) = O( \varphi(x) * g(x))$ при $x \to a$
+    \item Если $f(x) = o( \varphi(x))$ при $x \to a$, то $f(x) * g(x) = o( \varphi(x) * g(x))$ при $x \to a$
+    \item $f(x) = o(1)$ при $x \to a$ означает $\dslim_{x \to a} f(x) = 0$
+\end{enumerate}
+
+\begin{theorem}[Свойства предела функции]
+    \begin{enumerate}
+        \item Функция $f(x)$ можеть иметь только один предел в точке $a$
+        \item 
+            Если $\exists \dslim_{x \to a} f(x) = b$, то $f(x)$ является 
+            ограниченной в некоторой окрестности точки $a$, и, если $b \ne 0$, 
+            то $f(x)$ сохраняет знак $b$ в некоторой окрестности точки $a$
+
+        \item 
+            Если $\exists \dslim_{x \to a} f_1 (x) = b_1$ и 
+            $\exists \dslim_{x \to a} f_2 (x) = b_2$ и 
+            существует окрестность точки $a$, принадлежащая $D_{f_1} \cap D_{f_2}$, то 
+
+            \[ \exists \dslim_{x \to a} (C_1 * f_1(x) + C_2* f_2(x)) = C_1 * b_1 + C_2 * b_1 \]
+            \[ \exists \dslim_{x \to a} (f_1(x) * f_2(x)) = b_1 * b_2 \]
+            \[ \exists \dslim_{x \to a} \frac{f_1(x)}{f_2(x)} = \frac{b_1}{b_2} \quad (b_2 \ne 0, f_2(x) \ne 0) \]
+
+        \item 
+            Если $f_1(x) \le f_2(x)$ при $\forall x \in A$ и 
+            $\exists \dslim_{x \to a} f_1(x) = b_1$ и 
+            $\exists \dslim_{x \to a} f_2(x) = b_2$, то $b_1 \le b_2$
+
+        \item
+            Если $f_1(x) \le f(x) \le f_2(x)$ при $\forall x \in A$ и
+            $\exists \dslim_{x \to a} f_1(x) = \dslim_{x \to a} f_2(x) = b \implies \dslim_{x \to a} f(x) = b$
+
+        \item 
+            Пусть $t =  \varphi(x)$ и $y = f(t)$ заданы так, что $D_y = A$, $E_\varphi = B$, $D_f = B$. 
+            Пусть $\exists \dslim_{x \to a}  \varphi(x) = b$ и $\exists \dslim_{t \to b} f(t) = C$, $ \varphi(x) \ne b$ при $x \ne a$.
+            Тогда $\exists \dslim_{x \to a} f( \varphi(x)) = C$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Свойства 1, 3, 4, 5 доказываются, опираясь на определение Гейне (предела функции в точке) и на Теорему о свойствах сходящихся последовательностей.
+
+    \begin{enumerate}
+        \setcounter{enumi}{1} \item 
+            \begin{enumerate}
+                \item 
+                    $\exists \dslim_{x \to a} f(x) = b$ $\implies$ (по определению Коши) $\forall \eps > 0 \quad 
+                    \exists \delta_\eps > 0 \quad \forall x \in A:\: 0 < |x - a| < \delta_\eps$ выполняется $|f(x) - b| < \eps$
+
+                    Возьмём $\eps = 1 \implies \exists \delta_1 > 0 \quad \exists x \in A:\: 0 < |x - a | < \delta_1$ выполняется $|f(x)-b| < 1$
+
+                    \[ |f(x) - |b|| \le |f(x) - b| < 1 \]
+                    \[ -1 \le |f(x)| - |b| \le 1 \]
+                    \[ |b| - 1 \le |f(x)| \le |b| + 1 \implies f(x) \textnormal{ -- ограниченная в окрестности точки } a \]
+                
+                
+                \item 
+                    $\exists \dslim_{x \to a} f(x) = b \neq 0$ $\implies$ (по определению Коши) 
+                    $\forall \eps > 0 \exists \delta_\eps > 0 \quad \forall x \in A:\: 0 < |x - a| < \delta_\eps$ выполняется $|f(x) - b| < \eps$
+
+                    Возьмём $\eps = \frac{|b|}{2} > 0 \implies \exists \delta_* > 0 \quad \forall x \in A:\: 0 < |x - a| < \delta_*$ выполняется
+
+                    \[ |f(x) - b| < \frac{|b|}{2} \]
+                    \[ -\frac{|b|}{2} < |f(x) - b| < \frac{|b|}{2} \]
+                    \[ 
+                        b - \frac{|b|}{2} < f(x) < b + \frac{|b|}{2} \implies
+                        f(x) \textnormal{ сохраняет знак числа b в окрестности точки } a
+                    \]
+            \end{enumerate}
+
+        \setcounter{enumi}{5} \item 
+            Возьмём $\forall \{ x_n \}$:
+
+            $x_n \in A,\, x_n \neq a,\, x_n \approach{} a$ $\implies$ (по опр Гейне)
+            $t_n =  \varphi(x_n) \approach{} b$
+
+            $t_n \in B,\, t_n \neq b$ $\implies$ (по опр Гейне) $f(t_n) \approach{} C$, 
+
+            т.е. $f( \varphi(x_n)) \approach{} C$ 
+            $\implies$ (по опр Гейне) $\exists \dslim_{x \to a} f( \varphi(x)) = C$
+    \end{enumerate}
+\end{proof}
+
