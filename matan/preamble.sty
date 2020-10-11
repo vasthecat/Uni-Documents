@@ -1,0 +1,93 @@
+\ProvidesPackage{preamble}
+
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{hyperref}
+\usepackage{underscore}
+\usepackage{setspace}
+\usepackage{indentfirst} 
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+% \usepackage[standard]{ntheorem}
+\usepackage{amsthm}
+\usepackage{cancel}
+\usepackage[left=1.4cm,right=1.4cm,
+    top=2.3cm,bottom=2.3cm,bindingoffset=0cm]{geometry}
+\singlespacing
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\usepackage{tikz}
+
+\newcommand{\bydef}{\stackrel{\text{по опр.}}{\implies}} % by definition - по определению
+\newcommand{\dn}{\stackrel{\text{об.}}{=}} % denote - обозначим
+\newcommand{\parspace}{\vspace{10pt}}
+
+\newcommand{\imagin}{\mathrm{Im} \,}
+\newcommand{\real}{\mathrm{Re} \,}
+
+\newcommand{\dslim}{\displaystyle\lim}
+\newcommand{\dslimn}{\dslim_{n \to \infty}}
+
+\newcommand{\prop}[1]{#1^{\text{o}}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\bb}[1]{\mathbb{#1}}
+
+\newcommand{\eps}{\varepsilon}
+
+\newcommand{\approach}[1]{\underset{#1}{\longrightarrow}}
+
+\newcommand{\series}[1]{\displaystyle\sum_{k=1}^\infty #1}
+\newcommand{\seriesx}{\displaystyle\sum_{k=1}^\infty x_k}
+\newcommand{\dssum}{\displaystyle\sum}
+
+% \theoremstyle{break}
+
+% --- Теорема --- %
+% \newtheoremstyle{break}% name
+%   {}%         Space above, empty = `usual value'
+%   {}%         Space below
+%   {\itshape}% Body font
+%   {}%         Indent amount (empty = no indent, \parindent = para indent)
+%   {\bfseries}% Thm head font
+%   {.}%        Punctuation after thm head
+%   {\newline}% Space after thm head: \newline = linebreak
+%   {}%         Thm head spec
+% \theorembodyfont{\normalfont}
+% \theoremstyle{break}
+\newtheorem{theorem}{Теорема}[subsection]
+% --------------- %
+
+% --- Определение --- %
+% \theorembodyfont{\normalfont}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}[subsection]
+% ------------------- %
+
+% --- Доказательство --- %
+% \theoremheaderfont{\normalfont\itshape}
+% \theorembodyfont{\normalfont}
+% \newtheorem*{proof}{Доказательство.}
+% ---------------------- %
+
+% --- Пример --- %
+\theoremstyle{definition}
+\newtheorem*{example}{Пример}
+% -------------- %
+
+% --- Следствие --- %
+% Corollary
+% ----------------- %
+
+% --- Замечание --- %
+% Remark
+\theoremstyle{definition}
+\newtheorem*{remark}{Замечание}
+% ----------------- %

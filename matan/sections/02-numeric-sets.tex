@@ -1,0 +1,119 @@
+\section{Численные множества}
+
+\subsection{Точные грани численного множества}
+
+\begin{itemize}
+    \item $[a;b]$ -- отрезок $= \{x | a \le x \le b\}$
+    \item $(a;b)$ -- интервал $= \{x | a < x < b\}$
+    \item $(a;b]$ -- полуинтервал $= \{x | a < x \le b\}$
+    \item $[a;b)$ -- полуинтервал $= \{x | a \le x < b\}$
+\end{itemize}
+
+$\mathbb{N} \subset \mathbb{Z} \subset \mathbb{Q} \subset \mathbb{R}$
+
+\subsection{Ограниченность}
+
+Числовое множество $A$ называют ограниченным сверху, если 
+$\exists M \in \mathbb{R}: \forall x \in A$ выполняется $x \le M$,
+число $M$ называется \textbf{мажорантой} множества $A$.
+
+Числовое множество $A$ называют ограниченным снизу, если 
+$\exists m \in \mathbb{R}: \forall x \in A$ выполняется $x \ge m$,
+число $m$ называется \textbf{минорантой} множества $A$.
+
+Множество $A$ называется ограниченным, если оно ограничено сверху или снизу,
+т.е. $\exists m, M \in \mathbb{R}: \forall x \in A$ выполняется $m \le x \le M$
+(или $\exists C > 0: \forall x \in A$ выполняется $|x| \le C$).
+
+\begin{definition}
+    Наименьшая мажоранта множества $A$ называется верхней гранью $A$ и обозначается
+    $\sup A$ (супремум).
+
+    Наибольшая миноранта множества $A$ называется нижней гранью $A$ и обозначается
+    $\inf A$ (инфимум).
+\end{definition}
+
+% \subsection{Метод математической индукции}
+
+% Говорят, что утверждения $A_{n_0}, A_{n_0 + 1}, \dots, A_{n_0 + n}, \dots$ являются
+% истинными по методу математической индукции (ММИ), если выполняются два утверждения:
+% \begin{enumerate}
+%     \item $A_{n_0}$ -- истина (база индукции)
+%     \item Если $A_k$ -- истина, то $A_{k+1}$ -- истина (шаг индукции)
+% \end{enumerate}
+
+\subsection{Признак верхней и нижней грани множества}
+
+$M = \sup A$, если 
+\begin{enumerate}
+    \item $\forall x \in A \quad x \le M$
+    \item $\forall M' < M \quad \exists x_0 \in A: x_0 > M'$
+    (или $\forall \varepsilon > 0 \quad \exists x_\varepsilon \in A: x_\varepsilon > M - \varepsilon$)
+\end{enumerate}
+
+$m = \inf A$, если 
+\begin{enumerate}
+    \item $\forall x \in A \quad x \ge m$
+    \item $\forall m' > m \quad \exists x_0 \in A: x < m'$
+    (или $\forall \varepsilon > 0 \quad \exists x_\varepsilon \in A: x_\varepsilon < m + \varepsilon$)
+\end{enumerate}
+
+\begin{theorem}[О существовании верхней грани (нижней грани)]
+    У всякого непустого ограниченного сверху множества существует верхняя грань (нижняя грань).
+\end{theorem}
+
+\begin{proof}
+    Множество $A$ -- ограничено сверху $\implies \exists b \in \mathbb{R}: \forall x \in A:
+    x \le b, A \ne 0 \implies \exists a \in A$ и $a \le b$.
+
+    Рассмотрим такие элементы $x \in A: a \le x \le b$. Рассмотрим их $x_m$ приближения.
+    Число таких $x$ может быть бесконечным, но число $x_m$ -- конечно.
+    (их не более, чем $(b_m - a_m) * 10^m$). 
+
+    Тогда обозначим $C_m = \max (x_m) (x \in A; a \le x \le b)$.
+    Так как $x_{m+1} - x_m < \frac{1}{10^m} \implies C_{m+1} - C_m < \frac{1}{10^m}$
+    $\stackrel{\text{по св-ву}}{\implies} C_m$ -- нижние $m$-значные приближения некоторого 
+    действительного числа $C$.
+
+    Докажем, что $C = \sup A$ по признаку.
+    \begin{enumerate}
+        \item Надо доказать $\forall x \in A: x \le C$
+        
+        Допустим от противного: $\exists x_0 \in A: x_0 > C \stackrel{\text{по опр}}{\implies}
+        \exists m_1: \forall m \ge m_1 \quad (x_0)_m > \overline{C_m}$, но
+        $\overline{C_m} \ge C_m \implies (x_0)_m > C_m$, а это противоречит выбору $C_m$
+        $\implies \forall x \in A: x \le C$.
+
+        \item Возьмём $\forall C' < C \bydef C_m > \overline{C_m'} \ge C'$.
+        Но по выбору $C_m = (x_0)_m \quad (x_0 \in A, a \le x_0 \le b)$.
+        Имеем: $x_0 \ge (x_0)_m = C_m > \overline{C_m'} \ge C' \implies x_0 > C'$,
+        т.е. $\forall C' < C \quad \exists x_0 \in A: x_0 > C'$.
+        $\implies$ по признаку верхней грани $C = \sup A$.
+    \end{enumerate}
+\end{proof}
+
+\underline{\textbf{Замечание 1.}}
+
+В ходе доказательства были получены неравенства: $\forall x \in A$
+\[x_m \le (\sup A)_m \le \sup A\]
+\[\overline{x_m} \ge \overline{(\inf A)_m} \ge \inf A\]
+
+\parspace
+
+\underline{\textbf{Замечание 2.}}
+
+Если множество $A$ не ограничено сверху, то $\sup A = + \infty$, а если множество $A$
+не ограничено снизу, то $\inf A = - \infty$.
+
+\parspace
+
+\begin{theorem}[Свойство граней]
+    Если $\forall x \in A \quad \forall y \in B: x \le y \implies \sup A \le \inf B$
+\end{theorem}
+
+\begin{proof}
+    По условию $\forall y \in B \quad y \ge x \implies x$ -- миноранта $B$
+    $\implies \inf B \ge x$, т.е. $\forall x \in A \quad x \le \inf B \implies \inf B$ --
+    мажоранта $A$ $\implies \sup A \le \inf B$.
+\end{proof}
+

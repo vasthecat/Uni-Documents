@@ -1,0 +1,83 @@
+\section{Последовательности комплексных чисел}
+
+\subsection{Последовательности комплексных чисел}
+
+\textbf{Последовательности комплексных чисел} аналогично определение последовательности
+действительных чисел.
+
+Определение \textit{сходимости} даётся аналогично.
+
+Определение \textit{частичного предела сохраняется}.
+
+Понятия \textit{верхнего, нижнего предела} и \textit{монотонности} для комплексных
+чисел не имеют смысла.
+
+\begin{theorem}[О связи сходимости $\{z_n\}$ со сходимостью $\{\real z_n\}$ и $\{\imagin z_n\}$.]
+    Если $\exists \dslimn z_n = \alpha + i \beta
+    \implies \begin{cases}
+        \exists \dslimn \real z_n = \alpha \\
+        \exists \dslimn \imagin z_n = \beta
+    \end{cases}$        
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item
+            $\exists \dslimn z_n = \alpha + i \beta \; (z_n = x_n + i y_n)
+            \bydef \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+            \forall n \ge n_\varepsilon$ выполняется $|z_n - (\alpha + i \beta)| < \varepsilon$
+            или $|(x_n- \alpha) + i (y_n - \beta)| < \varepsilon$
+        
+            Но $|x_n - \alpha| \le |(x_n - \alpha) + i (y_n - \beta)| < \varepsilon
+            \bydef \exists \dslimn x_n = \alpha$
+        
+            Но $|y_n - \beta| \le |(x_n - \alpha) + i (y_n - \beta)| < \varepsilon
+            \bydef \exists \dslimn y_n = \beta$
+    
+        \item 
+            $\exists \dslimn x_n = \alpha, \; \exists \dslimn y_n = \beta
+            \bydef \forall \varepsilon > 0 \begin{cases}
+                \exists n_1 \in \mathbb{N} \quad \forall n \ge n_1 \quad |x_n - \alpha| < \frac{\varepsilon}{\sqrt{2}} \\
+                \exists n_2 \in \mathbb{N} \quad \forall n \ge n_2 \quad |y_n - \alpha| < \frac{\varepsilon}{\sqrt{2}}
+            \end{cases}$
+            
+            $n_3 = \max (n_1, n_2) \implies \forall n \ge n_3:
+            |z_n - (\alpha + i \beta)| = |(x_n - \alpha) + i (y_n - \beta)| =
+            \sqrt{(x_n - \alpha)^2 + (y_n - \beta)^2} <
+            \sqrt{\frac{\varepsilon^2}{2} + \frac{\varepsilon^2}{2}} = \varepsilon$
+        
+            Получаем $\forall \varepsilon > 0 \quad \exists n_\varepsilon = n_3 \in \mathbb{N}:
+            \forall n \ge n_3$ выполняется $|z_n - (\alpha + i \beta)| < \varepsilon
+            \implies \dslimn z_n = \alpha + i \beta$
+    \end{enumerate}
+\end{proof}
+
+\begin{theorem}[О связи сходимости $\{z_n\}$ со сходимостью $\{|z_n|\}$.]
+    Если $\exists \dslimn z_n = A \implies \exists \dslimn |z_n| = |A|$
+\end{theorem}
+
+\begin{proof}
+    $\dslimn z_n = A \implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \in \mathbb{N}:
+    \forall n \ge n_\varepsilon$ выполняется $||z_n| - |A|| \le |z_n - A| < \varepsilon
+    \bydef \exists \dslimn |z_n| = |A|$
+\end{proof}
+
+\underline{\textbf{Замечания}}
+\begin{enumerate}
+    \item Про последовательность аргументов без дополнительных условий мы такую
+    теорему высказать не можем.
+
+    \item Теорема \textit{О свойствах сходящихся последовательностей} переносится
+    и на комплексные числа за исключением свойств. $\prop{3}, \prop{6}, \prop{7}$.
+
+    \item Для последовательностей векторов пространства $\mathbb{R}^n$ аналогично
+    вводится определение последовательности, сходимости последовательности,
+    также, как и для комплексных чисел справедлива Теорема, что если
+    $\exists \dslimn u_n = A, \; u_n = (u_1^n, \dots, u_m^n), \;
+    A = (a_1, \dots, a_m) \implies \exists \dslimn u_k^n = a_k \quad 
+    \forall k = \overline{1, m}$
+
+    а также свойства ??? справедливы, за исключением тех, что связаны
+    с операциями $>, <$ или деления.
+\end{enumerate}
+
