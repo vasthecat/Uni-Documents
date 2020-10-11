@@ -264,6 +264,137 @@
     \end{enumerate}
 \end{proof}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{example}
     $\series{\frac{1}{k^p}}$ \[\] $\int\limits_1^{+\infty} \frac{1}{t^p}dt = \dslim_{b \to +\infty} \int\limits_1^b \frac{dt}{t^p} = $
 \end{example}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Рассмотрим некоторые операции над рядами
+
+\begin{theorem}[Коши о перестановке членов абсолютно сходящегося ряда]
+    Если $\seriesx$ сходится абсолютно, то любой ряд $\series{x_k'}$ полученный
+    перестановкой членов исходного ряда, также сходится абсолютно 
+    к той же сумме.
+\end{theorem}
+\begin{proof}
+    Обозначим $S_n = \series{|x_k|}$, $S_n' = \series{|x_k'|}$
+    По условию $\seriesx$ сходится абсолютно $\implies$ по критерию Коши
+    $\forall \varepsilon > 0 \; \exists n_\varepsilon 
+    \forall m \geq n_\varepsilon \forall p \geq n_\varepsilon (p > m)$
+    выполняется $\dssum_{k=m+1}^p |x_k| < \varepsilon$ или
+    $|S_p - S_m| < \varepsilon \; \Big| \dslim_{p \approach{\infty}}
+    \implies |S - S_m| \leq \varepsilon$, где $S$ -- сумма $\series{|x_k|}$
+
+    Рассмотрим сумму $S_n'$, которая содержит все члены $S_m$ 
+    (то есть $|x_1|, |x_2|, \dots, |x_m|$) и некоторые члены $|x_k|$, номера
+    которых $> m$. Пусть $l$ -- наибольший из номеров таких членов. Тогда
+    $\forall n \geq N \; |S_n' - S_m'| \geq \dssum_{k = m + 1}^l |x_k|
+    \implies \forall n > \max (n_\varepsilon, N)$ выполняется 
+    $|S_n' - S_m| < \varepsilon$ 
+
+    Тогда $|S_n' - S| \geq |S_n' - S_m| + |S_m - S| < 2 \varepsilon 
+    \dn \varepsilon^*$
+
+    $\forall \varepsilon^* > 0 \; 
+    \exists n_{\varepsilon^*} = \max(n_\varepsilon, N) \;
+    \forall n > n_{\varepsilon^*}$ выполняется $S_n' - S| < \varepsilon$
+    $\implies$ по определению $\exists \dslim_{n \approach{\infty}} S_n' = s$
+    $\implies$ по определению $\series{|x_k'|}$ сходится
+    $\implies \series{x_k'}$ сходится абсолютно к сумме S.
+\end{proof}
+
+\begin{remark}
+    В условии сходимости ряда перестановка слагаемых может привести к
+    изменению суммы ряда.
+
+    $\series{(-1)^{k + 1} \frac{1}{k}}$ -- сходится по признаку Лейбница к 
+    некоторой сумме $S$, но сходимость условная, так как
+    $\series{\frac{1}{k}}$ -- расходится.
+
+    \[ \series{(-1)^{k + 1} \frac{1}{k}} 
+    = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \dots \]
+
+    Представим так: 
+    \[ 
+        \left( 1 - \frac{1}{2} - \frac{1}{4} \right)
+        + \left( \frac{1}{3} - \frac{1}{6} - \frac{1}{8} \right)
+        + \left( \frac{1}{5} - \frac{1}{10} - \frac{1}{12} \right)
+        + \dots
+    \]
+    \[
+        S_{3n}' 
+        = \series{\left( \frac{1}{2k - 1} - \frac{1}{4k-2} - \frac{1}{4k} \right)}
+        = \series{\left( \frac{1}{2 (2k - 1)} - \frac{1}{4k} \right)}
+        = \frac{1}{2} \series{\left( \frac{1}{2k - 1} - \frac{1}{2k} \right)}
+        = \frac{1}{2} S_{2n}'
+    \]
+    \[ \implies \dslimn S_{3n}' = \frac{1}{2} \dslimn S_{2n} = \frac{S}{2} \]
+    Причём
+    \[ \dslimn (S_{3n + 1}' - S_{3n}') = \dslimn (S_{3n}' - S_{3n - 1}') = 0 \]
+    $\implies \dslimn S_n' = \frac{S}{2}$. Это значит, что переставленный ряд
+    сходится к $\frac{S}{2}$, то есть имеет сумму в 2 раза меньше исходной
+    суммы. Вообще говоря справедлива теорема Римана.
+\end{remark}
+
+\begin{theorem}[Римана]
+    Если $\seriesx$ сходится условно и $A$ -- произвольное число или символ
+    $\infty$, то можно так переставить члены исходного ряда, что он будет
+    сходиться к числу $A$ (или расходиться).
+\end{theorem}
+
+\begin{theorem}[о сходимости линейной комбинации рядов]
+    Если $\seriesx$ сходится к сумме $X$, а $\series{y_k}$ сходится к сумме $Y$,
+    то $\series{(c_1 x_k + c_2 y_k)}$ ($c_1, c_2$ -- const) сходится к сумме
+    $c_1 X + c_2 Y$
+\end{theorem}
+\begin{proof}
+    Пусть $S_n = \seriesx, \, \delta_n = \series{y_k}$
+    Рассмотрим $L_n = \dslimn \series{(c_1 x_k + c_2 y_k)} 
+    = \dslimn (c_1 \seriesx + c_2 \series{y_k})
+    = \dslimn (c_1 S_n + c_2 \delta_n)
+    = c_1 X + c_2 Y \implies$ по определению $\series{(c_1 x_k + c_2 y_k)}$
+    сходится к $c_1 X + c_2 Y$
+\end{proof}
+
+\begin{theorem}[об умножении абсолютно сходящихся рядов]
+    Если $\seriesx$ сходится абсолютно к $X$, а $\series{y_k}$ сходится
+    абсолютно к сумме $Y$, то ряд, состоящий из произведений $x_k \cdot y_l$
+    занумерованных в произвольном порядке также сходится к произведению
+    этих сумм $X \cdot Y$
+\end{theorem}
+\begin{proof}
+    Пусть $z_1, z_2, \dots$ -- произведения вида $x_k \cdot y_l$, занумерованные
+    в произвольном порядке. Обозначим через $S_n = \dssum_{i = 1}^n |z_i|$ --
+    она состоит из членов вида $|x_k \cdot y_l|$
+
+    Пусть $m$ -- наибольший из номеров $k$ и $l$, входящих в $S_n$. Тогда
+    $S_n \leq \dssum_{1 \leq k, l \leq m} |x_k \cdot y_l|
+    = (\dssum_{k = 1}^m |x_k|) (\dssum_{l = 1}^m |y_l|)
+    \leq (\dssum_{k = 1}^\infty |x_k|) (\dssum_{l = 1}^\infty |y_l|) 
+    = X \cdot Y$
+    $\implies \{ S_n \}$ монотонно неубывает и ограничена сверху 
+    $\implies \{ S_n \}$ сходится 
+    $\implies$ ряд, состоящий из произведений $x_k \cdot y_l$, занумерованных
+    в произвольном порядке сходится абсолютно.
+
+    Если этот ряд сходится абсолютно, то его сумма не зависит от перестановки
+    членов ряда. Зафиксируем некоторое $m$ и будем переставлять члены ряда
+    следующим образом:
+    \[ x_1 y_m, x_m y_1, x_2 y_m, x_m y_2, \dots, x_{m - 1} y_m, x_m y_{m - 1}, x_m y_m \]
+
+    Тогда последовательно увеличивая $m$ на 1 можно перебрать все произведения
+    вида $x_k y_l$. Пусть у такого перестановленного ряда частичная сумма
+    $\delta_N$ соответствует всем значениям $m \leq N$. Тогда в неё входят все
+    $x_k$ при $k \leq N$ и все $y_l$ при $l \leq N$.
+    Тогда $\delta_n = \dssum_{k = 1}^N x_k \cdot \dssum_{l = 1}^N y_l
+    \implies \exists \dslim {N \approach{\infty}} \delta_N = X \cdot Y
+    \implies \dssum_{i = 1}^\infty z_i$ сходится абсолютно к $X \cdot Y$
+\end{proof}
+
+\begin{remark}
+    С помощью модуля комплексного числа и модуля вектора вводят понятие 
+    сходимости рядов комплексныех чисел и векторов, также, как и для
+    действительных чисел. Из свойств и признаков сходимости таких рядов следует 
+    исключить связанные с операторами сравнения (и деления для векторов).
+\end{remark}
