@@ -1,1 +1,182 @@
 \section{Функциональные ряды}
+
+\begin{definition}
+    Пусть функции $\varphi_k(x)$ заданы на $A$. Тогда выражение
+    \[
+        \varphi_1(x) + \varphi_2(x) + \dots + \varphi_n(x) + \dots = 
+        \series \varphi_k(x)
+    \]
+    называют функциональным рядом.
+\end{definition}
+
+\begin{definition}
+    Если числовой ряд $\series \varphi_k(x_0), \, x_0 \in A$ сходится, то
+    говорят, что функциональный ряд сходится в точке $x_0$. Множество таких
+    $x_0$ составляет область сходимости функционального ряда.
+\end{definition}
+
+\begin{definition}
+    Говорят, что функциональный ряд $\series \varphi_k(x)$ сходится равномерно
+    на множестве $A$, если функциональная последовательность частичных сумм
+    этого ряда $S_n(x) = \dssum_{k=1}^n \varphi_k(x)$ равномерно сходится
+    на множестве $A$.
+\end{definition}
+
+\begin{remark}
+    Благодаря связи сходимости функционального ряда со сходимостью 
+    функциональной последовательности на функциональные ряды переносятся все
+    теоремы о функциональных последовательностях.
+\end{remark}
+
+\begin{theorem}[Критерий Коши равномерной сходимости функционального ряда]
+    Справедливы следующие утверждения:
+
+    \begin{enumerate}
+        \item
+            Для того, чтобы $\series \varphi_k(x)$ равномерно сходился на $A$ $\iff$
+            $\forall \varepsilon > 0 \quad \exists n_\varepsilon: \: 
+            \forall n \geq n_\varepsilon \quad \forall m \geq n_\varepsilon \quad
+            \forall x \in A$ выполняется 
+            $\left| \dssum_{k=n+1}^m \varphi)k(x) \right| < \varepsilon$
+        
+        \item
+            Если $\series \varphi_k(x)$ равномерно сходится на $A$ к сумме
+            $S(x)$ и $\exists \dslim_{x \to a} \varphi_k(x) = b_k$, то ряд
+            $\series b_k$ сходится и $\exists \dslim_{x \to a} S(x) =
+            \series b_k = \series \left( \dslim_{x \to a} \varphi_k(x) \right)$
+
+        \item 
+            Если $\series \varphi_k(x)$ равномерно сходится на $A$ к сумме
+            $S(x)$ и каждая функция $\varphi_k(x) \quad \forall k \in \N$ --
+            непрерывна в точке $a \in A \implies S(x)$ непрерывна в точке $a \in A$.
+        
+        \item
+            Если функциональный ряд $\series \varphi_k(x)$ равномерно сходится
+            на $[a; b]$ к $S(x)$ и $\varphi_k(x)$ -- интегрируема на $[a; b]$
+            $\forall k \in \N \implies S(x)$ интегрируема на $[a; b]$ и
+            $\ds\int_a^b S(x) dx = \series \int_a^b \varphi_k(x) dx$
+
+            $\left( \ds\int_a^b \left(\series \varphi_k(x)\right) dx = \series \int_a^b \varphi_k(x) dx \right)$
+
+        \item
+            Если функции $\varphi_k(x)$ дифференцируему на $[a; b]$
+            $\forall k \in \N$ и ряд $\series \varphi'_k(x)$ равномерно
+            сходится на $[a; b]$, то из сходимости $\series \varphi_k(x)$ в
+            некоторой $x_0 \in [a; b] \implies \series \varphi_k(x)$ сходится
+            на $[a; b]$ к некоторой функции $S(x)$, причём $S(x)$ 
+            дифференцируема на $[a; b]$ и $S'(x) = \series \varphi_k(x)$.
+
+            $\left( \left( \series \varphi_k(x) \right)' = \series \varphi'_k(x) \right)$
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Признак Вейерштрасса равномерной сходимости функционального ряда]
+    Если все функции 
+    $\forall k \in \N \quad \forall x \in A \quad |\varphi_k(x)| \leq a_k$ 
+    и числовой ряд $\series a_k$ сходится $\implies \series \varphi_k(x)$
+    сходится равномерно на $A$.
+\end{theorem}
+\begin{proof}
+    $\series a_k$ сходится $\implies$ по критерию Коши, $\forall \varepsilon > 0
+    \quad \exists n_\varepsilon \quad \forall n \geq n_\varepsilon \quad
+    \forall p \in \N$ выполняется $\left| \dssum_{k=n+1}^{n+p} a_k \right| < \varepsilon$
+
+    Тогда $\forall x \in A \quad \left| \dssum_{k=n+1}^{n+p} \varphi_k(x) \right|
+    \leq \dssum_{k=n+1}^{n+p} |\varphi_k(x)|
+    \leq \dssum_{k=n+1}^{n+p} a_k < \varepsilon$
+    $\implies$ по критерию Коши равномерной сходимости функционального ряда,
+    $\series \varphi_k(x)$ равномерно сходится на $A$.
+\end{proof}
+
+\begin{definition}
+    Ряд $\series a_k \cdot (x - x_0)^k$ называется степенным рядом
+\end{definition}
+
+\begin{definition}
+    Радиусом сходимости степенного ряда $\series a_k (x - x_0)^k$ называют
+    $R = \sup \{ r: \: r > 0 \; \& \; a_n r^n = O(1) \}$, то есть огр. ( ??? )
+
+    В этом определении может быть так, что $R = +\infty$.
+\end{definition}
+
+\begin{theorem}[о множестве сходимости степенного ряда]
+    Если $R > 0$ и $0 < r < R$ $\implies \series a_k (x - x_0)^k$ сходится
+    абсолютно на $K_r = \{ (x - x_0) < r \}$
+\end{theorem}
+\begin{proof}
+    Возьмём $r_1 > r: \: a_n r_1^n = O(1)$ и $\forall x \in K_r$ рассмотрим
+    \[ 
+        |a_k (x - x_0)^k| \leq |a_k| \cdot r^k
+        = |a_k| \cdot r_1^k \, \frac{r^k}{r_1^k}
+        \leq C \left( \frac{r}{r_1} \right)^k = C q^k
+    \]
+
+     и $\series C q^k$ сходится (бесконечно убывающая геометрическая прогрессия)
+    $\implies$ по признаку Вейерштрасса, $\series a_k (x - x_0)^k$ сходится
+    равномерно и абсолютно на $K_r$.
+\end{proof}
+
+\begin{definition}
+    Множество $K_R$ называют кругом сходимости степенного ряда.
+\end{definition}
+
+\begin{corollary}
+    Если $R > 0$, то $\series a_k (x - x_0)^k$ сходится поточечно в круге $K_R$.
+    И при $R < +\infty$ вне круга $K_R$ ряд расходится.
+\end{corollary}
+
+\begin{corollary}
+    Если $R > 0$ и $|x - x_0| < R \implies a_k (x - x_0)^k = o(1)$, а
+    если $R < +\infty$ и $|x - x_0| > R \implies a_k (x - x_0)^k \neq o(1)$
+    ($\approach{} 0$)
+\end{corollary}
+
+\begin{corollary}
+    Если $R > 0$ и $0 < r < R$, то $\implies \series a_k (x - x_0)^k$
+    равномерно сходится в $K_r$.
+\end{corollary}
+
+\begin{theorem}[Абеля]
+    Если числовой ряд $\series a_k (x_1 - x_0)^k$ сходится при $x_1 \neq x_0$,
+    то $\series a_k (x - x_0)^k$ сходится в круге 
+    $K = \{ |x - x_0| < |x_1 - x_0| \}$.
+\end{theorem}
+\begin{proof}
+    Если ряд $\series a_k (x_1 - x_0)^k$ сходится $\implies x_1 \in K_R$ --
+    кругу сходимости 
+    $\series a_k (x - x_0)^k \implies |x_1 - x_0| < R \implies k \subset K_R$
+\end{proof}
+
+\begin{theorem}[Коши-Адамара]
+    Пусть $R$ -- радиус сходимости $\series a_k (x - x_0)^k$ и 
+    $l = \ds\overline{\lim_{k \to \infty}} \sqrt[k]{|a_k|}$.
+    Тогда $R = \frac{1}{l}$
+\end{theorem}
+\begin{proof}
+    $\ds\overline{\lim_{k \to \infty}} \sqrt[k]{|a_k (x -x_0)^k|}
+    = l \cdot |x - x_0|$. Зафиксируем точку $x$ и проведём исследование
+    сходимости числового ряда по признаку Коши. Если $l = 0 \implies
+    \series a_k (x - x_0)^k$ сходится $\forall x \implies R = \infty$.
+
+    Если $l = +\infty \implies a_k (x - x_0)^k \neq O(1)$ (не ограничено)
+    $\implies$ по следствию 2 Теоремы о множестве сходимости, $R = 0$.
+
+    Если $x \in K_{\frac{1}{l}}$, то имеем $l \cdot |x - x_0| < 1 \implies
+    \ds\overline{\lim_{k \to \infty}} \sqrt[k]{|a_k (x -x_0)^k|} < 1$
+    $\implies$ по признаку Коши, ряд сходится в точке $x$
+    ($\forall x \in K_{\frac{1}{l}}$) 
+    $\implies K_{\frac{1}{l}} \subset K_R \implies \frac{1}{l} \leq R$.
+
+    Но если $|x - x_0| > \frac{1}{l} \implies a_k (x - x_0)^k \neq o(1)$
+    (не $\approach{} 0$) $\implies$ по следствию 3, $\frac{1}{l} \geq R$.
+
+    Следовательно, $\frac{1}{l} = R$.
+\end{proof}
+
+\begin{remark}
+    Если применить Теорему о почленном дифференцировании и интегрировании к
+    степенному ряду, то получим, что эти операции можно проводить для
+    степенного ряда на его круге сходимости и при этом ряды, полученные в
+    результате применения этих операций также являются степенными и имеют
+    тот же круг сходимости.
+\end{remark}
