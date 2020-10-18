@@ -452,3 +452,110 @@
     
     Имеем $(x\in\R^m, t\in\R^l; \varphi(a) = (\varphi_1(a),...,\varphi_l(a))) = (\varphi_1(a_1,...,a_m),...,\varphi_l(a_1,...,a_m)) \implies f(x)=f(\varphi(x))$ - дифференцируема в точке $a$.
 \end{theorem}
+\begin{proof}
+    $\varphi_k(x)$ дифференцируема в точке $a \implies$ \[\Delta \varphi_k(a) = \varphi_k(x) - \varphi_k(a) = \sum_{p=1}^m \frac{d\varphi_k}{dx_p}(a) \cdot \Delta x_p + o(|\Delta x|)\]
+    $f(t)$ дифференцируема в точке $b \implies$ \[\Delta f(b) = f(t) - f(b) = \sum_{k=1}^l \frac{df}{dt_k}(b) \cdot \Delta t_k + o(|\Delta t|)\]
+
+    Тогда \[\Delta F(a) = F(x) - F(a) = f(\varphi(x)) - f(\varphi(a)) = \sum_{k=1}^l \frac{df}{dt_k}(b) \cdot \Delta \varphi_k(a) + o(|\Delta \varphi_k(a|) =\]
+    \[= \sum_{k=1}^l \frac{df}{dt_k}(b) \cdot (\sum_{p=1}^m \frac{d\varphi_k}{dx_p}(a) \cdot \Delta x_p + o(|\Delta x|)) + o(\sum_{p=1}^m \frac{d\varphi_k}{dx_p}(a) \cdot \Delta x_p + o(|\Delta x|)) = \]
+    \[\sum_{k=1}^l \sum_{p=1}^m \frac{df}{dt_k}(b) \cdot \frac{d \varphi_k}{dx_p}(a) \cdot \Delta x_p + o(|\Delta x|)\] (при $|\Delta x| \to 0$) $\implies F(x) = f(\varphi(x))$ дифференцируема в точке $a$.
+\end{proof}
+
+Замечание:
+Получили формулы дифференцирования сложной функции:
+\[\frac{dF}{dx_p}(a) = \sum_{k=1}^l \frac{df}{dt_k}(b) \cdot \frac{d \varphi_k}{dx_p}(a)\]
+
+\begin{definition}
+    Множество A называется выпуклым если $\forall x_1, x_2 \in A$ точки $x(t) = x_1 + t(x_2 - x_1)$ при $(0 \leq x \leq 1) \in A$
+\end{definition}
+
+\begin{theorem}[Обобщение формулы Лагранжа]
+    Пусть $f(x)$ дифференцируема на выпуклом множестве $A$, тогда $\forall x_1, x_2 \in A$ \[f(x_2) - f(x_1) = \sum_{k=1}^m \frac{dt}{dx_k}(x(t)) + \Delta x_k\] где $x(t) = x_1 + t(x_2 - x_1), 0 < t < 1, \Delta x_k = x^2_k - x^1_k$
+\end{theorem}
+\begin{proof}
+    Рассмотрим выпуклое множество $A \implies \forall x_1, x_2 \in A$ $x(t) = x_1 + t(x_2 - x_1) \in A, 0 \leq t \leq 1$  
+
+    Рассмотрим $\varphi(t) = f(x(t))$ - функция одного переменного, тогда $\varphi(0) = f(x_1)$, $\varphi(1) = f(x_2)$, $\varphi(t)$ дифференцируема в $[0, 1]$, то есть на множестве $A$, а $x_k(t)$ - линейная функция, дифференцируема на $[0, 1]$, и \[\varphi'(t) = \sum_{k=1}^m \frac{df}{dx_k}(x(t)) \cdot x'_k(t) = \sum_{k=1}^m \frac{df}{dx_k}(x(t)) \cdot \Delta x_k\]
+    Тогда по теореме Лагранжа для фукнции одной переменной $\varphi(1) - \varphi(0) = \varphi'(t)(1 - 0)$, $0 < t < 1$
+
+    Следовательно, $\varphi(1) = f(x_2)$, $\varphi(0) = -f(x_1) \implies$ \[f(x_2) - f(x_1) = \sum_{k=1}^m \frac{df}{dx_k}(x(t)) \cdot \Delta x_k\]
+\end{proof}
+
+\begin{definition}
+    Если каждой точке $x$ из множества $A$ поставить в соответствие $\frac{df}{dx_k}(x)$, то мы получим функцию переменных $(x_1, ..., x_n)$.
+
+    Тогда $\frac{d^2f}{dx_pdx_k} = \frac{d}{dx_p}(\frac{df}{dx_k})$ и т.д.
+    
+    Если $\frac{d}{dx_k}(\frac{df}{dx_k}) = \frac{d^2f}{dx^2_k} = f''x_kx_k$ - двойная производная
+
+    Если $\frac{d}{dx_l}(\frac{df}{dx_k}) = \frac{d^2f}{dx_ldx_k} = f''x_kx_l$ - смешанная производная
+\end{definition}
+
+\begin{theorem}[О равенстве смешанных производных 2-го порядка для функций двух переменных]
+    Пусть в некоторой окрестности точки $(x_0; y_0)$ функция $z = f(x,y)$ имеет частные производные $\frac{d^2f}{dydx}$ и $\frac{d^2f}{dxdy}$ и они непрерывны в $(x_0; y_0) \implies \frac{d^2f}{dxdy}(x_0; y_0) = \frac{d^2f}{dydx}(x_0; y_0)$
+\end{theorem}
+\begin{proof}
+    Рассмотрим квадрат: $x_0 \leq x \leq x_0+h; y_0 \leq y \leq y_0+h$, где возьмём такое $h$, чтобы квадрат находился в этой окрестности.
+    
+    *рисунок*
+
+    Пусть даны функции $\varphi(x) = f(x; y_0+h) - f(x; y_0)$ и $\psi(y) = f(x_0+h; y) - f(x_0; y)$
+
+    Имеем $\varphi(x_0+h) - \varphi(x_0) = f(x_0+h; y_0+h) - f(x_0+h; y_0) - f(x_0; y_0+h) + f(x_0; y_0) = \psi(y_0+h) - \psi(y_0)$
+
+    Итак, $\varphi(x_0+h) - \varphi(x_0) = \psi(y_0+h) - \psi(y_0)$. По теореме Лагранжа: $\exists c_1$ между $x_0$ и $x_0+h$ и $\exists c_2$ между $y_0$ и $y_0+h$ такие что:
+    \[\varphi'(c_1) \cdot h = \psi'(c_2) \cdot h \implies \varphi(c_1) = \psi(c_2)\]
+    Тогда $\frac{df}{dx}(c_1; y_0+h) - \frac{df}{dx}(c_1; y_0) = \frac{df}{dy}(x_0+h; c_2) - \frac{df}{dy}(x_0; c_2)$. Применим теорему Лагранжа ещё раз, получим
+
+    $\exists \widetilde{c_1}$ между $x_0$ и $x_0+h$; $\exists \widetilde{c_2}$ между $y_0$ и $y_0+h$.
+    \[\frac{d^2f}{dydx}(c_1; \widetilde{c_2}) = \frac{d^2f}{dxdy}(\widetilde{c_1} ; c_2) | \lim_{x \to 0}\]
+    И так как $\frac{d^2f}{dydx}, \frac{d^2f}{dxdy}$ непрерывны в $(x_0; y_0) \implies \frac{d^2f}{dydx} (x_0; y_0) = \frac{d^2f}{dxdy}(x_0; y_0)$
+\end{proof}
+
+Замечание: имет место и более общая теорема. Если все частные производные n-го порядка существуют и непрерывны в окрестности точки $x_0 (x_0 \in \R^m)$, то значение любой смешанной производной в точке $x_0$ не изменится при изменении порядка дифференцирования.
+
+\begin{definition}
+    Дифференциалом 2-го порядка функции $f(x), (x \in \R^m)$ называется \[d^2f(x) = d(df(x)) = d(\sum_{k=1}^m \frac{df}{dx_k}(x) \cdot \Delta x_k) =\]
+    \[= \sum_{k=1}^m d(\frac{df}{dx_k}(x)) dx_k = \sum_{k=1}^m \sum_{l=1}^m \frac{d^2f}{dx_ldx_k}(x) dx_k dx_l\]
+    \[d^kf(x) = d(d^{n-1}f(x)) = \sum_{k_1,...,k_n = 1}^m \frac{d^nf}{d{x_k}_n,...,d{x_k}_1}(x) \cdot d{x_k}_1 \cdot ... \cdot d{x_k}_n\]
+\end{definition}
+
+\begin{theorem}[Функция Тейлора]
+    Рассмотрим многочлен $P(x) = d_n x^n + ... + d_0$, запишем его по степеням $(x-a)$:
+    \[x^n = ((x-a)+a)^n = \sum_{p=0}^k C^p_k (x-a)^p a^{k-p}, k = \overline{1, n}\]
+    Подставим в $P(x)$ и приведём подобные:
+    \[P(x) = \sum_{k=0}^n \beta_k (x-a)^k \]
+    Так как $P^{(l)}(a) = \sum_{k=0}^n \beta_k ((x-a)^k)^{(l)} |(x=a) = \beta_l \cdot l! \implies \beta_l = \frac{P^{(l)}(a)}{l!} \implies$
+    \[\implies P(x) = \sum_{k=0}^n \frac{P^{(k)}(a)}{k!} - (x-a)^k\] - многочлен Тейлора.
+
+    Пусть функция $f(x)$ отлична от многочлена. Если в некоторой окрестности точки $a$ её значение мало отличается от её многочлена Тейлора, то говорят, что имеет место формула Тейлора, т.е.
+    \[f(x) = \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k + R_n(x;a)\] где $R_n(x;a)$ - остаточный член
+\end{theorem}
+
+ \begin{theorem}[Теорема Тейлора (для функции одной переменной)]
+     Пусть функция $f(x)$ дифференцируема в окрестностях точки $x = a$ до $(n+1)$-го порядка включительно, тогда в этой окрестности имеет место формула Тейлора
+     \[f(x) = \sum_{k=0}^n \frac{f^{(k)} (a)}{k!} (x-a)^k + Rn(x)\] и $Rn(x) = \frac{(x-c)^{n-p+1}}{n!p} \cdot (x-a)^p f^{(n+1)} (c)$, где $p>0$; $c$ между $a$ и $x$.
+ \end{theorem}
+ \begin{proof}
+     Рассмотрим вспомогательную функцию: \[\Phi(t) = \sum_{k=0}^n \frac{f^{(k)} (t)}{k!} (x_0 - t)^k + (\frac{x_0 - t}{x_0 - a})^p \cdot Rn(x_0)\] где $x_0$ - фиксированная точка указанной окрестности точки $a$.
+     Имеем  $\Phi(a) = f(x_0)$; $\Phi(x_0) = f(x_0)$, значит $\Phi(t)$ непрерывна и дифференцируема на отрезке $[a ; x_0]$ (или $[x_0 ; a]$), значит по теореме Ролля $\implies \exists c \in (a ; x_0)$ (или $(x_0 ; a)$): $\Phi'(c) = 0$
+     \[\Phi'(t) = \sum_{k=0}^n \frac{1}{k!} (f^{(k+1)} (t) (x_0 - t)^k - f^{(k)} (t) k (x_0 - t)^{k-1}) + Rn(x_0) \frac{1}{(x_0 - a)^p}(-p(x_0 - t)^{p-1}) =\]
+     \[= (f'(t) + f''(t)(x_0 - t) + ... + \frac{f^{(n+1)} (t)}{n!}(x_0 - t)^n) - (f'(t) + f''(t)(x_0 - t) + ... + \] 
+     \[\frac{f^{(n)} (t)}{(n-1)!}(x_0 - t)^{n-1}) - \frac{p}{(x_0 - a)} (\frac{x_0 - t}{x_0 - a})^{p-1} Rn(x_0) =\]
+     \[= \frac{f^{(n+1)} (t)}{n!}(x_0 - t)^n - \frac{p}{(x_0 - a)} (\frac{x_0 - t}{x_0 - a})^{p-1} Rn(x_0)\]
+     Отсюда получаем, что \[\Phi'(c) = 0 \Leftrightarrow \frac{f^{(n+1)} (c)}{n!}(x_0 - c)^n = \frac{p}{(x_0 - a)} (\frac{x_0 - c}{x_0 - a})^{p-1} Rn(x_0)\]
+     Следовательно, $Rn(x_0) = \frac{f^{(n+1)} (c)}{n!p}(x_0 - c)^{n - p + 1}(x_0 - a)^p$
+ \end{proof}
+ Замечание 1 (Форма Коши ($c$ между $a$ и $x$)): если положить $p = 1$, то получим остаточный член в форме Коши: $Rn(x) = \frac{f^{(n+1)} (c)}{n!} (x - c)^n (x - a)$
+
+ Замечание 2 (Форма Лагранжа): если положить $p = n + 1$, то получим остаточный член в форме Лагранжа: $Rn(x) = \frac{f^{(n+1)} (c)}{(n+1)!} (x - a)^{n+1}$
+
+ Замечание 3: если потребовать условие, более слабое, чем условие теоремы, то есть чтобы функция $f(x)$ имела в точке $a$ непрерывную производную $n$-го порядка, то получим формулу Тейлора с остаточным членом в форме Пеано:
+ \[f(x) = \sum_{k=0}^{n-1} \frac{f^{(k)} (a)}{k!} (x-a)^k + \frac{f^{(n)} (c)}{n!} (x-a)^n\] где $f^{(n)} (x)$ - непрерывна в окрестностях точки $a \implies \exists \lim_{x \to a} f^{(n)} (c) = f^{(n)} (a)$, то есть $f^{(n)} (c) = f^{(n)} (a) + o(1)$ при $x \to a \implies$
+ \[\frac{f^{(n)} (c)}{n!}(x-a)^n = \frac{f^{(n)} (a)}{n!}(x-a)^n + o((x-a)^n) =\]
+ \[= \sum_{k=0}^n \frac{f^{(k)} (a)}{k!} (x-a)^k + o((x-a)^n)\] при $x \to a$, где $o((x-a)^n)$ - остаточный член в форме Пеано.
+
+ \begin{theorem}
+     Пусть функция $u = f(M) = f(x_1, x_2, ..., x_m)$ задана в некоторой $\eps$-окрестности точки $M_0(x'_1, x'_2, ..., x'_m)$ и $n+1$ раз дифференцируема в указанной $\eps$-окрестности. Тогда полное приращение $\Delta u = f(M) - f(M_0)$ этой функции в точке $M_0$ для любой точки $M$ из указанной $\eps$-окрестности может быть представлено в следующей форме:
+     \[\Delta u = du\]
+ \end{theorem}
