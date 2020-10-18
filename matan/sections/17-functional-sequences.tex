@@ -220,7 +220,7 @@
 
     По теореме об изменении порядка предельного перехода:
     \[
-        \dslim_{x \to x_0} (\dslimn \frac{\Delta f_n(x_0)}{\Delta x})
+        \dslim_{x \to x_0} \left( \dslimn \frac{\Delta f_n(x_0)}{\Delta x} \right)
         = \dslim_{x \to x_0} \frac{\Delta f(x_0)}{\Delta x} = f'(x_0)
     \]
     $\implies$ $f(x)$ дифференцируема на $[a; b]$ и $f'(x) = \dslimn f_n'(x)$
@@ -238,3 +238,135 @@
     $\frac{df}{dx_k} (x)$ 
     и $\frac{df}{dx_k} (x) = \dslimn \frac{df_n}{dx_k} (x)$ 
 \end{remark}
+
+\begin{theorem}[о почленном интегрировании функциональной последовательности]
+    Если $\forall n \in \N \; f_n(x)$ интегрируется на $[a; b]$ и $\{ f_n(x) \}$
+    равномерно сходится на $[a; b]$ к некоторой $f(x)$, то $f(x)$ интегрируется
+    на $[a; b]$ и
+    \[ \int_a^b f(x) dx = \dslimn \int_a^b f_n(x) dx \]
+    \[ \int_a^b \dslimn f_n(x) dx = \dslimn \int_a^b f_n(x) dx \]
+\end{theorem}
+\begin{proof}
+    $\{ f_n(x) \}$ равномерно сходится на $[a; b]$ к 
+    $f(x) \bydef \forall \varepsilon > 0 \; \exists n_\varepsilon \;
+    \forall n \geq n_\varepsilon \; \forall x \in [a; b]$ выполняется
+    $| f_n(x) - f(x) | < \varepsilon$. Зафиксируем $n$, удовлетворяющий
+    $n \geq n_\varepsilon$. Так как $f_n(x)$ интегрирума на $[a; b] \implies$
+    по критерию интегрируемости для нашего 
+    $\varepsilon > 0 \; \exists \delta_\varepsilon > 0: \;$
+    $\forall$ разбиения $R$ отрезка такого, что $\Delta < \delta_\varepsilon$ --
+    диаметр разбиения выполняется
+    \[ \dssum_{i = 0}^{n - 1} \omega_{i,n} \cdot \Delta x_i < \varepsilon \]
+    \[ \omega_{i,n} = \sup |f_n(x') - f_n(x'')|, \quad x', x'' \in [x_i; x_{i + 1}] \]
+
+    Колебание $f_n(x)$ на $i$-м отрезке разбиения $\Delta x_i = x_{i + 1} - x_i$
+
+    Обозначим $f \omega_i = \sup |f(x') - f(x'')|, \quad x', x'' \in [x_i; x_{i + 1}]$.
+    Оценим $\dssum_{i = 0}^{n - 1} \omega_{i,n} \cdot \Delta x_i$:
+
+    Пусть $x', x'' \in [a; b]$
+
+    \[ 
+        |f(x') - f(x'')| = 
+        |(f(x') - f_n(x')) + (f_n(x') + f_n(x'')) + (f_n(x'') - f(x'')) <
+    \]
+    \[
+        < |f_n(x') - f(x')| + |f_n(x') - f_n(x'')| + |f_n(x'') - f(x'')| <
+        |f_n(x') - f_n(x'')| < 2\varepsilon 
+    \]
+
+    Перейдём к верхней грани при всех $x', x'' \in [a; b] \implies$
+    \[ \omega_i \leq w_{i,n} + 2\varepsilon \; \Big| \cdot \Delta x_i \]
+    \[ \omega_i \Delta x_i \leq \omega_{i,n} \Delta x_i + 2\varepsilon \Delta x_i \; \Big| \dssum_{i=0}^{n-1}\]
+    \[ 
+        \dssum_{i=0}^{n-1} \omega_i \Delta x_i \leq 
+        \dssum_{i=0}^{n-1} \omega_{i,n} \Delta x_i + 
+        2\varepsilon (b - a) < \varepsilon (1 + 2(b - a)) \dn \varepsilon^*
+    \]
+
+    $\implies \forall \varepsilon^* > 0 \; \exists \delta_{\varepsilon^*} =
+    \delta_\varepsilon > 0 \; \forall R: \Delta < \delta_{\varepsilon^*}$
+    выполняется $\dssum_{i=0}^{n-1} \omega_i \Delta x_i < \varepsilon^*$
+    $\implies$ по критерию интегрируемости, $f(x)$ интегрируется на $[a; b]$ и
+    $\forall n \geq n_\varepsilon$
+    \[ 
+        \left| \int_a^b f_n(x) dx - \int_a^b f(x) dx \right| =
+        \left| \int_a^b (f_n(x) - f(x)) dx \right| \leq
+        \int_a^b |f_n(x) - f(x)| dx < \varepsilon (b - a) 
+    \]
+    $\bydef \exists \dslimn \int_a^b f_n(x) dx = \int_a^b f(x) dx$
+\end{proof}
+
+\begin{definition}
+    Говорят, что функциональная последовательность $\{ f_n(x) \}$ является
+    равностепенно непрерывной на $[a; b]$, если $\forall \varepsilon > 0 \quad
+    \exists \delta_\varepsilon > 0: \quad \forall x', x'' \in [a; b]: \quad
+    |x' - x''| < \delta_\varepsilon \quad \forall n \in \N \quad
+    |f_n(x') - f_n(x'')| < \varepsilon$
+\end{definition}
+
+\begin{theorem}[Арцела]
+    Из всякой равномерно ограниченной и равностепенной непрерывной
+    функциональной последовательности на $[a; b]$ можно выделить
+    равномерно сходящуюся подпоследовательность на $[a; b]$
+\end{theorem}
+\begin{proof}
+    $\{ f_n(x) \}$ равномерно ограничена на $[a; b] \implies$ графики всех
+    функций последовательности заключены на $[a; b]$ в прямоугольник, 
+    ограниченный $y = -c, \, y = c, \, x = a, \, x = b$.
+    
+    $\{ f_n(x) \}$ равностепенно непрерывна на $[a; b] \implies 
+    \forall \varepsilon > 0$ (т.е. и для $\varepsilon_0 > 0: \: \frac{c}{\varepsilon_0} \in \N$)
+    $\exists \delta_0 = \delta (\varepsilon_0) > 0: \: \forall x', x'' \in [a; b]: \:
+    |x' - x''| < \delta_0 \quad \forall n \in \N \quad |f_n(x') - f_n(x'')| < \varepsilon_0$
+
+    Разделим $[a; b]$ на равные части длиной $< \delta_0$, а $[-c; c]$ на
+    равные части длиной $\varepsilon_0$.
+
+    \textbf{*рисунок*}
+
+    Тогда график каждой функции в пределах полосы $x_i \leq x \leq x_{i + 1}$
+    может проходить не более, чем по двум соседним прямоугольникам.
+
+    Рассмотрим $\varepsilon_k = \frac{\varepsilon_0}{2^k}, \, k = 0,1,2,\dots$
+
+    (для $\varepsilon_k = 0 \quad \exists \delta_k > 0 \quad 
+    \forall x', x'' \in [a; b]: \: |x' - x''| < \delta_k$ выполняется
+    $|f_n(x') - f_n(x'')| < \varepsilon_k$)
+
+    Тогда при $k = 0$ в первой слева полосе $x_0 \leq x \leq x_1$ 
+    ($x_0 = a, |x_1 - x_0| < \delta_0$) по крайней мере в одной паре соседних
+    прямоугольников проходит бесконечное количество графиков $f_n(x)$.
+    Выделим из $f_n(x)$ все такие функции. Тогда во второй слева полосе
+    $x_1 \leq x \leq x_2$ с помощью аналогичных рассуждений выделим из уже
+    выделенных функций последовательность. График, который проходит по двум
+    соседним прямоугольникам второй полосы (и двум соседним первой полосы)
+    переходит от одной полосы к другой продолжая выделять последовательность.
+    И в последней полосе мы получим последовательность $\{ f_{k_n} (x) \}$,
+    график которой проходит по двум соседним прямоугольникам каждой полосы.
+
+    Обозначим
+    \[ 
+        f_{k_n} = f_{n,0}(x) \implies 
+        \forall m,n,x \quad |f_{n,0}(x) - f_{m,0}(x)| \leq 2\varepsilon_0 
+    \]
+
+    Теперь берём $k = 1$ и аналогично рассуждая из последовательности
+    $\{ f_{n, 0}(x) \}$ выделим $\{ f_{n,1}(x) \}$ так, что
+    \[ |f_{n,1}(x) - f_{m,1}(x)| \leq 2 \varepsilon_1 \]
+
+    Повторяя процесс при $k = 2,3,\dots$ мы будем выделять 
+    $\{ f_{n,2}(x) \}, \{ f_{n,3}(x) \}$ и так далее. Причём каждая из них
+    является подпоследовательностью предыдущй, причём 
+    \[ 
+        \forall l \geq k \quad \forall p \geq k \quad \forall m,n,k \quad 
+        |f_{n,l}(x) - f_{m,p}(x)| < 2\varepsilon_k
+    \]
+
+    Рассмотрим $\{ f_{n,n}(x) \}$. Тогда $\forall \varepsilon > 0$ выберем
+    $N_\varepsilon: \: 2\varepsilon_{N_\varepsilon} < \varepsilon$ и
+    $\forall n \geq N_\varepsilon \quad \forall m \geq N_\varepsilon \quad
+    \forall x \in [a; b] \quad |f_{n,n}(x) - f_{m,m}(x)| < \varepsilon$ 
+    $\implies$ по критерию Коши равномерной сходимости функциональной
+    последовательности, $\{ f_{n,n}(x) \}$ сходится равномерно на $[a; b]$.
+\end{proof}
