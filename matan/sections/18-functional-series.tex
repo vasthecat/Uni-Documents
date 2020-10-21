@@ -37,7 +37,7 @@
             $\forall \varepsilon > 0 \quad \exists n_\varepsilon: \: 
             \forall n \geq n_\varepsilon \quad \forall m \geq n_\varepsilon \quad
             \forall x \in A$ выполняется 
-            $\left| \dssum_{k=n+1}^m \varphi)k(x) \right| < \varepsilon$
+            $\left| \dssum_{k=n+1}^m \varphi_k(x) \right| < \varepsilon$
         
         \item
             Если $\series \varphi_k(x)$ равномерно сходится на $A$ к сумме
@@ -59,7 +59,7 @@
             $\left( \ds\int_a^b \left(\series \varphi_k(x)\right) dx = \series \int_a^b \varphi_k(x) dx \right)$
 
         \item
-            Если функции $\varphi_k(x)$ дифференцируему на $[a; b]$
+            Если функции $\varphi_k(x)$ дифференцируемы на $[a; b]$
             $\forall k \in \N$ и ряд $\series \varphi'_k(x)$ равномерно
             сходится на $[a; b]$, то из сходимости $\series \varphi_k(x)$ в
             некоторой $x_0 \in [a; b] \implies \series \varphi_k(x)$ сходится
@@ -89,18 +89,18 @@
 \end{proof}
 
 \begin{definition}
-    Ряд $\series a_k \cdot (x - x_0)^k$ называется степенным рядом
+    Ряд $\dssum_{k=0}^\infty a_k \cdot (x - x_0)^k$ называется степенным рядом
 \end{definition}
 
 \begin{definition}
-    Радиусом сходимости степенного ряда $\series a_k (x - x_0)^k$ называют
-    $R = \sup \{ r: \: r > 0 \; \& \; a_n r^n = O(1) \}$, то есть огр. ( ??? )
+    Радиусом сходимости степенного ряда $\seriespow$ называют
+    $R = \sup \{ r: \: r > 0 \; \& \; a_n r^n = O(1) \}$ (то есть ограничено)
 
     В этом определении может быть так, что $R = +\infty$.
 \end{definition}
 
 \begin{theorem}[о множестве сходимости степенного ряда]
-    Если $R > 0$ и $0 < r < R$ $\implies \series a_k (x - x_0)^k$ сходится
+    Если $R > 0$ и $0 < r < R$ $\implies \seriespow$ сходится
     абсолютно на $K_r = \{ (x - x_0) < r \}$
 \end{theorem}
 \begin{proof}
@@ -112,7 +112,7 @@
     \]
 
      и $\series C q^k$ сходится (бесконечно убывающая геометрическая прогрессия)
-    $\implies$ по признаку Вейерштрасса, $\series a_k (x - x_0)^k$ сходится
+    $\implies$ по признаку Вейерштрасса, $\seriespow$ сходится
     равномерно и абсолютно на $K_r$.
 \end{proof}
 
@@ -121,8 +121,13 @@
 \end{definition}
 
 \begin{corollary}
-    Если $R > 0$, то $\series a_k (x - x_0)^k$ сходится поточечно в круге $K_R$.
+    Если $R > 0$, то $\seriespow$ сходится поточечно в круге $K_R$.
     И при $R < +\infty$ вне круга $K_R$ ряд расходится.
+\end{corollary}
+
+\begin{corollary}
+    Если $R > 0$ и $|x - x_0| < R \implies a_k (x - x_0)^k = O(1)$,
+    а если $R < +\infty$ и $|x - x_0| > R \implies a_k (x - x_0)^k \neq O(1)$
 \end{corollary}
 
 \begin{corollary}
@@ -132,23 +137,23 @@
 \end{corollary}
 
 \begin{corollary}
-    Если $R > 0$ и $0 < r < R$, то $\implies \series a_k (x - x_0)^k$
+    Если $R > 0$ и $0 < r < R$, то $\implies \seriespow$
     равномерно сходится в $K_r$.
 \end{corollary}
 
 \begin{theorem}[Абеля]
-    Если числовой ряд $\series a_k (x_1 - x_0)^k$ сходится при $x_1 \neq x_0$,
-    то $\series a_k (x - x_0)^k$ сходится в круге 
+    Если числовой ряд $\seriespow$ сходится при $x_1 \neq x_0$,
+    то $\seriespow$ сходится в круге 
     $K = \{ |x - x_0| < |x_1 - x_0| \}$.
 \end{theorem}
 \begin{proof}
-    Если ряд $\series a_k (x_1 - x_0)^k$ сходится $\implies x_1 \in K_R$ --
+    Если ряд $\seriespow$ сходится $\implies x_1 \in K_R$ --
     кругу сходимости 
-    $\series a_k (x - x_0)^k \implies |x_1 - x_0| < R \implies k \subset K_R$
+    $\seriespow \implies |x_1 - x_0| < R \implies K \subset K_R$
 \end{proof}
 
 \begin{theorem}[Коши-Адамара]
-    Пусть $R$ -- радиус сходимости $\series a_k (x - x_0)^k$ и 
+    Пусть $R$ -- радиус сходимости $\seriespow$ и 
     $l = \ds\overline{\lim_{k \to \infty}} \sqrt[k]{|a_k|}$.
     Тогда $R = \frac{1}{l}$
 \end{theorem}
@@ -156,7 +161,7 @@
     $\ds\overline{\lim_{k \to \infty}} \sqrt[k]{|a_k (x -x_0)^k|}
     = l \cdot |x - x_0|$. Зафиксируем точку $x$ и проведём исследование
     сходимости числового ряда по признаку Коши. Если $l = 0 \implies
-    \series a_k (x - x_0)^k$ сходится $\forall x \implies R = \infty$.
+    \seriespow$ сходится $\forall x \implies R = \infty$.
 
     Если $l = +\infty \implies a_k (x - x_0)^k \neq O(1)$ (не ограничено)
     $\implies$ по следствию 2 Теоремы о множестве сходимости, $R = 0$.

@@ -16,16 +16,16 @@
     множестве $A$ (поточечно). И это значит, что существует предельная
     функция $f(x) = \dslimn f_n(x)$
 
-    (То есть $\forall x \in A \; \forall \varepsilon > 0 \; 
-    \exists n_{\varepsilon,x} \; \forall n \geq n_{\varepsilon,x}$
+    (То есть $\forall x \in A \quad \forall \varepsilon > 0 \quad
+    \exists n_{\varepsilon,x} \quad \forall n \geq n_{\varepsilon,x}$
     выполняется $|f_n(x) - f(x)| < \varepsilon$)
 \end{definition}
 
 \begin{definition}
     Говорят, что функциональная последовательность $\{ f_n(x) \}$ сходится
     равномерно на множестве $A$ к $f(x)$, если
-    $\forall \varepsilon > 0 \; \exists n_\varepsilon \;
-    \forall n \geq n_\varepsilon \; \forall x \in A$ выполняется
+    $\forall \varepsilon > 0 \quad \exists n_\varepsilon \quad
+    \forall n \geq n_\varepsilon \quad \forall x \in A$ выполняется
     $|f_n(x) - f(x)| < \varepsilon$
 \end{definition}
 
@@ -41,15 +41,15 @@
 
     $\exists \varepsilon_0 = \frac{1}{4}$ ($\varepsilon_0$ достаточно взять
     конкретным положительным $< \frac{1}{2}$).
-    $\forall n \; \exists x_n = \sqrt[n]{0.5} \in (0; 1): \; f_n(x_n) - f(x) =
+    $\forall n \quad \exists x_n = \sqrt[n]{0.5} \in (0; 1): \: f_n(x_n) - f(x) =
     \sqrt[n]{0.5} - 0 = 0.5 > \varepsilon_0 = 0.25$
 \end{example}
 
 \begin{theorem}[Критерий Коши для равномерной сходимости функциональной последовательности]
     Для того, чтобы функциональная последовательность $\{ f_n(x) \}$ равномерно
     сходилась на множестве $A$ $\iff$ 
-    $\forall \varepsilon > 0 \; \exists n_\varepsilon: \;
-    \forall m \geq n_\varepsilon \; \forall n \geq n_\varepsilon \;
+    $\forall \varepsilon > 0 \quad \exists n_\varepsilon: \:
+    \forall m \geq n_\varepsilon \quad \forall n \geq n_\varepsilon \quad
     \forall x \in a$ выполняется $|f_n(x) - f_m(x)| < \varepsilon$
 \end{theorem}
 \begin{proof}
@@ -58,17 +58,29 @@
             Необходимость
 
             Пусть $\{ f_n(x) \}$ равномерно сходится на множестве $A$ к $f(x)$
-            $\bydef \forall \varepsilon_1 > 0 \; \exists n_{\varepsilon_1}: \;
-            \forall n \geq n_{\varepsilon_1} \; \forall x \in A$ выполняется
+            $\bydef \forall \varepsilon_1 > 0 \quad \exists n_{\varepsilon_1}: \:
+            \forall n \geq n_{\varepsilon_1} \quad \forall x \in A$ выполняется
             $|f_n(x) - f(x)| < \varepsilon_1$
+
+            Возьмём $n \geq n_{\varepsilon_1}, \, m \geq n_{\varepsilon_1}, 
+            x \in A \implies \begin{cases}
+                |f_n(x) - f(x)| < \varepsilon_1 \\
+                |f_m(x) - f(x)| < \varepsilon_1 \\
+            \end{cases} \implies$ 
+            рассмотрим $|f_n(x) - f(x) + f(x) - f_m(x)| \leq 
+            |f_n(x) - f(x)| + |f_m(x) - f(x)| < 2 \varepsilon_1 \implies
+            \forall \varepsilon > 0 \quad 
+            \exists n_\varepsilon = n_{\varepsilon_1}: \:
+            \forall n \geq n_\varepsilon \quad \forall m \geq n_\varepsilon
+            \quad \forall x \in A$ выполняется $|f_n(x) - f_m(x)| < \varepsilon$
 
         \item 
             Достаточность
 
-            Пусть $\forall \varepsilon_1 > 0 \; \exists n_{\varepsilon_1}: \;
-            \forall n \geq n_{\varepsilon_1} \;
-            \forall m \geq n_{\varepsilon_1} \; \forall x \in A$ выполняется
-            $|f_n(x) - f_m(x)| < \varepsilon_1 \; (*)$
+            Пусть $\forall \varepsilon_1 > 0 \quad \exists n_{\varepsilon_1}: \:
+            \forall n \geq n_{\varepsilon_1} \quad
+            \forall m \geq n_{\varepsilon_1} \quad \forall x \in A$ выполняется
+            $|f_n(x) - f_m(x)| < \varepsilon_1 \quad (*)$
 
             Зафиксируем $x \in A$. По критерию Коши сходимости числовой 
             последовательности $\implies \{ f_n(x) \}$ в фиксированной точке
@@ -79,8 +91,8 @@
             Перейдём в $(*)$ к пределу при $m \approach{} \infty$.
             Получим $|f_n(x) - f(x)| \leq \varepsilon_1$. Тогда
             $\forall \varepsilon > 0$ возьмём $0 < \varepsilon_1 < \varepsilon$.
-            Получим $\exists n_\varepsilon = n_{\varepsilon_1}: \;
-            \forall n \geq n_\varepsilon \; \forall x \in A$ выполняется
+            Получим $\exists n_\varepsilon = n_{\varepsilon_1}: \:
+            \forall n \geq n_\varepsilon \quad \forall x \in A$ выполняется
             $|f_n(x) - f(x)| < \varepsilon$ $\bydef \{ f_n(x) \}$ равномерно
             сходится на $A$ к $f(x)$.
     \end{enumerate}
@@ -90,52 +102,52 @@
     Пусть функциональная последовательность $f_n(x)$ сходится равномерно
     на $A$ к $f(x)$ и пусть $\exists \dslim_{x \to a} f_n (x) = b_n$.
     Тогда $\exists \dslim_{x \to a} f(x) = b$, где $b = \dslimn b_n$
-    (то есть $\dslim_{x \to a} (\dslimn f(x)) = \dslimn (\dslim_{x \to a} f(x))$)
+    (то есть $\dslim_{x \to a} (\dslimn f_n(x)) = \dslimn (\dslim_{x \to a} f_n(x))$)
 \end{theorem}
 \begin{proof}
     $\{ f_n(x) \}$ равномерно сходится к $f(x)$ на $A$ $\implies$ по критерию
     Коши равномерной сходимости функциональной последовательности
-    $\forall \varepsilon_1 > 0 \; \exists n_{\varepsilon_1} \;
-    \forall n \geq n_{\varepsilon_1} \; \forall m \geq n_{\varepsilon_1} \;
+    $\forall \varepsilon_1 > 0 \quad \exists n_{\varepsilon_1} \quad
+    \forall n \geq n_{\varepsilon_1} \quad \forall m \geq n_{\varepsilon_1} \quad
     \forall x \in A$ выполняется $|f_n(x) - f_m(x)| < \varepsilon_1 \quad (*)$
 
     Перейдём в $(*)$ к пределу при $x \approach{} a$ 
     $\implies |b_n - b_m| \leq \varepsilon_1 \quad (**)$. 
     Тогда $\forall \varepsilon > 0$ выбрав $0 < \varepsilon_1 < \varepsilon$
-    $\implies \exists n_\varepsilon = n_{\varepsilon_1}: \;
-    \forall n \geq n_\varepsilon \; \forall m \geq n_\varepsilon$ выполняется
+    $\implies \exists n_\varepsilon = n_{\varepsilon_1}: \:
+    \forall n \geq n_\varepsilon \quad \forall m \geq n_\varepsilon$ выполняется
     $|b_n - b_m| < \varepsilon \implies$ по критерию Коши сходимости
     числовой последовательности $\{ b_n \}$ сходится 
     $\implies \exists \dslimn b_n \dn b$
 
     Перейдём в $(**)$ к пределу при $m \approach{} \infty$
-    $\implies |b_n - b| \leq \varepsilon_1 \; \forall n \geq n_{\varepsilon_1}$.
+    $\implies |b_n - b| \leq \varepsilon_1 \quad \forall n \geq n_{\varepsilon_1}$.
     И перейдём в $(*)$ к пределу при $m \approach{} \infty$
-    $\implies |f_n(x) - f(x)| \leq \varepsilon_1 \; 
-    \forall n \geq n_\varepsilon \; \forall x \in A$
+    $\implies |f_n(x) - f(x)| \leq \varepsilon_1 \quad 
+    \forall n \geq n_\varepsilon \quad \forall x \in A$
 
     Рассмотрим $|f(x) - b| 
     = |f(x) - f_n(x) + f_n(x) - b_n + b_n - b| 
     \leq |f(x) - f_n(x)| + |f_n(x) - b_n| + |b_n - b|
     \leq 2 \varepsilon_1 + |f_n(x) - b_n| 
-    \quad \forall x \in a \; \forall n \geq n_\varepsilon$
+    \quad \forall x \in a \quad \forall n \geq n_\varepsilon$
 
     Зафиксируем $n \geq n_{\varepsilon_1}$. Так как по условию
     $\dslim_{x \to a} f_n(x) = b_n \bydef$ для нашего 
-    $\varepsilon_1 > 0 \; \exists \delta_{\varepsilon_1} > 0: \;
-    \forall x \in a: \; 0 < |x - a| < \delta_{\varepsilon_1}$ выполняется
+    $\varepsilon_1 > 0 \quad \exists \delta_{\varepsilon_1} > 0: \:
+    \forall x \in a: \: 0 < |x - a| < \delta_{\varepsilon_1}$ выполняется
     $|f_n(x) - b_n| < \varepsilon_1$.
 
     Тогда получаем $|f(x) - b| < 3 \varepsilon_1 \dn \varepsilon
-    \implies \forall \varepsilon > 0 \; 
-    \exists \delta_\varepsilon = \delta_{\varepsilon_1} > 0: \;
-    \forall x \in A: \; 0 < |x - a| < \delta_\varepsilon$ выполняется
+    \implies \forall \varepsilon > 0 \quad 
+    \exists \delta_\varepsilon = \delta_{\varepsilon_1} > 0: \:
+    \forall x \in A: \: 0 < |x - a| < \delta_\varepsilon$ выполняется
     $|f(x) - b| < \varepsilon$ $\implies$ по определению Коши предела
     функции в точке $\exists \dslim_{x \to a} f(x) = b$
 \end{proof}
 
 \begin{corollary}
-    Если $\forall n \in \N \; f_n(x)$ непрерывна в $x_0 \in A$ и
+    Если $\forall n \in \N \quad f_n(x)$ непрерывна в $x_0 \in A$ и
     функциональная последовательность $\{ f_n(x) \}$ сходится равномерно на $A$
     к $f(x)$ $\implies$ $f(x)$ непрерывна в точке $x_0$
 \end{corollary}
@@ -164,7 +176,7 @@
     \[
         \frac{\Delta f_n(x_0)}{\Delta x}
         = \frac{f_n(x) - f_n(x_0)}{x - x_0}, 
-        \; \Delta x = x - x_0, \; x \ne x_0
+        \quad \Delta x = x - x_0, \quad x \ne x_0
     \]
 
     Докажем, что функциональная последовательность 
@@ -179,20 +191,20 @@
     По теореме Лагранжа $\exists \xi$ между $x$ и $x_0$ $\implies$
     \[
         \frac{1}{\Delta x} \cdot 
-        \frac{d}{dx} (f_n (x) - f_n(x)) \Big|_{x=\varepsilon} \cdot (x - x_0)
+        \frac{d}{dx} (f_n (x) - f_m(x)) \Big|_{x=\varepsilon} \cdot (x - x_0)
         = f_n'(\xi) - f_m'(\xi)
     \]
 
     Так как $\{ f_n'(x) \}$ равномерно сходится на $[a; b]$ $\implies$
     по критерию Коши равномерной сходимости функциональной последовательности
-    $\forall \varepsilon > 0 \; \exists n_\varepsilon \;
-    \forall n \geq n_\varepsilon \; \forall m \geq n_\varepsilon \;
+    $\forall \varepsilon > 0 \quad \exists n_\varepsilon \quad
+    \forall n \geq n_\varepsilon \quad \forall m \geq n_\varepsilon \quad
     \forall x \in [a; b]$ выполняется $|f_n'(x) - f_m'(x)| < \varepsilon$
-    $\implies \forall \varepsilon > 0 \; \exists n_\varepsilon \;
-    \forall n \geq n_\varepsilon \; \forall m \geq n_\varepsilon \;
+    $\implies \forall \varepsilon > 0 \quad \exists n_\varepsilon \quad
+    \forall n \geq n_\varepsilon \quad \forall m \geq n_\varepsilon \quad
     \forall x \in [a; b]$ выполняется
     $\left| \frac{\Delta f_n(x_0)}{\Delta x} - \frac{\Delta f_m(x_0)}{\Delta x} \right| < \varepsilon$
-    $implies$ по критерию Коши равномерной сходимости функциональной
+    $\implies$ по критерию Коши равномерной сходимости функциональной
     последовательности $\left\{ \frac{\Delta f_n(x_0)}{\Delta x} \right\}$
     равномерно сходится на $[a; b]$.
 
@@ -230,17 +242,17 @@
     Аналогично можно доказать теорему для функциональной последовательности
     многих переменных:
 
-    Если $\forall n \in \N \; f_n(x), \; x \in A \subset \R^m$ определены на
+    Если $\forall n \in \N \quad f_n(x), \quad x \in A \subset \R^m$ определены на
     выпуклом множестве $A$, имеют на $A$ частные производные 
     $\frac{d f_n}{d x_k} (x)$ при фиксированном $k$ и
     $\{ f_n(x) \}$ и $\{ \frac{d f_n}{d x_k} (x) \}$ равномерно сходятся на
-    $A$, то функция $f(x) = \dslimn f_n(x)$ имеет на $A \;$ 
+    $A$, то функция $f(x) = \dslimn f_n(x)$ имеет на $A \quad$ 
     $\frac{df}{dx_k} (x)$ 
     и $\frac{df}{dx_k} (x) = \dslimn \frac{df_n}{dx_k} (x)$ 
 \end{remark}
 
 \begin{theorem}[о почленном интегрировании функциональной последовательности]
-    Если $\forall n \in \N \; f_n(x)$ интегрируется на $[a; b]$ и $\{ f_n(x) \}$
+    Если $\forall n \in \N \quad f_n(x)$ интегрируется на $[a; b]$ и $\{ f_n(x) \}$
     равномерно сходится на $[a; b]$ к некоторой $f(x)$, то $f(x)$ интегрируется
     на $[a; b]$ и
     \[ \int_a^b f(x) dx = \dslimn \int_a^b f_n(x) dx \]
@@ -248,14 +260,14 @@
 \end{theorem}
 \begin{proof}
     $\{ f_n(x) \}$ равномерно сходится на $[a; b]$ к 
-    $f(x) \bydef \forall \varepsilon > 0 \; \exists n_\varepsilon \;
-    \forall n \geq n_\varepsilon \; \forall x \in [a; b]$ выполняется
+    $f(x) \bydef \forall \varepsilon > 0 \quad \exists n_\varepsilon \quad
+    \forall n \geq n_\varepsilon \quad \forall x \in [a; b]$ выполняется
     $| f_n(x) - f(x) | < \varepsilon$. Зафиксируем $n$, удовлетворяющий
     $n \geq n_\varepsilon$. Так как $f_n(x)$ интегрирума на $[a; b] \implies$
     по критерию интегрируемости для нашего 
-    $\varepsilon > 0 \; \exists \delta_\varepsilon > 0: \;$
+    $\varepsilon > 0 \quad \exists \delta_\varepsilon > 0: \:$
     $\forall$ разбиения $R$ отрезка такого, что $\Delta < \delta_\varepsilon$ --
-    диаметр разбиения выполняется
+    диаметр разбиения, выполняется
     \[ \dssum_{i = 0}^{n - 1} \omega_{i,n} \cdot \Delta x_i < \varepsilon \]
     \[ \omega_{i,n} = \sup |f_n(x') - f_n(x'')|, \quad x', x'' \in [x_i; x_{i + 1}] \]
 
@@ -276,7 +288,7 @@
     \]
 
     Перейдём к верхней грани при всех $x', x'' \in [a; b] \implies$
-    \[ \omega_i \leq w_{i,n} + 2\varepsilon \; \Big| \cdot \Delta x_i \]
+    \[ \omega_i \leq \omega_{i,n} + 2\varepsilon \; \Big| \cdot \Delta x_i \]
     \[ \omega_i \Delta x_i \leq \omega_{i,n} \Delta x_i + 2\varepsilon \Delta x_i \; \Big| \dssum_{i=0}^{n-1}\]
     \[ 
         \dssum_{i=0}^{n-1} \omega_i \Delta x_i \leq 
@@ -284,8 +296,8 @@
         2\varepsilon (b - a) < \varepsilon (1 + 2(b - a)) \dn \varepsilon^*
     \]
 
-    $\implies \forall \varepsilon^* > 0 \; \exists \delta_{\varepsilon^*} =
-    \delta_\varepsilon > 0 \; \forall R: \Delta < \delta_{\varepsilon^*}$
+    $\implies \forall \varepsilon^* > 0 \quad \exists \delta_{\varepsilon^*} =
+    \delta_\varepsilon > 0 \quad \forall R: \Delta < \delta_{\varepsilon^*}$
     выполняется $\dssum_{i=0}^{n-1} \omega_i \Delta x_i < \varepsilon^*$
     $\implies$ по критерию интегрируемости, $f(x)$ интегрируется на $[a; b]$ и
     $\forall n \geq n_\varepsilon$
@@ -296,6 +308,12 @@
     \]
     $\bydef \exists \dslimn \int_a^b f_n(x) dx = \int_a^b f(x) dx$
 \end{proof}
+
+\begin{definition}
+    Говорят, что функциональная последовательность $\{ f_n(x) \}$ равномерно
+    ограничена на $[a; b]$, если $\exists C > 0 \quad \forall n \in \N \quad
+    \forall x \in [a; b]$ выполняется $|f_n(x)| \leq C$
+\end{definition}
 
 \begin{definition}
     Говорят, что функциональная последовательность $\{ f_n(x) \}$ является

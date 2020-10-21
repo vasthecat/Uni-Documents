@@ -82,7 +82,7 @@
     Имеют место следующие признаки сходимости $\seriesx$:
     \begin{enumerate}
         \item 
-            $\text{Если } \exists C > 0 \; \forall n \; \series{|x_k|} 
+            $\text{Если } \exists C > 0 \; \forall n \; \dssum_{k=1}^n |x_k| 
             \leq C \implies \seriesx \text{ сходится абсолютно.}$
 
         \item 
@@ -100,7 +100,7 @@
             (Даламбера) Пусть $\beta = \overline{\dslim_{k \to \infty}} 
             \left| \frac{x_{k+1}}{x_k} \right| \quad (x_k \neq 0)$. 
             Тогда при $\beta < 1$ ряд сходится абсолютно. Если же 
-            $\forall k \geq n_0 \; \left| \frac{x_{k+1}}{x_k} \right| \geq 1$, 
+            $\forall k \geq n_0 \quad \left| \frac{x_{k+1}}{x_k} \right| \geq 1$, 
             то ряд расходится.
     \end{enumerate}
 \end{theorem}
@@ -109,32 +109,32 @@
         \item 
             Пусть $S_n^* = \displaystyle\sum_{k=1}^n |x_k|$. Тогда $\{S_n^*\}$ 
             монотонно неубывающая и ограниченная сверху 
-            ($|S_n^*\ \leq C$) $\implies$ по теореме о сходимости монотонной 
+            ($|S_n^*| \leq C$) $\implies$ по теореме о сходимости монотонной 
             последовательности ($\{S_n^*\}$) сходится $\bydef \series{|x_k|}$ 
             -- сходится $\bydef \seriesx$ сходится абсолютно.
 
         \item
-            \textbf{a)} По условию $\forall k \geq n_0 \; |x_k| \leq y_k$ и 
+            \textbf{a)} По условию $\forall k \geq n_0 \quad |x_k| \leq y_k$ и 
             $\series{y_k}$ -- сходится $\iff$ по критерию Коши 
-            $\forall \varepsilon > 0 \; \exists n_\varepsilon \; 
-            \forall n \geq n_\varepsilon \; \forall m \geq n_\varepsilon$ 
+            $\forall \varepsilon > 0 \quad \exists n_\varepsilon \quad
+            \forall n \geq n_\varepsilon \quad \forall m \geq n_\varepsilon$ 
             $\left| \displaystyle\sum_{k=n+1}^m |x_k| \right| \leq 
             \left| \displaystyle\sum_{k=n+1}^\infty y_k \right|
             < \varepsilon \implies$ по критерию Коши $\series{|x_k|}$ 
             сходится $\implies \seriesx$ сходится абсолютно.
             
-            \textbf{б)} По условию $\forall k \geq n_0 \; x_k \geq y_k$ и 
+            \textbf{б)} По условию $\forall k \geq n_0 \quad x_k \geq y_k$ и 
             $\series{y_k}$ расходится. Пусть от противного $\seriesx$ 
             сходится $\implies$ по \textbf{а)} $\series{y_k}$ 
             сходится -- противоречие.
 
         \item 
             Если $\alpha = \overline{\dslim_{k \to \infty}} \sqrt[k]{|x_k|}
-            < 1 \iff$ по свойству верхнего предела $\forall \varepsilon > 0 \;
-            \exists N_\varepsilon \; \forall k \geq N_\varepsilon \; 
+            < 1 \iff$ по свойству верхнего предела $\forall \varepsilon > 0 \quad
+            \exists N_\varepsilon \quad \forall k \geq N_\varepsilon \quad
             \sqrt[k]{|x_k|} < \alpha + \varepsilon$. 
-            Возьмём $\varepsilon > 0$: $\alpha + \varepsilon \dn q < 1$ тогда 
-            $\sqrt[k]{|x_k|} < q$ или $|x_k| < q^k \; 
+            Возьмём $\varepsilon > 0$: \: $\alpha + \varepsilon \dn q < 1$ тогда 
+            $\sqrt[k]{|x_k|} < q$ или $|x_k| < q^k \quad
             \forall k \geq N_\varepsilon$, но $\series{q^k}$ сходится 
             ($q < 1, q^k$ -- бесконечно убывающая геометрическая прогрессия) 
             $\implies$ по 2) $\series{|x_k|}$ сходится 
@@ -144,7 +144,7 @@
             бесконечное число элементов последовательности, удовлетворяющее 
             условию: $\sqrt[k]{|x_k|} \geq \alpha - \varepsilon \implies |x_k| 
             \geq (\alpha - \varepsilon)^k$. 
-            Возьмём $\varepsilon > 0: \alpha - \varepsilon > 1 \implies 
+            Возьмём $\varepsilon > 0: \: \alpha - \varepsilon > 1 \implies 
             (\alpha - \varepsilon)^k \cancel\to 0 \implies$ бесконечное число 
             элементов $x_k > 1 \implies x_k \cancel\to 0 \implies$ не выполнено 
             необходимое условие сходимости ряда $\implies \seriesx$ расходится.
@@ -152,28 +152,28 @@
         \item 
             Пусть $\beta = \overline{\dslim_{k \to \infty}} 
             \left| \frac{x_{k+1}}{x_k} \right| < 1 \implies$ по свойству 
-            верхнего предела $\forall \varepsilon > 0 \; 
-            \exists N_\varepsilon \; \forall k > N_\varepsilon 
+            верхнего предела $\forall \varepsilon > 0 \quad
+            \exists N_\varepsilon \quad \forall k > N_\varepsilon \quad
             | \frac{x_{k+1}}{x_k} | < \beta + \varepsilon$. 
-            Возьмём $\varepsilon > 0: \beta + \varepsilon < 1 \implies 
-            \forall k > N_\varepsilon \; | \frac{x_{k+1}}{x_k} | < 
+            Возьмём $\varepsilon > 0: \beta + \varepsilon \dn q < 1 \implies 
+            \forall k > N_\varepsilon \quad | \frac{x_{k+1}}{x_k} | < 
             q \implies |x_{k+1}| < q |x_k| < q^2|x_{k-1}| < \dots < 
-            q^{k - \frac{1}{\varepsilon}}|x_{N_\varepsilon}|$, но 
+            q^{k - N_\varepsilon}|x_{N_\varepsilon}|$, но 
             $\series{q^{k-{N_\varepsilon}}}|x_{N_\varepsilon}|$ -- 
             сходится ($\series{\frac{x_{N_\varepsilon}}{q^{N_\varepsilon}}q^k}$
             -- сумма бесконечно убывающей геометрической прогрессии) 
             $\implies \series{|x_k|}$ сходится абсолютно.
         
-            Если же при $k \geq n_0 \; \frac{x_{k+1}}{x_k} \geq 1 \implies 
+            Если же при $k \geq n_0 \quad \frac{x_{k+1}}{x_k} \geq 1 \implies 
             |x_{k+1}| \geq |x_k| \implies \{|x_k|\}$ монотонно неубывает
-            $\implies |x_k| \cancel\to 0 \; (k \to \infty) \implies 
+            $\implies |x_k| \cancel\to 0 \quad (k \to \infty) \implies 
             x_k \cancel\to 0 \implies$ по необходимому условию $\seriesx$ 
             расходится.
     \end{enumerate}
 \end{proof}
 
 \begin{theorem}[Признак Лейбница]
-    Если для $\series{(-1)^k a_k} \; (a_k \geq 0)$ имеем $\{a_k\}$ монотонно 
+    Если для $\series{(-1)^k a_k} \quad (a_k \geq 0)$ имеем $\{a_k\}$ монотонно 
     невозрастает при $k \geq n_0$ и $\dslim_{k \to \infty} a_k = 0 \implies 
     \series{(-1)^k a_k}$ сходится.
 \end{theorem}
@@ -217,7 +217,7 @@
     $\implies \series{(-1)^k}{k}$ сходится условно.
 \end{example}
 
-\begin{theorem}{Предельный признак сравнения}
+\begin{theorem}[Предельный признак сравнения]
     Если $\exists \dslim_{k \to \infty} \frac{a_k}{b_k} = C \neq 0 \; 
     (b_k \neq 0)$, то $\series{a_k}$ и $\series{b_k}$ ведут себя одинаково в 
     смысле сходимости (либо одновременно сходятся, либо одновременно расходятся)
@@ -229,33 +229,43 @@
     Если $\series{b_k}$ сходится, то по признаку сравнения $\series{a_k}$ сходится абсолютно. Если $\series{b_k}$ расходится, то по признаку сравнения $\series{a_k}$ расходится.
 \end{proof}
 
-\begin{theorem}{Лемма: Тождество Абеля или Формула суммирования по частям}
-    \[\series{a_k \cdot b_k} = a_n \cdot B_n - \sum\limits_{k=1}^{n-1} (a_{k+1} - a_k ) B_k \], где $B_1 = 1 ; B_2 = b_1 + b_2 ; B_n = b_1 + \cdots + b_n$
+\begin{theorem}[Лемма: Тождество Абеля или Формула суммирования по частям]
+    \[\dssum_{k=1}^n a_k \cdot b_k = a_n \cdot B_n - \sum\limits_{k=1}^{n-1} (a_{k+1} - a_k) B_k \], где $B_1 = 1 ; B_2 = b_1 + b_2 ; B_n = b_1 + \cdots + b_n$
 \end{theorem}
 
 \begin{proof}
-    $\series{a_k \cdot b_k} = \series{a_k(B_k - B_{k-1})} + a_1 b_1 = a_1 B_1 + a_2 (B_2 - B_1) + a_3 (B_3 - B_2) + \cdots + a_n (B_n - B_{n-1}) = B_1 (a_1 - a_2) + B_2 (a_2 - a_3) + \cdots B_{n-1} (a_{n-1} - a_n) + a_n B_n = a_n B_n - \sum\limits_{k=1}^{n-1} B_k(a_{k+1} - a_k) $    
+    $\dssum_{k=1}^n a_k \cdot b_k = \dssum_{k=2}^n a_k(B_k - B_{k-1}) + a_1 b_1 = a_1 B_1 + a_2 (B_2 - B_1) + a_3 (B_3 - B_2) + \cdots + a_n (B_n - B_{n-1}) = B_1 (a_1 - a_2) + B_2 (a_2 - a_3) + \cdots B_{n-1} (a_{n-1} - a_n) + a_n B_n = a_n B_n - \sum\limits_{k=1}^{n-1} B_k(a_{k+1} - a_k) $    
 \end{proof}
 
-\begin{theorem}{Признак Абеля-Дирихре}
-    \[\] Пусть дан $\series{a_k b_k}$, причем
+\begin{theorem}[Признак Абеля-Дирихле]
+    Пусть дан $\series{a_k b_k}$, причем
     \begin{enumerate}
         \item $\{ a_k \}$ невозрастает и $\dslim_{k \to \infty} a_k = 0$
-        \item Последовательность $B_n = \series{b_k}$ - ограничена, то есть $\exists M > 0 \; \forall n \in \N \; |B_n|\leq M$
+        \item Последовательность $B_n = \series{b_k}$ - ограничена, то есть $\exists M > 0 \quad \forall n \in \N \quad |B_n|\leq M$
     \end{enumerate}
     Тогда $\series{a_k b_k}$ сходится.
 \end{theorem}
-
 \begin{proof}
-    \[\] Так как $\dslim_{k \to \infty} a_k = 0 \implies \forall \eps > 0 \; \exists n_{\eps} : \; \forall k \geq n_{\eps} \; |a_k| < \eps$ или $ a_k < \eps$ и $\{a_k\}$ невозрастает $\implies \exists n_1 \; \forall k \geq n_1 \; 0 \leq a_k < \eps$.
-    Рассмотрим $\left| \sum\limits_{k=n+1}^{n+p} a_k b_k \right| \implies$ по теореме Абеля $\left| a_{n+p} B_{n+p} - \sum\limits_{k=n+1}^{n+p-1}(a_{k+1} - a_k)B_k \right| \leq |a_{n+p}| |B_{n+p}| + \sum\limits_{k=n+1}^{n+p-1} |a_{k+1} - a_k| |B_k| \implies (\forall n \geq n_1) \; a_{n+p} |B_{n+p}| + \sum\limits_{k=n+1}^{n+p-1} (a_k - a_{k+1}) |B_k| \leq (|B_n| \leq M) \; M(a_{n+p} + \sum\limits_{k=n+1}^{n+p-1}(a_k - a_{k+1})) = M \cdot a_{n+1} < M \cdot \eps = \eps ^*$ 
-    Следовательно, $\forall \eps^* > 0 \; \exists n_{\eps^*} = n_1 \; \forall n \geq n_{\eps^*} \; \forall p \in \N$ выполняется $\left| \sum\limits_{k=n+1}^{n+p} a_k b_k \right| < \eps^* \implies \text{по критерию Коши} \series{a_k b_k}$ сходится.
+    Так как $\dslim_{k \to \infty} a_k = 0$ 
+    $\implies \forall \eps > 0 \quad \exists n_{\eps}: \: 
+    \forall k \geq n_{\eps} \quad |a_k| < \eps$ 
+    или $-\eps < a_k < \eps$ и $\{a_k\}$ 
+    невозрастает $\implies \exists n_1 \quad \forall k \geq n_1 \quad 0 \leq a_k < \eps$.
+    Рассмотрим $\left| \dssum_{k=n+1}^{n+p} a_k b_k \right| \implies$ 
+    по теореме Абеля 
+    $\left| a_{n+p} B_{n+p} - \dssum_{k=n+1}^{n+p-1}(a_{k+1} - a_k) B_k \right| 
+    \leq |a_{n+p}| |B_{n+p}| + \dssum_{k=n+1}^{n+p-1} |a_{k+1} - a_k| |B_k| 
+    \implies (\forall n \geq n_1) \quad 
+    a_{n+p} |B_{n+p}| + \dssum_{k=n+1}^{n+p-1} (a_k - a_{k+1}) |B_k| 
+    \leq (\text{при } |B_n| \leq M) \quad 
+    M(a_{n+p} + \sum\limits_{k=n+1}^{n+p-1}(a_k - a_{k+1})) = M \cdot a_{n+1} 
+    < M \cdot \eps = \eps ^*$ 
+    Следовательно, $\forall \eps^* > 0 \quad \exists n_{\eps^*} = n_1 \quad \forall n \geq n_{\eps^*} \quad \forall p \in \N$ выполняется $\left| \sum\limits_{k=n+1}^{n+p} a_k b_k \right| < \eps^* \implies \text{по критерию Коши} \series{a_k b_k}$ сходится.
 \end{proof}
 
-\begin{theorem}{(Интеральный признак Коши сходимости числового ряда).}
-    Если $f(t)$ непрерывна, не возрастает, неотрицательна при $t \geq 0$, то $\series{f(k)}$ и $\int\limits_0^{+\infty} f(t)dt$ либо одновременно сходятся, либо одновременно расходятся.
+\begin{theorem}[Интегральный признак Коши сходимости числового ряда]
+    Если $f(t)$ непрерывна, не возрастает, неотрицательна при $t \geq 0$, то $\series{f(k)}$ и $\ds\int_0^{+\infty} f(t)dt$ либо одновременно сходятся, либо одновременно расходятся.
 \end{theorem}
-
 \begin{proof}
     $f(t) \text{ не возрастает} \implies k \leq t \leq k+1 $, $k \in Z \implies f(k+1) \leq f(t) \leq f(k) \;| \int\limits_k^{k+1}dt$ \[\] $\implies f(k+1) \leq \int\limits_k^{k+1} f(t)dt \leq f(k) \; | \sum\limits_{k=0}^{n-1}\implies \sum\limits_{k = 0}^{n-1} f(k+1) \left( = \sum\limits_{k=1}^n \right) \leq \int\limits_0^n f(t)dt \leq \sum\limits_{k=0}^{n-1} f(k)$ \[\] В этом неравенстве с ростом $n$ все величины не убывают.
     \begin{enumerate}
@@ -278,30 +288,30 @@
     к той же сумме.
 \end{theorem}
 \begin{proof}
-    Обозначим $S_n = \series{|x_k|}$, $S_n' = \series{|x_k'|}$
+    Обозначим $S_n = \series{|x_k|}$, $S_n' = \series{|x_k'|}$.
     По условию $\seriesx$ сходится абсолютно $\implies$ по критерию Коши
-    $\forall \varepsilon > 0 \; \exists n_\varepsilon 
-    \forall m \geq n_\varepsilon \forall p \geq n_\varepsilon (p > m)$
+    $\forall \varepsilon > 0 \quad \exists n_\varepsilon \quad
+    \forall m \geq n_\varepsilon \quad \forall p \geq n_\varepsilon \quad (p > m)$
     выполняется $\dssum_{k=m+1}^p |x_k| < \varepsilon$ или
-    $|S_p - S_m| < \varepsilon \; \Big| \dslim_{p \to \infty}
+    $|S_p - S_m| < \varepsilon \quad \Big| \dslim_{p \to \infty}
     \implies |S - S_m| \leq \varepsilon$, где $S$ -- сумма $\series{|x_k|}$
 
     Рассмотрим сумму $S_n'$, которая содержит все члены $S_m$ 
     (то есть $|x_1|, |x_2|, \dots, |x_m|$) и некоторые члены $|x_k|$, номера
     которых $> m$. Пусть $l$ -- наибольший из номеров таких членов. Тогда
-    $\forall n \geq N \; |S_n' - S_m'| \geq \dssum_{k = m + 1}^l |x_k|
+    $\forall n \geq N \quad |S_n' - S_m'| \leq \dssum_{k = m + 1}^l |x_k|
     \implies \forall n > \max (n_\varepsilon, N)$ выполняется 
     $|S_n' - S_m| < \varepsilon$ 
 
-    Тогда $|S_n' - S| \geq |S_n' - S_m| + |S_m - S| < 2 \varepsilon 
+    Тогда $|S_n' - S| \leq |S_n' - S_m| + |S_m - S| < 2 \varepsilon 
     \dn \varepsilon^*$
 
-    $\forall \varepsilon^* > 0 \; 
-    \exists n_{\varepsilon^*} = \max(n_\varepsilon, N) \;
-    \forall n > n_{\varepsilon^*}$ выполняется $S_n' - S| < \varepsilon$
-    $\implies$ по определению $\exists \dslimn S_n' = s$
+    $\forall \varepsilon^* > 0 \quad
+    \exists n_{\varepsilon^*} = \max(n_\varepsilon, N) \quad
+    \forall n > n_{\varepsilon^*}$ выполняется $|S_n' - S| < \varepsilon$
+    $\implies$ по определению $\exists \dslimn S_n' = S$
     $\implies$ по определению $\series{|x_k'|}$ сходится
-    $\implies \series{x_k'}$ сходится абсолютно к сумме S.
+    $\implies \series{x_k'}$ сходится абсолютно к сумме $S$.
 \end{proof}
 
 \begin{remark}
@@ -350,8 +360,8 @@
 \end{theorem}
 \begin{proof}
     Пусть $S_n = \seriesx, \, \delta_n = \series{y_k}$
-    Рассмотрим $L_n = \dslimn \series{(c_1 x_k + c_2 y_k)} 
-    = \dslimn (c_1 \seriesx + c_2 \series{y_k})
+    Рассмотрим $L_n = \dslimn \dssum_{k=1}^n {(c_1 x_k + c_2 y_k)} 
+    = \dslimn (c_1 \dssum_{k=1}^n x_k + c_2 \dssum_{k=1}^n y_k)
     = \dslimn (c_1 S_n + c_2 \delta_n)
     = c_1 X + c_2 Y \implies$ по определению $\series{(c_1 x_k + c_2 y_k)}$
     сходится к $c_1 X + c_2 Y$
