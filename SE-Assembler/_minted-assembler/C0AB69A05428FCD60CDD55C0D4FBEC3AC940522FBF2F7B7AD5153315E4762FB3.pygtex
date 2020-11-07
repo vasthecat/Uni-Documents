@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n+nf}{const} \PYG{n+no}{EQU} \PYG{l+m+mi}{100}
+    \PYG{n+nf}{d} \PYG{n+no}{db} \PYG{n+no}{const} \PYG{n+no}{dup} \PYG{p}{(}\PYG{err}{?}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,209 @@
+\section{Теория множеств}
+
+\subsection{Множества и отношения между ними}
+
+Множество "--- совокупность различаемых объектов.
+Объекты называются его элементами.
+
+Два множества равны ($A = B$), если:
+
+\begin{equation*}
+     \forall x: (x \in A \Leftrightarrow x \in B)
+\end{equation*}
+
+Множество $A$ включается в множество $B$ ($A \subseteq B$), если:
+
+\begin{equation*}
+    \forall x: (x\in A \Rightarrow x \in B)
+\end{equation*}
+
+Множество, $A$ строго включается в множество $B$ ($A \subset B$), если:
+
+\begin{equation*}
+    \forall x: (A \subseteq B ~ \& ~ A \neq B)
+\end{equation*}
+
+Множество называется пустым, если оно не содержит элементов.
+Такое множество обозначается как $\varnothing$.
+
+\begin{equation*}
+    \forall A \neq \varnothing: ~ \varnothing \subseteq A
+\end{equation*}
+
+Некоторое множество $\Omega \neq \varnothing$ назовем универсальным множеством
+и скажем, что
+
+\begin{equation*}
+    \forall A \neq \varnothing: ~ A \subseteq \Omega
+\end{equation*}
+
+\subsection{Операции над множествами}
+
+Пусть $A, B \subseteq \Omega$:
+
+\begin{equation*}
+    A \cup B = \{ \forall~ x\in \Omega: ~ x \in A \logor x \in B \} \quad \text{(объединение)}
+\end{equation*}
+
+\begin{equation*}
+    A\cap B = \{ \forall ~ x \in \Omega: ~ x \in A \logand x \in B \} \quad \text{(пересечение)}
+\end{equation*}
+
+\begin{equation*}
+    \overline{A} = \{ \forall ~ x \in \Omega: ~ x \notin A \} \quad \text{(дополнение)}
+\end{equation*}
+
+\begin{equation*}
+    A \setminus B = \{ \forall ~ x \in \Omega: ~ x\in A \logand x \notin B \} = 
+    A \cup \overline{B}  \quad \text{(разность)} 
+\end{equation*}
+
+\begin{equation*}
+    A \triangle B = \{ \forall ~ x \in \Omega: ~ x\in A \logand x\notin B \logor x \notin A 
+    \logand x \in B \} \quad \text{(симметричная разность)}
+\end{equation*}
+
+Множество, содержащее конечное число элементов называется конечным.
+
+Пусть $ A \neq \varnothing$ и $A$ состоит из $n$ элементов, тогда $|A| = n$ "---
+мощность этого множества.
+
+Множество при этом также обозначается как $A = \{ a_1, a_2, \dots, a_n\}$ или $A = \{x ~|~ P(x) \}$
+
+Примеры:
+
+\begin{equation*}
+    A = \{ x \in \R ~|~ x\geq 0 \logand x \leq 1 \}
+\end{equation*}
+
+\subsection{Характеристические векторы множеств}
+
+Пусть есть некоторое конечное множество $\Omega \neq \varnothing$ из $n$ элементов, 
+$\Omega = \{ x_1, x_2, \dots, x_n\}$
+
+Для удобства будем считать, что порядок перечисления множеств зафиксирован.
+
+Теперь пусть $A \subseteq \Omega$.
+
+Характеристическим вектором $A$ назовем булев вектор из $n$ компонентов 
+
+\begin{equation*}
+    \chi_A = (\chi_1^A, \chi_2^A, \dots, \chi_n^A), \text{~где } \chi_i^A = 
+    \begin{cases}
+        1, & x_i \in A \\
+        0, & x_i \notin A 
+    \end{cases}
+\end{equation*}
+
+Пусть $P(A)$ "--- множество всех подмножеств непустого множества $A$. 
+
+Отметим, что $A \in P(\Omega)$
+
+Пример:
+
+$\Omega = \{a, b, c\}$
+
+$P(\Omega) = \{ \varnothing, \{a\}, \{b\}, \{c\}, \{a, b\}, \{b, c\}, \{a, c\}, \{a, b, c\} \}$
+\begin{center}
+    \begin{tabularx}{0.2\textwidth}{c|c}
+        $A$ & $\chi_A$ \\ \hline
+        $\varnothing$ & $(0, 0, 0)$ \\
+        $\{ a \}$ & $(1, 0, 0)$ \\  
+        $\{ b \}$ & $(0, 1, 0)$ \\  
+        $\{ c \}$ & $(0, 0, 1)$ \\  
+        $\{ a,b \}$ & $(1, 1, 0)$ \\  
+        $\{ b,c \}$ & $(0, 1, 1)$ \\  
+        $\{ a,c \}$ & $(1, 0, 1)$ \\  
+        $\{ a,b,c \}$ & $(1, 1, 1)$ \\  
+    \end{tabularx}    
+\end{center}
+
+Стоит отметить, что данное отображение является биективным. 
+
+\begin{theorem}[о числе подмножеств конечного множества]
+    Число подмножеств $n$"=элементного множества равно $2^n$:
+
+    \begin{equation*}
+        |P(\Omega)| = 2^n
+    \end{equation*}
+    
+\end{theorem}
+
+Двоичной алгеброй называется $B_2 = \{ 0, 1\}$ с операциями $\{', +, \cdot\}$, где
+
+
+\begin{itemize}
+    \item <<$'$>> "--- логическое <<НЕ>>
+    \item <<$+$>> "--- логическое <<ИЛИ>>
+    \item <<$\cdot$>> "--- логическое <<И>>
+\end{itemize}
+
+
+Обозначим $B_2^n$ множество всех двоичных векторов длины $n$.
+
+Пусть $\vec{a} = (a_1, a_2, \dots, a_n), \vec{b} = (b_1, b_2, \dots, b_n) 
+\in B_2^n$
+
+\begin{enumerate}
+    \item $\vec{a}' = (a_1', a_2', \dots, a_n')$
+    \item $\vec{a} + \vec{b} = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n )$
+    \item $\vec{a} \cdot \vec{b} = (a_1 \cdot b_1, a_2 \cdot b_2, \dots, a_n \cdot b_n)$
+\end{enumerate}
+
+\begin{theorem}[О характеристических векторах]
+    Пусть $\Omega \neq \varnothing$ (универсальное множество).
+    Для любых непустых множеств $A, B \subseteq \Omega$ справедливо следующее:
+    \begin{enumerate}
+        \item $A = B \iff \chi_A = \chi_B$
+        \item $\chi_{A\cup B} = \chi_A + \chi_B$
+        \item $\chi_{A\cap B} = \chi_A \cdot \chi_B$
+        \item $\chi_{\overline{A}} = (\chi_A)'$
+        \item $\chi_\varnothing = (0, 0, \dots, 0) = \vec{0}$
+        \item $\chi_\Omega = (1, 1, \dots, 1) = \vec{1}$
+    \end{enumerate} 
+\end{theorem}
+
+Пример:
+
+\begin{example}
+Пусть $\Omega = \{ 1, 2, 3, 4, 5\}$, $A = \{1, 3, 4\}$, $B = \{ 1, 4, 5\}$.
+
+Тогда $\chi_A = (1, 0, 1, 1, 0)$, $\chi_B = (1, 0, 0, 1, 1)$.
+
+Получим:
+
+$\chi_{\overline{A}} = (0, 1, 0, 0, 1)$
+
+$\chi_{A \cup B} = (1, 0, 0, 1, 0)$
+
+$\chi_{A \cap B} = (1, 0, 1, 1, 1)$
+\end{example}
+
+\subsection{Декартово произведение и отношения между множествами}
+
+Пусть $A, B \neq \varnothing$. Декартовым произведением множеств $A$ и $B$
+назовем множество упорядоченных пар 
+
+\begin{equation*}
+    A \times B = \{ ~(a, b) ~|~ a \in A \logand b \in B\}
+\end{equation*}
+
+$(a_1, b_1) = (a_2, b_2) \iff a_1 = a_2 \logand b_1 = b_2$
+
+Очевидно, что если $|A| = n$, $|B| = m$, то $|A\times B| = n \times m$. Кроме того, $|P(A\times B)| = 2^{nm}$
+
+Бинарным отношением между множествами $A$ и $B$ назовем любое подмножество
+декартового произведения $\rho \subseteq |A \times B|$.
+
+Все теоретико"=множественные операции также справедливы для бинарных отношений.
+
+
+
+
+
+
+
+
+
+
+    
