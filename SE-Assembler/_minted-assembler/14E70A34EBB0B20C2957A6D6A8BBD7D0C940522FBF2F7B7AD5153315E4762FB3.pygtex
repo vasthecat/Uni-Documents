@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n+nf}{mov} \PYG{n+no}{AH}\PYG{p}{,} \PYG{l+m+mi}{6}
+    \PYG{n+nf}{mov} \PYG{n+no}{DL}\PYG{p}{,} \PYG{err}{\PYGZdq{}}\PYG{p}{!}\PYG{err}{\PYGZdq{}}
+    \PYG{n+nf}{int} \PYG{l+m+mi}{21}\PYG{n+no}{h}
+\end{Verbatim}

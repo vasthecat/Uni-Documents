@@ -1,0 +1,41 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{TITLE} \PYG{n+no}{Pris.asm}\PYG{c}{; заголовок листинга}
+\PYG{n+no}{Page}\PYG{p}{,} \PYG{l+m+mi}{120}\PYG{c}{; длина}
+\PYG{n+no}{SSeg} \PYG{n+no}{Segment} \PYG{n+no}{Para} \PYG{n+no}{stack} \PYG{err}{\PYGZsq{}}\PYG{n+no}{stack}\PYG{err}{\PYGZsq{}}
+\PYG{n+nf}{DB} \PYG{l+m+mi}{100}\PYG{n+no}{h}
+\PYG{n+nf}{SSeg} \PYG{n+no}{ends}
+
+\PYG{n+nf}{DSeg} \PYG{n+no}{Segment} \PYG{n+no}{Para} \PYG{n+no}{Public} \PYG{err}{\PYGZsq{}}\PYG{n+no}{Data}\PYG{err}{\PYGZsq{}}
+\PYG{n+nf}{DAN} \PYG{n+no}{DB} \PYG{err}{\PYGZsq{}}\PYG{l+m+mi}{1}\PYG{err}{\PYGZsq{}}\PYG{p}{,} \PYG{err}{\PYGZsq{}}\PYG{l+m+mi}{3}\PYG{err}{\PYGZsq{}}\PYG{p}{,} \PYG{err}{\PYGZsq{}}\PYG{l+m+mi}{5}\PYG{err}{\PYGZsq{}}\PYG{p}{,} \PYG{err}{\PYGZsq{}}\PYG{l+m+mi}{7}\PYG{err}{\PYGZsq{}}
+\PYG{n+nf}{REZ} \PYG{n+no}{DB} \PYG{l+m+mi}{4} \PYG{n+no}{DUP} \PYG{p}{(}\PYG{err}{?}\PYG{p}{)}
+\PYG{n+nf}{DSeg} \PYG{n+no}{ends}
+\PYG{c}{;кодовый сегмент оформлен как одна внешняя процедура, к ней обращаются из отладчика}
+
+\PYG{n+nf}{CSeg} \PYG{n+no}{Segment} \PYG{n+no}{Para} \PYG{n+no}{Public} \PYG{err}{\PYGZsq{}}\PYG{n+no}{Code}\PYG{err}{\PYGZsq{}}
+\PYG{n+nf}{ASSUME} \PYG{n+no}{SS}\PYG{p}{:}\PYG{n+no}{SSeg}\PYG{p}{,} \PYG{n+no}{DS}\PYG{p}{:}\PYG{n+no}{DSeg}\PYG{p}{,} \PYG{n+no}{CS}\PYG{p}{:}\PYG{n+no}{CSeg}\PYG{c}{; соответствие между сегментными регистрами и именами}
+\PYG{n+no}{start} \PYG{n+no}{proc} \PYG{n+no}{Far}
+\PYG{n+nf}{push} \PYG{n+no}{DSeg}
+\PYG{n+nf}{xor} \PYG{n+no}{AX}\PYG{p}{,} \PYG{n+no}{AX}
+\PYG{n+nf}{push} \PYG{n+no}{AX}
+\PYG{n+nf}{mov} \PYG{n+no}{AX}\PYG{p}{,} \PYG{n+no}{DSeg}
+\PYG{n+nf}{mov} \PYG{n+no}{DS}\PYG{p}{,}\PYG{n+no}{AX}
+\PYG{n+nf}{mov} \PYG{n+no}{AH}\PYG{p}{,} \PYG{l+m+mi}{6}
+\PYG{n+nf}{mov} \PYG{n+no}{DL}\PYG{p}{,} \PYG{n+no}{DAN} \PYG{err}{+} \PYG{l+m+mi}{3}
+\PYG{n+nf}{mov} \PYG{n+no}{REZ}\PYG{p}{,} \PYG{n+no}{DL}
+\PYG{n+nf}{int} \PYG{l+m+mi}{21}\PYG{n+no}{h}
+\PYG{n+nf}{mov} \PYG{n+no}{DL}\PYG{p}{,} \PYG{n+no}{DAN} \PYG{err}{+} \PYG{l+m+mi}{2}
+\PYG{n+nf}{mov} \PYG{n+no}{REZ} \PYG{err}{+} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n+no}{DL}
+\PYG{n+nf}{int} \PYG{l+m+mi}{21}\PYG{n+no}{h}
+\PYG{n+nf}{mov} \PYG{n+no}{DL}\PYG{p}{,} \PYG{n+no}{DAN} \PYG{err}{+} \PYG{l+m+mi}{1}
+\PYG{n+nf}{mov} \PYG{n+no}{REZ} \PYG{err}{+} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{n+no}{DL}
+\PYG{n+nf}{int} \PYG{l+m+mi}{21}\PYG{n+no}{h}
+\PYG{n+nf}{mov} \PYG{n+no}{DL}\PYG{p}{,} \PYG{n+no}{DAN}
+\PYG{n+nf}{mov} \PYG{n+no}{REZ} \PYG{err}{+} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{n+no}{DL}
+\PYG{n+nf}{int} \PYG{l+m+mi}{21}\PYG{n+no}{h}
+
+\PYG{n+nf}{mov} \PYG{n+no}{AH}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{n+no}{CH}
+\PYG{n+nf}{int} \PYG{l+m+mi}{21}\PYG{n+no}{h}
+\PYG{n+nf}{Start} \PYG{n+no}{endp}
+\PYG{n+nf}{CSeg} \PYG{n+no}{ends}
+\PYG{n+nf}{end} \PYG{n+no}{Start}
+\end{Verbatim}

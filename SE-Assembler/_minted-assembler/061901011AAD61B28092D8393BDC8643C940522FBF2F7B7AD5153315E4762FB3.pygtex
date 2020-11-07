@@ -1,0 +1,17 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n+na}{.model} \PYG{n+no}{small}
+    \PYG{n+na}{.stack} \PYG{l+m+mi}{100}\PYG{n+no}{h}
+    \PYG{n+na}{.data}
+    \PYG{err}{\PYGZbs{}}\PYG{n+nf}{dots}
+    \PYG{n+na}{.code}
+    \PYG{n+nl}{begin:}
+    \PYG{n+nf}{mov} \PYG{n+no}{AX}\PYG{p}{,} \PYG{err}{@}\PYG{n+no}{data}
+    \PYG{n+nf}{mov} \PYG{n+no}{ds}\PYG{p}{,} \PYG{n+no}{AX}
+    \PYG{n+nf}{mov} \PYG{n+no}{AH}\PYG{p}{,} \PYG{l+m+mi}{9}
+    \PYG{n+nf}{mov} \PYG{n+no}{DX}\PYG{p}{,} \PYG{n+no}{offset} \PYG{n+no}{St1}
+    \PYG{n+nf}{int} \PYG{l+m+mi}{21}\PYG{n+no}{h}
+    \PYG{err}{аналогично} \PYG{err}{для} \PYG{err}{остальных} \PYG{err}{двух}
+    \PYG{n+nf}{mov} \PYG{n+no}{AH}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{n+no}{CH}
+    \PYG{n+nf}{int} \PYG{l+m+mi}{21}
+    \PYG{n+nf}{end} \PYG{n+no}{begin}
+\end{Verbatim}

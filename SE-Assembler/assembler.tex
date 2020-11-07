@@ -1,7 +1,5 @@
 \documentclass[a4paper,oneside]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
-\usepackage{hyperref}
 \usepackage{underscore}
 \usepackage{setspace}
 \usepackage{indentfirst} 
@@ -23,6 +21,24 @@
 \pagestyle{fancy}
 
 \usepackage{tikz}
+\usepackage[T2A]{fontenc}
+\usepackage{graphicx}
+\usepackage[sort,compress]{cite}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\usepackage{listingsutf8}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[english,russian]{babel}
+\usepackage{minted}
+
+\usepackage[colorlinks=true]{hyperref}
+\usepackage{url}
+\usepackage{tempora}
+\newcommand{\eqdef}{\stackrel {\rm def}{=}}
 
 \usepackage{tabularx}
 \newcommand{\bydef}{\stackrel{\text{по опр.}}{\implies}} % by definition - по определению
@@ -119,7 +135,7 @@
 	
 	\HRule\\[0.4cm]
 	
-	{\huge\bfseries Лекции по дискретной математике}\\[0.4cm] % Title of your document
+	{\huge\bfseries Лекции по лучшему языку на планете}\\[0.4cm] % Title of your document
 	
 	\HRule\\[1.5cm]
 	
@@ -173,5 +189,8 @@
 \input{lect1.tex}
 \input{lect2.tex}
 \input{lect3.tex}
+\input{lect4.tex}
+\input{lect5.tex}
+
 
 \end{document}

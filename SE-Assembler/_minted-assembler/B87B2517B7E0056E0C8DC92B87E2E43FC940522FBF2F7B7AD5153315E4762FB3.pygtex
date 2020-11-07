@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{n+nf}{assume} \PYG{n+no}{SS} \PYG{p}{:}\PYG{n+no}{SSeg}\PYG{p}{,} \PYG{n+no}{CS}\PYG{p}{:} \PYG{n+no}{CSeg}\PYG{p}{,} \PYG{n+no}{DS}\PYG{p}{:} \PYG{n+no}{Dseg}\PYG{p}{,} \PYG{n+no}{ES}\PYG{p}{:} \PYG{n+no}{Dseg}
+\end{Verbatim}
