@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{n+nf}{MUL} \PYG{n+no}{OP2}\PYG{c}{; (OP)*(AL) or (AX) or (EAX) \PYGZhy{}\PYGZgt{} AX or DX:AX or EDX:EAX}
-\end{Verbatim}

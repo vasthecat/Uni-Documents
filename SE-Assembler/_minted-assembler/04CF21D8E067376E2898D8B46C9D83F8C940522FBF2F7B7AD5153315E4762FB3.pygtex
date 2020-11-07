@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{n+nf}{add} \PYG{n+no}{OP1}\PYG{p}{,} \PYG{n+no}{OP2}\PYG{c}{; (OP1) + (OP2) \PYGZhy{}\PYGZgt{} OP1}
-    \PYG{n+no}{adc} \PYG{n+no}{OP1}\PYG{p}{,} \PYG{n+no}{OP2}\PYG{c}{; (OP1) + (OP2) + (CF) \PYGZhy{}\PYGZgt{} OP1}
-    \PYG{n+no}{xadd} \PYG{n+no}{OP1}\PYG{p}{,} \PYG{n+no}{OP2}\PYG{c}{; (OP1)\PYGZlt{}\PYGZhy{}\PYGZgt{}(OP2), (OP1) + (OP2) \PYGZhy{}\PYGZgt{} OP1}
-    \PYG{n+no}{inc} \PYG{n+no}{OP1}\PYG{c}{; OP1 + 1 \PYGZhy{}\PYGZgt{} OP1}
-\end{Verbatim}

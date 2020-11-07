@@ -7,3 +7,5 @@
 *.gz
 *.thm
 *.toc
+*.pygtex
+*.pygstyle
