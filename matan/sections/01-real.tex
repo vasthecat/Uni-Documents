@@ -1,0 +1,192 @@
+\section{Теория действительного (вещественного) числа}
+
+\subsection{Определение действительного числа}
+
+Назовём вещественным (действительным) числом последовательность
+$a_0,a_1 a_2 \dots a_n$ целых чисел, таких, что $0 \le a_i \le 9$,
+причём перед ней поставим знак плюс или знак минус,
+$a_0$ -- целое неотрицательное число, которое отделяется запятой.
+Если перед числом стоит знак плюс, то его называют положительным,
+а если знак минус, то отрицательным.
+
+\begin{definition}
+    Рассмотрим действительное число $x = a_0,a_1 a_2 \dots a_m \dots > 0$.
+    Рациональное число $x = a_0,a_1 a_2 \dots a_m$ называют
+    \textbf{нижним $m$-значным приближением числа $x$}.
+    Рациональное число $\overline{x_m} = x_m + \frac{1}{10^m}$ называют
+    \textbf{верхним $m$-значным приближением числа $x$}.
+\end{definition}
+
+\[y = -x (x > 0)\]
+\[y = -a_0,a_1 a_2 \dots a_m \dots\]
+\[y_m = -\overline{x_m}\]
+\[\overline{y_m} = -x_m\]
+
+\textbf{Очевидными являются свойства:}
+\begin{enumerate}
+    \item $x_{m+1} \ge x_m$
+    \item $\overline{x_{m+1}} \le \overline{x_m}$
+    \item $\forall m,n \quad x_m \le \overline{x_n}$
+    \item $x_{m+1} - x_m < \frac{1}{10^m}$
+    \item Если существуют такие числа $a$ и $b$, что $b \ge a$
+    и разность $b - a < \frac{1}{10^m}$ $\implies$ существует
+    вещественное число $x$, что $x_m = a$, нижнее приближение есть число $a$.
+\end{enumerate}
+
+\begin{theorem}[Соответствие между вещественными числами и точкам прямой]
+    Множество вещественных чисел эквивалентно множеству точек прямой в том смысле, что
+    между этими множествами существуют взаимно однозначные соответствия.
+\end{theorem}
+\begin{proof}
+    \begin{enumerate}
+        \item 
+            (точке $\rightarrow$ число) Точке можно сопоставить число.
+        
+            На прямой поставим произвольно две точки $O$ и $E$, где $E$ правее $O$.
+            Сопоставим точке $O$ число $0,0 \dots 0 \dots$, а точке $E$
+            Сопоставим число $1,0 \dots 0 \dots$.
+            
+            Пусть точка $M$ правее $O$. Сопоставим ей действительное число
+            $x = a_0,a_1 a_2 \dots a_m \dots$ по следующему правилу:
+            
+            $a_0 = $ максимальному числу отрезков $OE$, укладывающихся внутри $OM$.
+            Если при этом остатка нет, то $a_1 = a_2 = \dots = a_m = \dots = 0$.
+            
+            Если есть остаток $M_1M$, то $a_1$ определим как наибольшее число
+            $OE_1 = \frac{1}{10}OE$, укладывающихся внутри отрезка $M_1M$.
+            
+            Если остатка нет, то $a_2 = \dots = a_m = \dots = 0$, а если остаток есть,
+            то продолжаем этот процесс, откладывая отрезки $OE_2 = \frac{1}{100}OE$ 
+            и т.д. Таким образом любой точке правее $O$ можно сопоставить действительное
+            число $x$, определяя подобным образом любую цифру этого числа.
+            
+            Если $M$ левее $O$, то поступаем аналогично, но перед числом ставим знак минус.
+    
+        \item 
+            (числу $\rightarrow$ точка) Каждому числу на прямой можно сопоставить точку.
+        
+            Пусть задано некое число $x = a_0,a_1 a_2 \dots a_m \dots$. Считаем, что
+            $x$ -- положительное. Пусть числу $0,0 \dots 0 \dots$ соответствует точка $O$.
+            Числу $1,0 \dots 0 \dots$ соответствует точка $E$ (правее $O$).
+            
+            Отложим от точки $O$ вправо точки $M_m$ и $M_m'$, которые соответствуют
+            $x_m$ и $\overline{x_m}$. Получим последовательность вложенных друг в друга
+            отрезков $M_0M_0', M_1M_1', \dots$, вложенные в том смысле, что каждая
+            $M_{m+1}$ лежит не левее $M_m$, и каждая $M'_{m+1}$ лежит
+            не правее $M_m'$. Воспользуемся \underline{\textit{аксиомой Кантора для прямой}}:
+            
+            ``Для любой последовательности вложенных друг в друга отрезков существует
+            по крайней мере одна точка, принадлежащая каждому из этих отрезков.''
+            
+            Осталось доказать, что для наших вложенных отрезков существует только одна точка.
+            
+            Допустим от противного, существуют две точки $M$ и $M'$ $\implies$ отрезок
+            $MM'$ содержится в любом отрезке $M_mM_m'$. Но длина отрезка $MM'$ -- это
+            $\frac{1}{10^m}$, и тогда можно выбрать такое большое $m$, что $\frac{1}{10^m}$
+            станет меньше длины отрезка $MM'$, но это противоречит тому, что $MM'$ содержится в
+            $M_mM_m'$ $\implies$ для нашей системы вложенных отрезков такая точка единственная и
+            именно её и сопоставим числу $x$.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Сравнение вещественных чисел}
+
+\begin{definition}
+    Будем говорить, что вещественное число $x$ $>$ вещественного числа $y$ и обозначать
+    $x > y$ или $y < x$, если $\exists m_0 \ge 0$, что $x_{m_0} > \overline{y_{m_0}}$
+\end{definition}
+
+\underline{\textbf{Замечание 1}}
+
+Так как $x_0 \le x_1 \le x_2 \le \dots$, 
+а $\overline{y_0} \ge \overline{y_1} \ge \overline{y_2} \ge \dots$,
+то если $x_{m_0} > \overline{y_{m_0}}$, то неравенство $x_m > \overline{y_m}$,
+выполняется $\forall m \ge m_0$ и поэтому одновременное выполнение
+$x > y$ и $y > x$ невозможно.
+
+Иначе допустим, что $x > y$ и $y > x$, тогда
+\[\exists m_1 \quad x_m > \overline{y_m} \quad \forall m \ge m_1 \quad (1)\]
+\[\exists m_2 \quad y_m > \overline{x_m} \quad \forall m \ge m_2 \quad (2)\]
+
+Тогда для $\forall m \ge \max (m_1, m_2)$ оба неравенство выполняются одновременно.
+
+$x_m \stackrel{(1)}{>} \overline{y_m}
+\stackrel{\text{опр.}}{\ge} y_m 
+\stackrel{(2)}{>} \overline{x_m} \implies x_m > \overline{x_m}$.
+\textbf{Получили противоречие}.
+
+\parspace
+
+\begin{definition}
+    Если для $x, y \in \mathbb{R}$ не выполняется ни одно из неравенств $x > y$ и $y > x$,
+    то числа называют равными и обозначают $x = y$.
+\end{definition}
+
+\underline{\textbf{Замечание 2}}
+Если $x = y$, то для их десятичных приближений возможно лишь одно из соотношений:
+$x_m = y_m$, или $\overline{x_m} = y_m$, или $x_m = \overline{y_m}$.
+
+При этом два последних случая возможны если $x = a_0,a_1 \dots a_{l-1}a_l0$,
+$y = a_0,a_1 \dots a_{l-1}(a_l-1)9 \dots$ 
+
+Например, если $x = 0.5$, $y = 0.499 \dots$ $\implies x = y$,
+поэтому договоримся для чисел
+\[a_0,a_1 \dots a_{l-1}a_l0 \quad (1)\]
+\[a_0,a_1 \dots a_{l-1}(a_l-1)9 \dots \quad (2)\]
+
+использовать форму (1).
+
+\parspace
+
+\begin{theorem}[Свойство транзитивности операции сравнения]
+    \begin{enumerate}[label=\alph*)]
+        \item Если $x > y, y > z \implies x > z$
+        \item Если $x = y, y = z \implies x = z$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \begin{enumerate}[label=\alph*)]
+        \item
+            По условию
+            \[x > y \implies \exists m_1: x_m > \overline{y_m} \quad \forall m \ge m_1\]
+            \[y > z \implies \exists m_2: y_m > \overline{z_m} \quad \forall m \ge m_2\]
+            $\implies \forall m \ge \max (m_1, m_2)$ выполняется $x_m > \overline{y_m}$
+            и $y_m > \overline{z_m}$, т.е. $x_m > \overline{y_m} > y_m > \overline{z_m}$,
+            т.е. $x_m > \overline{z_m} \implies x > z$.
+        
+        \item
+            По условию
+            \[x = y \implies \exists m_1: x_m = y_m \quad \forall m \ge m_1\]
+            \[y = z \implies \exists m_2: y_m = z_m \quad \forall m \ge m_2\]
+            $\implies \forall m \ge \max (m_1, m_2)$ выполняется $x_m = y_m$
+            и $y_m = z_m$, т.е. $x_m = y_m = z_m$,
+            т.е. $x_m = z_m \implies x = z$.
+    \end{enumerate}
+\end{proof}
+
+\subsection{Признак равенства действительных чисел}
+
+\begin{theorem}
+    Если для данных чисел $x$ и $y$ и 
+    $\forall \varepsilon > 0 \quad \exists \alpha_{\varepsilon}, \beta_{\varepsilon}$
+    с конечным числом десятичных знаков, такие, что
+    $\alpha_{\varepsilon} \le x \le \beta_{\varepsilon}, \alpha_{\varepsilon} \le y \le \beta_{\varepsilon}$
+    и $\beta_{\varepsilon} - \alpha_{\varepsilon} < \varepsilon$, тогда $x = y$.
+\end{theorem}
+
+\begin{proof}
+    Допустим от противного, условие теоремы выполняется, но 
+    $y > x \bydef \exists m_0: y_{m_0} > \overline{x_{m_0}}$
+
+    Имеем $\alpha_{\varepsilon} \le x \le \overline{x_{m_0}} < y_{m_0} \le y \le \beta_{\varepsilon}$
+    и это справедливо $\forall m \ge 0$, т.е. 
+    $\alpha_{\varepsilon} \le \overline{x_m} < y_m \le \beta_{\varepsilon}$
+    $\implies 0 < y_m - \overline{x_m} \le \beta_\varepsilon - \alpha_\varepsilon < \varepsilon$,
+    но $y_m - \overline{x_m}$ не может быть меньше, чем $\frac{1}{10^m}$. А если взять
+    $\varepsilon < \frac{1}{10^m} (\varepsilon > 0)$, то \textbf{получим противоречие}
+    $\implies y_m = \overline{x_m}$.
+
+    Аналогично рассуждая для $x > y \implies x_m = \overline{y_m}$, значит невозможно
+    ни $x > y$, ни $y > x$ $\bydef x = y$.
+\end{proof}

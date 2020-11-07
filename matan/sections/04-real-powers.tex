@@ -1,0 +1,46 @@
+\section{Степени действительных чисел}
+
+Пусть $a \in \mathbb{R}, a > 0$
+
+\begin{enumerate}
+    \item $x \in \mathbb{N}, x = n \\
+    a^x = a^n = \underbrace{a * \dots * a}_n$
+    \item $x \in \mathbb{Z}$
+    
+    $
+    \begin{cases}
+        x = n & \implies \text{см. 1} \\
+        x = -n & \implies a^{-n} = \frac{1}{a^n} \\
+        x = 0 & \implies a^0 = 1
+    \end{cases}
+    $
+
+    \item $x \in \mathbb{Q}, x = \frac{m}{n} \quad m \in \mathbb{Z}, n \in \mathbb{N}\\
+    a^{\frac{1}{n}} = \sqrt[n]{a} = b \Leftrightarrow b^n = a\\
+    a^{\frac{m}{n}} = \sqrt[n]{a^m}$
+    \item Пусть $x \in \mathbb{R}^+$ и $x_m, \overline{x_m}$ -- его $m$-значное приближение.
+    
+    $ a^x =
+    \begin{cases}
+        \sup a^{x_m}, & \text{если } a > 1 \\
+        \frac{1}{(\frac{1}{a})^x}, & \text{если } 0 < a < 1
+    \end{cases}
+    $
+\end{enumerate}
+
+Во всех определениях $a^x$ обладает \textbf{свойствами}:
+\begin{enumerate}
+    \item $x_1 < x_2
+    \begin{cases}
+        a^{x_1} > a^{x_2}, & \text{если } 0 < a < 1 \\
+        a^{x_1} < a^{x_2}, & \text{если } a > 1
+    \end{cases}
+    $
+
+    \item $a^{x_1}*a^{x_2} = a^{x_1 + x_2} \\
+    \frac{a^{x_1}}{a^{x_2}} = a^{x_1 - x_2}$
+    \item $(a^{x_1})^{x_2} = a^{x_1 * x_2}$
+    \item $a^x * b^x = (a * b)^x \\
+    \frac{a^x}{b^x} = (\frac{a}{b})^x$
+\end{enumerate}
+
