@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-    \PYG{n+nf}{Public} \PYG{err}{\PYGZlt{}имя\PYGZgt{}} \PYG{p}{[,}\PYG{err}{\PYGZlt{}имя\PYGZgt{}}\PYG{p}{,} \PYG{n+no}{...}\PYG{p}{,} \PYG{err}{\PYGZlt{}имя\PYGZgt{}}\PYG{p}{]}
-\end{Verbatim}
