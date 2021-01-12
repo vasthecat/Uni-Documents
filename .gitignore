@@ -9,3 +9,5 @@
 *.toc
 *.pygtex
 *.pygstyle
+*.synctex
+*.pyg
