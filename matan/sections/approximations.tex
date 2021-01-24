@@ -208,31 +208,112 @@
 
 
 \begin{theorem}[О связи равномерной сходимости и сходимости в среднем]
-    
+    Если $\{ f_n(x) \}$ сходится равномерно к $f(x)$ на $[a; b] \implies
+    \{ f_n(x) \}$ сходится в среднем к $f(x)$ на $[a; b]$.
 \end{theorem}
 \begin{proof}
-    
+    $\{ f_n(x) \}$ равномерно сходится к $f(x)$ на $[a; b] \implies
+    \forall \varepsilon > 0 \quad \exists N_\varepsilon \quad \forall n \geq
+    N_\varepsilon \quad \forall x \in [a; b] \quad |f_n(x) - f(x)| < \varepsilon
+    \implies \ds\int_a^b [f_n(x) - f(x)]^2 dx < \varepsilon^2 |b - a| \dn \varepsilon^*
+    \implies$ получили определение $\dslimn \ds\int_a^b (f_n(x) - f(x))^2 dx = 0 
+    \implies \{ f_n(x) \}$ сходится в среднем на $[a; b]$ к $f(x)$.
 \end{proof}
 
 
 \begin{theorem}[О сходимости $\ds\int_a^b f_n(x) g(x) dx$]
-    
+    Пусть $f_n(x)$ интегрируется на $[a; b]$. $\{ f_n(x) \}$ сходится в среднем
+    на $[a; b]$ к $f(x)$, интегрируемой на $[a; b]$. $g(x)$ --- интегрируема
+    на $[a; b]$.
+
+    Тогда $\ds\limn \ds\int_a^b f_n(x) g(x) dx = \ds\int_a^b f(x) g(x) dx$.
 \end{theorem}
 \begin{proof}
-    
+    Используем неравенство Коши-Буняковского для интервалов:
+    \[
+        \abs{\ds\int_a^b \varphi(x) \cdot \psi(x) dx} \leq 
+        \sqrt{ \ds\int_a^b \varphi^2 (x) dx \ds\int_a^b \psi^2(x) dx }
+    \]
+
+    \[
+        0 \leq \abs{\ds\int_a^b f_n(x) g(x) dx - \ds\int_a^b f(x) g(x) dx} =
+        \abs{\ds\int_a^b (f_n(x) - f(x)) g(x) dx} \leq
+        \sqrt{ \ds\int_a^b (f_n(x) - f(x))^2 dx \ds\int_a^b g(x) dx }
+    \]
+    (левое и правое выражения неравенства $\approach{} 0 \implies$ среднее
+    выражение $\approach{} 0$)
 \end{proof}
 
 
 \begin{theorem}[О приближении в среднем интегрируемой функции непрерывной]
-    
+    Пусть $f(x)$ интегрируема на $[a; b]$. Тогда $\forall \varepsilon > 0 \quad
+    \exists f_\varepsilon(x)$ --- непрерывная на $[a; b]$ и принимающая 
+    заданные значения в точках $x = a$ и $x = b$:
+    \[ \ds\int_a^b [f(x) - f_\varepsilon(x)]^2 dx < \varepsilon \]
 \end{theorem}
 \begin{proof}
-    
+    Пусть $R$ --- произвольное разбиение отрезка $[a; b]: \:
+    a = x_0 < x_1 < x_2 < \dots < x_n = b$
+
+    $\Delta x_i = x_{i + 1} - x_i, \, \Delta = \ds\max_{0 \leq i \leq n - 1}
+    \Delta x_i$ --- длина $R$.
+
+    Так как $f(x)$ интегрируема на $[a; b] \implies f(x)$ --- ограничена на
+    $[a; b]: \: \exists M > 0 \quad \forall x \in [a; b] \quad |f(x)| \leq M$
+    и выполняется критерий интегрируемости 
+    \[ \ds\lim_{\Delta \to 0} \ds\sum_{i = 0}^{n - 1} \omega_i \Delta x_i = 0 \]
+
+    $\omega_i = \ds\sup_{x', x'' \in [x_i; x_{i + 1}]} |f(x') - f(x'')|$ ---
+    колебания $f(x)$ на $[x_i; x_{i + 1}]$.
+
+    \textbf{КАРТИНКА}
+
+    Построим $f_\varepsilon(x)$ следующим образом: $f_\varepsilon(x) = f(x_i)
+    \quad \forall i = \overline{1, n - 1}$ на отрезке $[x_i; x_{i + 1}]$ ---
+    линейная функция, а при $x = a, \, x = b$ функция $f_\varepsilon(x)$
+    принимает заданные значения.
+
+    Очевидно, что построенная $f_\varepsilon(x)$ --- непрерывна и
+    $\forall x \in [x_i; x_{i + 1}] \quad i = \overline{1, n - 2}$ выполняется
+    \begin{align*}
+        &\min [f(x_i); f(x_{i + 1})] \leq 
+        f_\varepsilon(x) \leq \max [f(x_i); f(x_{i + 1})] \\
+        &\implies \begin{cases}
+            f(x) - f_\varepsilon(x) \leq f(x) - \min [f(x_i); f(x_{i + 1})] < \omega_i \\
+            f_\varepsilon(x) - f(x) \leq \max [f(x_i); f(x_{i + 1})] - f(x) \leq \omega_i
+        \end{cases} \\
+        &\implies |f(x) - f_\varepsilon(x)| \leq \omega_i
+    \end{align*} 
+
+    \begin{align*}
+        [f(x) - f_\varepsilon(x)]^2 &= |f(x) - f_\varepsilon(x)|^2 = \\
+        &= |f(x) - f_\varepsilon(x)| \cdot |f(x) - f_\varepsilon(x)| \leq \\ 
+        &\leq (|f(x)| + |f_\varepsilon(x)|) \cdot \omega_i \leq 2 M \cdot \omega_i
+    \end{align*}
+
+    При $x \in [x_0; x_1]$ (то есть $[a; x_1]$) и 
+    $x \in [x_{n - 1}; x_n]$ (то есть $[x_{n - 1}; b]$):
+
+    \[ [f(x) - f_\varepsilon(x)]^2 \leq [|f(x)| + |f_\varepsilon(x)|]^2 \leq (M + M_1) \]
+    где $M_1 = \max \{ M; |f_\varepsilon(a)|; |f_\varepsilon(b)| \}$
+
+    Тогда $\ds\int_a^b (f(x) - f_\varepsilon(x))^2 dx = 
+    \ds\sum_{i = 0}^{n - 1} \ds\int_{x_i}^{x_i + 1} [f(x) - f_\varepsilon(x)]^2 dx \leq
+    2M \ds\sum_{i = 1}^{n - 2} \omega_i \Delta x_i + 2(M + M_1)^2 \cdot \Delta$
+
+    Таким образом правая часть $\approach{} 0$ при $\Delta \approach{} 0$,
+    значит $\forall \varepsilon > 0 \quad \exists R$ --- разбиение отрезка
+    $[a; b] \implies \exists f_\varepsilon(x)$ --- непрерывна на $[a; b]$ с
+    заданными значениями на концах:
+    \[ \ds\int_a^b [f(x) - f_\varepsilon(x)]^2 dx < \varepsilon \]
 \end{proof}
 
 \begin{corollary}
-    
+    Если $f(x)$ интегрируема на отрезке $[a; b]$, то $\forall \varepsilon > 0
+    \quad \exists f_\varepsilon(x)$ --- непрерывная на $[a; b]$ и принимающая
+    в точках $a$ и $b$ заданные значения:
+    \[ \ds\int_a^b |f(x) - f_\varepsilon(x)|^2 dx < \varepsilon \]
 \end{corollary}
 \begin{proof}
-    
+    Получаем из предыдущей Теоремы с помощью неравенства Коши-Буняковского.
 \end{proof}
