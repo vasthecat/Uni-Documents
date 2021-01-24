@@ -17,6 +17,7 @@
 \singlespacing
 
 \usepackage{graphicx}
+\usepackage{float}
 \graphicspath{ {./images/} }
 
 \usepackage{fancyhdr}
@@ -31,8 +32,9 @@
 \newcommand{\imagin}{\mathrm{Im} \,}
 \newcommand{\real}{\mathrm{Re} \,}
 
-\newcommand{\dslim}{\displaystyle\lim}
-\newcommand{\dslimn}{\dslim_{n \to \infty}}
+\newcommand{\dslim}{\displaystyle\lim} % устаревшее
+\newcommand{\dslimn}{\dslim_{n \to \infty}} % устаревшее
+\newcommand{\limn}{\lim_{n \to \infty}}
 
 \newcommand{\prop}[1]{#1^{\text{o}}}
 
@@ -49,6 +51,8 @@
 \newcommand{\seriespow}{\displaystyle\sum_{k=0}^\infty a_k (x - x_0)^k}
 \newcommand{\dssum}{\displaystyle\sum}
 \newcommand{\ds}{\displaystyle}
+\newcommand{\abs}[1]{\left|#1\right|}
+\renewcommand{\over}[2]{\stackrel{#1}{#2}}
 
 % \theoremstyle{break}
 
