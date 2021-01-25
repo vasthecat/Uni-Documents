@@ -98,7 +98,7 @@
     на $[a; b]$ к $f(x)$ если $f(x)$ будет непрерывной на $[a - \omega; b + \omega]$.
 
     Рассмотрим $f^*(x) = \begin{cases}
-        0, \quad &x \in [a; b] \\
+        0, \quad &x \not\in [a; b] \\
         f(x), \quad &x \in [a; b]
     \end{cases}$
 
@@ -184,7 +184,7 @@
     \end{align*}
 
     По Теореме о приближении по $\Delta$-образной последовательности
-    $f_n(x) = \ds\int_{-\omega}^{\omega} f(S) D_n(S - x) dx$ равномерно 
+    $f_n(x) = \ds\int_{-\omega}^{\omega} f(S) D_n(S - x) dS$ равномерно 
     сходится на $x \in [-\omega; \omega]$ к $f(x)$. Так как $f_n(x)$ и $f(x)$
     периодичны с $T = 2\omega$, то равномерная сходимость имеет место при
     любых $x$.
@@ -202,7 +202,7 @@
 \end{definition}
 
 \begin{definition}
-    Говорят, что последовательность $\{ f_n(x) \}$ сходится к функции $f_n(x)$
+    Говорят, что последовательность $\{ f_n(x) \}$ сходится к функции $f(x)$
     в среднем на $[a; b]$, если $\dslimn \ds\int_a^b (f_n(x) - f(x))^2 dx = 0$
 \end{definition}
 
@@ -215,7 +215,7 @@
     $\{ f_n(x) \}$ равномерно сходится к $f(x)$ на $[a; b] \implies
     \forall \varepsilon > 0 \quad \exists N_\varepsilon \quad \forall n \geq
     N_\varepsilon \quad \forall x \in [a; b] \quad |f_n(x) - f(x)| < \varepsilon
-    \implies \ds\int_a^b [f_n(x) - f(x)]^2 dx < \varepsilon^2 |b - a| \dn \varepsilon^*
+    \implies \ds\int_a^b [f_n(x) - f(x)]^2 dx < \varepsilon^2 (b - a) \dn \varepsilon^*
     \implies$ получили определение $\dslimn \ds\int_a^b (f_n(x) - f(x))^2 dx = 0 
     \implies \{ f_n(x) \}$ сходится в среднем на $[a; b]$ к $f(x)$.
 \end{proof}
@@ -238,7 +238,7 @@
     \[
         0 \leq \abs{\ds\int_a^b f_n(x) g(x) dx - \ds\int_a^b f(x) g(x) dx} =
         \abs{\ds\int_a^b (f_n(x) - f(x)) g(x) dx} \leq
-        \sqrt{ \ds\int_a^b (f_n(x) - f(x))^2 dx \ds\int_a^b g(x) dx }
+        \sqrt{ \ds\int_a^b (f_n(x) - f(x))^2 dx \ds\int_a^b g(x)^2 dx }
     \]
     (левое и правое выражения неравенства $\approach{} 0 \implies$ среднее
     выражение $\approach{} 0$)
@@ -256,7 +256,7 @@
     a = x_0 < x_1 < x_2 < \dots < x_n = b$
 
     $\Delta x_i = x_{i + 1} - x_i, \, \Delta = \ds\max_{0 \leq i \leq n - 1}
-    \Delta x_i$ --- длина $R$.
+    \Delta x_i$ --- диаметр $R$.
 
     Так как $f(x)$ интегрируема на $[a; b] \implies f(x)$ --- ограничена на
     $[a; b]: \: \exists M > 0 \quad \forall x \in [a; b] \quad |f(x)| \leq M$
@@ -297,7 +297,7 @@
     При $x \in [x_0; x_1]$ (то есть $[a; x_1]$) и 
     $x \in [x_{n - 1}; x_n]$ (то есть $[x_{n - 1}; b]$):
 
-    \[ [f(x) - f_\varepsilon(x)]^2 \leq [|f(x)| + |f_\varepsilon(x)|]^2 \leq (M + M_1) \]
+    \[ [f(x) - f_\varepsilon(x)]^2 \leq [|f(x)| + |f_\varepsilon(x)|]^2 \leq (M + M_1)^2 \]
     где $M_1 = \max \{ M; |f_\varepsilon(a)|; |f_\varepsilon(b)| \}$
 
     Тогда $\ds\int_a^b (f(x) - f_\varepsilon(x))^2 dx = 
