@@ -1,8 +1,6 @@
 \section{Ряд и Интеграл Фурье}
 
-% Темы с карантина
-
-\textbf{Задача, приводящая к ряду Фурье}
+\subsection{Задача, приводящая к ряду Фурье}
 
 Пусть задана $f(x)$ и функциональная последовательность ${\varphi_n(x)}$ на $[a ; b]$.
 
@@ -22,15 +20,15 @@
     Тогда мы будем рассматривать ортогональную систему $\varphi_1(x),\dots,\varphi_n(x)$
 
     \[ I = I(a_1,\dots,a_n) = \ds\int_a^b \left[f(x) - \dssum_{k=1}^n a_k\varphi_k(x)\right]^2 dx 
-    = \ds\int_a^b \left(f^2(x) - 2f(x)\dssum_{k=1}^n a_k\varphi_k(x) + (\dssum_{k=1}^n a_k\varphi_k(x))^2 \right) dx = \]
+    = \ds\int_a^b \left(f^2(x) - 2f(x)\dssum_{k=1}^n a_k\varphi_k(x) + \left(\dssum_{k=1}^n a_k\varphi_k(x)\right)^2 \right) dx = \]
     
-    \[ = \ds\int_a^b f^2(x) dx - 2\dssum_{k=1}^n a_k*\ds\int_a^b f(x)\varphi_k(x) dx 
-    + \ds\int_a^b \left(\dssum_{k=1}^n a_k^2\varphi_k^2(x) + 2a_1a_2\varphi_1(x)\varphi_2
+    \[ = \ds\int_a^b f^2(x) dx - 2\dssum_{k=1}^n a_k \cdot \ds\int_a^b f(x) \varphi_k(x) dx 
+    + \ds\int_a^b \left(\dssum_{k=1}^n a_k^2 \varphi_k^2(x) + 2 a_1 a_2 \varphi_1(x) \varphi_2(x)
     +\dots+ 2a_{n-1}a_n\varphi_{n-1}(x)\varphi_n(x) \right) dx = \]
     \[ = \left( \text{в силу ортогональности}: \ds\int_a^b\varphi_k(x)\varphi_l(x) dx = 0 (k \neq l)
-    \right) \ds\int_a^b f^2(x)dx - 2\dssum_{k=1}^n a_k\ds\int_a^b f(x)\varphi_k(x) dx 
+    \right) \ds\int_a^b f^2(x)dx - 2 \dssum_{k=1}^n a_k\ds\int_a^b f(x)\varphi_k(x) dx 
     + \dssum_{k=1}^n a_k^2\ds\int_a^b\varphi_k^2(x) dx = \]
-    \[ = \ds\int_a^b f^2(x)dx - 2 * \dssum_{k=1}^n a_k\frac{\ds\int_a^b f(x)\varphi_k(x)dx}{\ds\int_a^b \varphi_k^2(x)dx}
+    \[ = \ds\int_a^b f^2(x)dx - 2 \cdot \dssum_{k=1}^n a_k\frac{\ds\int_a^b f(x)\varphi_k(x)dx}{\ds\int_a^b \varphi_k^2(x)dx}
     \ds\int_a^b \varphi_k^2(x)dx + \dssum_{k=1}^n a_k^2\ds\int_a^b \varphi_k^2(x) dx = \]
     
     % обозначим
@@ -43,13 +41,13 @@
 
     \[ \implies I(a_1,\dots,a_n) \geq \delta_n \text{ и } I(a_1,\dots,a_n) = \delta_n \text{ при } a_k = c_k (k=\overline{1, n}) \]
 
-    т. е. $ minI(a_1,\dots,a_n) = \delta_n. $
+    т. е. $ \min I(a_1,\dots,a_n) = \delta_n$.
 
-    \[ \{ \delta_n \}  - \text{не возрастает и ограничена снизу} (\delta_n \geq 0) 
-    \implies \text{по теореме о сходимости монотонной последовательности} \] 
-    \[ \{ \delta_n \} \text{сходится, т. е. } \exists \dslimn \delta_n \dn \delta_0 \]
+    $\{ \delta_n \}$ --- не возрастает и ограничена снизу $(\delta_n \geq 0)$
+    $\iff$ по теореме о сходимости монотонной последовательности
+    $\{ \delta_n \}$ сходится, т. е. $\exists \ds\limn \delta_n \dn \delta_0$
 
-    Т. е. $\dslimn(\ds\int_a^b f^2(x)dx - \dssum_{k=1}^n c_k^2d_k^2) = \delta_0 $
+    Т. е. $\dslimn \left( \ds\int_a^b f^2(x)dx - \dssum_{k=1}^n c_k^2d_k^2 \right) = \delta_0 $
 
     \[ \ds\int_a^b f^2(x)dx - \dssum_{k=1}^n c_k^2d_k^2 = \delta_0 \]
 
@@ -57,112 +55,126 @@
 
     Это неравенство носит название \textbf{неравенство Бесселя}.
 
-    Оно имеет вид: $\dssum_{k=1}^\infty \frac{(\ds\int_a^b f(x)\varphi_k(x)dx)^2}{\ds\int_a^b \varphi_k^2(x)dx} \leq \ds\int_a^b f^2(x) dx$.
+    Оно имеет вид: $\dssum_{k=1}^\infty \frac{\left(\ds\int_a^b f(x)\varphi_k(x)dx\right)^2}{\ds\int_a^b \varphi_k^2(x)dx} \leq \ds\int_a^b f^2(x) dx$.
 
-    Таким образом задача решается для ортогональной системы функции $\varphi_k$ 
-    и минимум указанной величине доставляют коэффициенты следующего вида:
+    Таким образом задача решается для ортогональной системы функций $\{ \varphi_k \}$
+    и минимум указанной величине доставляют коэффициенты $a_k$  следующего вида:
 
     \[ a_k = c_k = \frac{\ds\int_a^b f(x) \varphi_k(x)dx}{\ds\int_a^b \varphi_k^2(x) dx}. \]
 
     Если $\delta_0 = 0 \implies f_n(x) = \dssum_{k=1}^n c_k\varphi_k(x)$ сходится
-    в среднем к $f(x)$ на $[a ; b]. \left(\dssum_{k=1}^\infty c_k^2 d_k^2 = \ds\int_a^b f^2(x)dx \right)$ 
+    в среднем к $f(x)$ на $[a ; b]$ и в этом случае неравенство Бесселя
+    превращается в равенство Парсеваля: 
+    \[ \dssum_{k=1}^\infty c_k^2 d_k^2 = \ds\int_a^b f^2(x)dx \]
     
 \end{definition}
 
 
 \begin{definition}
     Если $\delta_0 = 0$ для произвольной функции $f(x)$ из некоторого класса функций,
-    то для рассматриваемого класса система $\varphi_n(x)$ называется полной на $[a ; b]$.
-    В этом случае неравенство Бесселя превращается в \textbf{равенство Парсеваля}
-
-    \[\dssum_{i=1}^\infty \frac{\left(\ds\int_a^b f(x) \varphi_i(x) dx \right)^2}{\ds\int_a^b \varphi_i^2(x) dx} 
-    = \ds\int_a^b f^2(x) dx \]     
+    то система $\{ \varphi_n(x) \}$ называется полной на отрезке $[a ; b]$ для
+    рассматриваемого класса функций.
 \end{definition}
 
 
-\textbf{Тригонометрический ряд Фурье}
+\subsection{Тригонометрический ряд Фурье}
 
 Рассмотрим наилучшее приближение на $[a ; b]$ системой тригонометрических полиномов
 степени $n$ с периодом $T=b-a$. Т.к. при линейной замене переменных степень полинома
 не меняется, то вместо $[a ; b]$ будем рассматривать $[-\pi ; \pi]$ и тригонометрические
 полиномы вида:
 
-\[T_n(x) = a_0 + \dssum_{k=1}^n a_k \cos kx + b_k sin kx \]
+\[T_n(x) = a_0 + \dssum_{k=1}^n a_k \cos kx + b_k \sin kx \]
 
-\[\ds\int_{-\pi}^\pi \cos kx * \cos lx dx =
+\[\ds\int_{-\pi}^\pi (\cos kx \cdot \cos lx) dx =
  \begin{cases}
-    0, k \neq l \\
-    \pi, k = l \neq 0 \\
-    2\pi, k = l = 0   
+    0, &k \neq l \\
+    \pi, &k = l \neq 0 \\
+    2\pi, &k = l = 0   
   \end{cases}
 \]
 
-\[ \ds\int_{-\pi}^\pi \sin kx * \sin lx dx =
+\[ \ds\int_{-\pi}^\pi (\sin kx \cdot \sin lx) dx =
  \begin{cases}
-    0, k \neq l \\
-    \pi, k = l \neq 0
+    0, &k \neq l \\
+    \pi, &k = l \neq 0
  \end{cases}   
 \]
 
-\[\ds\int_{-\pi}^\pi \sin lx * \cos kx dx = 0 \]
+\[\ds\int_{-\pi}^\pi (\sin lx \cdot \cos kx) dx = 0 \]
 
-Таким образом последовательность $1, \cos x, \sin x, \cos 2x, \sin 2x,\dots$ - 
+Таким образом последовательность $1, \cos x, \sin x, \cos 2x, \sin 2x,\dots$ --- 
 взаимоортогональные функции на отрезке $[-\pi ; \pi]$, поэтому по выше приведённому
 рассуждению, наилучшее приближение в среднем для заданной функции $f(x)$ дают тригонометрические
 полиномы вида:
 
-\[f_n(x) = \frac{a_0^*}{2} + \dssum_{k=1}^n a_k^* \cos kx + b_k^* \sin kx \text{, где } \]
+\[f_n(x) = \frac{a_0}{2} + \dssum_{k=1}^n a_k \cos kx + b_k \sin kx \text{, где } \]
 
-\[a_k^* = \frac{1}{\pi} \ds\int_{-\pi}^\pi f(x) \cos kx dx \]
+\[a_k = \frac{1}{\pi} \ds\int_{-\pi}^\pi f(x) \cos kx \; dx \]
 
-\[b_k^* = \frac{1}{\pi} \ds\int_{-\pi}^\pi f(x) \sin kx dx \]
+\[b_k = \frac{1}{\pi} \ds\int_{-\pi}^\pi f(x) \sin kx \; dx \]
 
 Тогда эти функции $f_n(x)$ можно рассматривать как частичные суммы ряда:
 
-\[\frac{a_0^*}{2} + \dssum_{k=1}^\infty a_k^* \cos kx + b_k^* \sin kx \] который
+\[\frac{a_0}{2} + \dssum_{k=1}^\infty a_k \cos kx + b_k \sin kx \] который
 называется тригонометрическим рядом Фурье функции $f(x)$. Для такой системы неравенство Бесселя
 примет следующий вид:
 
-\[\frac{a_0^*}{2} + \dssum_{k=1}^\infty \left((a_k^*)^2 + (b_k^*)^2 \right) \leq \frac{1}{\pi} \ds\int_{-\pi}^\pi f^2(x)dx \]
+\[\frac{a_0^2}{2} + \dssum_{k=1}^\infty \left(a_k^2 + b_k^2 \right) \leq \frac{1}{\pi} \ds\int_{-\pi}^\pi f^2(x)dx \]
 Покажем, что наша система функций $\frac{1}{2}, \cos x, \sin x, \cos 2x, \sin 2x,\dots$
 является полной для интегрируемой на отрезке $[-\pi ; \pi]$ функции $f(x)$
 
+\begin{remark}
+    Таким образом, в рассматриваемой задаче ряд 
+    $\ds\sum_{k = 1}^\infty c_k \varphi_k(x)$, где
+    $c_k = \frac{\ds\int_a^b f(x) \varphi_k(x) dx}{\ds\int_a^b \varphi_k^2(x) dx}$
+    является рядом Фурье для функции $f(x)$ по ортогональной системе $\{ \varphi_k(x) \}$.
+\end{remark}
 
 \begin{theorem}[Теорема о сходимости в среднем частичных сумм ряда Фурье]
-    Частичные суммы ряда Фурье функции $f(x)$ интегригрирумой на $[-\pi ; \pi]$,
+    Частичные суммы ряда Фурье интегригрирумой на $[-\pi ; \pi]$ функции $f(x)$,
     сходятся в среднем на этом отрезке к этой функции.    
 \end{theorem}
 \begin{proof}
     $f(x)$ интегрируема на $[-\pi ; \pi]$, тогда по теореме о приближении интегрируемой
-    функции $\forall \eps_1 > 0 \exists g_{\eps_1}(x)$ - непрерывна на $[-\pi ; \pi]$
+    функции $\forall \eps_1 > 0 \exists g_{\eps_1}(x)$ --- непрерывная на $[-\pi ; \pi]$
 
-    \[g_{\eps_1}(-\pi) = g_{\eps_1}(\pi) \text{и} \ds\int_{-\pi}^\pi \left(f(x) - g_{\eps_1}(x) \right)^2dx < \eps_1 \]
+    \[g_{\eps_1}(-\pi) = g_{\eps_1}(\pi) \text{ и } \ds\int_{-\pi}^\pi \left(f(x) - g_{\eps_1}(x) \right)^2dx < \eps_1 \]
 
-    По второй теореме Вейерштрасса существует последовательность тригонометрическил 
-    полиномов с периодом $2\pi$ равномерно сходящихся на отрезке $[-\pi ; \pi]$ к
-    функции, полученной периодическим продолжением $g_{\eps_1}(x)$ с периодом $2\pi$.
-    Тогда если последовательность $T_n(x)$ сходится к этой функции равномерно, то 
-    она сходится и в среднем $[-\pi ; \pi]$, т.е. для нашего $\eps_1 > 0$ существует
-    порог $n_1 \forall n \geq n_1$
+    По второй теореме Вейерштрасса существует равномерно сходящаяся
+    к $g_{\varepsilon_1}(x)$ последовательность тригонометрических 
+    полиномов $\{ T_n(x) \}$ с периодом $2\pi$. Она сходится к 
+    $g_{\varepsilon_1}(x)$ и в среднем, то есть $\forall \varepsilon_1 > 0 \quad
+    \exists n_1 \: : \quad \forall n \geq n_1 \quad
+    \ds\int_{-\pi}^\pi (T_n(x) - g_{\varepsilon_1}(x))^2 dx < \varepsilon_1$.
 
-    \[\ds\int_{-\pi}^\pi \left(T_n(x) - g_{\eps_1}(x) \right)^2dx < \eps_1 \]
-
-    Согласно неравенству Бесселя, частичная сумма ряда Фурье $S_n(x)$
-
-    \[S_n(x) = \frac{a_0}{2} + \dssum_{k=1}^n a_k \cos kx + b_k \sin kx, \]
-
-    где \[a_k^* = \frac{1}{\pi} \ds\int_{-\pi}^\pi f(x) \cos kx dx \]
-
-    \[b_k^* = \frac{1}{\pi} \ds\int_{-\pi}^\pi f(x) \sin kx dx \]
-
-    даёт наилучшее приближение в среднем всех тригонометрических полиномов $\implies$
-
-    \[\implies \ds\int_{-\pi}^\pi \left(f(x) - S_n(x) \right)^2dx \leq \ds\int_{-\pi}^\pi \left(f(x) - T_n(x) \right)^2dx \implies \]
-    \[\implies \text{При } n \geq n_1  \ds\int_{-\pi}^\pi \left(f(x) - S_n(x) \right)^2dx \leq \ds\int_{-\pi}^\pi \left(f(x) - T_n(x) \right)^2dx = 
-    \ds\int_{-\pi}^\pi \left(f(x) - g_{\eps_1}(x) \right) + \left(g_{\eps_1}(x) - T_n(x) \right)^2dx \leq \]
+    Частичная сумма $\{ f_n(x) \}$ даёт для $f(x)$ наилучшее приближение в 
+    среднем на $[-\pi; \pi]$ среди всех полиномов $T_n(x) \implies
+    \ds\int_{-\pi}^\pi (f(x) - f_n(x))^2 dx \leq 
+    \ds\int_{-\pi}^\pi (f(x) - T_n(x))^2 dx \implies$ при $n \geq n_1$:
     
-    \[ \leq 2\ds\int_{-\pi}^\pi \left(g_{\eps_1}(x) - T_n(x) \right)^2dx < 4\eps_1 \dn \eps \]
+    \begin{align*}
+        \ds\int_{-\pi}^\pi (f(x) - f_n(x))^2 dx &\leq 
+        \ds\int_{-\pi}^\pi (f(x) - T_n(x))^2 dx
+        = \ds\int_{-\pi}^\pi [ (f(x) - g_{\varepsilon_1}(x)) + (g_{\varepsilon_1}(x) - T_n(x)) ]^2 dx \leq \\
+        &\leq 2 \ds\int_{-\pi}^\pi (f(x) - g_{\varepsilon_1}(x))^2 dx +
+        2 \ds\int_{-\pi}^\pi (g_{\varepsilon_1}(x) - T_n(x))^2 dx < 4 \varepsilon_1 \dn \varepsilon
+    \end{align*}
 
-    \[\forall \eps > 0 \exists n_\eps = n_1 \ds\int_{-\pi}^\pi \left(f(x) - S_n(x) \right)^2dx < \eps \implies \{S_n(x)\} \text{сходится к } f(x)
-    \text{в среднем на } [-\pi ; \pi] \]
+    Получаем, что $\forall \varepsilon > 0 \quad \exists n_\varepsilon = n_1 :
+    \forall n \geq n_\varepsilon \quad \ds\int_{-\pi}^\pi (f(x) - f_n(x))^2 dx < \varepsilon$
+    то есть частичная сумма ряда Фурье $\{ f_n(x) \}$ сходится в среднем к $f(x)$.
 \end{proof}
+
+\begin{remark}
+    \begin{enumerate}
+        \item
+            Система $1, \cos x, \sin x, \cos 2x, \dots$ является полной на
+            классе интегрируемых на $[-\pi; \pi]$ функций.
+        \item
+            Так как $f_n(x)$ имеют на $[-\pi; \pi]$ непрерывную производную
+            любого порядка, получаем, что интегрируемую на $[-\pi; \pi]$
+            функцию можно приблизить в среднем на нём с помощью функции,
+            имеющей непрервыную производную любого порядка.
+    \end{enumerate}
+\end{remark}
