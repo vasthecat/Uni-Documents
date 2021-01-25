@@ -2,9 +2,167 @@
 
 % Темы с карантина
 
-\begin{theorem}[О сходимости Ряда Фурье в точке]
+\textbf{Задача, приводящая к ряду Фурье}
+
+Пусть задана $f(x)$ и функциональная последовательность ${\varphi_n(x)}$ на $[a ; b]$.
+
+\textbf{Задача}
+
+Найти такую линейную комбинацию $\varphi_1(x), \varphi_2(x),\dots, \varphi_n(x)$, 
+которая лучше всего приближает в среднем функцию $f(x)$ на $[a ; b]$. Т.е. задача 
+нахождения таких коэффициентов \[ a_1,\dots,a_n : I = I(a_1,\dots,a_n) = \ds\int_a^b \left[ f(x) 
+- \dssum_{k=1}^n a_k\varphi_k(x)\right] ^2 dx \approach{} \text{min.} \]
+
+
+\begin{definition}
+    Функции $\varphi_1(x), \varphi_2(x),\dots$ называются ортогональными на $[a ; b]$,
+    если $\ds\int_a^b \varphi_k(x)*\varphi_l(x) dx = 0$
+    $\forall k \neq l$.
     
+    Тогда мы будем рассматривать ортогональную систему $\varphi_1(x),\dots,\varphi_n(x)$
+
+    \[ I = I(a_1,\dots,a_n) = \ds\int_a^b \left[f(x) - \dssum_{k=1}^n a_k\varphi_k(x)\right]^2 dx 
+    = \ds\int_a^b \left(f^2(x) - 2f(x)\dssum_{k=1}^n a_k\varphi_k(x) + (\dssum_{k=1}^n a_k\varphi_k(x))^2 \right) dx = \]
+    
+    \[ = \ds\int_a^b f^2(x) dx - 2\dssum_{k=1}^n a_k*\ds\int_a^b f(x)\varphi_k(x) dx 
+    + \ds\int_a^b \left(\dssum_{k=1}^n a_k^2\varphi_k^2(x) + 2a_1a_2\varphi_1(x)\varphi_2
+    +\dots+ 2a_{n-1}a_n\varphi_{n-1}(x)\varphi_n(x) \right) dx = \]
+    \[ = \left( \text{в силу ортогональности}: \ds\int_a^b\varphi_k(x)\varphi_l(x) dx = 0 (k \neq l)
+    \right) \ds\int_a^b f^2(x)dx - 2\dssum_{k=1}^n a_k\ds\int_a^b f(x)\varphi_k(x) dx 
+    + \dssum_{k=1}^n a_k^2\ds\int_a^b\varphi_k^2(x) dx = \]
+    \[ = \ds\int_a^b f^2(x)dx - 2 * \dssum_{k=1}^n a_k\frac{\ds\int_a^b f(x)\varphi_k(x)dx}{\ds\int_a^b \varphi_k^2(x)dx}
+    \ds\int_a^b \varphi_k^2(x)dx + \dssum_{k=1}^n a_k^2\ds\int_a^b \varphi_k^2(x) dx = \]
+    
+    % обозначим
+    \[ \left(\dn \frac{\ds\int_a^b f(x)\varphi_k(x)dx}{\ds\int_a^b \varphi_k^2(x)dx} = c_k;
+    \ds\int_a^b \varphi_k^2(x) dx = d_k^2 \right) \]
+    
+    \[ = \ds\int_a^b f^2(x)dx - 2\dssum_{k=1}^n a_k c_k d_k^2 + \dssum_{k=1}^n a_k^2 d_k^2 =
+    \ds\int_a^b f^2(x)dx + \dssum_{k=1}^n (a_k - c_k)^2 d_k^2 - \dssum_{k=1}^n c_k^2
+    d_k^2 \geq \ds\int_a^b f^2(x)dx - \dssum_{k=1}^n c_k^2 d_k^2 \dn \delta_n \]
+
+    \[ \implies I(a_1,\dots,a_n) \geq \delta_n \text{ и } I(a_1,\dots,a_n) = \delta_n \text{ при } a_k = c_k (k=\overline{1, n}) \]
+
+    т. е. $ minI(a_1,\dots,a_n) = \delta_n. $
+
+    \[ \{ \delta_n \}  - \text{не возрастает и ограничена снизу} (\delta_n \geq 0) 
+    \implies \text{по теореме о сходимости монотонной последовательности} \] 
+    \[ \{ \delta_n \} \text{сходится, т. е. } \exists \dslimn \delta_n \dn \delta_0 \]
+
+    Т. е. $\dslimn(\ds\int_a^b f^2(x)dx - \dssum_{k=1}^n c_k^2d_k^2) = \delta_0 $
+
+    \[ \ds\int_a^b f^2(x)dx - \dssum_{k=1}^n c_k^2d_k^2 = \delta_0 \]
+
+    \[ \implies \dssum_{k=1}^n c_k^2d_k^2 = \ds\int_a^b f^2(x)dx - \delta_0 \leq \ds\int_a^bf^2(x)dx. \]
+
+    Это неравенство носит название \textbf{неравенство Бесселя}.
+
+    Оно имеет вид: $\dssum_{k=1}^\infty \frac{(\ds\int_a^b f(x)\varphi_k(x)dx)^2}{\ds\int_a^b \varphi_k^2(x)dx} \leq \ds\int_a^b f^2(x) dx$.
+
+    Таким образом задача решается для ортогональной системы функции $\varphi_k$ 
+    и минимум указанной величине доставляют коэффициенты следующего вида:
+
+    \[ a_k = c_k = \frac{\ds\int_a^b f(x) \varphi_k(x)dx}{\ds\int_a^b \varphi_k^2(x) dx}. \]
+
+    Если $\delta_0 = 0 \implies f_n(x) = \dssum_{k=1}^n c_k\varphi_k(x)$ сходится
+    в среднем к $f(x)$ на $[a ; b]. \left(\dssum_{k=1}^\infty c_k^2 d_k^2 = \ds\int_a^b f^2(x)dx \right)$ 
+    
+\end{definition}
+
+
+\begin{definition}
+    Если $\delta_0 = 0$ для произвольной функции $f(x)$ из некоторого класса функций,
+    то для рассматриваемого класса система $\varphi_n(x)$ называется полной на $[a ; b]$.
+    В этом случае неравенство Бесселя превращается в \textbf{равенство Парсеваля}
+
+    \[\dssum_{i=1}^\infty \frac{\left(\ds\int_a^b f(x) \varphi_i(x) dx \right)^2}{\ds\int_a^b \varphi_i^2(x) dx} 
+    = \ds\int_a^b f^2(x) dx \]     
+\end{definition}
+
+
+\textbf{Тригонометрический ряд Фурье}
+
+Рассмотрим наилучшее приближение на $[a ; b]$ системой тригонометрических полиномов
+степени $n$ с периодом $T=b-a$. Т.к. при линейной замене переменных степень полинома
+не меняется, то вместо $[a ; b]$ будем рассматривать $[-\pi ; \pi]$ и тригонометрические
+полиномы вида:
+
+\[T_n(x) = a_0 + \dssum_{k=1}^n a_k \cos kx + b_k sin kx \]
+
+\[\ds\int_{-\pi}^\pi \cos kx * \cos lx dx =
+ \begin{cases}
+    0, k \neq l \\
+    \pi, k = l \neq 0 \\
+    2\pi, k = l = 0   
+  \end{cases}
+\]
+
+\[ \ds\int_{-\pi}^\pi \sin kx * \sin lx dx =
+ \begin{cases}
+    0, k \neq l \\
+    \pi, k = l \neq 0
+ \end{cases}   
+\]
+
+\[\ds\int_{-\pi}^\pi \sin lx * \cos kx dx = 0 \]
+
+Таким образом последовательность $1, \cos x, \sin x, \cos 2x, \sin 2x,\dots$ - 
+взаимоортогональные функции на отрезке $[-\pi ; \pi]$, поэтому по выше приведённому
+рассуждению, наилучшее приближение в среднем для заданной функции $f(x)$ дают тригонометрические
+полиномы вида:
+
+\[f_n(x) = \frac{a_0^*}{2} + \dssum_{k=1}^n a_k^* \cos kx + b_k^* \sin kx \text{, где } \]
+
+\[a_k^* = \frac{1}{\pi} \ds\int_{-\pi}^\pi f(x) \cos kx dx \]
+
+\[b_k^* = \frac{1}{\pi} \ds\int_{-\pi}^\pi f(x) \sin kx dx \]
+
+Тогда эти функции $f_n(x)$ можно рассматривать как частичные суммы ряда:
+
+\[\frac{a_0^*}{2} + \dssum_{k=1}^\infty a_k^* \cos kx + b_k^* \sin kx \] который
+называется тригонометрическим рядом Фурье функции $f(x)$. Для такой системы неравенство Бесселя
+примет следующий вид:
+
+\[\frac{a_0^*}{2} + \dssum_{k=1}^\infty \left((a_k^*)^2 + (b_k^*)^2 \right) \leq \frac{1}{\pi} \ds\int_{-\pi}^\pi f^2(x)dx \]
+Покажем, что наша система функций $\frac{1}{2}, \cos x, \sin x, \cos 2x, \sin 2x,\dots$
+является полной для интегрируемой на отрезке $[-\pi ; \pi]$ функции $f(x)$
+
+
+\begin{theorem}[Теорема о сходимости в среднем частичных сумм ряда Фурье]
+    Частичные суммы ряда Фурье функции $f(x)$ интегригрирумой на $[-\pi ; \pi]$,
+    сходятся в среднем на этом отрезке к этой функции.    
 \end{theorem}
 \begin{proof}
+    $f(x)$ интегрируема на $[-\pi ; \pi]$, тогда по теореме о приближении интегрируемой
+    функции $\forall \eps_1 > 0 \exists g_{\eps_1}(x)$ - непрерывна на $[-\pi ; \pi]$
+
+    \[g_{\eps_1}(-\pi) = g_{\eps_1}(\pi) \text{и} \ds\int_{-\pi}^\pi \left(f(x) - g_{\eps_1}(x) \right)^2dx < \eps_1 \]
+
+    По второй теореме Вейерштрасса существует последовательность тригонометрическил 
+    полиномов с периодом $2\pi$ равномерно сходящихся на отрезке $[-\pi ; \pi]$ к
+    функции, полученной периодическим продолжением $g_{\eps_1}(x)$ с периодом $2\pi$.
+    Тогда если последовательность $T_n(x)$ сходится к этой функции равномерно, то 
+    она сходится и в среднем $[-\pi ; \pi]$, т.е. для нашего $\eps_1 > 0$ существует
+    порог $n_1 \forall n \geq n_1$
+
+    \[\ds\int_{-\pi}^\pi \left(T_n(x) - g_{\eps_1}(x) \right)^2dx < \eps_1 \]
+
+    Согласно неравенству Бесселя, частичная сумма ряда Фурье $S_n(x)$
+
+    \[S_n(x) = \frac{a_0}{2} + \dssum_{k=1}^n a_k \cos kx + b_k \sin kx, \]
+
+    где \[a_k^* = \frac{1}{\pi} \ds\int_{-\pi}^\pi f(x) \cos kx dx \]
+
+    \[b_k^* = \frac{1}{\pi} \ds\int_{-\pi}^\pi f(x) \sin kx dx \]
+
+    даёт наилучшее приближение в среднем всех тригонометрических полиномов $\implies$
+
+    \[\implies \ds\int_{-\pi}^\pi \left(f(x) - S_n(x) \right)^2dx \leq \ds\int_{-\pi}^\pi \left(f(x) - T_n(x) \right)^2dx \implies \]
+    \[\implies \text{При } n \geq n_1  \ds\int_{-\pi}^\pi \left(f(x) - S_n(x) \right)^2dx \leq \ds\int_{-\pi}^\pi \left(f(x) - T_n(x) \right)^2dx = 
+    \ds\int_{-\pi}^\pi \left(f(x) - g_{\eps_1}(x) \right) + \left(g_{\eps_1}(x) - T_n(x) \right)^2dx \leq \]
     
+    \[ \leq 2\ds\int_{-\pi}^\pi \left(g_{\eps_1}(x) - T_n(x) \right)^2dx < 4\eps_1 \dn \eps \]
+
+    \[\forall \eps > 0 \exists n_\eps = n_1 \ds\int_{-\pi}^\pi \left(f(x) - S_n(x) \right)^2dx < \eps \implies \{S_n(x)\} \text{сходится к } f(x)
+    \text{в среднем на } [-\pi ; \pi] \]
 \end{proof}
