@@ -354,24 +354,145 @@
     |S + \frac{\pi}{\lambda} \leq N + a + 1$. И пусть $M_1 = \ds\sup_{|S| \leq N + a} |f(S)| \implies$
 
     \begin{align*}
-        I_N^{(2)} \leq \int_{|t| \leq N} 
+        I_N^{(2)} &\leq \int_{|t| \leq N} 
         \left| \left( f\left( S + \frac{\pi}{\lambda} \right) - f(S) \right)
                g \left( t + \frac{\pi}{\lambda} \right) +
                \left( g\left( t + \frac{\pi}{\lambda} \right) - g(t) \right)
-               f(S) \right| dt
-        \leq M \int_{|S| \leq N + a} \left| 
+               f(S) \right| dt \leq \\
+        &\leq M \int_{|S| \leq N + a} \left| 
             f \left( S + \frac{\pi}{\lambda} \right) - f(S) \right| dS +
         M_1 \int_{|t| \leq N} \left| 
             g \left( t + \frac{\pi}{\lambda} \right) - g(t) \right| dt
     \end{align*}
 
-    Тогда по Лемме 1 $\exists \lambda(\varepsilon) : \forall \lambda > 
-    \lambda(\varepsilon)$ выполняется $M \int_{|S| \leq N + a} \left| 
-    f \left( S + \frac{\pi}{\lambda} \right) - f(S) \right| dS < \frac{\varepsilon}{4}$
-    и $M_1 \int_{|t| \leq N} \left| 
-    g \left( t + \frac{\pi}{\lambda} \right) - g(t) \right| dt < \frac{\varepsilon}{4}$
+    Тогда по Лемме 1: $\exists \lambda(\varepsilon) : \forall \lambda > 
+    \lambda(\varepsilon)$ выполняется 
+    \begin{align*}
+        M \int_{|S| \leq N + a} \left| 
+        f \left( S + \frac{\pi}{\lambda} \right) - f(S) \right| dS < \frac{\varepsilon}{4} \; \text{ и } \;
+        M_1 \int_{|t| \leq N} \left| 
+        g \left( t + \frac{\pi}{\lambda} \right) - g(t) \right| dt < \frac{\varepsilon}{4}
+    \end{align*}
 
     $\implies I_N^{(2)} < \frac{\varepsilon}{2}$, то есть $\forall \varepsilon > 0 \quad
     \exists \lambda(\varepsilon) : \forall \lambda > \lambda(\varepsilon)$ 
     выполняется $|I(x, \lambda) < \varepsilon|$
+\end{proof}
+
+
+\subsection{Частичная сумма ряда Фурье}
+
+\begin{theorem}
+    Пусть $f(x)$ интегрируема на $[-\pi; \pi]$ и периодична с периодом 
+    $T = 2\pi$. Если в точке $x_0$ $\exists \ds\lim_{x \to x_0 - 0} f(x) \dn
+    f(x_0 - 0)$ и $\exists \ds\lim_{x \to x_0 + 0} f(x) \dn f(x_0 + 0)$ и $f(x)$
+    имеет ограниченную производную в $(x_0 - \delta_0; x_0)$ 
+    $(x_0; x_0 + \delta_0) \quad (\delta > 0)$ (то есть $\exists M > 0 : 
+    |f'(x)| \leq M \quad \forall x \in (x_0 - \delta_0; x_0) \cup (x_0; x_0 + \delta_0))
+    \implies$ ряд Фурье функции $f(x)$ сходится в точке $x_0$ к
+    $\frac{f(x_0 - 0) + f(x_0 + 0)}{2}$.
+
+    Если же $f(x)$ имеет ограниченную производную на $[a; b] \implies$ ряд
+    Фурье функции $f(x)$ сходится к $f(x)$ на $\forall [a_1; b_1] \subset [a; b]
+    \quad (a < a_1 < b_1 < b)$ \underline{равномерно}.
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        f_n(x_0) - \frac{f(x_0) + f(x_0 + 0)}{2} &= 
+        \int_{-\pi}^\pi f(x_0 + t) D_n(t) dt - 
+        f(x_0 - 0) \int_{-\pi}^0 D_n(t) dt - f(x_0 + 0) \int_{-0}^\pi D_n(t) dt = \\
+        &= \int_{-\pi}^0 (f(x_0 + t) - f(x_0 - 0)) D_n(t) dt +
+        \int_0^\pi (f(x_0 + t) - f(x_0 + 0)) \cdot D_n(t) dt = \\
+        &= \left( 
+            \int_{-\delta}^0 (f(x_0 + t) - f(x_0 - 0)) D_n(t) dt +
+            \int_0^\delta (f(x_0 + t) - f(x_0 + 0)) D_n(t) dt
+        \right) + \\ &+ \left( 
+            \int_{-\pi}^{-\delta} (f(x_0 + t) - f(x_0 - 0)) D_n(t) dt +
+            \int_\delta^\pi (f(x_0 + t) - f(x_0 + 0)) D_n(t) dt
+        \right) = \\
+        &= I_n(\delta, x_0) + \overline{I_n}(\delta, x_0)
+    \end{align*}
+    
+    Второе слагаемое преобразуем следующим образом:
+    \begin{align*}
+        \overline{I_n}(\delta, x_0) = \int_{\delta \leq |t| \leq \pi}
+            f(x_0 + t) D_n(t) dt - (f(x_0 - 0) + f(x_0 + 0)) \cdot
+            \int_{\delta \leq |t| \leq \pi} D_n(t) dt
+    \end{align*}
+
+    Оценим $I_n(\delta; x_0)$:
+
+    $f(x)$ и $f_n(x)$ периодичны с $T = 2\pi \implies$ оценим пров. при 
+    $|x| \leq \pi$. Если $\delta_0 : \delta < \delta_0 < \pi \implies$ по
+    Теореме Лагранжа, $|f(x_0 + t) - f(x_0 - 0)| = |f'(\xi) \cdot t| 
+    \leq M \cdot |t|$ если $t \in [-\delta; 0]$, то есть $x_0 - \delta < \xi < x_0$
+    и $|f(x_0 + t) - f(x_0 + 0)| = |f'(\xi_1) \cdot t| \leq M \cdot |t|$, где
+    $t \in [0; \delta], \, x_0 < \varepsilon_1 < x_0 + \delta \implies$ при
+    $\delta < \delta_0$ $|I_n(\delta, x_0)| \leq M \ds\int_{-\delta}^\delta
+    |t \cdot D_n(t)| dt$.
+
+    Но $|t \cdot D_n(t)| = \left| 
+        \frac{t \sin \left( n + \frac{1}{2} \right) t}{2 \pi \sin \frac{t}{2}} \right|
+    \leq \left| \frac{\frac{t}{2}}{\pi \sin \frac{t}{2}} \right| \implies
+    \forall \varepsilon > 0 \quad \exists \delta > 0 : |I_n(\delta, x_0)| \leq
+    M \ds\int_{-\delta}^\delta |t \cdot D_n(t)| dt \leq M_\delta 
+    \leq \frac{\varepsilon}{2}$ (при $\delta < \ds\frac{\varepsilon}{2M}$)
+
+    Рассмотрим оценку $\overline{I_n}(\delta, x_0)$.
+
+    Имеем $\ds\int_{\delta \leq |t| \leq \pi} f(x_0 + t) D_n(t) dt =
+    \ds\int_{-\infty}^{+\infty} \overline{f}(x_0 + t) g(t) \sin(\lambda_n t) dt$
+
+    \[ 
+        \int_{\delta \leq |t| \leq \pi} D_n(t) dt =
+        \int_{-\infty}^{+\infty} \varphi(x_0 + t) g(t) \sin (\lambda_n t) dt
+    \]
+
+    где
+    \begin{align*}
+        \lambda_n &= n + \frac{1}{2}, \quad \overline{f}(S) = \begin{cases}
+            f(S), &\text{при } |S| \leq 2\pi \\
+            0, &\text{при } |S| > 2\pi
+        \end{cases} \\
+        g(t) &= \begin{cases}
+            \frac{1}{2\pi \sin \frac{t}{2}}, &\text{при } \delta \leq |t| \leq \pi \\
+            0, &\text{при } |t| < \delta
+        \end{cases} \\
+        \varphi(S) &= \begin{cases}
+            1, &\text{при } |S| \leq 2\pi \\
+            0, &\text{при } |S| > 2\pi
+        \end{cases}
+    \end{align*}
+
+    Тогда по Лемме 2 оба этих интеграла стремятся к 0 при $n \approach{} \infty$
+    равномерно на любом отрезке вида $[-a; a]$, то есть для нашего $\varepsilon > 0$:
+
+    \begin{align*}
+        \exists N : \forall n \geq N \quad |\overline{I_n}(\delta, x_0)| &\leq
+        \left| \ds\int_{-\infty}^{+\infty} \overline{f}(x_0 + t) g(t) \sin(\lambda_n t) dt \right| + \\
+        &+ \frac{|f(x_0 + 0) + f(x_0 - 0)|}{2} \cdot \\ &\cdot \left|
+            \int_{-\infty}^{+\infty} \varphi(x_0 + t) g(t) \sin (\lambda_n t) dt
+        \right| < \frac{\varepsilon}{2}
+    \end{align*}
+
+    \begin{align*}
+        \implies \forall \varepsilon > 0 \quad \exists N : \forall n \geq N \quad
+        \left| f_n(x_0) - \frac{f(x_0 + 0) + f(x_0 - 0)}{2} \right| <
+        |I_n(\delta; x_0)| + |\overline{I_n}(\delta; x_0)| <
+        \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon
+    \end{align*}
+
+    Первая часть теоремы доказана.
+
+    Пусть $\forall x \in [a_1; b_1] \subset [a; b] \quad |f'(x)| \leq M$. Так
+    как $\exists f'(x) \implies$ функция непрерывна на $[a_1; b_1] \implies
+    \forall x \in [a_1; b_1] \quad \frac{f(x_0 + 0) + f(x_0 - 0)}{2} = f(x)$
+    и $|f'(x + t)| \leq M$, если $|t| \leq \delta \leq \delta_0$, а
+    $\delta_0 = \min \{ b - b_1; a_1 - a \} \implies \delta$ можно выбрать
+    не зависящим от $x$.
+
+    Так как $\left| \ds\frac{f(x + 0) + f(x - 0)}{2} \right| = |f(x)| \leq 
+    \ds\sup_{x \in [a; b]} |f(x)| \implies$ номер $N$ можно выбрать в оценке
+    $\overline{I_n}(\delta; x_0)$ общим для $\forall x \in [a_1; b_1] \implies
+    f_n(x)$ на $[a_1; b_1]$ сходится к $f(x)$ равномерно.
 \end{proof}
