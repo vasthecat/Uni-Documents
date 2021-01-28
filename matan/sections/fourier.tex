@@ -496,3 +496,104 @@
     $\overline{I_n}(\delta; x_0)$ общим для $\forall x \in [a_1; b_1] \implies
     f_n(x)$ на $[a_1; b_1]$ сходится к $f(x)$ равномерно.
 \end{proof}
+
+
+\subsection{Оценка остатка ряда Фурье}
+
+Рассмотрим вопрос о скорости сходимости ряда Фурье в случае, если функция $f(x)$
+имеет производную порядка $m + 1$.
+
+\begin{theorem}
+    Пусть функция $f(x)$ и все её производные до некоторого порядка $m$ 
+    непрерывны на сегменте $[-\pi; \pi]$, причём $f^{(l)}(-\pi) = f^{(l)}(\pi)$
+    при $l \leq m$, а производная $f^{m + l}(x)$ кусочно-непрерывная на
+    сегменте $[-\pi; \pi]$. Тогда частичная сумма порядка $N$ ряда Фурье
+    для $f(x)$ отличается от $f(x)$ на величину 
+    $\overline{\beta}\left( \ds\frac{1}{N^{m + 1/2}} \right)$ при
+    $N \approach{} \infty$.
+\end{theorem}
+\begin{proof}
+    Проведём доказательство при $m = 0$.
+
+    Преобразуем выражение для коэффициентов Фурье с помощью интегрирования
+    по частям. При $k > 0$ имеем
+
+    \begin{align*}
+        a_k = \frac{1}{\pi} \int_{-\pi}^\pi f(t) \cos kt \; dt =
+        \frac{1}{\pi} \left[ f(t) \cdot \frac{\sin kt}{k} \Bigg|_{-\pi}^\pi -
+        \frac{1}{k} \int_{-\pi}^\pi f'(t) \sin kt \; dt \right] =
+        -\frac{b_k^{(1)}}{k}, \quad b_k = \frac{a_k^{(1)}}{k}
+    \end{align*}
+
+    Где $a_k^{(1)}, b_k^{(1)}$ --- коэффициенты Фурье функции $f'(x)$. Если
+    $S_N$ --- частичная сумма порядка $N$ для ряда Фурье функции $f(x)$, то
+    \begin{align*}
+        |f(x) - S_N(x)| = \left| \sum_{k = N + 1}^\infty [a_k \cos kx +
+        b_k \sin kx] \right| \leq \sum_{k = N + 1}^\infty [|a_k| + |b_k|] = 
+        \sum_{k = N + 1}^\infty \frac{|a_k^{(1)}| + |b_k^{(1)}|}{k}, \\
+        \text{т.к.} |\cos kx| \leq 1, \, |\sin kx| \leq 1
+    \end{align*}
+
+    С помощью неравенства Коши-Буняковского и неравенства
+    \[ 
+        \left[ |a_k^{(1)}| + |b_k^{(1)} \right]^2 \leq 
+        2 \left[ |a_k^{(1)}|^2 + |b_k^{(1)}|^2 \right] 
+    \]
+
+    Получем
+    \[ 
+        \sum_{k = N + 1}^\infty \frac{|a_k^{(1)}| + |b_k^{(1)}|}{k} \leq
+        \sqrt{2 \sum_{k = N + 1}^\infty \frac{1}{k^2} \cdot 
+        \sum_{k = N + 1}^\infty \left[ |a_k^{(1)}|^2 + |b_k^{(1)}|^2 \right]}
+    \]
+
+    На основании неравенства Беселя для функции $f'(x)$ ряд 
+    \[ \sum_{k = N + 1}^\infty \left[ |a_k^{(1)}|^2 + |b_k^{(1)}|^2 \right] \]
+    сходится. Поэтому
+    \[ 
+        \sum_{k = N + 1}^\infty \left[ |a_k^{(1)}|^2 + |b_k^{(1)}|^2 \right] =
+        \overline{\overline{o}}(1) \quad (N \approach{} \infty)
+    \]
+
+    С другой стороны, $\frac{1}{k^2} \leq \ds\int_{k - 1}^k \frac{dx}{x^2}$ и,
+    следовательно,
+    \[ 
+        \sum_{k = N + 1}^\infty \frac{1}{k^2} \leq \int_N^\infty \frac{dx}{x^2} 
+        = \frac{1}{N}
+    \]
+
+    Поэтому \[
+        \sum_{k = N + 1}^\infty \frac{|a_k^{(1)}| + |b_k^{(1)}|}{k} =
+        \overline{\overline{o}} \left( \frac{1}{\sqrt{N}} \right), \quad
+        N \approach{} \infty
+    \]
+
+    То есть $f(x) - S_N(x) = \overline{\overline{o}} \left( \frac{1}{\sqrt{N}} \right),
+    N \approach{} \infty$, что и требовалось доказать при $m = 0$.
+
+    Аналогично проводится доказательство и при $m > 0$. Только в этом случае
+    для коэффициентов Фурье необходимо воспользоваться интегрированием по
+    частям $m + 1$ раз. При этом получаем оценку $|f(x) - S_N(x)| \leq
+    \ds\frac{|a_k^{(m + 1)}| + |b_k^{(m + 1)}|}{k^{m + 1}}$, где 
+    $a_k^{(m + 1)}, b_k^{(m + 1)}$ --- коэффициенты Фурье функции
+    $f^{(m + 1)}(x)$.
+
+    Так как \[
+        \sum_{k = N + 1}^\infty \frac{|a_k^{(m + 1)}| + |b_k^{(m + 1)}|}{k^{m + 1}} \leq
+        \sqrt{
+            2 \sum_{k = N + 1}^\infty \frac{1}{k^{2(m + 1)}} \cdot
+            \sum_{k = N + 1}^\infty \left[ |a_k^{(m + 1)}|^2 + |b_k^{(m + 1)}|^2 \right]
+        }
+    \]
+
+    то из сходимости ряда $\ds\sum_{k = N + 1}^\infty \left[ |a_k^{(m + 1)}|^2 + |b_k^{(m + 1)}|^2 \right]$
+    и оценки \[
+        \sum_{k = N + 1}^\infty \frac{1}{k^{2(m + 1)}} \leq
+        \int_N^\infty \frac{dx}{x^{2(m + 1)}} =
+        \underline{\underline{O}} \left( \frac{1}{N^{2 (m + 1)}} \right)
+    \]
+
+    следует, что $f(x) - S_N(x) = \overline{\overline{o}} \left(
+        \ds\frac{1}{N^{m + 1/2}}
+    \right), N \approach{} \infty$
+\end{proof}
