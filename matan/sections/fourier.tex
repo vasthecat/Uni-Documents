@@ -178,3 +178,200 @@
             имеющей непрервыную производную любого порядка.
     \end{enumerate}
 \end{remark}
+
+\begin{example}
+    \begin{align*}
+        f(x) &= q \quad [-\pi;\pi] \\
+        a_0 &= \frac{1}{\pi} \ds\int_{-\pi}^\pi x \; dx = 
+        \frac{1}{\pi} \cdot \frac{x^2}{2} \Bigg|_{-\pi}^\pi = 0, \quad
+        a_k = \frac{1}{\pi} \ds\int_{-\pi}^\pi x \cdot \cos x \; dx = 0. \\
+        b_k &= \frac{1}{\pi} \ds\int_{-\pi}^\pi x \sin kx \; dx = \left[ \begin{array}{lr}
+            u = x, \, &u' = 1 \\
+            v' = \sin kx, \, &v = \frac{-\cos kx}{k}
+        \end{array} \right] = \\
+        &= \frac{1}{\pi} \left( -\frac{x \cos x}{k} \Bigg|_{-\pi}^\pi + 
+        \frac{1}{k} \ds\int_{-\pi}^\pi \cos kx \; dx \right) =
+        \frac{1}{\pi} \left( -\frac{2 \pi \cos \pi k}{k} + \frac{\sin kx}{k^2} \Bigg|_{-\pi}^\pi \right) =
+        \frac{2 (-1)^{k + 1}}{k} \\
+        &\implies f_n(x) = \ds\sum_{k = 1}^n \frac{2 (-1)^{k + 1}}{k} \sin kx
+    \end{align*}
+
+    Преобразуем выражение для частичных сумм ряда Фурье. Так как члены ряда
+    Фурье --- периодичные функции, то будем считать $f(x)$ периодичной с
+    периодом $2\pi$ (это всегда можно сделать, продолжив её периодически
+    вне $[-\pi; \pi]$).
+
+    \begin{align*}
+        f_n(x) &= \frac{a_0}{2} + \sum_{k = 1}^n a_k \cos kx + b_k \sin kx = \\
+        &= \frac{1}{2\pi} \int_{-\pi}^\pi f(S) dS + \sum_{k = 1}^n \left(
+        \cos kx \cdot \frac{1}{\pi} \int_{-\pi}^\pi f(S) \cos kS \; dS +
+        \sin kx \cdot \frac{1}{\pi} \int_{-\pi}^\pi f(S) \sin kS \; dS \right) = \\
+        &= \frac{1}{\pi} \int_{-\pi}^\pi f(S) \left( \frac{1}{2} \sum{k = 1}^n
+        \left( \cos kx \cdot \cos kS + \sin kx \cdot \sin kS \right) \right) dS = \\
+        &= \frac{1}{\pi} \int_{-\pi}^\pi f(S) \left( \frac{1}{2} + \sum{k = 1}^n
+        \cos k (S - x) \right) ds
+    \end{align*}
+
+    Произведём преобразования над выражением внутри скобок:
+
+    \begin{align*}
+        \frac{1}{2} + \sum_{k = 1}^n \cos k \underbrace{(S - x)}_t &=
+        \frac{1}{2} + \cos t + \cos 2t + \dots + \cos nt = \frac{1}{2} +
+        \frac{2 \sin \frac{t}{2} (\cos t + \dots + \cos nt)}{2 \sin \frac{t}{2}} = \\
+        &= \frac{1}{2} + \frac{ 
+            \sin \frac{3t}{2} - 
+            \sin \frac{t}{2} + 
+            \sin \frac{5t}{2} - 
+            \sin \frac{3t}{2} + \dots +
+            \sin \left(n + \frac{1}{2}\right)t -
+            \sin \left(n 1 \frac{1}{2}\right)t }{2 \sin \frac{t}{2}} = \\
+        &= \frac{1}{2} + \frac{\sin \left(n + \frac{1}{2}\right)t - \sin \frac{t}{2}}{2 \sin \frac{t}{2}} =
+        \frac{\sin \left( n + \frac{1}{2} \right)t}{2 \sin \frac{t}{2}}
+    \end{align*}
+
+    Получаем:
+
+    \begin{align*}
+        \frac{1}{\pi} \int_{-\pi}^\pi f(S) \frac{\sin \left( n + \frac{1}{2} \right) (S - x)}{2 \sin \frac{S - x}{2}} \; dS =
+        \int_{-\pi}^\pi f(S) D_n(S - x) \; dS
+    \end{align*}
+
+    Где $D_n(t) = \frac{\sin \left( n + \frac{1}{2} \right)t}{2 \pi \sin \frac{t}{2}}$ ---
+    Ядро Дирихле.
+
+    Отметим, что $D_n(t) = D_n(-t)$ и $D_n(t + 2\pi) = D_n(t)$. Тогда 
+    \begin{align*}
+        f_n(x) &= \int_{-\pi}^\pi f(S) D_n(S - x) \; dS \over{s = t + x}{=} \\
+        &= \int_{-\pi - x}^{\pi - x} f(x + t) D_n(t) \; dt +
+        \int_{-\pi - x}^{-\pi} f(x + t) D_n(t) \; dt +
+        \int_{\pi}^{\pi - x} f(x + t) D_n(t) \; dt \over{t = y - 2\pi}{=} \\
+        &= \int_{-\pi}^\pi f(x + t) D_n(t) \; dt +
+        \int_{\pi - x}^\pi f(x + y - 2\pi) D_n(y - 2\pi) \; dy -
+        \int_{\pi - x}^\pi f(x + t) D_n(t) \; dt = \\
+        &= \int_{-\pi}^\pi f(x + t) D_n(t) dt
+    \end{align*}
+
+    \textbf{???} $\implies D_n(t) \; dt = 1$
+\end{example}
+
+
+\begin{theorem}[Лемма 1]
+    Если $f(x)$ интегрируема на $[a - \omega; b + \omega] \implies 
+    \forall \varepsilon > 0 \exists \delta_\varepsilon > 0 : \forall |x| <
+    \delta_\varepsilon < \omega$ выполняется 
+    \[ \int_a^b |f(x + t) - f(t)| \; dt < \varepsilon \]
+\end{theorem}
+\begin{proof}
+    Если $f(x)$ интегрируема на $[a - \omega; b + \omega] \implies
+    \forall \varepsilon_1 > 0 \quad \exists f_{\varepsilon_1}(x)$ ---
+    непрерывная: $\ds\int_{a - \omega}^{b + \omega} |f(t) - f_{\varepsilon_1}(t)| dt < \varepsilon_1$.
+    
+    Но \begin{align*}
+        \int_a^b |f(x + t) - f(t)| dt &\leq 
+        \int_a^b |f(x + t) - f_{\varepsilon_1}(x + t)| dt + \\
+        &+ \int_a^b |f_{\varepsilon_1}(x + t) - \\
+        &- f_{\varepsilon_1} (t)| dt + \\
+        &+ \int_a^b |f(t) - f_{\varepsilon_1}(t)| dt < \\
+        &< 2 \varepsilon_1 + \int_a^b |f_{\varepsilon_1} (x + t) - f_{\varepsilon_1} (t)|
+    \end{align*}
+
+    Так как \begin{align*}
+        \int_a^b |f(x + t) - f_{\varepsilon_1}(x + t)| dt =
+        \int_{a + x}^{b + x} |f(S) - f_{\varepsilon_1}(S)| dS \leq
+        \int_{a - \omega}^{b + \omega} |f(S) - f_{\varepsilon_1}(S)| dS < \varepsilon_1
+    \end{align*}
+
+    и \begin{align*}
+        \int_a^b |f(t) - f_{\varepsilon_1}(t)| dt \leq 
+        \int_{a - \omega}^{b + \omega} |f(t) - f_{\varepsilon_1}(t)| dt
+    \end{align*}
+
+    По Теореме о непрерывности интеграла по параметру для $\varepsilon_1 > 0 \quad
+    \exists \delta_{\varepsilon_1} > 0 : \forall |x| < \delta_{\varepsilon_1}$
+    выполняется \begin{align*}
+        \int_a^b |f_{\varepsilon_1}(x + t) - f_{\varepsilon_1}(t)| dt < \varepsilon_1 \\
+        \implies \int_a^b |f(x + t) - f(t)| dt < 3 \varepsilon_1 \dn \varepsilon
+    \end{align*}
+
+    То есть $\forall \varepsilon > 0 \quad \exists \delta_\varepsilon =
+    \delta_{\varepsilon_1} > 0 : \forall |x| < \delta_\varepsilon < \omega$
+    выполняется \begin{align*}
+        \int_a^b |f(x + t) - f(t)| dt < \varepsilon
+    \end{align*}
+\end{proof}
+
+
+\begin{theorem}[Лемма 2]
+    Пусть $f(x)$ и $g(x)$ интегрируемы на любом конечном отрезке и $g(x)$ ---
+    ограничена, а $\ds\int_{-\infty}^\infty |f(S)| dS$ сходится. Тогда 
+    \[ I(x, \lambda) = \int_{-\infty}^\infty f(x + t) g(t) \cos \lambda t \; dt \]
+    и
+    \[ \overline{I}(x, \lambda) = \int_{-\infty}^\infty f(x + t) g(t) \sin \lambda t \; dt \]
+    сходятся к 0 при $\lambda \approach{} +\infty$ равномерно на любом отрезке
+    $[-a; a]$.
+\end{theorem}
+\begin{proof}
+    Заменим в этих интегралах $t$ на $t + \frac{\pi}{\lambda}$.
+
+    \begin{align*}
+        I(x, \lambda) &= -\int_{-\infty}^\infty f(x + t + \frac{\pi}{\lambda}) g(t + \frac{\pi}{\lambda}) \cos \lambda t \; dt \\
+        \overline{I}(x, \lambda) &= \int_{-\infty}^\infty f(x + t + \frac{\pi}{\lambda}) g(t + \frac{\pi}{\lambda}) \sin \lambda t \; dt
+    \end{align*}
+
+    Возьмём полусумму исходного и нового выражения для каждого из них, то
+    получим:
+
+    \begin{align*}
+        |I(x, \lambda)| &\leq \frac{1}{2} \int_{-\infty}^{+\infty} \left| f(S + \frac{\pi}{\lambda}) g(S) - f(S)g(t) \right| dt \\
+        |\overline{I}(x, \lambda)| &\leq \frac{1}{2} \int_{-\infty}^{+\infty} \left| f(S + \frac{\pi}{\lambda}) g(S) - f(S)g(t) \right| dt
+    \end{align*} где $S = x + t$.
+
+    Отсюда видно, что доказательство достаточно провести для $I(x, \lambda)$.
+    Имеем \begin{align*}
+        |I(x, \lambda)| &\leq I_N^{(1)} + I_N^{(2)}, \text{где} \\
+        I_N^{(1)} &= \frac{1}{2} \int_{|t| \geq N} \left|f(S + \frac{\pi}{\lambda})g(S) - f(S)g(t)\right| dt, \\
+        I_N^{(2)} &= \frac{1}{2} \int_{|t| \leq N} \left|f(S + \frac{\pi}{\lambda})g(S) - f(S)g(t)\right| dt, \\
+    \end{align*}
+
+    Пусть $|x| \leq a, \, \lambda \geq \pi \implies$ при $|t| \geq N \implies
+    |S| \geq N - a$ 
+    \begin{align*}
+        \left| S + \frac{\pi}{\lambda} \right| &\geq N - a - 1 \\
+        \implies I_N^{(1)} &\leq \frac{1}{2} \int_{|t| \geq N} 
+        \left[ \left| f(S + \frac{\pi}{\lambda}) \right|
+               \left| g(t + \frac{\pi}{\lambda}) \right| +
+               |f(S)| |g(t)| \right] dt \leq \\
+        &\leq M \cdot \int_{|t| \geq N} \left[ \left| f(S + \frac{\pi}{\lambda}) \right| + |f(S)| \right] dt \leq \\
+        &\leq 2 M \cdot \int_{|S| \geq N - a - 1} |f(S)| dS
+    \end{align*}
+
+    Так как $\ds\int_{-\infty}^{+\infty} |f(S)| dS$ сходится $\implies
+    \forall \varepsilon > 0 \quad \exists n_\varepsilon : \forall N > 
+    n_\varepsilon$ выполняется $2 M \cdot \ds\int_{|S| \geq N - a - 1} |f(S)| dS < \frac{\varepsilon}{2}$,
+    то есть $I_N^{(1)} < \frac{\varepsilon}{2}$.
+
+    Теперь при $|t| \leq N, |x| \leq a, \lambda \geq \pi$ имеем $|S| \leq N + a, \,
+    |S + \frac{\pi}{\lambda} \leq N + a + 1$. И пусть $M_1 = \ds\sup_{|S| \leq N + a} |f(S)| \implies$
+
+    \begin{align*}
+        I_N^{(2)} \leq \int_{|t| \leq N} 
+        \left| \left( f\left( S + \frac{\pi}{\lambda} \right) - f(S) \right)
+               g \left( t + \frac{\pi}{\lambda} \right) +
+               \left( g\left( t + \frac{\pi}{\lambda} \right) - g(t) \right)
+               f(S) \right| dt
+        \leq M \int_{|S| \leq N + a} \left| 
+            f \left( S + \frac{\pi}{\lambda} \right) - f(S) \right| dS +
+        M_1 \int_{|t| \leq N} \left| 
+            g \left( t + \frac{\pi}{\lambda} \right) - g(t) \right| dt
+    \end{align*}
+
+    Тогда по Лемме 1 $\exists \lambda(\varepsilon) : \forall \lambda > 
+    \lambda(\varepsilon)$ выполняется $M \int_{|S| \leq N + a} \left| 
+    f \left( S + \frac{\pi}{\lambda} \right) - f(S) \right| dS < \frac{\varepsilon}{4}$
+    и $M_1 \int_{|t| \leq N} \left| 
+    g \left( t + \frac{\pi}{\lambda} \right) - g(t) \right| dt < \frac{\varepsilon}{4}$
+
+    $\implies I_N^{(2)} < \frac{\varepsilon}{2}$, то есть $\forall \varepsilon > 0 \quad
+    \exists \lambda(\varepsilon) : \forall \lambda > \lambda(\varepsilon)$ 
+    выполняется $|I(x, \lambda) < \varepsilon|$
+\end{proof}
