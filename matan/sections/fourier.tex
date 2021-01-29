@@ -597,3 +597,307 @@
         \ds\frac{1}{N^{m + 1/2}}
     \right), N \approach{} \infty$
 \end{proof}
+
+
+\subsection{Интеграл Фурье}
+
+В доказанном соотношении
+\[
+    \lim_{n \to \infty} \int_{-\pi}^\pi f(t + x) \frac{\sin \lambda_n t}{2\pi \sin \frac{t}{2}} dt =
+    \frac{f(x + 0) + f(x - 0)}{2}, quad \lambda = n + \frac{1}{2}
+\]
+
+Вклад в интеграл при достаточно больших значениях $\lambda_n$ даёт только
+область малых значений $t$, в которой $\sin \frac{t}{2}$ мало отличается от
+$\frac{t}{2}$. Поэтому при определённых требованиях, наложенных на функцию
+$f(x)$, это соотношение можно заменить более общим
+
+\[ 
+    \lim_{\lambda \to +\infty} \frac{1}{\pi} \int_{-\infty}^\infty 
+        f(t + x) \frac{\sin \lambda t}{t} dt =
+    \frac{f(x + 0) + f(x - 0)}{2}
+\]
+
+Левая часть последнего соотношения называется \underline{Интегралом Фурье} для
+функции $f(x)$.
+
+\begin{remark}
+    Чаще всего используют другую запись интеграла Фурье. Так как
+    \begin{align*}
+        \int_{-\infty}^\infty f(t + x) \frac{\sin \lambda t}{t} dt &=
+        \int_{-\infty}^\infty f(S) \frac{\sin \lambda (S - x)}{S - x} dS, \text{и} \\
+        \frac{\sin \lambda (S - x)}{S - x} &= \frac{1}{2}
+        \int_{-\lambda}^\lambda \cos \mu (S - x) d\mu
+    \end{align*}
+
+    то интеграл Фурье можно записать в виде
+    \begin{align*}
+        \lim_{\lambda \to +\infty} \frac{1}{2\pi} \int_{-\infty}^\infty f(S) dS
+        \int_{-\lambda}^\lambda \cos \mu (S - x) d\mu =
+        \frac{f(x + 0) + f(x - 0)}{2}
+    \end{align*}
+
+    Но $|f(S) \cos \mu (S - x)| \leq |f(S)|$ и по теореме об интегрировании по
+    параметру несобственных интегралов, зависящих от параметров, интегрирование
+    по переменным $S$ и $\mu$ для функций, удовлетворяющих условию
+    \[ \ds\int_{-\infty}^\infty |f(S)| dS < \infty \] можно менять местами, откуда
+    $\ds\frac{f(x - 0) + f(x + 0)}{2} = 
+    \ds\lim_{\lambda \to +\infty} \frac{1}{2\pi} \ds\int_{-\lambda}^\lambda
+    d\mu [ \cos \mu x \cdot F_1(\mu) + \sin \mu x \cdot F_2(\mu)]$, где
+    $F_1(\mu) = \ds\int_{-\infty}^\infty f(S) \cos \mu S \; dS$,
+    $F_2(\mu) = \ds\int_{-\infty}^\infty f(S) \sin \mu S \; dS$.
+
+    С помощью формул $\cos x = \ds\frac{e^{ix} + e^{-ix}}{2}$,
+    $\sin x = \ds\frac{e^{ix} - e^{-ix}}{2i}$ ряд Фурье и интеграл Фурье можно
+    представить в симметричной форме:
+
+    \[ 
+        \ds\frac{f(x - 0) + f(x + 0)}{2} = \ds\sum_{k = -\infty}^\infty C_k \cdot e^{ikx},
+        \text{где } C_k = \ds\frac{1}{2\pi} \ds\int_{-\pi}^\pi f(x) e^{-ikx} dx
+    \]
+
+    \[
+        \frac{f(x - 0) + f(x + 0)}{2} = \lim_{\lambda \to +\infty} 
+        \int_{-\lambda}^\lambda F(\mu) e^{i \mu x} d\mu,
+        \text{где } F(\mu) = \frac{1}{2\pi} \int_{-\infty}^\infty 
+        f(x) e^{-i \mu x} dx
+    \]
+\end{remark}
+
+В самом деле:
+
+a)
+
+\begin{align*}
+    \frac{a_0}{2} + \sum_{k = 1}^\infty (a_k \cos kx + b_k \sin kx) &=
+    \frac{a_0}{2} + \sum_{k = 1}^\infty \left(
+        a_k \frac{e^{ikx} + e^{-ikx}}{2} +
+        b_k \frac{e^{ikx} - e^{-ikx}}{2i}
+    \right) = \\
+    &= \frac{a_0}{2} + \sum_{k = 1}^\infty \left(
+        a_k \frac{e^{ikx} + e^{-ikx}}{2} -
+        i b_k \frac{e^{ikx} - e^{-ikx}}{2}
+    \right) = \\
+    &= \frac{a_0}{2} + \sum_{k = 1}^\infty \frac{1}{2} \left[
+        (a_k - i b_k) e^{ikx} + (a_k + i b_k) e^{-ikx}
+    \right] = \\
+    &= \frac{a_0}{2} + \sum_{k = 1}^\infty \frac{1}{2} \Bigg[
+        \left( 
+            \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos kx dx -
+            \frac{i}{\pi} \int_{-\pi}^\pi f(x) \sin kx dx 
+        \right) e^{ikx} + \\
+        &+ \left(
+            \frac{1}{\pi} \int_{-\pi}^\pi f(x) \cos kx dx +
+            \frac{i}{\pi} \int_{-\pi}^\pi f(x) \sin kx dx
+        \right) e^{-ikx}
+    \Bigg] = \\
+    &= \frac{1}{2\pi} \int_{-\pi}^\pi f(x) dx +
+        \sum_{k = 1}^\infty \frac{1}{2\pi} \int_{-\pi}^\pi 
+        f(x) (\cos kx - i \sin kx) dx \cdot e^{ikx} + \\ &+
+        \sum_{k = 1}^\infty \frac{1}{2\pi} \int_{-\pi}^\pi
+        f(x) [\cos kx + i \sin kx] dx \cdot e^{-ikx} = \\
+    &= \frac{1}{2\pi} \int_{-\pi}^\pi f(x) dx +
+        \sum_{k = 1}^\infty \frac{e^{ikx}}{2\pi}
+        \int_{-\pi}^\pi f(x) \left(
+            \frac{e^{ikx} + e^{-ikx}}{2} -
+            \frac{e^{ikx} - e^{-ikx}}{2}
+        \right) dx + \\ &+
+        \sum_{k = 1}^\infty \frac{e^{-ikx}}{2\pi}
+        \int_{-\pi}^\pi f(x) \left(
+            \frac{e^{ikx} + e^{-ikx}}{2} +
+            \frac{e^{ikx} - e^{-ikx}}{2}
+        \right) dx = \\
+    &= \frac{1}{2\pi} \int_{-\pi}^\pi f(x) dx +
+        \sum_{k = 1}^\infty \frac{e^{ikx}}{2\pi}
+        \int_{-\pi}^\pi f(x) \cdot e^{-ikx} dx + \\ &+
+        \sum_{k = 1}^\infty \frac{e^{-ikx}}{2\pi}
+        \int_{-\pi}^\pi f(x) \cdot e^{ikx} dx
+\end{align*}
+
+Заменим порядок суммирования в последней сумме $k$ на $-k$. Получим:
+
+\begin{align*}
+    \frac{1}{2\pi} \int_{-\pi}^\pi f(x) dx &+
+    \sum_{k = 1}^\infty \frac{1}{2\pi}
+    \int_{-\pi}^\pi f(x) e^{-ikx} dx \cdot e^{ikx} + \\ 
+    &+ \sum_{k = -\infty}^1 \frac{1}{2\pi}
+    \int_{-\pi}^\pi f(x) e^{-ikx} dx \cdot e^{ikx} = \\
+    &= \sum_{k = -\infty}^\infty C_k \cdot e^{ikx},
+    \text{где  } C_k = \frac{1}{2\pi} \int_{-\pi}^\pi f(x) e^{-ikx} dx
+\end{align*}
+
+
+b) Преобразуем интеграл Фурье:
+
+\begin{align*}
+    &\frac{1}{2\pi} \int_{-\lambda}^\lambda d\mu \left[
+        \frac{e^{i\mu x} + e^{-i\mu x}}{2} \cdot
+        \int_{-\infty}^\infty f(S) \cos \mu S \; dS +
+        \frac{e^{i\mu x} - e^{-i\mu x}}{2i} \cdot
+        \int_{-\infty}^\infty f(S) \sin \mu S \; dS
+    \right] = \\
+    &= \frac{1}{2\pi} \int_{-\lambda}^\lambda d\mu \left[
+        \frac{e^{i\mu x} + e^{-i\mu x}}{2} \cdot
+        \int_{-\infty}^\infty f(S) \frac{e^{i\mu S} + e^{-i\mu S}}{2} \; dS -
+        \frac{e^{i\mu x} - e^{-i\mu x}}{2} \cdot
+        \int_{-\infty}^\infty f(S) \frac{e^{i\mu S} - e^{-i\mu S}}{2} \; dS
+    \right] = \\
+    &= \frac{1}{2\pi} \int_{-\lambda}^\lambda d\mu \Bigg[
+        \frac{e^{i\mu x}}{2} \cdot
+        \int_{-\infty}^\infty f(S) \left(
+            \frac{e^{i\mu S} + e^{-i \mu S}}{2} -
+            \frac{e^{i\mu S} - e^{-i \mu S}}{2}
+        \right) dS + \\ &+
+        \frac{e^{-i\mu x}}{2} \cdot
+        \int_{-\infty}^\infty f(S) \left(
+            \frac{e^{i\mu S} + e^{-i \mu S}}{2} +
+            \frac{e^{i\mu S} - e^{-i \mu S}}{2}
+        \right) dS
+    \Bigg] = \\
+    &= \frac{1}{2\pi} \int_{-\lambda}^\lambda d\mu \Bigg[
+        \frac{e^{i\mu x}}{2} \cdot
+        \int_{-\infty}^\infty f(S) e^{-i\mu S} dS +
+        \frac{e^{-i\mu x}}{2} \cdot
+        \int_{-\infty}^\infty f(S) e^{i\mu S} dS
+    \Bigg] = \\
+    &= 
+    \frac{1}{2\pi} \int_{-\lambda}^\lambda d\mu \Bigg[
+    \frac{e^{i\mu x}}{2} \cdot
+    \underbrace{\int_{-\infty}^\infty f(S) e^{-i\mu S} dS}_{F(\mu)} \Bigg] +
+    \frac{1}{2\pi} \int_{-\lambda}^\lambda d\mu \Bigg[
+    \frac{e^{-i\mu x}}{2} \cdot
+    \underbrace{\int_{-\infty}^\infty f(S) e^{i\mu S} dS}_{F(\mu)} \Bigg]
+\end{align*}
+
+Сделаем замену $\mu$ на $-\mu$:
+
+\begin{align*}
+    \frac{1}{2\pi} \int_{-\lambda}^\lambda \underbrace{\left(
+        \int_{-\infty}^\infty f(S) e^{-i\mu S} dS
+    \right)}_{F(\mu)} e^{i\mu x} d\mu = 
+    \int_{-\lambda}^\lambda F(\mu) e^{i\mu x} \; d\mu, \,
+    \text{где  } F(\mu) = \frac{1}{2\pi} 
+    \int_{-\infty}^\infty f(S) e^{-i\mu S} dS
+\end{align*}
+
+Предел $\ds\lim_{\lambda \to +\infty} \ds\int_{-\lambda}^\lambda F(\mu) e^{i\mu x} d\mu$
+часто кратко обозначают $\ds\int_{-\infty}^\infty F(\mu) e^{i\mu x} d\mu$, так
+как он является главным значением этого интеграла.
+
+
+Рассмотрим условия, при которых интеграл Фурье сходится к
+$\frac{f(x + 0) + f(x - 0)}{2}$. При этом для интеграла Фурье будем
+использовать выражение
+\[ \lim_{\lambda \to +\infty} \frac{1}{\pi} \int_{-\infty}^\infty f(t + x) \frac{\sin \lambda t}{t} dt \]
+
+
+\begin{theorem}[О сходимости интеграла Фурье в точке]
+    Пусть функция $f(x)$ задана на интервале $(-\infty; +\infty)$ и интеграл
+    $\ds\int_{-\infty}^\infty |f(x)| dx$ сходится. Если в рассматриваемой
+    точке $x$ существуют пределы $f(x - 0)$ и $f(x + 0)$ и функция имеет
+    ограниченную производную на интервале $(x - \delta_0, x)$, 
+    $(x, x + \delta_0)$, $\delta_0 > 0$, то интеграл Фурье в данной точке
+    сходится и $\ds\frac{f(x - 0) + f(x + 0)}{2}$.
+
+    Если же функция $f(x)$ имеет ограниченную производную на некотором
+    сегменте $[a; b]$ при $b - a < 2\pi$, то интеграл Фурье сходится к функции
+    $f(x)$ равномерно на любом сегменте $[a_1; b_1]$ при $0 < a_1 < b_1 < b$.
+\end{theorem}
+\begin{proof}
+    Пусть $x \in (c, c + 2\pi)$ и $\varphi(x) = f(x)$ при $x \in [c, c + 2\pi)$.
+    Продолжим функцию $\varphi(x)$ вне отрезка $[c, c + 2\pi)$ периодически с
+    периодом $2\pi$. Пусть $\lambda = \lambda_n + \alpha$, где
+    $\lambda_n = n + \frac{1}{2}$, $n$ --- целое положительное число,
+    $0 \leq \alpha < 1$, а $\varphi_n(x)$ --- частичная сумма ряда Фурье
+    функции $\varphi(x)$.
+
+    Утверждение данной теоремы следует из предыдущей теоремы, если показать, что
+    при $\lambda \approach{} +\infty$ разность 
+    \[ \frac{1}{\pi} \int_{-\infty}^\infty f(t + x) \frac{\sin \lambda t}{t} dt - \varphi_n(x) \]
+
+    сходится к нулю равномерно на любом сегменте $[a; b]$ при
+    $c < a < b < c + 2\pi$. Так как 
+    \begin{align*}
+        \varphi_n(x) = \frac{1}{\pi} \int_{-\pi}^\pi \varphi(t + x) 
+            \frac{\sin \lambda_n t}{2 \sin \frac{t}{2}} dt
+    \end{align*}
+
+    то
+
+    \begin{align*}
+        &\frac{1}{\pi} \int_{-\infty}^\infty f(t + x)
+            \frac{\sin \lambda t}{t} dt - \varphi_n(x) = \\
+        &= \frac{1}{\pi} \int_{|t| \leq \delta} \left[
+            f(t + x) \frac{\sin \lambda t}{t} -
+            \varphi(t + x) \frac{\sin \lambda_n t}{2 \sin \frac{t}{2}}
+        \right] dt + \\
+        &+ \frac{1}{\pi} \int_{|t| \geq \delta}
+            f(t + x) \frac{\sin \lambda t}{t} dt -
+        \frac{1}{\pi} \int_{\delta \leq |t| \leq \pi}
+            \varphi(t + x) \frac{\sin \lambda_n t}{2 \sin \frac{t}{2}} dt = \\
+        &= I_1(x, \lambda) + I_2(x, \lambda) + I_3(x, \lambda)
+    \end{align*}
+
+    Если выбрать $\delta$ из условия, чтобы $[x - \delta, x + \delta] \subset
+    [c, c + 2\pi]$ при $x \in [a, b]$, то при $|t| \leq \delta$ имеем
+    $\varphi(t + x) = f(t + x)$.
+
+    Поэтому $I_1(x, \lambda) = \frac{1}{\pi} \int_{|t| \leq \delta}
+    f(t + x) \psi \psi(t, \lambda) dt$, где
+
+    \begin{align*}
+        \psi(t, \lambda) &= \frac{\sin \lambda t}{t} - 
+        \frac{\sin \lambda_n t}{2 \sin \frac{t}{2}} =
+        \frac{\sin \lambda t - \sin \lambda_n t}{t} + 
+        \sin \lambda_n t \left( \frac{1}{t} - \frac{1}{2\sin \frac{t}{2}} \right) = \\
+        &= \alpha \sin \lambda_n t \cdot \frac{\cos \alpha t - 1}{\alpha t} +
+        \alpha \cdot \cos \lambda_n t \frac{\sin \alpha t}{\alpha t} +
+        \sin \lambda_n t \left( \frac{1}{t} - \frac{1}{2 \sin \frac{t}{2}} \right)
+    \end{align*}
+
+    Отсюда $|\psi(t, \lambda)| \leq \left| \frac{\cos \alpha t - 1}{\alpha t} \right| +
+    \left| \frac{\sin \alpha t}{\alpha t} \right| + 
+    \left| \frac{1}{t} - \frac{1}{2 \sin \frac{t}{2}} \right|$.
+
+    Посколько функции $\frac{\cos t - 1}{t}$, $\frac{\sin t}{t}$,
+    $\frac{1}{t} - \frac{1}{2 \sin \frac{t}{2}}$ имеют конечный при 
+    $t \approach{} 0$ и непрерывны при $0 < |t| \leq \pi$, то
+    функция $\psi(t, \lambda)$ удовлетворяет неравенству $|\psi(t, \lambda)| \leq A$
+    при $|t| \leq \pi$ ($A$ --- постоянная).
+
+    Поэтому
+    \[ 
+        |I_1(x, \lambda)| \leq \frac{1}{\pi} \int_{|t| \leq \delta}
+            |f(t + x)| \cdot |\psi(t, \lambda)| dt \leq
+        A \sup_{x \in [c, c + 2 \pi]} |f(x)| \frac{2 \delta}{\pi}
+    \]
+
+    Следовательно, при любом $\epsilon > 0$ можно выбрать $\delta$ настолько
+    малым, чтобы имело место быть неравенство $I_1(x, \lambda) < \frac{\epsilon}{3}$
+    при $x \in [a, b]$. При выбранном значении $\delta$ согласно лемме 2,
+    интегралы
+    \begin{align*}
+        I_2(x, \lambda) = \frac{2}{\pi} \int_{|t| \geq \delta}
+            f(t + x) \cdot \frac{\sin \lambda t}{t} dt, \\
+        I_3(x, \lambda) = \frac{1}{\pi} \int_{\delta \leq |t| \leq \pi}
+            \varphi(t + x) \cdot \frac{\sin \lambda_n t}{2 \sin \frac{t}{2}} dt
+    \end{align*}
+
+    равномерно сходятся к нулю при $\lambda \approach{} +\infty, \,
+    x \in [a, b]$. Поэтому найдётся такое число $\overline{\lambda} =
+    \overline{\lambda}(\varepsilon)$, что
+    \[ 
+        |I_2(x, \lambda)| < \frac{\varepsilon}{3},
+        |I_3(x, \lambda)| < \frac{\varepsilon}{3},
+    \]
+
+    при $\lambda \geq \overline{\lambda}, \, x \in [a, b]$.
+
+    Таким образом, при $\lambda \geq \overline{\lambda}(\varepsilon), \, 
+    x \in [a, b]$ имеем
+    \[ 
+        \left| \frac{1}{\pi} \int_{-\infty}^\infty f(t + x) \cdot
+            \frac{\sin \lambda t}{t} dt - \varphi_n (x) \right| \leq
+        |I_1(x, \lambda)| + |I_2(x, \lambda)| + |I_3(x, \lambda)| < \varepsilon
+    \]
+\end{proof}
