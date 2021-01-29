@@ -6,7 +6,7 @@
     \begin{enumerate}
         \item $D_n(x)$ интегрируема на $[-\omega; \omega] \; (\omega > 0)$
         \item $D_n(-x) = D_n(x)$
-        \item $D_n(x \geq 0)$
+        \item $D_n(x) \geq 0$
         \item $\ds\int_{-\omega}^\omega D_n(x) dx = 1$
         \item 
             $\{ D_n(x) \}$ равномерно сходится к $0$ на 
@@ -32,9 +32,9 @@
         \abs{\ds\int_{-\omega}^\omega f(x + t) D_n(t) dt - f(x) \cdot \ds\int_{-\omega}^\omega D_n(t) dt}
         = \abs{\ds\int_{-\omega}^\omega (f(x+t) - f(x)) D_n(t) dt} = \\ 
         &= \abs{\ds\int_{|t| \leq \delta} (f(x+t) - f(x)) D_n(t) dt + \ds\int_{\delta \leq |t| \leq \omega} (f(x+t) - f(x)) D_n(t) dt} \leq \\
-        &\leq \ds\int_{|t| \leq \delta} |(f(x+t) - f(x)) D_n(t) dt| + \ds\int_{\omega \leq |t| \leq \omega} (|f(x+t)| + |f(x)|) D_n(t) dt < \\
+        &\leq \ds\int_{|t| \leq \delta} |(f(x+t) - f(x)) D_n(t) dt| + \ds\int_{\delta \leq |t| \leq \omega} (|f(x+t)| + |f(x)|) D_n(t) dt < \\
         &< \frac{\varepsilon}{2} \ds\int_{|t| < \delta} D_n(t) dt + 4C \sup_{\delta \leq |t| \leq \omega} D_n(t) \cdot (\omega - \delta) <
-        \frac{\varepsilon}{2} + 4C \cdot \sup_{\delta \leq |t| \leq \omega} D_n(t) \cdot (\omega - S)
+        \frac{\varepsilon}{2} + 4C \cdot \sup_{\delta \leq |t| \leq \omega} D_n(t) \cdot (\omega - \delta)
     \end{align*}
 
     Так как $\{ D_n(t) \}$ равномерно сходится к $0$ на $[-\omega; -\delta] \cup
@@ -42,7 +42,7 @@
     \quad \forall n \geq N_\varepsilon \quad 
     4C \cdot \ds\sup_{\delta \leq |t| \leq \omega} D_n(t) (\omega - \delta) < 
     \frac{\varepsilon}{2} \implies
-    \forall \varepsilon > 0 \quad N_\varepsilon \quad \forall n \geq N_\varepsilon
+    \forall \varepsilon > 0 \quad \exists N_\varepsilon \quad \forall n \geq N_\varepsilon
     \forall x \in [a; b] \quad |f_n(x) - f(x)| < \varepsilon \bydef \{ f_n(x) \}$
     равномерно сходится к $f(x)$ на $[a; b]$.
 \end{proof}
@@ -75,11 +75,11 @@
     Оценим $C_n$ при $n \geq 1$:
 
     \begin{align*}
-        \ds\int_{-\omega}^\omega \left( 1 - \frac{x^2}{\omega^2}^n \right) dx \geq
-        \ds\int_{-\omega / \sqrt{n}}^{\omega / \sqrt{n}} \left( 1 - \frac{x^2}{\omega^2}^n \right) dx \geq
+        \ds\int_{-\omega}^\omega \left( 1 - \frac{x^2}{\omega^2} \right)^n dx \geq
+        \ds\int_{-\omega / \sqrt{n}}^{\omega / \sqrt{n}} \left( 1 - \frac{x^2}{\omega^2} \right)^n dx \geq
         \ds\int_{-\omega / \sqrt{n}}^{\omega / \sqrt{n}} \left( 1 - n\frac{x^2}{\omega^2} \right) dx = \\
         = \left( x - \frac{n x^3}{3 \omega^2} \right) \Bigg|_{-\omega / \sqrt{n}}^{\omega / \sqrt{n}} =
-        2 \left(\frac{\omega}{\sqrt{n}} - \frac{h \omega^3}{n \sqrt{n} \cdot 3 \omega^2}\right) =
+        2 \left(\frac{\omega}{\sqrt{n}} - \frac{n \omega^3}{n \sqrt{n} \cdot 3 \omega^2}\right) =
         \frac{4}{3} \frac{\omega}{\sqrt{n}} \implies C_n \leq \frac{3 \sqrt{n}}{4 \omega}
     \end{align*}
 
@@ -87,7 +87,7 @@
     \frac{3 \sqrt{n}}{4\omega} \left(1 - \frac{\delta^2}{\omega^2}\right)^n \]
 
     то есть \[ 0 \leq D_n(x) \leq \frac{3}{4 \omega} 
-    \frac{n^{1/2}}{ \left(\frac{1}{1 - \delta^2 / \omega^2}\right)^2 } \quad
+    \frac{n^{1/2}}{ \left(\frac{1}{1 - \delta^2 / \omega^2}\right)^n } \quad
     \left( \frac{n^k}{a^n} \approach{n \to \infty} 0 \right)\]
 
     $\implies \{ D_n(t) \}$ равномерно сходится к $0$ на $[-\omega; -\delta] \cup
@@ -151,7 +151,7 @@
         2 \left( \frac{2 \omega}{\pi \sqrt{n}} - \frac{2 \omega}{3 \pi \sqrt{n}} \right) = \\
         &= 2 \cdot 2 \cdot \frac{2}{3} \cdot \frac{\omega}{\pi \sqrt{n}} = \frac{8 \omega}{3 \pi \sqrt{n}}
         \implies C_n \leq \frac{3 \pi \sqrt{n}}{8 \omega} 
-        \over{\delta \leq |x| \leq \omega}{\implies} 0 \leq D_n(x) \leq \frac{3 \pi \sqrt{n}}{8 \omega} \left(1 - \sin^2 \frac{\pi \delta}{2 \omega}\right)^2
+        \over{\delta \leq |x| \leq \omega}{\implies} 0 \leq D_n(x) \leq \frac{3 \pi \sqrt{n}}{8 \omega} \left(1 - \sin^2 \frac{\pi \delta}{2 \omega}\right)^n
     \end{align*}
 
     $\forall x \in [-\omega; -\delta] \cup [\delta; \omega] \; n \approach{} 
@@ -171,7 +171,7 @@
         \ds\int_{\omega}^{\omega + x} f(S) D_n(S - x) ds = \\
         &= \left/\begin{array}{lr}
             f(S) = f(S - 2 \omega)\\
-            D_n(t - 2\omega) = D_n(t)
+            D_n(t - 2\omega) = D_n(S)
         \end{array}\right/ = 
         \ds\int_{-\omega + x}^{-\omega} f(S + 2\omega) D_n(S - x + 2\omega) ds + \\
         &+ \ds\int_{-\omega}^{\omega} f(S) D_n(S - x) ds +
@@ -271,7 +271,7 @@
         \includegraphics[width=0.5\textwidth]{images/approx_mean.png}
     \end{figure}
 
-    Построим $f_\varepsilon(x)$ следующим образом: $f_\varepsilon(x) = f(x_i)
+    Построим $f_\varepsilon(x)$ следующим образом: $f_\varepsilon(x_i) = f(x_i)
     \quad \forall i = \overline{1, n - 1}$ на отрезке $[x_i; x_{i + 1}]$ ---
     линейная функция, а при $x = a, \, x = b$ функция $f_\varepsilon(x)$
     принимает заданные значения.
@@ -282,7 +282,7 @@
         &\min [f(x_i); f(x_{i + 1})] \leq 
         f_\varepsilon(x) \leq \max [f(x_i); f(x_{i + 1})] \\
         &\implies \begin{cases}
-            f(x) - f_\varepsilon(x) \leq f(x) - \min [f(x_i); f(x_{i + 1})] < \omega_i \\
+            f(x) - f_\varepsilon(x) \leq f(x) - \min [f(x_i); f(x_{i + 1})] \leq \omega_i \\
             f_\varepsilon(x) - f(x) \leq \max [f(x_i); f(x_{i + 1})] - f(x) \leq \omega_i
         \end{cases} \\
         &\implies |f(x) - f_\varepsilon(x)| \leq \omega_i
