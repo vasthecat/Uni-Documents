@@ -11,3 +11,5 @@
 *.pygstyle
 *.synctex
 *.pyg
+*.DS_Store
+*.vscode
