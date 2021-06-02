@@ -10,7 +10,7 @@
 \begin{example}[О игральной кости]
     Обычная игральная кость содержит шесть ребер, на каждой из которых 
     изображены 1, 2, 3, 4, 5 или 6 точек соответственно. В качестве 
-    $\Omega = \{\omega_1 \dots \omega_6\}$ обозначим 
+    $\Omega = \{\omega_1 \dots \omega_6\}$ обозначим множество элементарных исходов.
 \end{example}
 
 \begin{definition}
@@ -106,8 +106,6 @@
     Можно выделить следующие свойства:
     \begin{enumerate}
         \item $P(\varnothing) = 0$ 
-        \item $ P(\bigcup\limits_{i = 1}^n A_i) = \sum\limits_{i = 1}^n P(A_i)$.
-        \item $0 \le P(a) \le 1$.
         \item $P(\overline{A}) = 1 - P(A)$.
         \item $P(A \cup B) = \begin{cases}
         P(A) + P(B) - P(A \cap B) & A \cap B \neq \varnothing \\
@@ -206,7 +204,7 @@ $E_N = \{x \in E: f(x) \in [y_{N - 1}, y_N]\}$
     \begin{enumerate}
         \item $\Omega = \{\omega_1, \omega_2 \dots \omega_n\}$, $n \leq \infty$ (конечно или счетно).
         \item $\mathcal{F} = F_{max}$ (множество всех подмножеств $\Omega$).
-        \item $\forall ~ \omega_k, k = 1 \dots N$ задана величина $p_k = P(\omega_k) \leq 0$, при этом
+        \item $\forall ~ \omega_k, k = 1 \dots N$ задана величина $p_k = P(\omega_k) \geq 0$, при этом
         $\sum\limits_{k = 1}^n p_k = 1$.
     \end{enumerate}
 \end{definition}
@@ -233,14 +231,14 @@ $P(A)$ в таком случае равно $\frac{M}{N}$, где $M$ "--- чи
 \subsection{Условная вероятность и независимость событий}
 
 \begin{definition}
-    Условной вероятностью назовем величину $\displaystyle P(A ~|~ B) = \frac{P(A \cap B)}{P(A)}$.
+    Условной вероятностью назовем величину $\displaystyle P(A ~|~ B) = \frac{P(A \cap B)}{P(B)}$.
 \end{definition}
 Условная вероятность позволяет говорить о том, какова вероятность наступления
 события $A$, если известно, что событие $B$ наступило.
 
 \begin{theorem}[<<Теорема>> умножения]
     Вероятность того, что оба события произошли одновременно выражаются формулой
-    $P(A \cap B) = P(A) P(B ~|~ A)$.
+    $P(A \cap B) = P(B) P(A ~|~ B)$.
 \end{theorem}
 
 \begin{theorem}[Формула полной вероятности]
@@ -306,7 +304,7 @@ $P(A)$ в таком случае равно $\frac{M}{N}$, где $M$ "--- чи
 $(Y, S_y)$ с выделенными алгебрами подмножеств и
 определена функция $f ~:~ X \rightarrow Y$. Тогда
 функция называется $(S_x, S_y)$"=измеримой,
-если $\forall y \in Y f^{-1}(y) = x \in S_x$.
+если $\forall y \in Y ~ f^{-1}(y) = x \in S_x$.
 \end{definition}
 \begin{figure}[H]
     \centering
@@ -392,14 +390,14 @@ $F_\xi(x) = \begin{cases}
 \begin{definition}
     Случайная величина $\xi$ называется непрерывной,
     если функция распределения $F(x)$ дифференциируема, то есть:
-    $\forall ~ x \in R F(x) = \int\limits_{-\infty}^x dF(t)$ существует.
+    $\forall ~ x \in R ~ F(x) = \int\limits_{-\infty}^x dF(t)$ существует.
 \end{definition}
 
 \begin{definition}
     Случайная величина $\xi$ называется абсолютно непрерывной, если
     существует такая неотрицательная функция $f(x)$, что
     \begin{equation*}
-        \forall ~ x \in R F(x) = \int\limits_{-\infty}^x f(t)dt
+        \forall ~ x \in R ~ F(x) = \int\limits_{-\infty}^x f(t)dt
     \end{equation*}
     При этом $dF(t) = f(t)dt$, где $f(t)$ "--- плотность распределения.
 \end{definition}
@@ -472,18 +470,138 @@ $n$ "--- число испытаний, $p$ "--- вероятность
 
 %TODO: пример
 
-\begin{theorem}[О вероятности]
+\begin{theorem}[О законе и функции распределения]
     В рамках этого эксперимента определим
     $\xi \in \{0, 1, \dots n\}$.
     Тогда:
     \begin{enumerate}
-        \item Вероятность: $P\{\xi = k\} = C_n^k p^k q^{n - k}$
+        \item Функция вероятности: $P\{\xi = k\} = C_n^k p^k q^{n - k}$
+        \item Функция распределения: $F(x) = P\{\xi < x\} = \sum\limits_{k = 0}^x C_n^k p^k q^{n - k}$
     \end{enumerate}
 \end{theorem}
+
+График функции вероятности:
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{images/binom.png}
+    \caption{График функции вероятности}
+\end{figure}
 
 График распределения:
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{images/binom.png}
-    \caption{График функции биномиального распределения}
+    \includegraphics[scale=0.4]{images/binom2.png}
+    \caption{График функции распределения}
 \end{figure}
+
+\subsection{Распределение Пуассона}
+Пусть проводится эксперимент <<по схеме
+независимых испытаний Бернулли>>, где
+$n$ "--- количество испытаний.
+
+Рассмотрим случайную величину $\xi$ "---
+количество <<успехов>> в большом числе
+испытаний Бернулли. Тогда математической
+моделью такого эксперимента выберем величину
+$\xi$ со значениями из множества $\{0, 1, 2 \dots\} \in Z$.
+
+Найдем вероятность $P_n(k) = P(\xi = k)$ "--- того, что
+случайная величина $\xi$ примет значение
+равное $k$. Так как мы находимся в рамках
+схемы Бернулли, то
+$P_n(k) = C_n^kp^kq^{n - k}$. Однако, с учетом
+множества возможных значений $\xi$ необходимо
+совершить предельный переход при $n \rightarrow \infty$.
+
+Тогда
+\begin{equation} \label{puas}
+    \displaystyle P_n(k) = C_n^k p_n^k q_n^{n - k} = \frac{n!}{k!(n - k)!}p^k q^n q^{-k}
+\end{equation}
+
+Пусть $np_n = \lambda_n ~\forall n \in N$, $\lambda_n \rightarrow \lambda$.
+
+Тогда $p_n = \frac{\lambda_n}{n}; q_n = 1 - \frac{\lambda_n}{n}$.
+
+Тогда (\ref{puas}) примет вид:
+
+\begin{equation*}
+    \displaystyle 
+    \frac{1}{k!} n (n - 1) \dots (n - k + 1) (\frac{\lambda_n}{n})^k(1 - \frac{\lambda_n}{n})^n (1 - \frac{\lambda_n}{n})^{-k} = 
+    \frac{\lambda_n^k}{k!} \cdot \frac{n}{n} \cdot \frac{n - 1}{n} \dots \frac{n - k + 1}{n} (1 - \frac{\lambda_n}{n})^{-k} (1 - \frac{\lambda_n}{n})^n)
+\end{equation*}
+
+Рассмотрим $\lim\limits_{n \rightarrow \infty}$ полученного выражения.
+
+$\displaystyle \lim\limits_{n \rightarrow \infty}(\frac{n - i}{n}) = 1 - \frac{i}{n} = 1$
+
+Аналогично для $\displaystyle 1 - \frac{\lambda_n}{n}$.
+
+$\displaystyle \lim\limits_{n \rightarrow \infty}(1 - \frac{\lambda_n}{n})^n = e^{-\lambda}$ (второй замечательный предел).
+
+В итоге получим, что $\displaystyle \lim\limits_{n \rightarrow \infty}P_n(k)
+ = \frac{e^{-\lambda} \lambda^k}{k!}$.
+
+При этом полученное значение удовлетворяет условию $\sum\limits_{k = 0}^\infty p_k = 1$ (для проверки достаточно
+подставить полученное значение под оператор суммы).
+
+Распределением Пуассона называется распределение
+случайной величины $\xi$ по описанному выше закону.
+
+$\displaystyle \xi \in N$, $P\{\xi = k\} = \frac{e^{-\lambda} \lambda^k}{k!}$
+
+Функция распределения будет ступенчатой:
+
+\begin{equation*} \displaystyle
+    F_\xi(x) = 
+    \begin{cases}
+        0, & x \leq 0 \\
+        e^{-\lambda}, & 0 < x \leq 1 \\
+        e^{-\lambda} + e^{-\lambda} \lambda & 1 < x \leq 2 \\
+        \dots \\
+        \sum\limits_{k = 1}^n \frac{e^{-\lambda} \lambda^k}{k!}
+    \end{cases}
+\end{equation*}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{images/puasgraph.png}
+    \caption{График распределения Пуассона}
+\end{figure}
+
+При этом $\lim\limits_{x \rightarrow \infty} F_\xi(x) = \sum\limits_{i = 1}^\infty \frac{e^{-\lambda} \lambda^k}{k!} = 1$.
+
+\subsection{Геометрическое распределение}
+
+Рассмотрим эксперимент, в котором независимые
+испытания Бернулли повторяются до первого
+<<успеха>>.
+
+Случайная величина $\xi$ "--- количество экспериментов,
+проведенных до появления первого <<успеха>>(включительно).
+
+Распределение этой величины удобно начать с рассмотрения
+вероятностного пространства
+
+$\Omega = \{(1), (0, 1), (0, 0, 1) \dots (0, 0, \dots, 1)\}$
+при этом постановка эксперимента предполагает, что множество
+таких экспериментов счетно.
+Тогда $\xi(1) = 1, \xi(2) = 2 \dots \xi(\underbrace{0, 0 \dots 0}_{k - 1}, 1) = k$.
+
+Тогда $P\{\xi = k\} = pq^{k - 1}$.
+При этом $\sum\limits_{k = 1}^\infty P\{\xi = k\} = 1$.
+
+\subsection{Равномерное дискретное распределение}
+
+Пусть эксперимент имеет конечное число исходов,
+то есть $\Omega = \{\omega_1, \omega_2, \dots, \omega_n\}$.
+
+$P\{w_k\} = \frac{1}{n} ~ \forall i \leq k \leq n$.
+
+Определим случайную величину $\xi$ "--- номер наступившего
+исхода.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{images/ravnomern.png}
+\end{figure}
+
